@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Recording;
 
@@ -17,13 +18,16 @@ namespace VoiceAssistant.Services
 		private readonly CommandRecorder _commandRecorder;
 		private readonly ConcurrentQueue<string> _actionsQueue;
 		private readonly Provider<S2TConverterInfo> _S2TConverterProvider;
+		private readonly IExceptionNotifier _exceptionNotifier;
 
 		private readonly object _S2TLock = new();
 
 		private IS2TConverter? S2TConverter { get; set; }
 
-		public VoiceAssistantService(CommandRecorder commandRecorder,
-			Provider<S2TConverterInfo> s2TConverterProvider)
+		public VoiceAssistantService(
+			CommandRecorder commandRecorder,
+			Provider<S2TConverterInfo> s2TConverterProvider,
+			IExceptionNotifier exceptionNotifier)
 		{
 			_commandRecorder = commandRecorder;
 			_commandRecorder.CommandRecorded += CommandRecorded;
@@ -31,6 +35,8 @@ namespace VoiceAssistant.Services
 			_actionsQueue = new();
 			_S2TConverterProvider = s2TConverterProvider;
 			_S2TConverterProvider.PropertyChanged += S2TConverterProvider_PropertyChanged;
+
+			_exceptionNotifier = exceptionNotifier;
 		}
 
 		protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -75,7 +81,7 @@ namespace VoiceAssistant.Services
 			}
 			else // error handling
 			{
-
+				_exceptionNotifier.Notify(res.Second);
 			}
 		}
 
