@@ -12,6 +12,7 @@ namespace VoiceAssistant.Services.Extensions
 		public static IServiceCollection RegisterServices(this IServiceCollection services)
 		{
 			services
+				.AddHostedService<VoiceAssistantService>()
 				.AddTransient<SettingsLoadingService>();
 
 			return services;
