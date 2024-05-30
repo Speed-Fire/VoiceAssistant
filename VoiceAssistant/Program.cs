@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Plugin.Registrator;
 using Synergy.Core;
 using Synergy.WPF.Common.Extensions;
@@ -11,12 +12,14 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Recording.Extensions;
+using VoiceAssistant.Services;
+using VoiceAssistant.Services.Extensions;
 
 namespace VoiceAssistant
 {
 	internal class Program
 	{
-		public static void Main(string[] args)
+		public static async void Main(string[] args)
 		{
 			var builder = Host.CreateApplicationBuilder(args);
 
@@ -25,6 +28,7 @@ namespace VoiceAssistant
 				.RegisterSynergyWPFCommon()
 				.RegisterSynergyWPFNavigation()
 				.RegisterVoiceRecording(builder.Configuration)
+				.RegisterServices()
 				.RegisterApp();
 
 			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
@@ -33,7 +37,13 @@ namespace VoiceAssistant
 			registrator.Register(builder.Services);
 
 			var host = builder.Build();
-			host.RunAsync();
+
+			var settingsLoader = host.Services.GetRequiredService<SettingsLoadingService>();
+			await settingsLoader.LoadAsync();
+
+			var hostrun = host.RunAsync();
+
+			await hostrun;
 		}
 	}
 }
