@@ -3,9 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.Recording", "VoiceAssistant.Recording\VoiceAssistant.Recording.csproj", "{747A379B-9A62-44C1-B122-900E4D896677}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.Recording", "VoiceAssistant.Recording\VoiceAssistant.Recording.csproj", "{747A379B-9A62-44C1-B122-900E4D896677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{FF22E473-FC1F-4528-8C12-5E13FD4105C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{FF22E473-FC1F-4528-8C12-5E13FD4105C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant", "VoiceAssistant\VoiceAssistant.csproj", "{5CD85F6B-75AD-479F-B3A6-C2DE747FAEEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.Core", "VoiceAssistant.Core\VoiceAssistant.Core.csproj", "{141FD0E5-12F2-4E37-9CE7-9803285F617F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.Services", "VoiceAssistant.Services\VoiceAssistant.Services.csproj", "{904338B9-E946-4ABA-9F05-7B4AD194655C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "S2TPlugins", "S2TPlugins", "{15C09267-273D-4170-877B-FDF4F7E88DAB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.S2T.Base", "Plugin.S2T.Base\Plugin.S2T.Base.csproj", "{ACD8537A-C5B7-4740-A750-F4DB008D27AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.S2T.VK", "Plugin.S2T.VK\Plugin.S2T.VK.csproj", "{6BC43812-1BF6-4588-BE4F-BFC8A1614D5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{7E007469-382E-4DD7-AAC6-E6EB384E958C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Base", "Plugin.Base\Plugin.Base.csproj", "{90E15EFD-2697-46FD-B605-1F527D6040CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Registrator", "Plugin.Registrator\Plugin.Registrator.csproj", "{10AC1094-15FE-4537-B47F-268C392898C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +39,44 @@ Global
 		{FF22E473-FC1F-4528-8C12-5E13FD4105C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF22E473-FC1F-4528-8C12-5E13FD4105C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF22E473-FC1F-4528-8C12-5E13FD4105C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD85F6B-75AD-479F-B3A6-C2DE747FAEEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD85F6B-75AD-479F-B3A6-C2DE747FAEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD85F6B-75AD-479F-B3A6-C2DE747FAEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD85F6B-75AD-479F-B3A6-C2DE747FAEEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{141FD0E5-12F2-4E37-9CE7-9803285F617F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{141FD0E5-12F2-4E37-9CE7-9803285F617F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{141FD0E5-12F2-4E37-9CE7-9803285F617F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{141FD0E5-12F2-4E37-9CE7-9803285F617F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{904338B9-E946-4ABA-9F05-7B4AD194655C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{904338B9-E946-4ABA-9F05-7B4AD194655C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{904338B9-E946-4ABA-9F05-7B4AD194655C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{904338B9-E946-4ABA-9F05-7B4AD194655C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACD8537A-C5B7-4740-A750-F4DB008D27AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACD8537A-C5B7-4740-A750-F4DB008D27AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACD8537A-C5B7-4740-A750-F4DB008D27AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACD8537A-C5B7-4740-A750-F4DB008D27AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC43812-1BF6-4588-BE4F-BFC8A1614D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC43812-1BF6-4588-BE4F-BFC8A1614D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC43812-1BF6-4588-BE4F-BFC8A1614D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC43812-1BF6-4588-BE4F-BFC8A1614D5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90E15EFD-2697-46FD-B605-1F527D6040CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E15EFD-2697-46FD-B605-1F527D6040CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E15EFD-2697-46FD-B605-1F527D6040CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E15EFD-2697-46FD-B605-1F527D6040CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10AC1094-15FE-4537-B47F-268C392898C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10AC1094-15FE-4537-B47F-268C392898C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10AC1094-15FE-4537-B47F-268C392898C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10AC1094-15FE-4537-B47F-268C392898C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15C09267-273D-4170-877B-FDF4F7E88DAB} = {7E007469-382E-4DD7-AAC6-E6EB384E958C}
+		{ACD8537A-C5B7-4740-A750-F4DB008D27AC} = {15C09267-273D-4170-877B-FDF4F7E88DAB}
+		{6BC43812-1BF6-4588-BE4F-BFC8A1614D5D} = {15C09267-273D-4170-877B-FDF4F7E88DAB}
+		{90E15EFD-2697-46FD-B605-1F527D6040CF} = {7E007469-382E-4DD7-AAC6-E6EB384E958C}
+		{10AC1094-15FE-4537-B47F-268C392898C1} = {7E007469-382E-4DD7-AAC6-E6EB384E958C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2870DBD0-1D63-4AF1-8706-07CD16EC4A04}
