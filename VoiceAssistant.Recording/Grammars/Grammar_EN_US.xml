@@ -5,7 +5,7 @@
 
 	<rule id="Main">
 		<item>
-			Command
+			house
 		</item>
 	</rule>
 </grammar>
