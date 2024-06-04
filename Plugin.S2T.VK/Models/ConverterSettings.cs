@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.S2T.VK.Models
 {
-	internal class ConverterSettings
+	public class ConverterSettings
 	{
 		public string ServiceKey { get; set; } = string.Empty;
 	}

@@ -1,6 +1,7 @@
 ﻿using LiteDB;
 using Plugin.S2T.Base;
 using Plugin.S2T.VK.Exceptions;
+using Plugin.S2T.VK.Extensions;
 using Plugin.S2T.VK.Misc;
 using Plugin.S2T.VK.Models;
 using System;
@@ -16,7 +17,7 @@ using VoiceAssistant.Core.Misc;
 
 namespace Plugin.S2T.VK
 {
-	internal class S2TConverterVK(
+	public class S2TConverterVK(
 		HttpClient client,
 		Provider<ConverterSettings> settings,
 		LiteDbContext db) : IS2TConverter
@@ -115,7 +116,7 @@ namespace Plugin.S2T.VK
 				throw new ServiceKeyNotSpecifiedException();
 
 			using var response = await _client
-				.GetAsync($"https://api.vk.com/method/asr.getUploadUrl?access_token={_settings.Value.ServiceKey}");
+				.GetAsync($"https://api.vk.com/method/asr.getUploadUrl?access_token={_settings.Value.ServiceKey}&v=5.236");
 
 			if (!response.IsSuccessStatusCode)
 				return new OneOf<string, Exception>(new InternalServerErrorException());
@@ -159,9 +160,13 @@ namespace Plugin.S2T.VK
 		private async Task<OneOf<string, Exception>> SendAudioToServer(string uploadUrl, Stream audio)
 		{
 			using var content = new MultipartFormDataContent();
-			using var streamContent = new StreamContent(audio);
 
-			content.Add(streamContent, "file");
+			using var streamContent = new StreamContent(audio);
+			streamContent.Headers.ContentType =
+				new System.Net.Http.Headers.MediaTypeHeaderValue("audio/wav");
+
+			var filename = Guid.NewGuid().ToString() + ".wav";
+			content.Add(streamContent, "file", filename);
 
 			using var response = await _client.PostAsync(uploadUrl, content);
 			if(!response.IsSuccessStatusCode)
@@ -220,7 +225,7 @@ namespace Plugin.S2T.VK
 			multipart.Add(audio, "audio");
 
 			using var response = await _client
-				.PostAsync("https://api.vk.com/method/asr.process", multipart);
+				.PostAsync("https://api.vk.com/method/asr.process?v=5.236", multipart);
 
 			if (!response.IsSuccessStatusCode)
 				return new OneOf<string, Exception>(new InternalServerErrorException());
@@ -276,7 +281,7 @@ namespace Plugin.S2T.VK
 			multipart.Add(task_id, "task_id");
 
 			using var response = await _client
-				.PostAsync($"https://api.vk.com/method/asr.checkStatus", multipart);
+				.PostAsync($"https://api.vk.com/method/asr.checkStatus?v=5.236", multipart);
 
 			if (!response.IsSuccessStatusCode)
 				return new OneOf<string, Exception>(new InternalServerErrorException());
@@ -325,7 +330,7 @@ namespace Plugin.S2T.VK
 			if (exception is not null)
 				return new OneOf<string, Exception>(exception);
 			else
-				return new OneOf<string, Exception>(taskId);
+				return new OneOf<string, Exception>(text);
 		}
 
 		#endregion
