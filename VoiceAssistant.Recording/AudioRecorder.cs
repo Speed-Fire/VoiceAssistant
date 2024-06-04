@@ -42,6 +42,7 @@ namespace VoiceAssistant.Recording
 			_output = new MemoryStream();
 			_waveWriter = new WaveFileWriter(new IgnoreDisposeStream(_output), _audioCapturer.WaveFormat);
 
+			_silentChunkCount = 0;
 			_speechRecording = true;
 			_audioCapturer.StartRecording();
 		}
