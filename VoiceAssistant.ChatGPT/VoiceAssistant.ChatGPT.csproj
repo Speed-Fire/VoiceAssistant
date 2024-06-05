@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\ChatGPT.py" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ChatGPT.py" />
+    <EmbeddedResource Include="Resources\scripts.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSPythonInvoker\CSPythonInvoker.csproj" />
+  </ItemGroup>
+
+</Project>
