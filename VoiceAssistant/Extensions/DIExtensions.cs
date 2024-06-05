@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core;
@@ -12,6 +13,20 @@ namespace VoiceAssistant.Extensions
 {
 	internal static class DIExtensions
 	{
+		public static IServiceCollection RegisterHttpClient(this IServiceCollection services)
+		{
+			var handler = new SocketsHttpHandler()
+			{
+				PooledConnectionLifetime = TimeSpan.FromMinutes(2),
+			};
+
+			var client = new HttpClient(handler);
+
+			services.AddSingleton(client);
+
+			return services;
+		}
+
 		public static IServiceCollection RegisterApp(this IServiceCollection services)
 		{
 			services

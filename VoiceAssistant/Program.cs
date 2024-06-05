@@ -30,6 +30,7 @@ namespace VoiceAssistant
 				.RegisterVoiceRecording(builder.Configuration)
 				.RegisterServices()
 				.RegisterApp();
+				.RegisterHttpClient()
 
 			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 			using var registrator = new PluginRegistrator(pluginFolder);
