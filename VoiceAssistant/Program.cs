@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CSPythonInvoker.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plugin.Registrator;
 using Synergy.Core;
@@ -10,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.ChatGPT.Extensions;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Recording.Extensions;
 using VoiceAssistant.Services;
@@ -29,8 +31,10 @@ namespace VoiceAssistant
 				.RegisterSynergyWPFNavigation()
 				.RegisterVoiceRecording(builder.Configuration)
 				.RegisterServices()
-				.RegisterApp();
+				.RegisterApp()
 				.RegisterHttpClient()
+				.RegisterPython()
+				.RegisterChatGPT();
 
 			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 			using var registrator = new PluginRegistrator(pluginFolder);
