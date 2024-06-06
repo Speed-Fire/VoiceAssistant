@@ -1,5 +1,4 @@
-﻿using CSPythonInvoker.Extensions;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plugin.Registrator;
 using Synergy.Core;
@@ -11,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VocieAssistant.Python;
+using VocieAssistant.Python.Extensions;
 using VoiceAssistant.ChatGPT.Extensions;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Recording.Extensions;
@@ -45,6 +46,10 @@ namespace VoiceAssistant
 
 			var settingsLoader = host.Services.GetRequiredService<SettingsLoadingService>();
 			await settingsLoader.LoadAsync();
+
+			var pinterop = host.Services.GetRequiredService<PythonInterop>();
+			pinterop.Initialize();
+			pinterop.AddPath(Path.Combine(Directory.GetCurrentDirectory(), "Python"));
 
 			var hostrun = host.RunAsync();
 
