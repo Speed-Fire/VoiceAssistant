@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace VocieAssistant.Python
 {
-	public class PythonInterop
+	public class PythonInterop : IDisposable
 	{
 		public void Initialize()
 		{
 			string pythonDll = @"C:\Users\Р’Р»Р°Рґ\AppData\Local\Programs\Python\Python38\python38.dll";
 			Runtime.PythonDLL = pythonDll;
 			PythonEngine.Initialize();
+			PythonEngine.BeginAllowThreads();
 		}
 
 		public void AddPath(string path)
@@ -31,6 +32,11 @@ namespace VocieAssistant.Python
 			{
 				PythonEngine.RunSimpleString(pycode);
 			}
+		}
+
+		public void Dispose()
+		{
+
 		}
 	}
 }
