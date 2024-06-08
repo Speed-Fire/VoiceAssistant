@@ -29,11 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Python", "Python", "{8ED7E8
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "VoiceAssistant.ChatGPT.Python", "VoiceAssistant.ChatGPT.Python\VoiceAssistant.ChatGPT.Python.pyproj", "{0C434041-50DF-47B0-9913-5D99A437F06F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.ActionManagement", "VoiceAssistant.ActionManagement\VoiceAssistant.ActionManagement.csproj", "{590ABD09-DF97-43AD-A513-72188D8D48DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.ActionManagement", "VoiceAssistant.ActionManagement\VoiceAssistant.ActionManagement.csproj", "{590ABD09-DF97-43AD-A513-72188D8D48DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSPythonInvoker", "CSPythonInvoker\CSPythonInvoker.csproj", "{BEB35C13-2FC3-4EBD-9998-0C1F3C4A9505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.ChatGPT", "VoiceAssistant.ChatGPT\VoiceAssistant.ChatGPT.csproj", "{B15AA2C6-42E3-4E01-A21C-647834FCAB81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.ChatGPT", "VoiceAssistant.ChatGPT\VoiceAssistant.ChatGPT.csproj", "{B15AA2C6-42E3-4E01-A21C-647834FCAB81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocieAssistant.Python", "VocieAssistant.Python\VocieAssistant.Python.csproj", "{96C03AB5-9FEA-4386-AA9C-34966936EAD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,14 +83,14 @@ Global
 		{590ABD09-DF97-43AD-A513-72188D8D48DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590ABD09-DF97-43AD-A513-72188D8D48DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{590ABD09-DF97-43AD-A513-72188D8D48DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEB35C13-2FC3-4EBD-9998-0C1F3C4A9505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEB35C13-2FC3-4EBD-9998-0C1F3C4A9505}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEB35C13-2FC3-4EBD-9998-0C1F3C4A9505}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEB35C13-2FC3-4EBD-9998-0C1F3C4A9505}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B15AA2C6-42E3-4E01-A21C-647834FCAB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B15AA2C6-42E3-4E01-A21C-647834FCAB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B15AA2C6-42E3-4E01-A21C-647834FCAB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B15AA2C6-42E3-4E01-A21C-647834FCAB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96C03AB5-9FEA-4386-AA9C-34966936EAD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C03AB5-9FEA-4386-AA9C-34966936EAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C03AB5-9FEA-4386-AA9C-34966936EAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C03AB5-9FEA-4386-AA9C-34966936EAD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,7 +102,7 @@ Global
 		{90E15EFD-2697-46FD-B605-1F527D6040CF} = {7E007469-382E-4DD7-AAC6-E6EB384E958C}
 		{10AC1094-15FE-4537-B47F-268C392898C1} = {7E007469-382E-4DD7-AAC6-E6EB384E958C}
 		{0C434041-50DF-47B0-9913-5D99A437F06F} = {8ED7E861-FE36-4347-B149-BDC8A6337F97}
-		{BEB35C13-2FC3-4EBD-9998-0C1F3C4A9505} = {8ED7E861-FE36-4347-B149-BDC8A6337F97}
+		{96C03AB5-9FEA-4386-AA9C-34966936EAD2} = {8ED7E861-FE36-4347-B149-BDC8A6337F97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2870DBD0-1D63-4AF1-8706-07CD16EC4A04}
