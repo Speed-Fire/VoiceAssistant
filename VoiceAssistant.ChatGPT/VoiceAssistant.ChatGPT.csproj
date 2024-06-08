@@ -7,16 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\ChatGPT.py" />
+    <ProjectReference Include="..\VocieAssistant.Python\VocieAssistant.Python.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ChatGPT.py" />
-    <EmbeddedResource Include="Resources\scripts.zip" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CSPythonInvoker\CSPythonInvoker.csproj" />
+    <None Update="Python\ChatGPT.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Python\lib.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

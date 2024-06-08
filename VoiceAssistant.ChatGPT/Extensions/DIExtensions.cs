@@ -1,5 +1,5 @@
-﻿using CSPythonInvoker;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Python.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,46 +9,40 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.ChatGPT.Extensions
 {
+	internal class ChatGPTFactory
+	{
+		private readonly PyObject _module;
+
+        public ChatGPTFactory()
+        {
+			using (Py.GIL())
+			{
+				_module = Py.Import("ChatGPT");
+			}
+        }
+
+		public ChatGPT Create()
+		{
+			using (Py.GIL())
+			{
+				var instance = _module.InvokeMethod("CreateChatGpt");
+
+				return new(instance);
+			}
+		}
+    }
+
 	public static class DIExtensions
 	{
-		private const string KEY = "VoiceAssistant.ChatGPT";
-
 		public static IServiceCollection RegisterChatGPT(this IServiceCollection services)
 		{
-			services.AddKeyedSingleton(KEY, (provider, key) =>
+			services.AddSingleton<ChatGPTFactory>();
+
+			services.AddTransient<ChatGPT>(provider =>
 			{
-				// getting main script
-				using var stream = Assembly.GetExecutingAssembly()
-					.GetManifestResourceStream("VoiceAssistant.ChatGPT.Resources.ChatGPT.py");
-				if (stream is null)
-					throw new InvalidOperationException("Main script is not found!");
-				using var reader = new StreamReader(stream);
+				var factory = provider.GetRequiredService<ChatGPTFactory>();
 
-				var code = reader.ReadToEnd();
-
-				// getting python environment
-				var env = provider.GetRequiredService<PEnvironment>();
-
-				// creating scope with main script dependencies
-				var scope = env.CreateScopeWithDependencies(
-					Assembly.GetExecutingAssembly(),
-					"VoiceAssistant.ChatGPT.Resources.scripts.zip");
-
-				// loading main script into scope.
-				scope.LoadScriptFromString(code);
-
-				return scope;
-			});
-
-			services.AddTransient(provider =>
-			{
-				var scope = provider.GetRequiredKeyedService<PScope>(KEY);
-
-				var instance = scope.CreateInstance("ChatGPT");				
-				if (instance is null)
-					throw new InvalidOperationException("Python class is not found!");
-
-				return new ChatGPT(instance);
+				return factory.Create();
 			});
 
 			return services;
