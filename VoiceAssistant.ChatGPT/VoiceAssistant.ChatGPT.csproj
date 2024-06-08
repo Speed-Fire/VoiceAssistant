@@ -6,17 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\VocieAssistant.Python\VocieAssistant.Python.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Python\ChatGPT.py">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Python\lib.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

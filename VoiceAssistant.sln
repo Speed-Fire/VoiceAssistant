@@ -25,15 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Base", "Plugin.Base\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Registrator", "Plugin.Registrator\Plugin.Registrator.csproj", "{10AC1094-15FE-4537-B47F-268C392898C1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Python", "Python", "{8ED7E861-FE36-4347-B149-BDC8A6337F97}"
-EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "VoiceAssistant.ChatGPT.Python", "VoiceAssistant.ChatGPT.Python\VoiceAssistant.ChatGPT.Python.pyproj", "{0C434041-50DF-47B0-9913-5D99A437F06F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.ActionManagement", "VoiceAssistant.ActionManagement\VoiceAssistant.ActionManagement.csproj", "{590ABD09-DF97-43AD-A513-72188D8D48DD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.ChatGPT", "VoiceAssistant.ChatGPT\VoiceAssistant.ChatGPT.csproj", "{B15AA2C6-42E3-4E01-A21C-647834FCAB81}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocieAssistant.Python", "VocieAssistant.Python\VocieAssistant.Python.csproj", "{96C03AB5-9FEA-4386-AA9C-34966936EAD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,8 +71,6 @@ Global
 		{10AC1094-15FE-4537-B47F-268C392898C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10AC1094-15FE-4537-B47F-268C392898C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10AC1094-15FE-4537-B47F-268C392898C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C434041-50DF-47B0-9913-5D99A437F06F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C434041-50DF-47B0-9913-5D99A437F06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{590ABD09-DF97-43AD-A513-72188D8D48DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{590ABD09-DF97-43AD-A513-72188D8D48DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590ABD09-DF97-43AD-A513-72188D8D48DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,10 +79,6 @@ Global
 		{B15AA2C6-42E3-4E01-A21C-647834FCAB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B15AA2C6-42E3-4E01-A21C-647834FCAB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B15AA2C6-42E3-4E01-A21C-647834FCAB81}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96C03AB5-9FEA-4386-AA9C-34966936EAD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96C03AB5-9FEA-4386-AA9C-34966936EAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96C03AB5-9FEA-4386-AA9C-34966936EAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96C03AB5-9FEA-4386-AA9C-34966936EAD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,8 +89,6 @@ Global
 		{6BC43812-1BF6-4588-BE4F-BFC8A1614D5D} = {15C09267-273D-4170-877B-FDF4F7E88DAB}
 		{90E15EFD-2697-46FD-B605-1F527D6040CF} = {7E007469-382E-4DD7-AAC6-E6EB384E958C}
 		{10AC1094-15FE-4537-B47F-268C392898C1} = {7E007469-382E-4DD7-AAC6-E6EB384E958C}
-		{0C434041-50DF-47B0-9913-5D99A437F06F} = {8ED7E861-FE36-4347-B149-BDC8A6337F97}
-		{96C03AB5-9FEA-4386-AA9C-34966936EAD2} = {8ED7E861-FE36-4347-B149-BDC8A6337F97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2870DBD0-1D63-4AF1-8706-07CD16EC4A04}
