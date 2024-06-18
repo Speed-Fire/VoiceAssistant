@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Synergy.WPF.Common" Version="1.0.0" />
-    <PackageReference Include="Synergy.WPF.Navigation" Version="2.0.21" />
+    <PackageReference Include="Synergy.WPF.Navigation" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,10 +37,6 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>
