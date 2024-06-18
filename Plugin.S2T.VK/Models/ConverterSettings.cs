@@ -8,6 +8,6 @@ namespace Plugin.S2T.VK.Models
 {
 	public class ConverterSettings
 	{
-		public string ServiceKey { get; set; } = string.Empty;
+		public string ServiceApiKey { get; set; } = string.Empty;
 	}
 }

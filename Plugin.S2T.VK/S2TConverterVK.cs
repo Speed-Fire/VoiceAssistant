@@ -1,8 +1,7 @@
-﻿using LiteDB;
+﻿using Microsoft.Extensions.Options;
 using Plugin.S2T.Base;
 using Plugin.S2T.VK.Exceptions;
 using Plugin.S2T.VK.Extensions;
-using Plugin.S2T.VK.Misc;
 using Plugin.S2T.VK.Models;
 using System;
 using System.Collections.Generic;
@@ -19,12 +18,12 @@ namespace Plugin.S2T.VK
 {
 	public class S2TConverterVK(
 		HttpClient client,
-		Provider<ConverterSettings> settings,
-		LiteDbContext db) : IS2TConverter
+		IOptionsMonitor<ConverterSettings> settings) : IS2TConverter
 	{
 		private readonly HttpClient _client = client;
-		private readonly LiteDbContext _db = db;
-		private readonly Provider<ConverterSettings> _settings = settings;
+		private readonly IOptionsMonitor<ConverterSettings> _settings = settings;
+
+		private UploadUrlInfo? _uploadUrlInfo;
 
 		public Task<OneOf<string, Exception>> Convert(Stream input, int timeot = 3000)
 		{
@@ -73,10 +72,9 @@ namespace Plugin.S2T.VK
 
 		private async Task<OneOf<string, Exception>> GetAudioUploadURL()
 		{
-			var url = await GetAudioUploadURL_DB();
-
-			if (url is not null)
-				return new OneOf<string, Exception>(url);
+			if (_uploadUrlInfo is not null &&
+				_uploadUrlInfo.Date == DateOnly.FromDateTime(DateTime.Now))
+				return new OneOf<string, Exception>(_uploadUrlInfo.Url);
 
 			var res = await GetAudioUploadURL_API();
 
@@ -90,33 +88,19 @@ namespace Plugin.S2T.VK
 					Url = res.First
 				};
 
-				_db.GetCollection<UploadUrlInfo>().Insert(item);
+				_uploadUrlInfo = item;
 			}
 
 			return res;
 		}
 
-		private Task<string?> GetAudioUploadURL_DB()
-		{
-			return Task.Run(() =>
-			{
-				var col = _db.GetCollection<UploadUrlInfo>();
-
-				var dt = DateOnly.FromDateTime(DateTime.Now);
-
-				var res = col.Query().Where(info => info.Date == dt).FirstOrDefault();
-
-				return res is null ? null : res.Url;
-			});
-		}
-
 		private async Task<OneOf<string, Exception>> GetAudioUploadURL_API()
 		{
-			if (_settings.Value is null)
+			if (_settings.CurrentValue is null)
 				throw new ServiceKeyNotSpecifiedException();
 
 			using var response = await _client
-				.GetAsync($"https://api.vk.com/method/asr.getUploadUrl?access_token={_settings.Value.ServiceKey}&v=5.236");
+				.GetAsync($"https://api.vk.com/method/asr.getUploadUrl?access_token={_settings.CurrentValue.ServiceApiKey}&v=5.236");
 
 			if (!response.IsSuccessStatusCode)
 				return new OneOf<string, Exception>(new InternalServerErrorException());
@@ -210,12 +194,12 @@ namespace Plugin.S2T.VK
 
 		private async Task<OneOf<string, Exception>> StartAudioRecognition(string audioInfo)
 		{
-			if (_settings.Value is null)
+			if (_settings.CurrentValue is null)
 				throw new ServiceKeyNotSpecifiedException();
 
 			using var multipart = new MultipartFormDataContent();
 
-			using var access_token = new StringContent(_settings.Value.ServiceKey);
+			using var access_token = new StringContent(_settings.CurrentValue.ServiceApiKey);
 			multipart.Add(access_token, "access_token");
 
 			using var model = new StringContent("spontaneous");
@@ -269,12 +253,12 @@ namespace Plugin.S2T.VK
 
 		private async Task<OneOf<string, Exception>> CheckRecognitionStatus(string taskId)
 		{
-			if (_settings.Value is null)
+			if (_settings.CurrentValue is null)
 				throw new ServiceKeyNotSpecifiedException();
 
 			using var multipart = new MultipartFormDataContent();
 
-			using var access_token = new StringContent(_settings.Value.ServiceKey);
+			using var access_token = new StringContent(_settings.CurrentValue.ServiceApiKey);
 			multipart.Add(access_token, "access_token");
 
 			using var task_id = new StringContent(taskId);
@@ -339,7 +323,7 @@ namespace Plugin.S2T.VK
 
 		public void Dispose()
 		{
-			_db.Dispose();
+
 		}
 
 		#endregion
