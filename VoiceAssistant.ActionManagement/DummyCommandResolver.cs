@@ -13,6 +13,8 @@ namespace VoiceAssistant.ActionManagement
 	{
 		private readonly Provider<List<AssistantAction>> _actions;
 
+		public bool IsInitialized => true;
+
 		public DummyCommandResolver(Provider<List<AssistantAction>> actions)
 		{
 			_actions = actions;
