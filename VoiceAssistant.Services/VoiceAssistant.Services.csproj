@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Plugin.S2T.Base\Plugin.S2T.Base.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.ActionManagement\VoiceAssistant.ActionManagement.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.Domain\VoiceAssistant.Domain.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Recording\VoiceAssistant.Recording.csproj" />
   </ItemGroup>
 

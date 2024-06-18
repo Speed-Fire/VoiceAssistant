@@ -7,8 +7,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.ActionManagement;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Core.Misc;
+using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Recording;
 
 namespace VoiceAssistant.Services
@@ -16,7 +18,8 @@ namespace VoiceAssistant.Services
 	public class VoiceAssistantService : BackgroundService
 	{
 		private readonly CommandRecorder _commandRecorder;
-		private readonly ConcurrentQueue<string> _actionsQueue;
+		private readonly ICommandResolver _commandResolver;
+		private readonly ConcurrentQueue<AssistantAction> _actionsQueue;
 		private readonly Provider<S2TConverterInfo> _S2TConverterProvider;
 		private readonly IExceptionNotifier _exceptionNotifier;
 
@@ -27,7 +30,8 @@ namespace VoiceAssistant.Services
 		public VoiceAssistantService(
 			CommandRecorder commandRecorder,
 			Provider<S2TConverterInfo> s2TConverterProvider,
-			IExceptionNotifier exceptionNotifier)
+			IExceptionNotifier exceptionNotifier,
+			ICommandResolver commandResolver)
 		{
 			_commandRecorder = commandRecorder;
 			_commandRecorder.CommandRecorded += CommandRecorded;
@@ -37,12 +41,15 @@ namespace VoiceAssistant.Services
 			_S2TConverterProvider.PropertyChanged += S2TConverterProvider_PropertyChanged;
 
 			_exceptionNotifier = exceptionNotifier;
+			_commandResolver = commandResolver;
 		}
 
 		protected override Task ExecuteAsync(CancellationToken stoppingToken)
 		{
-			return Task.Run(() =>
+			return Task.Run(async () =>
 			{
+				await _commandResolver.Initialize();
+
 				_commandRecorder.Start();
 
 				while (!stoppingToken.IsCancellationRequested)
@@ -62,6 +69,7 @@ namespace VoiceAssistant.Services
 
 		private async void CommandRecorded(Stream audio)
 		{
+			Exception? ex = null;
 			IS2TConverter? converter;
 
 			lock (_S2TLock)
@@ -77,12 +85,24 @@ namespace VoiceAssistant.Services
 
 			if (res.IsFirst)
 			{
+				var resolvingResult =
+					await _commandResolver.Resolve(res.First);
 
+				if (resolvingResult.IsFirst)
+				{
+					_actionsQueue.Enqueue(resolvingResult.First);
+				}
+				else
+				{
+					ex = resolvingResult.Second;
+				}
 			}
-			else // error handling
-			{
+			else
+				ex = res.Second;
+
+			// error handling
+			if (ex is not null)
 				_exceptionNotifier.Notify(res.Second);
-			}
 		}
 
 		#region PropertyChanged

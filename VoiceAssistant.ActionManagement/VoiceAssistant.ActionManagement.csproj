@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Misc\" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VoiceAssistant.Core\VoiceAssistant.Core.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.Domain\VoiceAssistant.Domain.csproj" />
   </ItemGroup>
 
 </Project>
