@@ -1,49 +1,31 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Python.Runtime;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.SemanticKernel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.Core.Interfaces;
 
 namespace VoiceAssistant.ChatGPT.Extensions
 {
-	internal class ChatGPTFactory
-	{
-		private readonly PyObject _module;
-
-        public ChatGPTFactory()
-        {
-			using (Py.GIL())
-			{
-				_module = Py.Import("ChatGPT");
-			}
-        }
-
-		public ChatGPT Create()
-		{
-			using (Py.GIL())
-			{
-				var instance = _module.InvokeMethod("CreateChatGpt");
-
-				return new(instance);
-			}
-		}
-    }
-
 	public static class DIExtensions
 	{
-		public static IServiceCollection RegisterChatGPT(this IServiceCollection services)
+		public static IServiceCollection RegisterChatGPT(this IServiceCollection services,
+			IConfiguration config)
 		{
-			services.AddSingleton<ChatGPTFactory>();
+			var apikey = config.GetRequiredSection("Gemini")
+				.GetRequiredSection("ServiceApiKey").Value ?? string.Empty;
+			
+#pragma warning disable SKEXP0070 // Тип предназначен только для оценки и может быть изменен или удален в будущих обновлениях. Чтобы продолжить, скройте эту диагностику.
+			services
+				.AddGoogleAIGeminiChatCompletion("gemini-1.5-flash", apikey);
+#pragma warning restore SKEXP0070 // Тип предназначен только для оценки и может быть изменен или удален в будущих обновлениях. Чтобы продолжить, скройте эту диагностику.
 
-			services.AddTransient<ChatGPT>(provider =>
-			{
-				var factory = provider.GetRequiredService<ChatGPTFactory>();
-
-				return factory.Create();
-			});
+			services
+				.AddTransient<IChatGPT, ChatGPT>();
 
 			return services;
 		}

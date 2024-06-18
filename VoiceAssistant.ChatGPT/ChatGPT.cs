@@ -1,71 +1,67 @@
-﻿using Python.Runtime;
+﻿using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.Core.Interfaces;
 
 namespace VoiceAssistant.ChatGPT
 {
-	public class ChatGPT
+	public class ChatGPT : IChatGPT
 	{
-		private const string MEMBER_SYSTEM_COMMAND = "systemCommand";
-		private const string MEMBER_MODEL = "model";
-		private const string METHOD_SEND_MESSAGE = "sendMessage";
+		private readonly IChatCompletionService _chatService;
+		private readonly ChatHistory _history;
 
-		private readonly PyObject _instance;
-
-		internal ChatGPT(PyObject instance)
+		public ChatGPT(IChatCompletionService chatService)
 		{
-			_instance = instance;
+			_chatService = chatService;
+
+			_history = [];
 		}
 
-		public string SystemCommand
+		public async Task AddSystemMessage(string message)
 		{
-			get
-			{
-				using (Py.GIL())
-				{
-					return _instance.GetAttr(MEMBER_SYSTEM_COMMAND).As<string>();
-				}
-			}
-			set
-			{
-				using (Py.GIL())
-				{
-					_instance.SetAttr(MEMBER_SYSTEM_COMMAND, new PyString(value));
-				}
-			}
+			_history.AddSystemMessage(message);
+
+			await _chatService.GetChatMessageContentAsync(_history);
 		}
 
-		public string Model
+		public async Task<string?> SendMessage(string message)
 		{
-			get
-			{
-				using (Py.GIL())
-				{
-					return _instance.GetAttr(MEMBER_MODEL).As<string>();
-				}
-			}
-			set
-			{
-				using (Py.GIL())
-				{
-					_instance.SetAttr(MEMBER_MODEL, new PyString(value));
-				}
-			}
+			_history.AddUserMessage(message);
+
+			var response = await _chatService.GetChatMessageContentAsync(_history);
+
+			_history.Add(response);
+
+			return response.InnerContent as string;
 		}
 
-		public string SendMessage(string message)
+		public async Task<IReadOnlyList<string>> SendMessageForMultipleAnswers(string message)
 		{
-			using (Py.GIL())
+			_history.AddUserMessage(message);
+
+			var response = await _chatService.GetChatMessageContentsAsync(_history);
+			var result = new List<string>();
+
+			foreach (var answer in response)
 			{
-				var res = _instance.InvokeMethod(METHOD_SEND_MESSAGE, new PyString(message));
+				_history.Add(answer);
 
-				var str = res.As<string>();
+				if (answer.InnerContent is not string tmp)
+					continue;
 
-				return str;
+				result.Add(tmp);
 			}
+
+			return result;
+		}
+
+		public void ClearHistory()
+		{
+			_history.Clear();
 		}
 	}
 }
