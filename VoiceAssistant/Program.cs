@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DBConfiguration.Extensions;
+using DBConfiguration.Misc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plugin.Registrator;
 using Synergy.Core;
@@ -10,9 +14,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VocieAssistant.Python;
-using VocieAssistant.Python.Extensions;
+using VoiceAssistant.ActionManagement.Extensions;
 using VoiceAssistant.ChatGPT.Extensions;
+using VoiceAssistant.DAL.Extensions;
+using VoiceAssistant.DAL.Providers;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Recording.Extensions;
 using VoiceAssistant.Services;
@@ -30,30 +35,35 @@ namespace VoiceAssistant
 				.RegisterCore()
 				.RegisterSynergyWPFCommon()
 				.RegisterSynergyWPFNavigation()
+				.RegisterDAL(builder.Configuration)
 				.RegisterVoiceRecording(builder.Configuration)
 				.RegisterServices()
 				.RegisterApp()
 				.RegisterHttpClient()
-				.RegisterPython()
-				.RegisterChatGPT();
+				.RegisterChatGPT(builder.Configuration)
+				.RegisterCommandResolving();
 
-			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
-			using var registrator = new PluginRegistrator(pluginFolder);
-
-			registrator.Register(builder.Services);
+			await RegisterPlugins(builder);
 
 			var host = builder.Build();
-
-			var settingsLoader = host.Services.GetRequiredService<SettingsLoadingService>();
-			await settingsLoader.LoadAsync();
-
-			var pinterop = host.Services.GetRequiredService<PythonInterop>();
-			pinterop.Initialize();
-			pinterop.AddPath(Path.Combine(Directory.GetCurrentDirectory(), "Python"));
 
 			var hostrun = host.RunAsync();
 
 			await hostrun;
+		}
+
+		private static async Task RegisterPlugins(HostApplicationBuilder builder)
+		{
+			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
+			using var context = new AppDbContext(
+				builder.Configuration.GetConnectionString("MainDb") ?? string.Empty);
+
+			var settingsInitializer = new DefaultDbConfigInitializer(context);
+
+			using var registrator = new PluginRegistrator(pluginFolder,
+				settingsInitializer);
+
+			await registrator.Register(builder.Services, builder.Configuration);
 		}
 	}
 }

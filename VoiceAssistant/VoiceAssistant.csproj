@@ -24,8 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DBConfiguration\DBConfiguration.csproj" />
     <ProjectReference Include="..\Plugin.Registrator\Plugin.Registrator.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.ActionManagement\VoiceAssistant.ActionManagement.csproj" />
     <ProjectReference Include="..\VoiceAssistant.ChatGPT\VoiceAssistant.ChatGPT.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.DAL\VoiceAssistant.DAL.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Recording\VoiceAssistant.Recording.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Services\VoiceAssistant.Services.csproj" />
   </ItemGroup>
