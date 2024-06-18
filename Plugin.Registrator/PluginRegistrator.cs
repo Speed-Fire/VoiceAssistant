@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Plugin.Base;
 using System;
 using System.Collections.Generic;
@@ -6,20 +7,19 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.Core.Interfaces;
+using VoiceAssistant.Core.Models;
 
 namespace Plugin.Registrator
 {
-	public class PluginRegistrator : IDisposable
+	public class PluginRegistrator(string pluginFolderPath,
+		IDefaultSettingsInitializer settingsInitializer) : IDisposable
 	{
-		private readonly string _pluginFolderPath;
+		private readonly string _pluginFolderPath = pluginFolderPath;
+		private readonly IDefaultSettingsInitializer _settingsInitializer = settingsInitializer;
 		private readonly List<PluginLoadContext> _contextes = [];
 
-		public PluginRegistrator(string pluginFolderPath)
-		{
-			_pluginFolderPath = pluginFolderPath;
-		}
-
-		public int Register(IServiceCollection services)
+		public async Task<int> Register(IServiceCollection services, IConfiguration config)
 		{
 			var files = Directory.GetFiles(_pluginFolderPath, "*.dll");
 
@@ -70,7 +70,11 @@ namespace Plugin.Registrator
 						continue;
 
 					count++;
-					instance.RegisterPlugin(services);
+					instance.RegisterPlugin(services, config);
+					if (instance.DefaultSettings is null)
+						continue;
+
+					await _settingsInitializer.Initialize(instance.DefaultSettings);
 				}
 
 				// if no implementation has been registered, then unload this context and go next.
