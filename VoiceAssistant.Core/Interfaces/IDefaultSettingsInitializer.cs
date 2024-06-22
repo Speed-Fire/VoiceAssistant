@@ -9,6 +9,7 @@ namespace VoiceAssistant.Core.Interfaces
 {
 	public interface IDefaultSettingsInitializer
 	{
-		Task Initialize(IEnumerable<Settings> defaultConfig);
+		Task InitializeAsync(IEnumerable<Settings> defaultConfig);
+		void Initialize(IEnumerable<Settings> defaultConfig);
 	}
 }

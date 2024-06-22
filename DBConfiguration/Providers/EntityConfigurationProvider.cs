@@ -97,22 +97,22 @@ namespace DBConfiguration.Providers
 				byteDict.AddRange(Encoding.UTF8.GetBytes(pair.Key + pair.Value));
 			}
 
-			return System.Security.Cryptography.SHA1.Create().ComputeHash(byteDict.ToArray());
+			return System.Security.Cryptography.SHA1.HashData(byteDict.ToArray());
 		}
 
 		private IDictionary<string, string?> GetData()
 		{
 			using var context = CreateDbContext();
-			IQueryable<Settings> settings = GetSettings(context);
+			IQueryable<Settings> settings = EntityConfigurationProvider<TDbContext>.GetSettings(context);
 
 			var settingsDictionary = settings.Any() ?
 				settings.ToDictionary(c => c.Id, c => c.Value) :
 				[];
 
-			return BuildSettingsDictionary(settingsDictionary);
+			return EntityConfigurationProvider<TDbContext>.BuildSettingsDictionary(settingsDictionary);
 		}
 
-		private IDictionary<string, string?> BuildSettingsDictionary(
+		private static IDictionary<string, string?> BuildSettingsDictionary(
 			Dictionary<string, string> settingsDictionary)
 		{
 			var sb = new StringBuilder();
@@ -130,7 +130,7 @@ namespace DBConfiguration.Providers
 			return JsonConfigurationParser.Parse(sb.ToString());
 		}
 
-		private IQueryable<Settings> GetSettings(TDbContext context)
+		private static DbSet<Settings> GetSettings(TDbContext context)
 		{
 			DbSet<Settings> settings = context.Set<Settings>();
 

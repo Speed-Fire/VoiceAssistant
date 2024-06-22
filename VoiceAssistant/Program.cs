@@ -16,54 +16,130 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.ActionManagement.Extensions;
 using VoiceAssistant.ChatGPT.Extensions;
+using VoiceAssistant.Core.Interfaces;
+using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Extensions;
 using VoiceAssistant.DAL.Providers;
 using VoiceAssistant.Extensions;
+using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Recording.Extensions;
 using VoiceAssistant.Services;
 using VoiceAssistant.Services.Extensions;
 
 namespace VoiceAssistant
 {
-	internal class Program
+    internal class Program
 	{
-		public static async Task Main(string[] args)
+		[STAThread]
+		public static void Main(string[] args)
 		{
+			InitSubFolders();
+
 			var builder = Host.CreateApplicationBuilder(args);
 
+			// register services
 			builder.Services
 				.RegisterCore()
 				.RegisterSynergyWPFCommon()
-				.RegisterSynergyWPFNavigation()
+				.RegisterSynergyWPFNavigation();
+
+			// Register plugins and default db config values
+			var (context, dbConfInitializer) = GetDbConfigInitializer(builder.Configuration);
+
+			RegisterPlugins(builder, dbConfInitializer);
+			InitDefaultAppDbConfiguration(dbConfInitializer);
+
+			context.Dispose();
+
+			// continue on service registration
+			builder.Services
 				.RegisterDAL(builder.Configuration)
 				.RegisterVoiceRecording(builder.Configuration)
 				.RegisterServices()
-				.RegisterApp()
+				.RegisterApp(builder.Configuration)
 				.RegisterHttpClient()
 				.RegisterChatGPT(builder.Configuration)
 				.RegisterCommandResolving();
 
-			await RegisterPlugins(builder);
-
+			// host building
 			var host = builder.Build();
 
-			var hostrun = host.RunAsync();
+			// Application Appearance initialization
+			InitThemes(host.Services);
+			InitLanguages(host.Services);
 
-			await hostrun;
+			// run
+			//var hostrun = host.RunAsync();
+
+			var app = host.Services.GetRequiredService<App>();
+			app.Run();
+
+			//await hostrun;
 		}
 
-		private static async Task RegisterPlugins(HostApplicationBuilder builder)
+		private static (DbContext, IDefaultSettingsInitializer) GetDbConfigInitializer(IConfiguration config)
 		{
-			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
-			using var context = new AppDbContext(
-				builder.Configuration.GetConnectionString("MainDb") ?? string.Empty);
+			var context = new AppDbContext(
+				config.GetConnectionString("MainDb") ?? string.Empty);
 
 			var settingsInitializer = new DefaultDbConfigInitializer(context);
+
+			return (context, settingsInitializer);
+		}
+
+		private static void RegisterPlugins(HostApplicationBuilder builder,
+			IDefaultSettingsInitializer settingsInitializer)
+		{
+			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 
 			using var registrator = new PluginRegistrator(pluginFolder,
 				settingsInitializer);
 
-			await registrator.Register(builder.Services, builder.Configuration);
+			registrator.Register(builder.Services, builder.Configuration).Wait();
+		}
+
+		private static void InitDefaultAppDbConfiguration(IDefaultSettingsInitializer settingsInitializer)
+		{
+			var settings = new List<Settings>()
+			{
+				new("Application:InitializationConfig:Theme", "DarkTheme"),
+				new("Application:InitializationConfig:Language", "en-us"),
+			};
+
+			settingsInitializer.Initialize(settings);
+		}
+
+		private static void InitSubFolders()
+		{
+			string[] directories = ["Plugins", "Languages", "Themes"];
+
+			foreach(var directory in directories)
+			{
+				if(!Directory.Exists(directory))
+					Directory.CreateDirectory(directory);
+			}
+		}
+
+		private static void InitThemes(IServiceProvider services)
+		{
+			var themeSelector = services.GetRequiredService<ThemeSelector>();
+
+			var entries = Directory.GetFiles("Themes", "*.xaml");
+			foreach (var entry in entries)
+			{
+				themeSelector.AddSourcePath(entry);
+			}
+		}
+
+		private static void InitLanguages(IServiceProvider services)
+		{
+			var languageSelector = services.GetRequiredService<LanguageSelector>();
+
+			var entries = Directory.GetFiles("Languages", "*.xaml");
+			foreach (var entry in entries)
+			{
+				languageSelector.AddSourcePath(entry);
+			}
 		}
 	}
 }

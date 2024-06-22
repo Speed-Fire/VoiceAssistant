@@ -14,7 +14,7 @@ namespace DBConfiguration.Misc
 		private readonly DbContext _context = context;
 		private readonly DbSet<Settings> _settingsSet = context.Set<Settings>();
 
-		public async Task Initialize(IEnumerable<Settings> defaultConfig)
+		public async Task InitializeAsync(IEnumerable<Settings> defaultConfig)
 		{
 			foreach(var settings in defaultConfig)
 			{
@@ -25,6 +25,19 @@ namespace DBConfiguration.Misc
 			}
 
 			await _context.SaveChangesAsync();
+		}
+
+		public void Initialize(IEnumerable<Settings> defaultConfig)
+		{
+			foreach (var settings in defaultConfig)
+			{
+				if (_settingsSet.Any(x => x.Id == settings.Id))
+					continue;
+
+				_settingsSet.Add(settings);
+			}
+
+			_context.SaveChanges();
 		}
 	}
 }

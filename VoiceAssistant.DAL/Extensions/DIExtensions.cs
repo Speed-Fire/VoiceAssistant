@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DBConfiguration.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -32,6 +33,9 @@ namespace VoiceAssistant.DAL.Extensions
 
 			services
 				.AddScoped<IAsyncRepository<Settings>, SettingsRepository>();
+
+			IConfigurationBuilder configBuilder = (IConfigurationBuilder)configuration;
+			configBuilder.AddEntityConfiguration<AppDbContext>(SetupDbBuilder, true);
 
 			return services;
 		}

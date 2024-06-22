@@ -74,7 +74,7 @@ namespace Plugin.Registrator
 					if (instance.DefaultSettings is null)
 						continue;
 
-					await _settingsInitializer.Initialize(instance.DefaultSettings);
+					await _settingsInitializer.InitializeAsync(instance.DefaultSettings);
 				}
 
 				// if no implementation has been registered, then unload this context and go next.

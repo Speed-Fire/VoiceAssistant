@@ -17,13 +17,13 @@ namespace VoiceAssistant.DAL.Providers
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) 
         {
-            
-        }
+			Database.EnsureCreated();
+		}
 
         public AppDbContext(string connectionString) :
             base(new DbContextOptionsBuilder().UseSqlite(connectionString).Options)
         {
-            
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
