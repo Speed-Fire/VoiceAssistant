@@ -1,0 +1,116 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common">
+
+    <Style x:Key="Sidebar.Style.Base" TargetType="controls:Sidebar">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:Sidebar">
+                    <Grid
+                        Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Path Grid.Row="0"
+                              Stretch="Uniform"
+                              Margin="0,5"
+                              VerticalAlignment="Top"
+                              Height="25"
+                              Width="25"
+                              Data="{TemplateBinding TitleIcon}"
+                              Fill="{TemplateBinding TitleIconColor}"/>
+
+                        <ScrollViewer
+                            Grid.Row="1"
+                            VerticalScrollBarVisibility="Hidden"
+                            Background="{TemplateBinding Background}">
+                            <ItemsPresenter/>
+                        </ScrollViewer>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NavItem.Style.Base" TargetType="controls:NavItem">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="0 3 3 3"/>
+        <Setter Property="Padding" Value="0 6 0 6"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="controls:NavItem">
+                    <Border Padding="{TemplateBinding Padding}"
+                            MinWidth="48"
+                            Background="Transparent">
+
+                        <Grid>
+
+                            <Grid
+                                x:Name="back"
+                                Opacity="0.5"
+                                Margin="0 -6 0 -6"
+                                Visibility="Hidden"
+                                Background="{TemplateBinding SelectedIconColor}"/>
+
+                            <Path x:Name="iconPath"
+                                  Fill="{TemplateBinding IconColor}"
+                                  Stretch="Uniform"
+                                  Height="30"
+                                  Width="30"
+                                  Margin="10 0 0 0"
+                                  Data="{TemplateBinding Icon}"/>
+
+                            <Path x:Name="sideLine"
+                                  HorizontalAlignment="Left"
+                                  Fill="Snow"
+                                  Stretch="Uniform"
+                                  Margin="0 -3 0 -3"
+                                  Height="33"
+                                  Width="8"
+                                  Data="M 0,-8 3,-5 3,6 0,8 z"
+                                  Visibility="Collapsed"/>
+
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="back" Property="Visibility"
+                                    Value="Visible"/>
+                            <Setter TargetName="sideLine" Property="Visibility"
+                                    Value="Visible"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Sidebar.Style" TargetType="controls:Sidebar"
+           BasedOn="{StaticResource Sidebar.Style.Base}">
+
+        <Setter Property="Background" Value="{StaticResource Brush.Sidebar.Background}"/>
+        
+    </Style>
+
+    <Style x:Key="NavItem.Style" TargetType="controls:NavItem"
+           BasedOn="{StaticResource NavItem.Style.Base}">
+
+        <Setter Property="IconColor" Value="{StaticResource Brush.Septenary}"/> <!--Septenary-->
+        <Setter Property="SelectedIconColor" Value="{StaticResource Brush.Sidebar.Item.Selection.Background}"/>
+
+    </Style>
+    
+</ResourceDictionary>

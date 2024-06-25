@@ -8,5 +8,7 @@ namespace VoiceAssistant.Domain.Models
 {
 	public class AssistantScript
 	{
+		public required long Id { get; set; }
+		public required string Name { get; set; }
 	}
 }

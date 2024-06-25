@@ -1,5 +1,8 @@
-﻿using Synergy.WPF.Navigation.Components;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace VoiceAssistant
+namespace VoiceAssistant.Views
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Логика взаимодействия для ScriptEditorView.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class ScriptEditorView : UserControl
 	{
-		public MainWindow(UserControlFrame frame)
+		public ScriptEditorView()
 		{
 			InitializeComponent();
-
-			this.MaxWidth = SystemParameters.WorkArea.Width;
-			this.MaxHeight = SystemParameters.WorkArea.Height;
-
-			MainGrid.Children.Add(frame);
 		}
 	}
 }

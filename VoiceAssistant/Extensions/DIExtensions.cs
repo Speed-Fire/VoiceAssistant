@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,10 +11,11 @@ using VoiceAssistant.Core;
 using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Misc.Options;
 using VoiceAssistant.ViewModels;
+using VoiceAssistant.Views;
 
 namespace VoiceAssistant.Extensions
 {
-	internal static class DIExtensions
+    internal static class DIExtensions
 	{
 		public static IServiceCollection RegisterHttpClient(this IServiceCollection services)
 		{
@@ -42,8 +43,12 @@ namespace VoiceAssistant.Extensions
 
 			services
 				.AddSingleton<MainWindow>()
-				.AddSingleton<App>()
-				.AddTransient<MainVM>();
+				.AddSingleton<App>();
+
+			services
+				.RegisterViewModelss()
+				.RegisterViews();
+
 			services
 				.ConfigureAppOptions(config);
 
@@ -64,6 +69,27 @@ namespace VoiceAssistant.Extensions
 
 			return services;
 		}
+
+		private static IServiceCollection RegisterViews(this IServiceCollection services)
+		{
+			services
+				.AddTransient<MainView>()
+				.AddTransient<CommandsView>()
+				.AddTransient<ScriptEditorView>();
+
+			return services;
+		}
+
+		private static IServiceCollection RegisterViewModelss(this IServiceCollection services)
+		{
+			services
+				.AddTransient<MainVM>()
+				.AddTransient<CommandsVM>()
+				.AddTransient<ScriptEditorVM>();
+
+			return services;
+		}
+
 		private static IServiceCollection ConfigureAppOptions(this IServiceCollection services,
 			IConfiguration config)
 		{

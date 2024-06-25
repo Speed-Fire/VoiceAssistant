@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VoiceAssistant"
         mc:Ignorable="d"
+        
+        xmlns:comps="clr-namespace:VoiceAssistant.Components"
+        
+        WindowStyle="None"
+        AllowsTransparency="True"
+        
+        Background="{StaticResource Brush.Background}"
+        
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    
+    <Grid x:Name="MainGrid">
+
+        <comps:WindowUpperPanel
+            Panel.ZIndex="10"
+            Margin="100 0 0 0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Stretch"/>
 
     </Grid>
+    
 </Window>

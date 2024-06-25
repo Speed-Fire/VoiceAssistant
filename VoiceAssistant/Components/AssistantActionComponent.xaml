@@ -1,0 +1,262 @@
+﻿<UserControl x:Class="VoiceAssistant.Components.AssistantActionComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VoiceAssistant.Components"
+             
+             xmlns:convs="clr-namespace:Synergy.WPF.Common.Converters;assembly=Synergy.WPF.Common"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <convs:IsNullConverter x:Key="isnullconv"/>
+
+        <Style x:Key="OuterBorder.Style" TargetType="Border">
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+
+            <Style.Triggers>
+
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                            <ColorAnimation 
+                                    From="Transparent"
+                                    To="#A448FF"
+                                    Duration="0:0:1"
+                                    DecelerationRatio="1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                            <ColorAnimation 
+                                    From="#A448FF"
+                                    To="Transparent"
+                                    Duration="0:0:1"
+                                    DecelerationRatio="1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="InnerAttentionBorder.Style" TargetType="Border">
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+
+            <Style.Triggers>
+
+                <DataTrigger Binding="{Binding NeedsConfirmation}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="InnerNormalBorder.Style" TargetType="Border">
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Brush.Secondary}"/>
+
+            <Style.Triggers>
+
+                <DataTrigger Binding="{Binding NeedsConfirmation}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="InnerBorder.Style" TargetType="Border">
+
+            <Setter Property="Background" Value="{StaticResource Brush.Secondary}"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="Padding" Value="5"/>
+
+        </Style>
+
+        <Style x:Key="DescriptionGrid.Style" TargetType="Grid">
+            <Style.Triggers>
+
+                <DataTrigger Binding="{Binding Description, Converter={StaticResource isnullconv}}"
+                             Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="AttentionImage.Style" TargetType="Image">
+            <Setter Property="MaxHeight" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0 0 15 0"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding NeedsConfirmation}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+            
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="MaxHeight" Value="24"/>
+        </Style>
+
+        <Style x:Key="TextBlock.Righted" TargetType="TextBlock"
+               BasedOn="{StaticResource TextBlock.Style}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5 0 0 0"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource OuterBorder.Style}">
+
+        <Grid>
+
+            <Border Style="{StaticResource InnerAttentionBorder.Style}">
+                <Border.BorderBrush>
+                    <VisualBrush>
+                        <VisualBrush.Visual>
+
+                            <Grid>
+
+                                <Rectangle StrokeDashArray="4 4" Stroke="OrangeRed" StrokeThickness="3"
+                                   RadiusX="15" RadiusY="15"
+                  Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualWidth}"
+                  Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualHeight}"/>
+
+                                <Rectangle StrokeDashArray="4 4" Stroke="LightGray" StrokeThickness="3"
+                                   RadiusX="15" RadiusY="15" StrokeDashOffset="4"
+                  Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualWidth}"
+                  Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualHeight}"/>
+
+                            </Grid>
+
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Border.BorderBrush>
+            </Border>
+
+            <Border Style="{StaticResource InnerNormalBorder.Style}"/>
+
+            <Border Style="{StaticResource InnerBorder.Style}">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="10 10 0 0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Name}"/>
+
+                        <Image Grid.Column="1"
+                               Style="{StaticResource AttentionImage.Style}"
+                               Source="{StaticResource Bitmap.Attention64}"/>
+
+                    </Grid>
+
+                    <Rectangle Style="{StaticResource Delimeter.Horizontal.Style}"
+                               Margin="0 15 0 15"
+                               Grid.Row="1"/>
+
+                    <Grid Grid.Row="2">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{StaticResource Bitmap.Voice64}"/>
+                        
+                        <TextBlock Grid.Column="1"
+                                   Style="{StaticResource TextBlock.Righted}"
+                                   Text="{Binding Command}"/>
+
+                    </Grid>
+
+                    <Rectangle Style="{StaticResource Delimeter.Horizontal.Style}"
+                               Margin="0 15 0 15"
+                               Grid.Row="3"/>
+                    
+                    <Grid Style="{StaticResource DescriptionGrid.Style}" 
+                          Margin="0 0 0 15"
+                          Grid.Row="4">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Source="{StaticResource Bitmap.Description64}"
+                               MaxHeight="24"/>
+
+                        <TextBlock Grid.Column="1"
+                                   Style="{StaticResource TextBlock.Righted}"
+                                   Text="{Binding Description}"/>
+
+                        <Rectangle Style="{StaticResource Delimeter.Horizontal.Style}"
+                                   Margin="0 15 0 0"
+                                   Grid.Row="1"
+                                   Grid.ColumnSpan="2"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="5"
+                          Margin="0 0 0 15">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{StaticResource Bitmap.Script64}"/>
+
+                        <TextBlock Grid.Column="1"
+                                   Style="{StaticResource TextBlock.Righted}"
+                                   Text="{Binding AssistantScript.Name}"/>
+
+                    </Grid>
+                    
+                </Grid>
+            
+            </Border>
+
+        </Grid>
+
+    </Border>
+    
+</UserControl>

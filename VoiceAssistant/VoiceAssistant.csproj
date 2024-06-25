@@ -13,7 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Synergy.WPF.Common" Version="1.0.0" />
+    <None Remove="Resources\Icons\attention64.png" />
+    <None Remove="Resources\Icons\description64.png" />
+    <None Remove="Resources\Icons\script64.png" />
+    <None Remove="Resources\Icons\voice64.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Synergy.WPF.Common" Version="1.1.0" />
     <PackageReference Include="Synergy.WPF.Navigation" Version="2.1.0" />
   </ItemGroup>
 
@@ -31,6 +38,13 @@
     <ProjectReference Include="..\VoiceAssistant.DAL\VoiceAssistant.DAL.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Recording\VoiceAssistant.Recording.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Services\VoiceAssistant.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\attention64.png" />
+    <Resource Include="Resources\Icons\description64.png" />
+    <Resource Include="Resources\Icons\script64.png" />
+    <Resource Include="Resources\Icons\voice64.png" />
   </ItemGroup>
 
   <ItemGroup>
