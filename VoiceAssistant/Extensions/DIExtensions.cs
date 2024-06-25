@@ -1,3 +1,4 @@
+﻿using Microsoft.Extensions.Configuration;
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core;
+using VoiceAssistant.Misc.DictionarySelection;
+using VoiceAssistant.Misc.Options;
 using VoiceAssistant.ViewModels;
 
 namespace VoiceAssistant.Extensions
@@ -27,15 +30,22 @@ namespace VoiceAssistant.Extensions
 			return services;
 		}
 
-		public static IServiceCollection RegisterApp(this IServiceCollection services)
+		public static IServiceCollection RegisterApp(this IServiceCollection services,
+			IConfiguration config)
 		{
 			services
 				.RegisterAppPaths();
 
 			services
+				.AddSingleton<LanguageSelector>()
+				.AddSingleton<ThemeSelector>();
+
+			services
 				.AddSingleton<MainWindow>()
 				.AddSingleton<App>()
 				.AddTransient<MainVM>();
+			services
+				.ConfigureAppOptions(config);
 
 			return services;
 		}
@@ -51,6 +61,13 @@ namespace VoiceAssistant.Extensions
 			services
 				.AddKeyedSingleton(Consts.APPLICATION_DATA_PATH, appdata_path)
 				.AddKeyedSingleton(Consts.APLICATION_DATA_DBS_PATH, dbs_path);
+
+			return services;
+		}
+		private static IServiceCollection ConfigureAppOptions(this IServiceCollection services,
+			IConfiguration config)
+		{
+			services.Configure<InitializationConfig>(config.GetSection("Application:InitializationConfig"));
 
 			return services;
 		}
