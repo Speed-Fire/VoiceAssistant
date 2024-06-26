@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    
+                    xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common">
 
     <Style x:Key="TextBlock.Style" TargetType="TextBlock">
         <Setter Property="FontSize" Value="14"/>
@@ -22,4 +24,19 @@
         <Setter Property="Fill" Value="{StaticResource Brush.Quinary}"/>
     </Style>
 
+    <Style x:Key="SliderButton.Round.Style" TargetType="controls:SliderButton"
+           BasedOn="{StaticResource SliderButton.Base}">
+
+        <Setter Property="MaxHeight" Value="25"/>
+        <Setter Property="ButtonWidth" Value="25"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="MinWidth" Value="80"/>
+        <Setter Property="Foreground" Value="{StaticResource Brush.Senary}"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Brush.Primary}"/>
+        <Setter Property="OffColor" Value="{StaticResource Brush.Black}"/>
+        <Setter Property="OnColor" Value="{StaticResource Brush.SliderButton.On}"/>
+
+    </Style>
+    
 </ResourceDictionary>

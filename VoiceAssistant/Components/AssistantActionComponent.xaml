@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VoiceAssistant.Components"
+             xmlns:viewws="clr-namespace:VoiceAssistant.Views"
              
              xmlns:convs="clr-namespace:Synergy.WPF.Common.Converters;assembly=Synergy.WPF.Common"
+             xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -27,7 +29,7 @@
                             <ColorAnimation 
                                     From="Transparent"
                                     To="#A448FF"
-                                    Duration="0:0:1"
+                                    Duration="0:0:0.5"
                                     DecelerationRatio="1"/>
                         </Storyboard>
                     </BeginStoryboard>
@@ -39,7 +41,7 @@
                             <ColorAnimation 
                                     From="#A448FF"
                                     To="Transparent"
-                                    Duration="0:0:1"
+                                    Duration="0:0:0.5"
                                     DecelerationRatio="1"/>
                         </Storyboard>
                     </BeginStoryboard>
@@ -114,6 +116,14 @@
             <Setter Property="MaxHeight" Value="24"/>
         </Style>
 
+        <Style x:Key="EnabilityBorder.Style" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource Brush.Secondary}"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="Panel.ZIndex" Value="10"/>
+
+        </Style>
+        
         <Style x:Key="TextBlock.Righted" TargetType="TextBlock"
                BasedOn="{StaticResource TextBlock.Style}">
             <Setter Property="FontSize" Value="16"/>
@@ -121,7 +131,52 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
         </Style>
-        
+
+        <Style x:Key="CompButton.Style" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource NormalButtonStyle.Base}">
+
+            <Setter Property="Background" Value="{StaticResource Brush.Secondary}"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Panel.ZIndex" Value="11"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="1"/>
+                    <Setter Property="Background" Value="{StaticResource Brush.Quinary}"/>
+                </Trigger>
+            </Style.Triggers>
+            
+        </Style>
+
+        <Style x:Key="CompButton.Update" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource CompButton.Style}">
+
+            <Setter Property="Content">
+                <Setter.Value>
+
+                    <Image MaxHeight="28"
+                           Source="{StaticResource Bitmap.Edit64}"/>
+
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+
+        <Style x:Key="CompButton.Delete" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource CompButton.Style}">
+
+            <Setter Property="Content">
+                <Setter.Value>
+
+                    <Image MaxHeight="28"
+                           Source="{StaticResource Bitmap.Delete64}"/>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
     </UserControl.Resources>
 
     <Border Style="{StaticResource OuterBorder.Style}">
@@ -165,15 +220,21 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Margin="10 10 0 0">
+                    <Border Grid.RowSpan="8" x:Name="EnabilityBorder"
+                            Style="{StaticResource EnabilityBorder.Style}"/>
+
+                    <Grid Grid.Row="0"
+                          Margin="10 10 0 0">
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <TextBlock FontSize="20"
                                    VerticalAlignment="Center"
                                    Text="{Binding Name}"/>
@@ -196,7 +257,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Source="{StaticResource Bitmap.Voice64}"/>
-                        
+
                         <TextBlock Grid.Column="1"
                                    Style="{StaticResource TextBlock.Righted}"
                                    Text="{Binding Command}"/>
@@ -250,6 +311,36 @@
                                    Text="{Binding AssistantScript.Name}"/>
 
                     </Grid>
+
+                    <Rectangle Style="{StaticResource Delimeter.Horizontal.Style}"
+                               Margin="0 0 0 7"
+                               Grid.Row="6"/>
+
+                    <DockPanel Grid.Row="7"
+                               Panel.ZIndex="11"
+                               Margin="0 0 10 7">
+
+                        <controls:NormalButton
+                            x:Name="DeleteButton"
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource CompButton.Delete}"
+                            CommandParameter="{Binding}"/>
+
+                        <controls:NormalButton
+                            x:Name="EditButton"
+                            DockPanel.Dock="Right"
+                            Margin="0 0 15 0"
+                            Style="{StaticResource CompButton.Update}"
+                            CommandParameter="{Binding}"/>
+
+                        <controls:SliderButton Name="EnableButton"
+                                               Style="{StaticResource SliderButton.Round.Style}"
+                                               HorizontalAlignment="Left"
+                                               DockPanel.Dock="Left"
+                                               IsChecked="{Binding IsEnabled}"
+                                               CommandParameter="{Binding}"/>
+
+                    </DockPanel>
                     
                 </Grid>
             

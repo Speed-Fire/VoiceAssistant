@@ -5,5 +5,7 @@
     <BitmapImage x:Key="Bitmap.Attention64" UriSource="../Resources/Icons/attention64.png"/>
     <BitmapImage x:Key="Bitmap.Voice64" UriSource="../Resources/Icons/voice64.png"/>
     <BitmapImage x:Key="Bitmap.Description64" UriSource="../Resources/Icons/description64.png"/>
+    <BitmapImage x:Key="Bitmap.Edit64" UriSource="../Resources/Icons/edit64.png"/>
+    <BitmapImage x:Key="Bitmap.Delete64" UriSource="../Resources/Icons/delete64.png"/>
 
 </ResourceDictionary>
