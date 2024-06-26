@@ -16,16 +16,22 @@ namespace VoiceAssistant.ActionManagement
 
 		private readonly IChatGPT _chat;
 		private readonly Provider<List<AssistantAction>> _actions;
+		private readonly Mutex _lock = new(false, ActionConsts.RESOLVER_MUTEX);
 
 		private bool isInitialized = false;
 		public bool IsInitialized => isInitialized;
 
 		private DateTime? _lastHistoryClean;
+		private IEnumerable<AssistantAction> _enabledActions;
 
 		public SmartCommandResolver(IChatGPT chat, Provider<List<AssistantAction>> actions)
 		{
 			_chat = chat;
 			_actions = actions;
+
+			_enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
+
+			_actions.PropertyChanged += ActionsProvider_Updated;
 		}
 
 		public async Task Initialize()
@@ -60,9 +66,7 @@ namespace VoiceAssistant.ActionManagement
 					if (number < 0)
 						return new(new UnrecognizedCommandException());
 					else
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
-						return new(_actions.Value[number]);
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
+						return new(_enabledActions.ElementAt(number));
 				}
 
 				return new(new UnrecognizedResponseException());
@@ -95,17 +99,31 @@ namespace VoiceAssistant.ActionManagement
 			var sb = new StringBuilder();
 
 			var i = 0;
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
-			foreach (var action in _actions.Value)
+			foreach (var action in _enabledActions)
 			{
 				sb.Append($"{i++}. ");
 				sb.AppendLine(action.Command);
 			}
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
 
 			return sb.ToString();
 		}
 
-		public void Dispose() { }
+		private async void ActionsProvider_Updated(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			_lock.WaitOne();
+
+			_enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
+
+			_lastHistoryClean = DateTime.Now.AddDays(-1);
+
+			await TryClearHistory();
+
+			_lock.ReleaseMutex();
+		}
+
+		public void Dispose()
+		{
+			_actions.PropertyChanged -= ActionsProvider_Updated;
+		}
 	}
 }

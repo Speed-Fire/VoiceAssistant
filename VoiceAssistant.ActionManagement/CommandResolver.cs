@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.ActionManagement.Misc;
 using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Domain.Models;
 
@@ -17,7 +18,7 @@ namespace VoiceAssistant.ActionManagement
 		private ICommandResolver _activeResolver = smartResolver;
 		private DateTime? _lastSmartResolverCriticalError;
 
-		private readonly Mutex _lock = new();
+		private readonly Mutex _lock = new(false, ActionConsts.RESOLVER_MUTEX);
 
 		public bool IsInitialized => true;
 
@@ -42,7 +43,11 @@ namespace VoiceAssistant.ActionManagement
 			var result = await _activeResolver.Resolve(command);
 
 			if (result.IsFirst || result.Second is VoicableException)
-				return result;
+			{
+				_lock.ReleaseMutex();
+
+				return result; 
+			}
 
 			SetDummyResolver();
 

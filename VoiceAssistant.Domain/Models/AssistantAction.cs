@@ -10,12 +10,11 @@ namespace VoiceAssistant.Domain.Models
 	public class AssistantAction
 	{
 		public long Id { get; set; }
-		[Required]
-		public string Name { get; set; } = "";
-		[Required]
-		public string Command { get; set; } = "";
+		public required string Name { get; set; } = "";
+		public required string Command { get; set; } = "";
 		public string? Description { get; set; }
 		public bool NeedsConfirmation { get; set; }
+		public bool IsEnabled { get; set; } = true;
 
 #nullable disable
 

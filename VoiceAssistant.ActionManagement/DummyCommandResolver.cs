@@ -9,15 +9,21 @@ using VoiceAssistant.Domain.Models;
 
 namespace VoiceAssistant.ActionManagement
 {
-	public class DummyCommandResolver : ICommandResolver
+	public sealed class DummyCommandResolver : ICommandResolver
 	{
 		private readonly Provider<List<AssistantAction>> _actions;
+		private readonly Mutex _lock = new(false, ActionConsts.RESOLVER_MUTEX);
 
 		public bool IsInitialized => true;
+
+		private IEnumerable<AssistantAction> _enabledActions;
 
 		public DummyCommandResolver(Provider<List<AssistantAction>> actions)
 		{
 			_actions = actions;
+			_enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
+
+			_actions.PropertyChanged += ActionsProvider_Updated;
 		}
 
 		public Task Initialize()
@@ -35,7 +41,7 @@ namespace VoiceAssistant.ActionManagement
 			}
 
 			// TODO: использовать нейросеть для удаления лишних звуков (ну, ээээ, эм, ммм и т.д.)
-			var action = _actions.Value.FirstOrDefault(x => string.Equals(x.Command, command,
+			var action = _enabledActions.FirstOrDefault(x => string.Equals(x.Command, command,
 				StringComparison.OrdinalIgnoreCase));
 
 			if (action is null)
@@ -47,6 +53,18 @@ namespace VoiceAssistant.ActionManagement
 			return Task.FromResult(result);
 		}
 
-		public void Dispose() { }
+		private void ActionsProvider_Updated(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			_lock.WaitOne();
+
+			_enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
+
+			_lock.ReleaseMutex();
+		}
+
+		public void Dispose()
+		{
+			_actions.PropertyChanged -= ActionsProvider_Updated;
+		}
 	}
 }
