@@ -25,88 +25,92 @@
     
     <Border Style="{StaticResource Styles.Border.Background}">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <ScrollViewer Style="{StaticResource Styles.ScrollViewer}">
 
-            <TextBlock
-                TextAlignment="Center"
-                FontSize="18"
-                Text="{DynamicResource Strings.Filter}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <Rectangle Grid.Row="1" Style="{StaticResource Styles.Delimeter.Horizontal}"
-                       Margin="0 15 0 15"/>
+                <TextBlock
+                    TextAlignment="Center"
+                    FontSize="18"
+                    Text="{DynamicResource Strings.Filter}"/>
 
-            <TextBlock Grid.Row="2"
-                       Text="{DynamicResource Strings.AssistantAction.Filter.Name.Colon}" 
-                       Margin="0 0 0 3"/>
+                <Rectangle Grid.Row="1" Style="{StaticResource Styles.Delimeter.Horizontal}"
+                           Margin="0 15 0 15"/>
 
-            <controls:AdvancedTextBox Grid.Row="3"
-                     Style="{StaticResource Styles.AdvancedTextBox}"
-                     HorizontalAlignment="Stretch"
-                     Text="{Binding Name}"/>
+                <TextBlock Grid.Row="2"
+                           Text="{DynamicResource Strings.AssistantAction.Filter.Name.Colon}" 
+                           Margin="0 0 0 3"/>
 
-            <CheckBox Grid.Row="4"
-                      VerticalContentAlignment="Center"
-                      Content="{DynamicResource Strings.AssistantAction.Filter.StrictName}"
-                      Margin="0 3 0 0"
-                      IsChecked="{Binding StrictName}"/>
+                <controls:AdvancedTextBox Grid.Row="3"
+                         Style="{StaticResource Styles.AdvancedTextBox}"
+                         HorizontalAlignment="Stretch"
+                         Text="{Binding Name}"/>
 
-            <Rectangle Grid.Row="5" Style="{StaticResource Styles.Delimeter.Horizontal}"
-                       Margin="0 15 0 15"/>
+                <CheckBox Grid.Row="4"
+                          Style="{StaticResource Styles.CheckBox}"
+                          Content="{DynamicResource Strings.AssistantAction.Filter.StrictName}"
+                          Margin="0 6 0 0"
+                          IsChecked="{Binding StrictName}"/>
 
-            <TextBlock Grid.Row="6"
-                       Text="{DynamicResource Strings.AssistantAction.Filter.UConfirmation.Colon}"
-                       Margin="0 0 0 3"/>
+                <Rectangle Grid.Row="5" Style="{StaticResource Styles.Delimeter.Horizontal}"
+                           Margin="0 15 0 15"/>
 
-            <ComboBox Grid.Row="7"
-                      Style="{StaticResource Styles.ComboBox}"
-                      SelectedIndex="{Binding UserConfirmationOptionId}">
-                <StaticResource ResourceKey="Options.UConfirmation.All"/>
-                <StaticResource ResourceKey="Options.UConfirmation.NotNeeded"/>
-                <StaticResource ResourceKey="Options.UConfirmation.Needed"/>
-            </ComboBox>
+                <TextBlock Grid.Row="6"
+                           Text="{DynamicResource Strings.AssistantAction.Filter.UConfirmation.Colon}"
+                           Margin="0 0 0 3"/>
 
-            <Rectangle Grid.Row="8" Style="{StaticResource Styles.Delimeter.Horizontal}"
-                       Margin="0 15 0 15"/>
+                <ComboBox Grid.Row="7"
+                          Style="{StaticResource Styles.ComboBox}"
+                          SelectedIndex="{Binding UserConfirmationOptionId}">
+                    <StaticResource ResourceKey="Options.UConfirmation.All"/>
+                    <StaticResource ResourceKey="Options.UConfirmation.NotNeeded"/>
+                    <StaticResource ResourceKey="Options.UConfirmation.Needed"/>
+                </ComboBox>
 
-            <TextBlock Grid.Row="9"
-                       Text="{DynamicResource Strings.AssistantAction.Filter.Status.Colon}"
-                       Margin="0 0 0 3"/>
+                <Rectangle Grid.Row="8" Style="{StaticResource Styles.Delimeter.Horizontal}"
+                           Margin="0 15 0 15"/>
 
-            <ComboBox Grid.Row="10"
-                      Style="{StaticResource Styles.ComboBox}"
-                      SelectedIndex="{Binding StatusOptionId}">
-                <StaticResource ResourceKey="Options.Status.All"/>
-                <StaticResource ResourceKey="Options.Status.Enabled"/>
-                <StaticResource ResourceKey="Options.Status.Disabled"/>
-            </ComboBox>
-            
-            <controls:NormalButton Grid.Row="12" x:Name="ApplyButton"
-                                   Style="{StaticResource Styles.NormalButton}"
-                                   HorizontalAlignment="Right"
-                                   Content="{DynamicResource Strings.Buttons.Apply}"/>
+                <TextBlock Grid.Row="9"
+                           Text="{DynamicResource Strings.AssistantAction.Filter.Status.Colon}"
+                           Margin="0 0 0 3"/>
 
-            <controls:NormalButton Grid.Row="12" Name="ClearButton"
-                                   Style="{StaticResource Styles.NormalButton}"
-                                   HorizontalAlignment="Left"
-                                   Content="{DynamicResource Strings.Buttons.Clear}"/>
-            
-        </Grid>
-        
+                <ComboBox Grid.Row="10"
+                          Style="{StaticResource Styles.ComboBox}"
+                          SelectedIndex="{Binding StatusOptionId}">
+                    <StaticResource ResourceKey="Options.Status.All"/>
+                    <StaticResource ResourceKey="Options.Status.Enabled"/>
+                    <StaticResource ResourceKey="Options.Status.Disabled"/>
+                </ComboBox>
+
+                <controls:NormalButton Grid.Row="12" x:Name="ApplyButton"
+                                       Style="{StaticResource Styles.NormalButton}"
+                                       HorizontalAlignment="Right"
+                                       Content="{DynamicResource Strings.Buttons.Apply}"/>
+
+                <controls:NormalButton Grid.Row="12" Name="ClearButton"
+                                       Style="{StaticResource Styles.NormalButton}"
+                                       HorizontalAlignment="Left"
+                                       Content="{DynamicResource Strings.Buttons.Clear}"/>
+
+            </Grid>
+
+        </ScrollViewer>
+
     </Border>
     
 </UserControl>

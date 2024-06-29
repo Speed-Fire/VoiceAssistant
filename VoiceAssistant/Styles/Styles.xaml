@@ -97,10 +97,24 @@
     <Style x:Key="Styles.ComboBox" TargetType="ComboBox"
            BasedOn="{StaticResource Synergy.Styles.ComboBox.Base}">
 
-        <Setter Property="BorderBrush" Value="{StaticResource Brushes.Senary}"/> <!-- senary -->
+        <Setter Property="BorderBrush" Value="{StaticResource Brushes.Denary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Background" Value="{StaticResource Brushes.Quinary}"/>
-        <Setter Property="Foreground" Value="{StaticResource Brushes.Senary}"/> <!-- senary -->
+        <Setter Property="Foreground" Value="{StaticResource Brushes.Senary}"/>
 
+    </Style>
+
+    <Style x:Key="Styles.ScrollBar" TargetType="ScrollBar"
+           BasedOn="{StaticResource Synergy.Styles.ScrollBar.Base}">
+        <Setter Property="Foreground" Value="{StaticResource Brushes.Denary}"/>
+    </Style>
+
+    <Style x:Key="Styles.ScrollViewer" TargetType="ScrollViewer">
+        <Style.Resources>
+
+            <Style TargetType="ScrollBar" BasedOn="{StaticResource Styles.ScrollBar}"/>
+
+        </Style.Resources>
     </Style>
     
 </ResourceDictionary>

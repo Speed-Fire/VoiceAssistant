@@ -90,6 +90,15 @@
         <GradientStop Color="{DynamicResource Colors.Duodenary}" Offset="1"/>
 
     </LinearGradientBrush>
-                         
+
+    <LinearGradientBrush x:Key="Brushes.Triple" StartPoint="0, 0.5" EndPoint="1, 0.5">
+
+        <GradientStop Offset="0" Color="#00B0E4"/>
+        
+        <GradientStop Offset="0.5" Color="#4D40E8"/> <!-- 5043E9 -->
+        
+        <GradientStop Offset="1" Color="#C92DE4"/>
+
+    </LinearGradientBrush>
     
 </ResourceDictionary>
