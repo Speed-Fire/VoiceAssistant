@@ -28,27 +28,27 @@
 
         <controls:Sidebar
             x:Name="NavBar"
-            Style="{StaticResource Sidebar.Style}">
+            Style="{StaticResource Styles.Sidebar}">
 
             <controls:NavItem
-                Style="{StaticResource NavItem.Style}"
+                Style="{StaticResource Styles.NavItem}"
                 NavCommand="{Binding OpenCommandsTabCommand}"
                 Icon="{StaticResource AlarmIcon}"
                 Content="Commands"/>
 
             <controls:NavItem
-                Style="{StaticResource NavItem.Style}"
+                Style="{StaticResource Styles.NavItem}"
                 NavCommand="{Binding OpenScriptEditorTabCommand}"
                 Icon="{StaticResource CalendarIcon}"
                 Content="Script editor"/>
 
             <controls:NavItem
-                Style="{StaticResource NavItem.Style}"
+                Style="{StaticResource Styles.NavItem}"
                 NavCommand="{Binding OpenPluginsTabCommand}"
                 Content="Plugins"/>
 
             <controls:NavItem
-                Style="{StaticResource NavItem.Style}"
+                Style="{StaticResource Styles.NavItem}"
                 NavCommand="{Binding OpenSettingsTabCommand}"
                 Content="Settings"/>
 

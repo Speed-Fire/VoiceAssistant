@@ -1,92 +1,93 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="Brush.Black" Color="Black"/>
+    <SolidColorBrush x:Key="Brushes.Black" Color="Black"/>
+    <SolidColorBrush x:Key="Brushes.Gray" Color="#8F8F8F"/>
 
-    <SolidColorBrush x:Key="Brush.Primary" Color="{DynamicResource Color.Primary}"/>
-    <SolidColorBrush x:Key="Brush.Secondary" Color="{DynamicResource Color.Secondary}"/>
-    <SolidColorBrush x:Key="Brush.Tertiary" Color="{DynamicResource Color.Tertiary}"/>
-    <SolidColorBrush x:Key="Brush.Quaternary" Color="{DynamicResource Color.Quaternary}"/>
-    <SolidColorBrush x:Key="Brush.Quinary" Color="{DynamicResource Color.Quinary}"/>
-    <SolidColorBrush x:Key="Brush.Senary" Color="{DynamicResource Color.Senary}"/>
-    <SolidColorBrush x:Key="Brush.Septenary" Color="{DynamicResource Color.Septenary}"/>
-    <SolidColorBrush x:Key="Brush.Octonary" Color="{DynamicResource Color.Octonary}"/>
-    <SolidColorBrush x:Key="Brush.Nonary" Color="{DynamicResource Color.Nonary}"/>
-    <SolidColorBrush x:Key="Brush.Denary" Color="{DynamicResource Color.Denary}"/>
-    <SolidColorBrush x:Key="Brush.Sindenary" Color="{DynamicResource Color.Sindenary}"/>
-    <SolidColorBrush x:Key="Brush.Duodenary" Color="{DynamicResource Color.Duodenary}"/>
-    <SolidColorBrush x:Key="Brush.Terdenary" Color="{DynamicResource Color.Terdenary}"/>
+    <SolidColorBrush x:Key="Brushes.Primary" Color="{DynamicResource Colors.Primary}"/>
+    <SolidColorBrush x:Key="Brushes.Secondary" Color="{DynamicResource Colors.Secondary}"/>
+    <SolidColorBrush x:Key="Brushes.Tertiary" Color="{DynamicResource Colors.Tertiary}"/>
+    <SolidColorBrush x:Key="Brushes.Quaternary" Color="{DynamicResource Colors.Quaternary}"/>
+    <SolidColorBrush x:Key="Brushes.Quinary" Color="{DynamicResource Colors.Quinary}"/>
+    <SolidColorBrush x:Key="Brushes.Senary" Color="{DynamicResource Colors.Senary}"/>
+    <SolidColorBrush x:Key="Brushes.Septenary" Color="{DynamicResource Colors.Septenary}"/>
+    <SolidColorBrush x:Key="Brushes.Octonary" Color="{DynamicResource Colors.Octonary}"/>
+    <SolidColorBrush x:Key="Brushes.Nonary" Color="{DynamicResource Colors.Nonary}"/>
+    <SolidColorBrush x:Key="Brushes.Denary" Color="{DynamicResource Colors.Denary}"/>
+    <SolidColorBrush x:Key="Brushes.Sindenary" Color="{DynamicResource Colors.Sindenary}"/>
+    <SolidColorBrush x:Key="Brushes.Duodenary" Color="{DynamicResource Colors.Duodenary}"/>
+    <SolidColorBrush x:Key="Brushes.Terdenary" Color="{DynamicResource Colors.Terdenary}"/>
 
-    <LinearGradientBrush x:Key="Brush.Sidebar.Background"
+    <LinearGradientBrush x:Key="Brushes.Sidebar.Background"
                         StartPoint="1 0"
                         EndPoint="0 1">
 
         <GradientStop Offset="0"
-                              Color="{DynamicResource Color.Tertiary}"/> <!--Tertiary-->
+                              Color="{DynamicResource Colors.Tertiary}"/> <!--Tertiary-->
 
         <GradientStop Offset="0.8"
-                              Color="{DynamicResource Color.Primary}"/> <!--Primary-->
+                              Color="{DynamicResource Colors.Primary}"/> <!--Primary-->
 
         <GradientStop Offset="1"
-                              Color="{DynamicResource Color.Nonary}"/> <!--Nonary-->
+                              Color="{DynamicResource Colors.Nonary}"/> <!--Nonary-->
 
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="Brush.Background"
+    <LinearGradientBrush x:Key="Brushes.Background"
                          StartPoint="0, 0"
                          EndPoint="1, 1">
 
         <GradientStop Offset="0"
-                      Color="{DynamicResource Color.Octonary}"/>
+                      Color="{DynamicResource Colors.Octonary}"/>
 
         <GradientStop Offset="0.2"
-                      Color="{DynamicResource Color.Octonary}"/>
+                      Color="{DynamicResource Colors.Octonary}"/>
 
         <GradientStop Offset="0.3"
-                      Color="{DynamicResource Color.Nonary}"/>
+                      Color="{DynamicResource Colors.Nonary}"/>
 
         <GradientStop Offset="0.65"
-                      Color="{DynamicResource Color.Nonary}"/>
+                      Color="{DynamicResource Colors.Nonary}"/>
 
         <GradientStop Offset="0.75"
-                      Color="{DynamicResource Color.Denary}"/>
+                      Color="{DynamicResource Colors.Denary}"/>
 
         <GradientStop Offset="0.8"
-                      Color="{DynamicResource Color.Sindenary}"/>
+                      Color="{DynamicResource Colors.Sindenary}"/>
 
         <GradientStop Offset="0.85"
-                      Color="{DynamicResource Color.Denary}"/>
+                      Color="{DynamicResource Colors.Denary}"/>
 
         <GradientStop Offset="0.9"
-                      Color="{DynamicResource Color.Nonary}"/>
+                      Color="{DynamicResource Colors.Nonary}"/>
 
         <GradientStop Offset="1"
-                      Color="{DynamicResource Color.Quaternary}"/>
+                      Color="{DynamicResource Colors.Quaternary}"/>
 
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="Brush.Sidebar.Item.Selection.Background"
+    <LinearGradientBrush x:Key="Brushes.Sidebar.Item.Selection.Background"
                         StartPoint="0.5, 0"
                         EndPoint="0.5, 1">
 
-        <GradientStop Color="{DynamicResource Color.Primary}"
+        <GradientStop Color="{DynamicResource Colors.Primary}"
                       Offset="0"/>
 
-        <GradientStop Color="{DynamicResource Color.Duodenary}"
+        <GradientStop Color="{DynamicResource Colors.Duodenary}"
                       Offset="0.1"/>
 
-        <GradientStop Color="{DynamicResource Color.Duodenary}"
+        <GradientStop Color="{DynamicResource Colors.Duodenary}"
                       Offset="0.9"/>
 
-        <GradientStop Color="{DynamicResource Color.Primary}"
+        <GradientStop Color="{DynamicResource Colors.Primary}"
                       Offset="1"/>
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="Brush.SliderButton.On"
+    <LinearGradientBrush x:Key="Brushes.SliderButton.On"
                          StartPoint="0, 0.5" EndPoint="1, 0.5">
 
-        <GradientStop Color="{DynamicResource Color.Sindenary}" Offset="0"/>
-        <GradientStop Color="{DynamicResource Color.Duodenary}" Offset="1"/>
+        <GradientStop Color="{DynamicResource Colors.Sindenary}" Offset="0"/>
+        <GradientStop Color="{DynamicResource Colors.Duodenary}" Offset="1"/>
 
     </LinearGradientBrush>
                          

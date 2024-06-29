@@ -16,7 +16,7 @@
 
         <convs:IsNullConverter x:Key="isnullconv"/>
 
-        <Style x:Key="OuterBorder.Style" TargetType="Border">
+        <Style x:Key="Styles.Local.Border.Outer" TargetType="Border">
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="BorderThickness" Value="3"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -50,7 +50,7 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="InnerAttentionBorder.Style" TargetType="Border">
+        <Style x:Key="Styles.Local.Border.InnerAttention" TargetType="Border">
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="BorderThickness" Value="3"/>
             <Setter Property="Visibility" Value="Collapsed"/>
@@ -64,10 +64,10 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="InnerNormalBorder.Style" TargetType="Border">
+        <Style x:Key="Styles.Local.Border.InnerNormal" TargetType="Border">
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="BorderThickness" Value="3"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Brush.Secondary}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Brushes.Secondary}"/>
 
             <Style.Triggers>
 
@@ -78,16 +78,16 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="InnerBorder.Style" TargetType="Border">
+        <Style x:Key="Styles.Local.Border.Inner" TargetType="Border">
 
-            <Setter Property="Background" Value="{StaticResource Brush.Secondary}"/>
+            <Setter Property="Background" Value="{StaticResource Brushes.Secondary}"/>
             <Setter Property="Margin" Value="3"/>
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="Padding" Value="5"/>
 
         </Style>
 
-        <Style x:Key="DescriptionGrid.Style" TargetType="Grid">
+        <Style x:Key="Styles.Local.Grid.Description" TargetType="Grid">
             <Style.Triggers>
 
                 <DataTrigger Binding="{Binding Description, Converter={StaticResource isnullconv}}"
@@ -98,7 +98,7 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="AttentionImage.Style" TargetType="Image">
+        <Style x:Key="Styles.Local.Image.Attention" TargetType="Image">
             <Setter Property="MaxHeight" Value="24"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="Margin" Value="0 0 15 0"/>
@@ -109,33 +109,29 @@
                     <Setter Property="Visibility" Value="Visible"/>
                 </DataTrigger>
             </Style.Triggers>
-            
+
         </Style>
 
-        <Style TargetType="Image">
-            <Setter Property="MaxHeight" Value="24"/>
-        </Style>
-
-        <Style x:Key="EnabilityBorder.Style" TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource Brush.Secondary}"/>
+        <Style x:Key="Styles.Local.Border.Enability" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource Brushes.Secondary}"/>
             <Setter Property="Opacity" Value="0"/>
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="Panel.ZIndex" Value="10"/>
 
         </Style>
         
-        <Style x:Key="TextBlock.Righted" TargetType="TextBlock"
-               BasedOn="{StaticResource TextBlock.Style}">
+        <Style x:Key="Styles.Local.TextBlock.Righted" TargetType="TextBlock"
+               BasedOn="{StaticResource Styles.TextBlock}">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Margin" Value="5 0 0 0"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
         </Style>
 
-        <Style x:Key="CompButton.Style" TargetType="controls:NormalButton"
-               BasedOn="{StaticResource NormalButtonStyle.Base}">
+        <Style x:Key="Styles.Local.Button.Base" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Synergy.Styles.NormalButton.Base}">
 
-            <Setter Property="Background" Value="{StaticResource Brush.Secondary}"/>
+            <Setter Property="Background" Value="{StaticResource Brushes.Secondary}"/>
             <Setter Property="Padding" Value="3"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="Panel.ZIndex" Value="11"/>
@@ -143,34 +139,34 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Opacity" Value="1"/>
-                    <Setter Property="Background" Value="{StaticResource Brush.Quinary}"/>
+                    <Setter Property="Background" Value="{StaticResource Brushes.Quinary}"/>
                 </Trigger>
             </Style.Triggers>
             
         </Style>
 
-        <Style x:Key="CompButton.Update" TargetType="controls:NormalButton"
-               BasedOn="{StaticResource CompButton.Style}">
+        <Style x:Key="Styles.Local.Button.Update" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Styles.Local.Button.Base}">
 
             <Setter Property="Content">
                 <Setter.Value>
 
                     <Image MaxHeight="28"
-                           Source="{StaticResource Bitmap.Edit64}"/>
+                           Source="{StaticResource Bitmaps.Edit64}"/>
 
                 </Setter.Value>
             </Setter>
             
         </Style>
 
-        <Style x:Key="CompButton.Delete" TargetType="controls:NormalButton"
-               BasedOn="{StaticResource CompButton.Style}">
+        <Style x:Key="Styles.Local.Button.Delete" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Styles.Local.Button.Base}">
 
             <Setter Property="Content">
                 <Setter.Value>
 
                     <Image MaxHeight="28"
-                           Source="{StaticResource Bitmap.Delete64}"/>
+                           Source="{StaticResource Bitmaps.Delete64}"/>
 
                 </Setter.Value>
             </Setter>
@@ -179,11 +175,11 @@
 
     </UserControl.Resources>
 
-    <Border Style="{StaticResource OuterBorder.Style}">
+    <Border Style="{StaticResource Styles.Local.Border.Outer}">
 
         <Grid>
 
-            <Border Style="{StaticResource InnerAttentionBorder.Style}">
+            <Border Style="{StaticResource Styles.Local.Border.InnerAttention}">
                 <Border.BorderBrush>
                     <VisualBrush>
                         <VisualBrush.Visual>
@@ -207,9 +203,9 @@
                 </Border.BorderBrush>
             </Border>
 
-            <Border Style="{StaticResource InnerNormalBorder.Style}"/>
+            <Border Style="{StaticResource Styles.Local.Border.InnerNormal}"/>
 
-            <Border Style="{StaticResource InnerBorder.Style}">
+            <Border Style="{StaticResource Styles.Local.Border.Inner}">
 
                 <Grid>
 
@@ -225,7 +221,7 @@
                     </Grid.RowDefinitions>
 
                     <Border Grid.RowSpan="8" x:Name="EnabilityBorder"
-                            Style="{StaticResource EnabilityBorder.Style}"/>
+                            Style="{StaticResource Styles.Local.Border.Enability}"/>
 
                     <Grid Grid.Row="0"
                           Margin="10 10 0 0">
@@ -240,12 +236,12 @@
                                    Text="{Binding Name}"/>
 
                         <Image Grid.Column="1"
-                               Style="{StaticResource AttentionImage.Style}"
-                               Source="{StaticResource Bitmap.Attention64}"/>
+                               Style="{StaticResource Styles.Local.Image.Attention}"
+                               Source="{StaticResource Bitmaps.Attention64}"/>
 
                     </Grid>
 
-                    <Rectangle Style="{StaticResource Delimeter.Horizontal.Style}"
+                    <Rectangle Style="{StaticResource Styles.Delimeter.Horizontal}"
                                Margin="0 15 0 15"
                                Grid.Row="1"/>
 
@@ -256,19 +252,19 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{StaticResource Bitmap.Voice64}"/>
+                        <Image Source="{StaticResource Bitmaps.Voice64}"/>
 
                         <TextBlock Grid.Column="1"
-                                   Style="{StaticResource TextBlock.Righted}"
+                                   Style="{StaticResource Styles.Local.TextBlock.Righted}"
                                    Text="{Binding Command}"/>
 
                     </Grid>
 
-                    <Rectangle Style="{StaticResource Delimeter.Horizontal.Style}"
+                    <Rectangle Style="{StaticResource Styles.Delimeter.Horizontal}"
                                Margin="0 15 0 15"
                                Grid.Row="3"/>
-                    
-                    <Grid Style="{StaticResource DescriptionGrid.Style}" 
+
+                    <Grid Style="{StaticResource Styles.Local.Grid.Description}" 
                           Margin="0 0 0 15"
                           Grid.Row="4">
 
@@ -282,14 +278,13 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Image Source="{StaticResource Bitmap.Description64}"
-                               MaxHeight="24"/>
+                        <Image Source="{StaticResource Bitmaps.Description64}"/>
 
                         <TextBlock Grid.Column="1"
-                                   Style="{StaticResource TextBlock.Righted}"
+                                   Style="{StaticResource Styles.Local.TextBlock.Righted}"
                                    Text="{Binding Description}"/>
 
-                        <Rectangle Style="{StaticResource Delimeter.Horizontal.Style}"
+                        <Rectangle Style="{StaticResource Styles.Delimeter.Horizontal}"
                                    Margin="0 15 0 0"
                                    Grid.Row="1"
                                    Grid.ColumnSpan="2"/>
@@ -304,15 +299,15 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{StaticResource Bitmap.Script64}"/>
+                        <Image Source="{StaticResource Bitmaps.Script64}"/>
 
                         <TextBlock Grid.Column="1"
-                                   Style="{StaticResource TextBlock.Righted}"
+                                   Style="{StaticResource Styles.Local.TextBlock.Righted}"
                                    Text="{Binding AssistantScript.Name}"/>
 
                     </Grid>
 
-                    <Rectangle Style="{StaticResource Delimeter.Horizontal.Style}"
+                    <Rectangle Style="{StaticResource Styles.Delimeter.Horizontal}"
                                Margin="0 0 0 7"
                                Grid.Row="6"/>
 
@@ -323,18 +318,18 @@
                         <controls:NormalButton
                             x:Name="DeleteButton"
                             DockPanel.Dock="Right"
-                            Style="{StaticResource CompButton.Delete}"
+                            Style="{StaticResource Styles.Local.Button.Delete}"
                             CommandParameter="{Binding}"/>
 
                         <controls:NormalButton
                             x:Name="EditButton"
                             DockPanel.Dock="Right"
                             Margin="0 0 15 0"
-                            Style="{StaticResource CompButton.Update}"
+                            Style="{StaticResource Styles.Local.Button.Update}"
                             CommandParameter="{Binding}"/>
 
                         <controls:SliderButton Name="EnableButton"
-                                               Style="{StaticResource SliderButton.Round.Style}"
+                                               Style="{StaticResource Styles.SliderButton.Round}"
                                                HorizontalAlignment="Left"
                                                DockPanel.Dock="Left"
                                                IsChecked="{Binding IsEnabled}"

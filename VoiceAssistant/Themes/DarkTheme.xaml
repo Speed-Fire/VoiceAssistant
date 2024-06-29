@@ -2,18 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
-    <Color x:Key="Color.Primary">#161616</Color>
-    <Color x:Key="Color.Secondary">#1B1B1B</Color>
-    <Color x:Key="Color.Tertiary">#1F1F1F</Color>
-    <Color x:Key="Color.Quaternary">#202020</Color>
-    <Color x:Key="Color.Quinary">#3F3F3F</Color>
-    <Color x:Key="Color.Senary">#DFDFDF</Color>
-    <Color x:Key="Color.Septenary">#F8E9FE</Color>
-    <Color x:Key="Color.Octonary">#0A000F</Color>
-    <Color x:Key="Color.Nonary">#160022</Color>
-    <Color x:Key="Color.Denary">#32004D</Color>
-    <Color x:Key="Color.Sindenary">#440072</Color>
-    <Color x:Key="Color.Duodenary">#924192</Color>
-    <Color x:Key="Color.Terdenary">#A448FF</Color>
+    <Color x:Key="Colors.Primary">#161616</Color>
+    <Color x:Key="Colors.Secondary">#1B1B1B</Color>
+    <Color x:Key="Colors.Tertiary">#1F1F1F</Color>
+    <Color x:Key="Colors.Quaternary">#202020</Color>
+    <Color x:Key="Colors.Quinary">#3F3F3F</Color>
+    <Color x:Key="Colors.Senary">#DFDFDF</Color>
+    <Color x:Key="Colors.Septenary">#F8E9FE</Color>
+    <Color x:Key="Colors.Octonary">#0A000F</Color>
+    <Color x:Key="Colors.Nonary">#160022</Color>
+    <Color x:Key="Colors.Denary">#32004D</Color>
+    <Color x:Key="Colors.Sindenary">#440072</Color>
+    <Color x:Key="Colors.Duodenary">#924192</Color>
+    <Color x:Key="Colors.Terdenary">#A448FF</Color>
 
 </ResourceDictionary>

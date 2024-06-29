@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common">
 
-    <Style x:Key="Sidebar.Style.Base" TargetType="controls:Sidebar">
+    <Style x:Key="Styles.Sidebar.Base" TargetType="controls:Sidebar">
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -37,7 +37,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="NavItem.Style.Base" TargetType="controls:NavItem">
+    <Style x:Key="Styles.NavItem.Base" TargetType="controls:NavItem">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Margin" Value="0 3 3 3"/>
@@ -98,18 +98,18 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Sidebar.Style" TargetType="controls:Sidebar"
-           BasedOn="{StaticResource Sidebar.Style.Base}">
+    <Style x:Key="Styles.Sidebar" TargetType="controls:Sidebar"
+           BasedOn="{StaticResource Styles.Sidebar.Base}">
 
-        <Setter Property="Background" Value="{StaticResource Brush.Sidebar.Background}"/>
+        <Setter Property="Background" Value="{StaticResource Brushes.Sidebar.Background}"/>
         
     </Style>
 
-    <Style x:Key="NavItem.Style" TargetType="controls:NavItem"
-           BasedOn="{StaticResource NavItem.Style.Base}">
+    <Style x:Key="Styles.NavItem" TargetType="controls:NavItem"
+           BasedOn="{StaticResource Styles.NavItem.Base}">
 
-        <Setter Property="IconColor" Value="{StaticResource Brush.Septenary}"/> <!--Septenary-->
-        <Setter Property="SelectedIconColor" Value="{StaticResource Brush.Sidebar.Item.Selection.Background}"/>
+        <Setter Property="IconColor" Value="{StaticResource Brushes.Septenary}"/> <!--Septenary-->
+        <Setter Property="SelectedIconColor" Value="{StaticResource Brushes.Sidebar.Item.Selection.Background}"/>
 
     </Style>
     

@@ -12,6 +12,7 @@ using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Misc.Options;
 using VoiceAssistant.ViewModels;
 using VoiceAssistant.Views;
+using VoiceAssistant.Views.AssistantActions;
 
 namespace VoiceAssistant.Extensions
 {
@@ -74,7 +75,7 @@ namespace VoiceAssistant.Extensions
 		{
 			services
 				.AddTransient<MainView>()
-				.AddTransient<CommandsView>()
+				.AddTransient<AssistantActionsView>()
 				.AddTransient<ScriptEditorView>();
 
 			return services;
@@ -84,7 +85,7 @@ namespace VoiceAssistant.Extensions
 		{
 			services
 				.AddTransient<MainVM>()
-				.AddTransient<CommandsVM>()
+				.AddTransient<AssistantActionsVM>()
 				.AddTransient<ScriptEditorVM>();
 
 			return services;

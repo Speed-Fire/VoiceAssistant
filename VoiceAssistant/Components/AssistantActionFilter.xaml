@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="VoiceAssistant.Components.AssistantActionFilter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VoiceAssistant.Components"
+             
+             xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"
+             
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <TextBlock x:Key="Options.UConfirmation.All" Text="{DynamicResource Strings.Options.All}"/>
+        <TextBlock x:Key="Options.UConfirmation.NotNeeded" Text="{DynamicResource Strings.AssistantAction.Filter.UConfirmation.NotNeeded}"/>
+        <TextBlock x:Key="Options.UConfirmation.Needed" Text="{DynamicResource Strings.AssistantAction.Filter.UConfirmation.Needed}"/>
+        <TextBlock x:Key="Options.Status.All" Text="{DynamicResource Strings.Options.All}"/>
+        <TextBlock x:Key="Options.Status.Enabled" Text="{DynamicResource Strings.AssistantAction.Filter.Status.Enabled}"/>
+        <TextBlock x:Key="Options.Status.Disabled" Text="{DynamicResource Strings.AssistantAction.Filter.Status.Disabled}"/>
+
+    </UserControl.Resources>
+    
+    <Border Style="{StaticResource Styles.Border.Background}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                TextAlignment="Center"
+                FontSize="18"
+                Text="{DynamicResource Strings.Filter}"/>
+
+            <Rectangle Grid.Row="1" Style="{StaticResource Styles.Delimeter.Horizontal}"
+                       Margin="0 15 0 15"/>
+
+            <TextBlock Grid.Row="2"
+                       Text="{DynamicResource Strings.AssistantAction.Filter.Name.Colon}" 
+                       Margin="0 0 0 3"/>
+
+            <controls:AdvancedTextBox Grid.Row="3"
+                     Style="{StaticResource Styles.AdvancedTextBox}"
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding Name}"/>
+
+            <CheckBox Grid.Row="4"
+                      VerticalContentAlignment="Center"
+                      Content="{DynamicResource Strings.AssistantAction.Filter.StrictName}"
+                      Margin="0 3 0 0"
+                      IsChecked="{Binding StrictName}"/>
+
+            <Rectangle Grid.Row="5" Style="{StaticResource Styles.Delimeter.Horizontal}"
+                       Margin="0 15 0 15"/>
+
+            <TextBlock Grid.Row="6"
+                       Text="{DynamicResource Strings.AssistantAction.Filter.UConfirmation.Colon}"
+                       Margin="0 0 0 3"/>
+
+            <ComboBox Grid.Row="7"
+                      Style="{StaticResource Styles.ComboBox}"
+                      SelectedIndex="{Binding UserConfirmationOptionId}">
+                <StaticResource ResourceKey="Options.UConfirmation.All"/>
+                <StaticResource ResourceKey="Options.UConfirmation.NotNeeded"/>
+                <StaticResource ResourceKey="Options.UConfirmation.Needed"/>
+            </ComboBox>
+
+            <Rectangle Grid.Row="8" Style="{StaticResource Styles.Delimeter.Horizontal}"
+                       Margin="0 15 0 15"/>
+
+            <TextBlock Grid.Row="9"
+                       Text="{DynamicResource Strings.AssistantAction.Filter.Status.Colon}"
+                       Margin="0 0 0 3"/>
+
+            <ComboBox Grid.Row="10"
+                      Style="{StaticResource Styles.ComboBox}"
+                      SelectedIndex="{Binding StatusOptionId}">
+                <StaticResource ResourceKey="Options.Status.All"/>
+                <StaticResource ResourceKey="Options.Status.Enabled"/>
+                <StaticResource ResourceKey="Options.Status.Disabled"/>
+            </ComboBox>
+            
+            <controls:NormalButton Grid.Row="12" x:Name="ApplyButton"
+                                   Style="{StaticResource Styles.NormalButton}"
+                                   HorizontalAlignment="Right"
+                                   Content="{DynamicResource Strings.Buttons.Apply}"/>
+
+            <controls:NormalButton Grid.Row="12" Name="ClearButton"
+                                   Style="{StaticResource Styles.NormalButton}"
+                                   HorizontalAlignment="Left"
+                                   Content="{DynamicResource Strings.Buttons.Clear}"/>
+            
+        </Grid>
+        
+    </Border>
+    
+</UserControl>

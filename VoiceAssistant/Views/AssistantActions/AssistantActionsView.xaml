@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="VoiceAssistant.Views.AssistantActions.AssistantActionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VoiceAssistant.Views"
+             
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             
+             xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"
+             xmlns:components="clr-namespace:VoiceAssistant.Components"
+             xmlns:elements="clr-namespace:VoiceAssistant.Elements"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <Style x:Key="Styles.Local.Button.Create" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Synergy.Styles.NormalButton.Base}">
+
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="{StaticResource Brushes.Quaternary}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Brushes.Duodenary}"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+
+            <Setter Property="Content">
+                <Setter.Value>
+
+                    <Image Source="{StaticResource Bitmaps.Create64}"
+                           MaxHeight="40"/>
+
+                </Setter.Value>
+            </Setter>
+            
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="1"/>
+                    <Setter Property="Background" Value="{StaticResource Brushes.Quinary}"/>
+                </Trigger>
+                
+            </Style.Triggers>
+            
+        </Style>
+
+        <Style x:Key="Styles.Local.ListBoxItem.AssistantAction" TargetType="ListBoxItem">
+
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <components:AssistantActionComponent 
+                            MinWidth="450"
+                            DataContext="{Binding}"
+                            EnableCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                AncestorType={x:Type ListBox}}, Path=DataContext.EnableActionCommand}"
+                            EditCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                AncestorType={x:Type ListBox}}, Path=DataContext.EditActionCommand}"
+                            DeleteCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                AncestorType={x:Type ListBox}}, Path=DataContext.DeleteActionCommand}"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+
+                        <Border x:Name="Border"
+                                Padding="2 10 2 10"
+                                SnapsToDevicePixels="true"
+                                Background="Transparent">
+
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <Style x:Key="Styles.Local.FadingListBox" TargetType="elements:FadingListBox">
+
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                                 Color="Transparent"/>
+            </Style.Resources>
+
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="Threshold" Value="0.2"/>
+            <Setter Property="EdgeGap" Value="0.3"/>
+            <Setter Property="ItemContainerStyle" Value="{StaticResource Styles.Local.ListBoxItem.AssistantAction}"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <Grid
+        Margin="30">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.57*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        
+        <components:AssistantActionFilter
+            Grid.Column="0" Grid.Row="1"
+            Margin="30 0 30 0"
+            DataContext="{Binding AssistantActionFilterFactory}"
+            ClearCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                AncestorType={x:Type Grid}}, Path=DataContext.ClearFilterCommand}"
+            ApplyCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                AncestorType={x:Type Grid}}, Path=DataContext.ApplyFilterCommand}"/>
+
+        <elements:FadingListBox
+            Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3"
+            Margin="0 0 0 -30"
+            Style="{StaticResource Styles.Local.FadingListBox}"
+            ItemsSource="{Binding AssistantActions.Filtered}"/>
+
+        <controls:NormalButton
+            Grid.Column="2" Grid.RowSpan="3"
+            Style="{StaticResource Styles.Local.Button.Create}"
+            Command="{Binding CreateActionCommand}"/>
+
+    </Grid>
+</UserControl>

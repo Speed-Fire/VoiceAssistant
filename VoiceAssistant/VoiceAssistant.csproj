@@ -13,15 +13,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icons\arrow_left64.png" />
     <None Remove="Resources\Icons\attention64.png" />
+    <None Remove="Resources\Icons\create64.png" />
+    <None Remove="Resources\Icons\delete64.png" />
     <None Remove="Resources\Icons\description64.png" />
+    <None Remove="Resources\Icons\edit64.png" />
     <None Remove="Resources\Icons\script64.png" />
     <None Remove="Resources\Icons\voice64.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Synergy.WPF.Common" Version="1.1.0" />
-    <PackageReference Include="Synergy.WPF.Navigation" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
+    <PackageReference Include="Synergy.WPF.Common" Version="1.2.0" />
+    <PackageReference Include="Synergy.WPF.Navigation" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,8 +46,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Icons\arrow_left64.png" />
     <Resource Include="Resources\Icons\attention64.png" />
+    <Resource Include="Resources\Icons\create64.png" />
+    <Resource Include="Resources\Icons\delete64.png" />
     <Resource Include="Resources\Icons\description64.png" />
+    <Resource Include="Resources\Icons\edit64.png" />
     <Resource Include="Resources\Icons\script64.png" />
     <Resource Include="Resources\Icons\voice64.png" />
   </ItemGroup>

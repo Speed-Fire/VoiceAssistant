@@ -11,7 +11,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         
-        Background="{StaticResource Brush.Background}"
+        Background="{StaticResource Brushes.Background}"
         
         Title="MainWindow" Height="450" Width="800">
     

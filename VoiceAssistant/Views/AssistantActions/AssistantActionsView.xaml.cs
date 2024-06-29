@@ -13,34 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Services.Entities;
 
-namespace VoiceAssistant.Views
+namespace VoiceAssistant.Views.AssistantActions
 {
 	/// <summary>
 	/// Логика взаимодействия для CommandsView.xaml
 	/// </summary>
-	public partial class CommandsView : UserControl
+	public partial class AssistantActionsView : UserControl
 	{
-		public CommandsView()
+		public AssistantActionsView()
 		{
 			InitializeComponent();
-
-			var script = new AssistantScript()
-			{
-				Id = 1,
-				Name = "Test script"
-			};
-
-			var action = new AssistantAction()
-			{
-				Command = "Open the fucking door",
-				Name = "Test action",
-				Description = "Sometimes i think i could reach much more than i have done now.",
-				NeedsConfirmation = false,
-				AssistantScript = script
-			};
-
-			comp.DataContext = action;
 		}
 	}
 }

@@ -3,39 +3,103 @@
                     
                     xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common">
 
-    <Style x:Key="TextBlock.Style" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="{StaticResource Brush.Senary}"/>
+    <Style x:Key="Styles.TextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{StaticResource Brushes.Senary}"/>
     </Style>
 
-    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlock.Style}"/>
+    <Style TargetType="TextBlock" BasedOn="{StaticResource Styles.TextBlock}"/>
 
-    <Style x:Key="Delimeter.Horizontal.Style" TargetType="Rectangle">
+    <Style x:Key="Styles.Delimeter.Horizontal" TargetType="Rectangle">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="MinHeight" Value="2"/>
-        <Setter Property="Fill" Value="{StaticResource Brush.Quinary}"/>
+        <Setter Property="Fill" Value="{StaticResource Brushes.Quinary}"/>
     </Style>
 
-    <Style x:Key="Delimeter.Vertical.Style" TargetType="Rectangle">
+    <Style x:Key="Styles.Delimeter.Vertical" TargetType="Rectangle">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="MinWidth" Value="2"/>
-        <Setter Property="Fill" Value="{StaticResource Brush.Quinary}"/>
+        <Setter Property="Fill" Value="{StaticResource Brushes.Quinary}"/>
     </Style>
 
-    <Style x:Key="SliderButton.Round.Style" TargetType="controls:SliderButton"
-           BasedOn="{StaticResource SliderButton.Base}">
+    <Style x:Key="Styles.SliderButton.Round" TargetType="controls:SliderButton"
+           BasedOn="{StaticResource Synergy.Styles.SliderButton.Base}">
 
         <Setter Property="MaxHeight" Value="25"/>
         <Setter Property="ButtonWidth" Value="25"/>
         <Setter Property="CornerRadius" Value="15"/>
         <Setter Property="MinWidth" Value="80"/>
-        <Setter Property="Foreground" Value="{StaticResource Brush.Senary}"/>
+        <Setter Property="Foreground" Value="{StaticResource Brushes.Senary}"/>
         <Setter Property="BorderThickness" Value="3"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Brush.Primary}"/>
-        <Setter Property="OffColor" Value="{StaticResource Brush.Black}"/>
-        <Setter Property="OnColor" Value="{StaticResource Brush.SliderButton.On}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Brushes.Primary}"/>
+        <Setter Property="OffColor" Value="{StaticResource Brushes.Black}"/>
+        <Setter Property="OnColor" Value="{StaticResource Brushes.SliderButton.On}"/>
+
+    </Style>
+
+    <Style x:Key="Styles.Border.Background" TargetType="Border">
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Padding" Value="15"/>
+        <Setter Property="Background" Value="{StaticResource Brushes.Secondary}"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Brushes.Sindenary}"/>
+    </Style>
+
+    <Style TargetType="Image">
+        <Setter Property="MaxHeight" Value="24"/>
+    </Style>
+
+    <Style x:Key="Styles.NormalButton"
+           TargetType="controls:NormalButton"
+           BasedOn="{StaticResource Synergy.Styles.NormalButton.Base}">
+
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="Padding" Value="7 4 7 4"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{StaticResource Brushes.Senary}"/>
+
+        <Setter Property="Background">
+            <Setter.Value>
+
+                <LinearGradientBrush StartPoint="0 0.4" EndPoint="1 0.6">
+
+                    <GradientStop Offset="0"
+                                  Color="{DynamicResource Colors.Sindenary}"/>
+
+                    <GradientStop Offset="1"
+                                  Color="{DynamicResource Colors.Duodenary}"/>
+
+                </LinearGradientBrush>
+
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style TargetType="controls:NormalButton"
+           BasedOn="{StaticResource Styles.NormalButton}"/>
+
+    <Style x:Key="Styles.AdvancedTextBox" TargetType="controls:AdvancedTextBox">
+        <Setter Property="Background" Value="{StaticResource Brushes.Quinary}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Brushes.Denary}"/>
+        <Setter Property="Foreground" Value="{StaticResource Brushes.Septenary}"/>
+        <Setter Property="CaretBrush" Value="{StaticResource Brushes.Senary}"/>
+        <Setter Property="PlaceholderBrush" Value="{StaticResource Brushes.Gray}"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="8 2 8 2"/>
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+
+    <Style x:Key="Styles.ComboBox" TargetType="ComboBox"
+           BasedOn="{StaticResource Synergy.Styles.ComboBox.Base}">
+
+        <Setter Property="BorderBrush" Value="{StaticResource Brushes.Senary}"/> <!-- senary -->
+        <Setter Property="Background" Value="{StaticResource Brushes.Quinary}"/>
+        <Setter Property="Foreground" Value="{StaticResource Brushes.Senary}"/> <!-- senary -->
 
     </Style>
     

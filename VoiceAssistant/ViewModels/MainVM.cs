@@ -27,7 +27,7 @@ namespace VoiceAssistant.ViewModels
 		[RelayCommand]
 		private void OpenCommandsTab()
 		{
-            _localNavigation.NavigateTo<CommandsVM>();
+            _localNavigation.NavigateTo<AssistantActionsVM>();
         }
 
 		[RelayCommand]

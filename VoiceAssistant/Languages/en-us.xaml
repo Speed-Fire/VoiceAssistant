@@ -1,4 +1,29 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="Strings.Options.All">----- All -----</sys:String>
+
+    <sys:String x:Key="Strings.Buttons.Create">Create</sys:String>
+    <sys:String x:Key="Strings.Buttons.Change">Change</sys:String>
+    <sys:String x:Key="Strings.Buttons.Delete">Delete</sys:String>
+    <sys:String x:Key="Strings.Buttons.Apply">Apply</sys:String>
+    <sys:String x:Key="Strings.Buttons.Clear">Clear</sys:String>
+
+    <sys:String x:Key="Strings.AsssistantAction.Change.Name.Colon">Name: *</sys:String>
+    <sys:String x:Key="Strings.AsssistantAction.Change.Command.Colon">Command: *</sys:String>
+    <sys:String x:Key="Strings.AsssistantAction.Change.Description.Colon">Description:</sys:String>
+    <sys:String x:Key="Strings.AsssistantAction.Change.Script.Colon">Script: *</sys:String>
+
+    <sys:String x:Key="Strings.Filter">Filter</sys:String>
+    <sys:String x:Key="Strings.AssistantAction.Filter.Name.Colon">Name:</sys:String>
+    <sys:String x:Key="Strings.AssistantAction.Filter.StrictName">Strict search</sys:String>
+    <sys:String x:Key="Strings.AssistantAction.Filter.UConfirmation.Colon">User confirmation:</sys:String>
+    <sys:String x:Key="Strings.AssistantAction.Filter.UConfirmation.NotNeeded">No confirmation</sys:String>
+    <sys:String x:Key="Strings.AssistantAction.Filter.UConfirmation.Needed">Need confirmation</sys:String>
+    <sys:String x:Key="Strings.AssistantAction.Filter.Status.Colon">Status:</sys:String>
+    <sys:String x:Key="Strings.AssistantAction.Filter.Status.Enabled">Enabled</sys:String>
+    <sys:String x:Key="Strings.AssistantAction.Filter.Status.Disabled">Disabled</sys:String>
     
 </ResourceDictionary>

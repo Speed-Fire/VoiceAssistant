@@ -14,23 +14,23 @@
 
     <UserControl.Resources>
 
-        <Path x:Key="Path.Close"
-              Stroke="{StaticResource Brush.Senary}"
+        <Path x:Key="Paths.Local.Close"
+              Stroke="{StaticResource Brushes.Senary}"
               Data="M 0,0 14,14 M 14,0 0,14"/>
 
-        <Path x:Key="Path.Hide"
-              Stroke="{StaticResource Brush.Senary}"
+        <Path x:Key="Paths.Local.Hide"
+              Stroke="{StaticResource Brushes.Senary}"
               Data="M 0,1 14,1"/>
 
-        <Path x:Key="Path.Expand"
-              Stroke="{StaticResource Brush.Senary}"
+        <Path x:Key="Paths.Local.Expand"
+              Stroke="{StaticResource Brushes.Senary}"
               Data="M 2,2 0,2 0,14 12,14 12,12 14,12 14,0 2,0 2,2 12,2 12,12"/>
 
-        <DrawingBrush x:Key="comp_brush">
+        <DrawingBrush x:Key="Brush.Local.Component">
 
             <DrawingBrush.Drawing>
 
-                <GeometryDrawing Brush="{StaticResource Brush.Secondary}">
+                <GeometryDrawing Brush="{StaticResource Brushes.Secondary}">
 
                     <GeometryDrawing.Geometry>
                         <Geometry>
@@ -44,21 +44,21 @@ M 0 0 H -50 Q -50 5 -48 10 L -42 26 Q -40 30 -30 30 H 50 V 0 z
             
         </DrawingBrush>
 
-        <Style x:Key="CloseButton.Style" TargetType="controls:NormalButton"
-               BasedOn="{StaticResource NormalButtonStyle.Base}">
+        <Style x:Key="Styles.Local.Button.Close" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Synergy.Styles.NormalButton.Base}">
 
             <Setter Property="CornerRadius" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="Background" Value="#D71118"/>
             <Setter Property="Padding" Value="15 5 15 5"/>
-            <Setter Property="Content" Value="{StaticResource Path.Close}"/>
+            <Setter Property="Content" Value="{StaticResource Paths.Local.Close}"/>
             <Setter Property="MinHeight" Value="30"/>
 
         </Style>
 
-        <Style x:Key="WindowButton.Style" TargetType="controls:NormalButton"
-               BasedOn="{StaticResource NormalButtonStyle.Base}">
-            <Setter Property="Background" Value="{StaticResource Brush.Secondary}"/>
+        <Style x:Key="Styles.Local.Button.Window" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Synergy.Styles.NormalButton.Base}">
+            <Setter Property="Background" Value="{StaticResource Brushes.Secondary}"/>
             <Setter Property="Padding" Value="15 5 15 5"/>
             <Setter Property="CornerRadius" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
@@ -67,25 +67,25 @@ M 0 0 H -50 Q -50 5 -48 10 L -42 26 Q -40 30 -30 30 H 50 V 0 z
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Opacity" Value="1"/>
-                    <Setter Property="Background" Value="{StaticResource Brush.Quinary}"/>
+                    <Setter Property="Background" Value="{StaticResource Brushes.Quinary}"/>
                 </Trigger>
             </Style.Triggers>
             
         </Style>
 
-        <Style x:Key="HideButton.Style" TargetType="controls:NormalButton"
-               BasedOn="{StaticResource WindowButton.Style}">
-            <Setter Property="Content" Value="{StaticResource Path.Hide}"/>
+        <Style x:Key="Styles.Local.Button.Hide" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Styles.Local.Button.Window}">
+            <Setter Property="Content" Value="{StaticResource Paths.Local.Hide}"/>
         </Style>
 
-        <Style x:Key="ExpandButton.Style" TargetType="controls:NormalButton"
-               BasedOn="{StaticResource WindowButton.Style}">
-            <Setter Property="Content" Value="{StaticResource Path.Expand}"/>
+        <Style x:Key="Styles.Local.Button.Expand" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Styles.Local.Button.Window}">
+            <Setter Property="Content" Value="{StaticResource Paths.Local.Expand}"/>
         </Style>
 
     </UserControl.Resources>
-    
-    <Grid Background="{StaticResource comp_brush}">
+
+    <Grid Background="{StaticResource Brush.Local.Component}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40"/>
@@ -101,15 +101,15 @@ M 0 0 H -50 Q -50 5 -48 10 L -42 26 Q -40 30 -30 30 H 50 V 0 z
                    VerticalAlignment="Center"/>
 
         <controls:NormalButton Grid.Column="2"
-                               Style="{StaticResource HideButton.Style}"
+                               Style="{StaticResource Styles.Local.Button.Hide}"
                                Click="HideButton_Click"/>
 
         <controls:NormalButton Grid.Column="3"
-                               Style="{StaticResource ExpandButton.Style}"
+                               Style="{StaticResource Styles.Local.Button.Expand}"
                                Click="ExpandButton_Click"/>
 
         <controls:NormalButton Grid.Column="4"
-                               Style="{StaticResource CloseButton.Style}"
+                               Style="{StaticResource Styles.Local.Button.Close}"
                                Click="CloseButton_Click"/>
 
     </Grid>
