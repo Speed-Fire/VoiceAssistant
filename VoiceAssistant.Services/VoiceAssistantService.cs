@@ -12,6 +12,7 @@ using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Recording;
+using VoiceAssistant.Services.Misc.Interfaces;
 
 namespace VoiceAssistant.Services
 {
@@ -26,12 +27,14 @@ namespace VoiceAssistant.Services
 		private readonly object _S2TLock = new();
 
 		private IS2TConverter? S2TConverter { get; set; }
+		private readonly Task _providerInitialization;
 
 		public VoiceAssistantService(
 			CommandRecorder commandRecorder,
 			Provider<S2TConverterInfo> s2TConverterProvider,
 			IExceptionNotifier exceptionNotifier,
-			ICommandResolver commandResolver)
+			ICommandResolver commandResolver,
+			IEnumerable<IProviderInitializer> providerInitializers)
 		{
 			_commandRecorder = commandRecorder;
 			_commandRecorder.CommandRecorded += CommandRecorded;
@@ -42,12 +45,22 @@ namespace VoiceAssistant.Services
 
 			_exceptionNotifier = exceptionNotifier;
 			_commandResolver = commandResolver;
+
+			_providerInitialization = Task.Run(async () =>
+			{
+				foreach(var initializer in providerInitializers)
+				{
+					await initializer.InitializeAsync();
+				}
+			});
 		}
 
 		protected override Task ExecuteAsync(CancellationToken stoppingToken)
 		{
 			return Task.Run(async () =>
 			{
+				await _providerInitialization;
+
 				await _commandResolver.Initialize();
 
 				_commandRecorder.Start();
