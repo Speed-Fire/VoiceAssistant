@@ -108,7 +108,7 @@ namespace VoiceAssistant.Extensions
 					{
 						return provider.GetRequiredService<UrgentNotificationService>();
 					})
-				.AddSingleton<IUrgentNotificator, UrgentNotificator>()
+				.AddSingleton<IUrgentNotifier, UrgentNotifier>()
 				.AddTransient<UrgentNotificatorComponent>();
 
 			return services;

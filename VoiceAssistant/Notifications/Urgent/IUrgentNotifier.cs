@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Notifications.Urgent
 {
-    public interface IUrgentNotificator
+    public interface IUrgentNotifier
     {
         /// <summary>
         /// Push message to the error queue.

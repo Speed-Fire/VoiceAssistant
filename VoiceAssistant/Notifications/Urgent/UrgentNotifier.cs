@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace VoiceAssistant.Notifications.Urgent
 {
-	public class UrgentNotificator(UrgentNotificationService notificationService) : IUrgentNotificator
+	public class UrgentNotifier(UrgentNotificationService notificationService) : IUrgentNotifier
 	{
 		private readonly UrgentNotificationService _notificationService = notificationService;
 

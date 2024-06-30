@@ -27,12 +27,12 @@ namespace VoiceAssistant.ViewModels
 	public partial class AssistantActionsVM(
 		[FromKeyedServices(NavConsts.SINGLETON_SERVICE)] INavigationService globalNavigation,
 		IAssistantActionService assistantActionService,
-		IUrgentNotificator urgentNotificator) 
+		IUrgentNotifier urgentNotificator) 
 		: ViewModel<AssistantActionsView>
 	{
 		private readonly INavigationService _globalNavigation = globalNavigation;
 		private readonly IAssistantActionService _assistantActionService = assistantActionService;
-		private readonly IUrgentNotificator _urgentNotificator = urgentNotificator;
+		private readonly IUrgentNotifier _urgentNotificator = urgentNotificator;
 
 		private volatile bool _initialized = false;
 		public FilteringCollection<AssistantActionEntity> AssistantActions { get; } = [];
