@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plugin.Registrator;
+using Plugin.S2T.Base;
 using Synergy.Core;
 using Synergy.WPF.Common.Extensions;
 using Synergy.WPF.Navigation.Extensions;
@@ -17,10 +18,12 @@ using System.Threading.Tasks;
 using VoiceAssistant.ActionManagement.Extensions;
 using VoiceAssistant.ChatGPT.Extensions;
 using VoiceAssistant.Core.Interfaces;
+using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Extensions;
 using VoiceAssistant.DAL.Providers;
 using VoiceAssistant.Extensions;
+using VoiceAssistant.Misc;
 using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Recording.Extensions;
 using VoiceAssistant.Services;
@@ -28,10 +31,9 @@ using VoiceAssistant.Services.Extensions;
 
 namespace VoiceAssistant
 {
-    internal class Program
+	internal class Program
 	{
-		[STAThread]
-		public static void Main(string[] args)
+		public static async Task Main(string[] args)
 		{
 			InitSubFolders();
 
@@ -61,6 +63,8 @@ namespace VoiceAssistant
 				.RegisterChatGPT(builder.Configuration)
 				.RegisterCommandResolving();
 
+			builder.Services.AddHostedService<WpfStarter>();
+
 			// host building
 			var host = builder.Build();
 
@@ -68,13 +72,7 @@ namespace VoiceAssistant
 			InitThemes(host.Services);
 			InitLanguages(host.Services);
 
-			// run
-			//var hostrun = host.RunAsync();
-
-			var app = host.Services.GetRequiredService<App>();
-			app.Run();
-
-			//await hostrun;
+			await host.RunAsync();
 		}
 
 		private static (DbContext, IDefaultSettingsInitializer) GetDbConfigInitializer(IConfiguration config)

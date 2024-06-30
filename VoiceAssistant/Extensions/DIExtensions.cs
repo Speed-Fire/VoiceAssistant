@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Components;
 using VoiceAssistant.Core;
+using VoiceAssistant.Misc;
 using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Misc.Options;
 using VoiceAssistant.Notifications;
@@ -38,6 +39,9 @@ namespace VoiceAssistant.Extensions
 		public static IServiceCollection RegisterApp(this IServiceCollection services,
 			IConfiguration config)
 		{
+			services
+				.AddHostedService<WpfStarter>();
+
 			services
 				.RegisterAppPaths();
 

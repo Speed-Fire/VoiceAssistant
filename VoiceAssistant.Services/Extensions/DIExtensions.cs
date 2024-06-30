@@ -21,8 +21,8 @@ namespace VoiceAssistant.Services.Extensions
 				.AddTransient<IAssistantActionService, AssistantActionService>()
 				.AddTransient<IProviderInitializer, AssistantActionService>();
 
-			services
-				.AddHostedService<VoiceAssistantService>();
+			//services
+			//	.AddHostedService<VoiceAssistantService>();
 
 			return services;
 		}
