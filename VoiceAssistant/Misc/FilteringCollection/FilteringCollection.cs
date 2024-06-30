@@ -151,9 +151,6 @@ namespace VoiceAssistant.Misc.FilteringCollection
 
 		public void Filter(ICollectionFilter<T>? filter)
 		{
-			if (_filter == filter)
-				return;
-
 			_filter = filter;
 
 			_filtered.Clear();
