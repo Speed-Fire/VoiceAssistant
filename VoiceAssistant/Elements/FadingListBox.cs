@@ -19,7 +19,7 @@ namespace VoiceAssistant.Elements
 
         #region Threshold
 
-        public readonly DependencyProperty ThresholdProperty =
+        public static readonly DependencyProperty ThresholdProperty =
             DependencyProperty.Register("Threshold", typeof(double), typeof(FadingListBox),
                 new UIPropertyMetadata(0.2));
 
@@ -33,7 +33,7 @@ namespace VoiceAssistant.Elements
 
 		#region EdgeGap
 
-		public readonly DependencyProperty EdgeGapProperty =
+		public static readonly DependencyProperty EdgeGapProperty =
 			DependencyProperty.Register("EdgeGap", typeof(double), typeof(FadingListBox),
 				new UIPropertyMetadata(0.5));
 
