@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,23 @@ namespace VoiceAssistant.Services.Entities
 		public long Id { get; set; } = 0;
 		public long AssistantScriptId { get; set; } = 0;
 
-		[ObservableProperty]
 		private string _name = string.Empty;
 
-		[ObservableProperty]
+		[CustomValidation(typeof(AssistantActionEntity), nameof(ValidateNameCommand))]
+		public string Name
+		{
+			get => _name;
+			set => SetProperty(ref _name, value, true);
+		}
+
 		private string _command = string.Empty;
+
+		[CustomValidation(typeof(AssistantActionEntity), nameof(ValidateNameCommand))]
+		public string Command
+		{
+			get => _command;
+			set => SetProperty(ref _command, value, true);
+		}
 
 		[ObservableProperty]
 		private string? _description;
@@ -46,5 +59,13 @@ namespace VoiceAssistant.Services.Entities
 			this._assistantScript = entity.AssistantScript;
 			this.AssistantScriptId = entity.AssistantScriptId;
         }
+
+		public static ValidationResult ValidateNameCommand(string str, ValidationContext context)
+		{
+			if(string.IsNullOrWhiteSpace(str))
+				return new ValidationResult($"{context.MemberName} can't be empty!");
+			else
+				return ValidationResult.Success;
+		}
     }
 }
