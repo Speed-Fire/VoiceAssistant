@@ -11,6 +11,7 @@ namespace VoiceAssistant.Services.Entities
 	public partial class AssistantActionEntity : PublicValidator
 	{
 		public long Id { get; set; } = 0;
+		public long AssistantScriptId { get; set; } = 0;
 
 		[ObservableProperty]
 		private string _name = string.Empty;
@@ -43,6 +44,7 @@ namespace VoiceAssistant.Services.Entities
 			this._needsConfirmation = entity.NeedsConfirmation;
 			this._isEnabled = entity.IsEnabled;
 			this._assistantScript = entity.AssistantScript;
+			this.AssistantScriptId = entity.AssistantScriptId;
         }
     }
 }

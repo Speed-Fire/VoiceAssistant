@@ -21,7 +21,7 @@ namespace VoiceAssistant.Services.Extensions
 			action.NeedsConfirmation = entity.NeedsConfirmation;
 			action.IsEnabled = entity.IsEnabled;
 			action.AssistantScript = entity.AssistantScript;
-			action.AssistantScriptId = entity.AssistantScript.Id;
+			action.AssistantScriptId = entity.AssistantScriptId;
 
 			return action;
 		}
@@ -37,6 +37,7 @@ namespace VoiceAssistant.Services.Extensions
 			action.NeedsConfirmation = entity.NeedsConfirmation;
 			action.IsEnabled = entity.IsEnabled;
 			action.AssistantScript = entity.AssistantScript;
+			action.AssistantScriptId = entity.AssistantScriptId;
 
 			return action;
 		}
