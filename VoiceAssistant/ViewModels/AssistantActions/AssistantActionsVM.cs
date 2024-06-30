@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Extensions;
 using VoiceAssistant.Misc.FilteringCollection;
 using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.Services.AssistantActionServices;
@@ -134,10 +135,8 @@ namespace VoiceAssistant.ViewModels
 
 				Dispatcher.Invoke(() =>
 				{
-					var pos = AssistantActions.IndexOf(response.ReturnValue);
+					var pos = AssistantActions.IndexOf(act => act.Id == response.ReturnValue.Id);
 					AssistantActions[pos] = response.ReturnValue;
-					//AssistantActions.RemoveAt(pos);
-					//AssistantActions.Insert(pos, response.ReturnValue);
 				});
 			});
 		}
