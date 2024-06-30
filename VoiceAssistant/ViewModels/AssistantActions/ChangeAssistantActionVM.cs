@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.Services.AssistantActionServices;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Views;
@@ -17,32 +18,37 @@ namespace VoiceAssistant.ViewModels.AssistantActions
 	internal partial class ChangeAssistantActionVM : ViewModel<ChangeAssistantActionView>
 	{
         private readonly IAssistantActionService _assistantActionService;
+        private readonly IUrgentNotifier _urgentNotifier;
 
         public bool IsUpdatingMode { get; }
         public AssistantActionEntity AssistantAction { get; }
 
-        public ChangeAssistantActionVM(IAssistantActionService service)
-        {
-            _assistantActionService = service;
-
-            IsUpdatingMode = false;
-            AssistantAction = new();
-
-			AssistantAction.ErrorsChanged += AssistantAction_ErrorsChanged;
-        }
-
-		public ChangeAssistantActionVM(IAssistantActionService service, 
-            AssistantActionEntity action)
-        {
+		public ChangeAssistantActionVM(IAssistantActionService service,
+            IUrgentNotifier urgentNotifier)
+		{
 			_assistantActionService = service;
 
-            IsUpdatingMode = true;
-            AssistantAction = new(action);
+			IsUpdatingMode = false;
+			AssistantAction = new();
 
 			AssistantAction.ErrorsChanged += AssistantAction_ErrorsChanged;
+			_urgentNotifier = urgentNotifier;
 		}
 
-        [RelayCommand]
+		public ChangeAssistantActionVM(IAssistantActionService service,
+			IUrgentNotifier urgentNotifier,
+			AssistantActionEntity action)
+		{
+			_assistantActionService = service;
+
+			IsUpdatingMode = true;
+			AssistantAction = new(action);
+
+			AssistantAction.ErrorsChanged += AssistantAction_ErrorsChanged;
+			_urgentNotifier = urgentNotifier;
+		}
+
+		[RelayCommand]
         private void Cancel()
         {
             Navigation.ReleaseDialog<AssistantActionEntity?>(false, null);
@@ -65,6 +71,9 @@ namespace VoiceAssistant.ViewModels.AssistantActions
             if (!res)
             {
                 // error handling
+                var msg = IsUpdatingMode ? "Can't change this action." : "Can't create an action.";
+                _urgentNotifier
+                    .NotifyError(msg);
 
                 return;
             }

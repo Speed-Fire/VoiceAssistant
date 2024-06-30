@@ -32,7 +32,7 @@ namespace VoiceAssistant.ViewModels
 	{
 		private readonly INavigationService _globalNavigation = globalNavigation;
 		private readonly IAssistantActionService _assistantActionService = assistantActionService;
-		private readonly IUrgentNotifier _urgentNotificator = urgentNotificator;
+		private readonly IUrgentNotifier _urgentNotifier = urgentNotificator;
 
 		private volatile bool _initialized = false;
 		public FilteringCollection<AssistantActionEntity> AssistantActions { get; } = [];
@@ -60,7 +60,7 @@ namespace VoiceAssistant.ViewModels
 						AssistantActions.Add(action);
 					}
 
-					TestElements();
+					//TestElements();
 				});
 
 				_initialized = true;
@@ -100,15 +100,15 @@ namespace VoiceAssistant.ViewModels
 				action.IsEnabled = !action.IsEnabled;
 
 				// error handling
-				_urgentNotificator
-					.NotifyError("Can't turn on this action.", 0);
+				_urgentNotifier
+					.NotifyError("Can't turn on this action.");
 			}
 		}
 
 		[RelayCommand]
 		private void CreateAction()
 		{
-			var vm = new ChangeAssistantActionVM(_assistantActionService);
+			var vm = new ChangeAssistantActionVM(_assistantActionService, _urgentNotifier);
 
 			_globalNavigation.PushDialog<AssistantActionEntity?>(vm, (response) =>
 			{
@@ -125,7 +125,7 @@ namespace VoiceAssistant.ViewModels
 		[RelayCommand]
 		private void EditAction(AssistantActionEntity action)
 		{
-			var vm = new ChangeAssistantActionVM(_assistantActionService, action);
+			var vm = new ChangeAssistantActionVM(_assistantActionService, _urgentNotifier, action);
 
 			_globalNavigation.PushDialog<AssistantActionEntity?>(vm, (response) =>
 			{
@@ -153,6 +153,11 @@ namespace VoiceAssistant.ViewModels
 				{
 					AssistantActions.Remove(action);
 				});
+			}
+			else
+			{
+				_urgentNotifier
+					.NotifyError("Can't delete this action.");
 			}
 		}
 
