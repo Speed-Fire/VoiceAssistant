@@ -45,9 +45,6 @@ namespace VoiceAssistant
 				Synergy.WPF.Navigation.Misc.NavConsts.SINGLETON_SERVICE);
 			navService.NavigateTo<MainVM>();
 
-			var urgentNotificationHandler = _services.GetRequiredService<UrgentNotificationHandler>();
-			urgentNotificationHandler.StartAsync();
-
 			MainWindow.Show();
 		}
 	}

@@ -26,11 +26,11 @@ namespace VoiceAssistant.Components
 	{
 		private readonly List<DependencyObject> _hitResultList = [];
 
-		public UrgentNotificatorComponent(UrgentNotificationHandler notificationHandler)
+		public UrgentNotificatorComponent(UrgentNotificationService notificationService)
 		{
 			InitializeComponent();
 
-			DataContext = notificationHandler;
+			DataContext = notificationService;
 
 			Loaded += UrgentNotificatorComponent_Loaded;
 			Unloaded += UrgentNotificatorComponent_Unloaded;

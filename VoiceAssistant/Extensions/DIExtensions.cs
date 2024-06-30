@@ -101,11 +101,14 @@ namespace VoiceAssistant.Extensions
 
 		private static IServiceCollection RegisterViewServices(this IServiceCollection services)
 		{
-			var urgentNotificationHandler = new UrgentNotificationHandler();
 
 			services
-				.AddSingleton(urgentNotificationHandler)
-				.AddSingleton<IUrgentNotificator>(urgentNotificationHandler)
+				.AddSingleton<UrgentNotificationService>()
+				.AddHostedService((provider) => 
+					{
+						return provider.GetRequiredService<UrgentNotificationService>();
+					})
+				.AddSingleton<IUrgentNotificator, UrgentNotificator>()
 				.AddTransient<UrgentNotificatorComponent>();
 
 			return services;
