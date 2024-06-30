@@ -97,7 +97,8 @@
                            Text="{DynamicResource Strings.AsssistantAction.Change.Name.Colon}"/>
 
                 <controls:AdvancedTextBox Grid.Row="1" Grid.Column="2"
-                                          Placeholder="Name"/>
+                                          Placeholder="Name"
+                                          Text="{Binding AssistantAction.Name}"/>
 
                 <!-- Command -->
 
@@ -107,7 +108,8 @@
                 <TextBlock Grid.Row="3" Grid.Column="2"
                            Text="{DynamicResource Strings.AsssistantAction.Change.Command.Colon}"/>
 
-                <controls:AdvancedTextBox Grid.Row="4" Grid.Column="2"/>
+                <controls:AdvancedTextBox Grid.Row="4" Grid.Column="2"
+                                          Text="{Binding AssistantAction.Command}"/>
 
                 <!-- Description -->
 
@@ -117,7 +119,8 @@
                 <TextBlock Grid.Row="6" Grid.Column="2"
                            Text="{DynamicResource Strings.AsssistantAction.Change.Description.Colon}"/>
 
-                <controls:AdvancedTextBox Grid.Row="7" Grid.Column="2"/>
+                <controls:AdvancedTextBox Grid.Row="7" Grid.Column="2"
+                                          Text="{Binding AssistantAction.Description}"/>
 
                 <!-- Script -->
 
