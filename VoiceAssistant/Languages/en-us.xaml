@@ -20,6 +20,7 @@
     <sys:String x:Key="Strings.AsssistantAction.Change.Command.Colon">Command: *</sys:String>
     <sys:String x:Key="Strings.AsssistantAction.Change.Description.Colon">Description:</sys:String>
     <sys:String x:Key="Strings.AsssistantAction.Change.Script.Colon">Script: *</sys:String>
+    <sys:String x:Key="Strings.AsssistantAction.Change.UserConfirmation">Requires user confirmation</sys:String>
 
     <sys:String x:Key="Strings.Filter">Filter</sys:String>
     <sys:String x:Key="Strings.AssistantAction.Filter.Name.Colon">Name:</sys:String>

@@ -6,11 +6,14 @@
              xmlns:local="clr-namespace:VoiceAssistant.Views"
              
              xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"
+             xmlns:convs="clr-namespace:Synergy.WPF.Common.Converters;assembly=Synergy.WPF.Common"
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
+
+        <convs:Bool2VisibilityConverter x:Key="b2vconv"/>
 
         <Style TargetType="TextBlock"
                BasedOn="{StaticResource Styles.TextBlock}">
@@ -88,17 +91,23 @@
                     <ColumnDefinition Width="32"/>
                     <ColumnDefinition Width="5"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="32"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Name -->
                 
                 <TextBlock Grid.Row="0" Grid.Column="2"
+                           Height="32"
+                           VerticalAlignment="Bottom"
                            Margin="0 0 0 3"
                            Text="{DynamicResource Strings.AsssistantAction.Change.Name.Colon}"/>
 
                 <controls:AdvancedTextBox Grid.Row="1" Grid.Column="2"
                                           Placeholder="Name"
-                                          Text="{Binding AssistantAction.Name}"/>
+                                          Text="{Binding AssistantAction.Name, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!-- Command -->
 
@@ -109,7 +118,7 @@
                            Text="{DynamicResource Strings.AsssistantAction.Change.Command.Colon}"/>
 
                 <controls:AdvancedTextBox Grid.Row="4" Grid.Column="2"
-                                          Text="{Binding AssistantAction.Command}"/>
+                                          Text="{Binding AssistantAction.Command, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!-- Description -->
 
@@ -146,17 +155,32 @@
                 
                 <!-- Buttons -->
 
-                <Rectangle Grid.Row="11" Grid.ColumnSpan="3"
+                <Rectangle Grid.Row="11" Grid.ColumnSpan="7"
                            Margin="0 15 0 15"
                            Style="{StaticResource Styles.Delimeter.Horizontal}"/>
 
                 <controls:NormalButton
-                    Grid.Row="12" Grid.Column="2"
+                    Grid.Row="12" Grid.Column="4" Grid.ColumnSpan="3"
                     Style="{StaticResource Styles.Local.Button.Change}"
                     HorizontalAlignment="Right"
                     Margin="0 0 10 0"
                     Command="{Binding ChangeCommand}"/>
 
+                <!-- Second column -->
+
+                <CheckBox x:Name="confirm_checkBox"
+                          Grid.Column="4" Margin="0 0 10 0"
+                          Style="{StaticResource Styles.CheckBox}"
+                          Content="{DynamicResource Strings.AsssistantAction.Change.UserConfirmation}"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding AssistantAction.NeedsConfirmation}"/>
+
+                <Image Grid.Column="6" Source="{StaticResource Bitmaps.Attention64}"
+                       Visibility="{Binding ElementName=confirm_checkBox, Path=IsChecked,
+                            Converter={StaticResource b2vconv}}"/>
+
+                
             </Grid>
             
         </Border>
