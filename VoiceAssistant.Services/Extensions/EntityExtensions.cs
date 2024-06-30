@@ -17,7 +17,7 @@ namespace VoiceAssistant.Services.Extensions
 			action.Id = entity.Id;
 			action.Name = entity.Name;
 			action.Command = entity.Command;
-			action.Description = entity.Description;
+			action.Description = string.IsNullOrWhiteSpace(entity.Description) ? null : entity.Description;
 			action.NeedsConfirmation = entity.NeedsConfirmation;
 			action.IsEnabled = entity.IsEnabled;
 			action.AssistantScript = entity.AssistantScript;
@@ -33,7 +33,7 @@ namespace VoiceAssistant.Services.Extensions
 			action.Id = entity.Id;
 			action.Name = entity.Name;
 			action.Command = entity.Command;
-			action.Description = entity.Description;
+			action.Description = string.IsNullOrWhiteSpace(entity.Description) ? null : entity.Description;
 			action.NeedsConfirmation = entity.NeedsConfirmation;
 			action.IsEnabled = entity.IsEnabled;
 			action.AssistantScript = entity.AssistantScript;
