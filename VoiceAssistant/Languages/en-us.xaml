@@ -5,6 +5,11 @@
 
     <sys:String x:Key="Strings.Options.All">----- All -----</sys:String>
 
+    <sys:String x:Key="Strings.Notifications.Error">Error</sys:String>
+    <sys:String x:Key="Strings.Notifications.Warning">Warning</sys:String>
+    <sys:String x:Key="Strings.Notifications.Information">Information</sys:String>
+    <sys:String x:Key="Strings.Notifications.AdditionalInfo">Additional info</sys:String>
+    
     <sys:String x:Key="Strings.Buttons.Create">Create</sys:String>
     <sys:String x:Key="Strings.Buttons.Change">Change</sys:String>
     <sys:String x:Key="Strings.Buttons.Delete">Delete</sys:String>

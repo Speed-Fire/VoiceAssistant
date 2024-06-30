@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Misc.FilteringCollection;
+using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.Services.AssistantActionServices;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.ViewModels.AssistantActions;
@@ -25,11 +26,13 @@ namespace VoiceAssistant.ViewModels
 {
 	public partial class AssistantActionsVM(
 		[FromKeyedServices(NavConsts.SINGLETON_SERVICE)] INavigationService globalNavigation,
-		IAssistantActionService assistantActionService) 
+		IAssistantActionService assistantActionService,
+		IUrgentNotificator urgentNotificator) 
 		: ViewModel<AssistantActionsView>
 	{
 		private readonly INavigationService _globalNavigation = globalNavigation;
 		private readonly IAssistantActionService _assistantActionService = assistantActionService;
+		private readonly IUrgentNotificator _urgentNotificator = urgentNotificator;
 
 		private volatile bool _initialized = false;
 		public FilteringCollection<AssistantActionEntity> AssistantActions { get; } = [];
@@ -97,6 +100,8 @@ namespace VoiceAssistant.ViewModels
 				action.IsEnabled = !action.IsEnabled;
 
 				// error handling
+				_urgentNotificator
+					.NotifyError("Can't turn on this action.", 0);
 			}
 		}
 

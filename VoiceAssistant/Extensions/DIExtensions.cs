@@ -7,9 +7,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.Components;
 using VoiceAssistant.Core;
 using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Misc.Options;
+using VoiceAssistant.Notifications;
+using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.ViewModels;
 using VoiceAssistant.Views;
 using VoiceAssistant.Views.AssistantActions;
@@ -47,6 +50,7 @@ namespace VoiceAssistant.Extensions
 				.AddSingleton<App>();
 
 			services
+				.RegisterViewServices()
 				.RegisterViewModelss()
 				.RegisterViews();
 
@@ -87,6 +91,18 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<MainVM>()
 				.AddTransient<AssistantActionsVM>()
 				.AddTransient<ScriptEditorVM>();
+
+			return services;
+		}
+
+		private static IServiceCollection RegisterViewServices(this IServiceCollection services)
+		{
+			var urgentNotificationHandler = new UrgentNotificationHandler();
+
+			services
+				.AddSingleton(urgentNotificationHandler)
+				.AddSingleton<IUrgentNotificator>(urgentNotificationHandler)
+				.AddTransient<UrgentNotificatorComponent>();
 
 			return services;
 		}

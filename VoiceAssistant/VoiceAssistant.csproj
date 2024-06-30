@@ -19,13 +19,16 @@
     <None Remove="Resources\Icons\delete64.png" />
     <None Remove="Resources\Icons\description64.png" />
     <None Remove="Resources\Icons\edit64.png" />
+    <None Remove="Resources\Icons\error64.png" />
+    <None Remove="Resources\Icons\info64.png" />
     <None Remove="Resources\Icons\script64.png" />
     <None Remove="Resources\Icons\voice64.png" />
+    <None Remove="Resources\Icons\warning64.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
-    <PackageReference Include="Synergy.WPF.Common" Version="1.2.3" />
+    <PackageReference Include="Synergy.WPF.Common" Version="1.4.1" />
     <PackageReference Include="Synergy.WPF.Navigation" Version="2.1.1" />
   </ItemGroup>
 
@@ -52,14 +55,21 @@
     <Resource Include="Resources\Icons\delete64.png" />
     <Resource Include="Resources\Icons\description64.png" />
     <Resource Include="Resources\Icons\edit64.png" />
+    <Resource Include="Resources\Icons\error64.png" />
+    <Resource Include="Resources\Icons\info64.png" />
     <Resource Include="Resources\Icons\script64.png" />
     <Resource Include="Resources\Icons\voice64.png" />
+    <Resource Include="Resources\Icons\warning64.png" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AttachedProperties\Animations\" />
   </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@
                 <ResourceDictionary Source="Styles/Resources.xaml"/>
                 <ResourceDictionary Source="Styles/ReturnButton.xaml"/>
                 <ResourceDictionary Source="Styles/CheckBox.xaml"/>
-                
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

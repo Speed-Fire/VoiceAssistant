@@ -7,6 +7,7 @@ using System.Windows;
 using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Misc.Helpers;
 using VoiceAssistant.Misc.Options;
+using VoiceAssistant.Notifications;
 using VoiceAssistant.ViewModels;
 
 namespace VoiceAssistant
@@ -20,7 +21,8 @@ namespace VoiceAssistant
 		private readonly ThemeSelector _themeSelector;
 		private readonly LanguageSelector _languageSelector;
 
-		public App(IServiceProvider serviceProvider, IOptions<InitializationConfig> options)
+		public App(IServiceProvider serviceProvider,
+			IOptions<InitializationConfig> options)
 		{
 			InitializeComponent();
 
@@ -42,6 +44,9 @@ namespace VoiceAssistant
 			var navService = _services.GetRequiredKeyedService<INavigationService>(
 				Synergy.WPF.Navigation.Misc.NavConsts.SINGLETON_SERVICE);
 			navService.NavigateTo<MainVM>();
+
+			var urgentNotificationHandler = _services.GetRequiredService<UrgentNotificationHandler>();
+			urgentNotificationHandler.StartAsync();
 
 			MainWindow.Show();
 		}
