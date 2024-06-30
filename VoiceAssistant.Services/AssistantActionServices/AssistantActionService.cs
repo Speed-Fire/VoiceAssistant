@@ -59,8 +59,6 @@ namespace VoiceAssistant.Services.AssistantActionServices
 				await _dbContext.SaveChangesAsync();
 				await trans.CommitAsync();
 
-				_dbContext.ChangeTracker.Clear();
-
 				_actions.Value.Add(entity);
 
 				RefreshProvider();
@@ -78,6 +76,8 @@ namespace VoiceAssistant.Services.AssistantActionServices
 			finally
 			{
 				await trans.DisposeAsync();
+
+				_dbContext.ChangeTracker.Clear();
 			}
 		}
 
@@ -110,8 +110,6 @@ namespace VoiceAssistant.Services.AssistantActionServices
 				await _dbContext.SaveChangesAsync();
 				await trans.CommitAsync();
 
-				_dbContext.ChangeTracker.Clear();
-
 				var providerEntry = _actions.Value.First(a => a.Id == action.Id);
 				var entryPos = _actions.Value.IndexOf(providerEntry);
 				_actions.Value[entryPos] = entity;
@@ -131,6 +129,8 @@ namespace VoiceAssistant.Services.AssistantActionServices
 			finally
 			{
 				await trans.DisposeAsync();
+
+				_dbContext.ChangeTracker.Clear();
 			}
 		}
 
