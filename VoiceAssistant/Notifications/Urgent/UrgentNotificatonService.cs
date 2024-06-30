@@ -94,10 +94,24 @@ namespace VoiceAssistant.Notifications
 
 		#region IDisposable implementation
 
+		private readonly object _lock = new();
+		private bool Disposed { get; set; }
+
 		public void Dispose()
 		{
-			_cancellationTokenSource?.Cancel();
-			_cancellationTokenSource?.Dispose();
+			if (!Disposed)
+			{
+				lock (_lock)
+				{
+					if (!Disposed)
+					{
+						_cancellationTokenSource?.Cancel();
+						_cancellationTokenSource?.Dispose();
+
+						Disposed = true;
+					}
+				}
+			}
 		}
 
 		#endregion
