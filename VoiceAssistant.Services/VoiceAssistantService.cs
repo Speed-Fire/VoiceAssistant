@@ -19,7 +19,7 @@ namespace VoiceAssistant.Services
 	public sealed class VoiceAssistantService : BackgroundService
 	{
 		private readonly CommandRecorder _commandRecorder;
-		private readonly ICommandResolver _commandResolver;
+		private readonly CommandResolver _commandResolver;
 		private readonly Provider<S2TConverterInfo> _S2TConverterProvider;
 		private readonly IExceptionNotifier _exceptionNotifier;
 		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
@@ -33,7 +33,7 @@ namespace VoiceAssistant.Services
 			CommandRecorder commandRecorder,
 			Provider<S2TConverterInfo> s2TConverterProvider,
 			IExceptionNotifier exceptionNotifier,
-			ICommandResolver commandResolver,
+			CommandResolver commandResolver,
 			IVoiceAssistantMonitor voiceAssistantMonitor)
 		{
 			_commandRecorder = commandRecorder;
@@ -54,9 +54,14 @@ namespace VoiceAssistant.Services
 		{
 			return Task.Run(async () =>
 			{
-				await _commandResolver.Initialize();
-
-				_commandRecorder.Start();
+				if (!await _commandResolver.Initialize())
+				{
+					_voiceAssistantMonitor.Block();
+				}
+				else
+				{
+					_commandRecorder.Start();
+				}
 
 				while (!stoppingToken.IsCancellationRequested)
 				{
