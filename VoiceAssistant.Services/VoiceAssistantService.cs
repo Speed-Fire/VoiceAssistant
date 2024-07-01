@@ -42,6 +42,7 @@ namespace VoiceAssistant.Services
 			_actionsQueue = new();
 			_S2TConverterProvider = s2TConverterProvider;
 			_S2TConverterProvider.PropertyChanged += S2TConverterProvider_PropertyChanged;
+			S2TConverter = _S2TConverterProvider.Value?.ConverterFactory.Invoke();
 
 			_exceptionNotifier = exceptionNotifier;
 			_commandResolver = commandResolver;
