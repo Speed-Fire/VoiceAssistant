@@ -16,7 +16,7 @@ namespace VoiceAssistant.ChatGPT.Extensions
 		public static IServiceCollection RegisterChatGPT(this IServiceCollection services,
 			IConfiguration config)
 		{
-			var apikey = config.GetRequiredSection("Gemini")
+			var apikey = config.GetRequiredSection("Application:ChatGPT:Gemini")
 				.GetRequiredSection("ServiceApiKey").Value ?? string.Empty;
 			
 #pragma warning disable SKEXP0070 // Тип предназначен только для оценки и может быть изменен или удален в будущих обновлениях. Чтобы продолжить, скройте эту диагностику.
