@@ -2,41 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common">
 
-    <Style x:Key="Styles.Sidebar.Base" TargetType="controls:Sidebar">
-        <Setter Property="VerticalAlignment" Value="Stretch"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="controls:Sidebar">
-                    <Grid
-                        Background="{TemplateBinding Background}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="50"/>
-                        </Grid.RowDefinitions>
-
-                        <Path Grid.Row="0"
-                              Stretch="Uniform"
-                              Margin="0,5"
-                              VerticalAlignment="Top"
-                              Height="25"
-                              Width="25"
-                              Data="{TemplateBinding TitleIcon}"
-                              Fill="{TemplateBinding TitleIconColor}"/>
-
-                        <ScrollViewer
-                            Grid.Row="1"
-                            VerticalScrollBarVisibility="Hidden"
-                            Background="{TemplateBinding Background}">
-                            <ItemsPresenter/>
-                        </ScrollViewer>
-
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style x:Key="Styles.NavItem.Base" TargetType="controls:NavItem">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -98,8 +63,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Styles.Sidebar" TargetType="controls:Sidebar"
-           BasedOn="{StaticResource Styles.Sidebar.Base}">
+    <Style x:Key="Styles.Sidebar" TargetType="controls:Sidebar">
 
         <Setter Property="Background" Value="{StaticResource Brushes.Sidebar.Background}"/>
         

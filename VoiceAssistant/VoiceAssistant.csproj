@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
-    <PackageReference Include="Synergy.WPF.Common" Version="1.4.1" />
+    <PackageReference Include="Synergy.WPF.Common" Version="1.5.0" />
     <PackageReference Include="Synergy.WPF.Navigation" Version="2.1.1" />
   </ItemGroup>
 
