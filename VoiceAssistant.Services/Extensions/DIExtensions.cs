@@ -8,6 +8,7 @@ using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Services.AssistantActionServices;
 using VoiceAssistant.Services.Entities;
+using VoiceAssistant.Services.Misc.Implementations;
 using VoiceAssistant.Services.Misc.Interfaces;
 namespace VoiceAssistant.Services.Extensions
 {
@@ -19,7 +20,10 @@ namespace VoiceAssistant.Services.Extensions
 		{
 			services
 				.AddTransient<IAssistantActionService, AssistantActionService>()
-				.AddTransient<IProviderInitializer, AssistantActionService>();
+				.AddTransient<IProviderInitializer, AssistantActionsProviderInitializer>();
+
+			services
+				.AddSingleton<IVoiceAssistantMonitor, VoiceAssistantMonitor>();
 
 			//services
 			//	.AddHostedService<VoiceAssistantService>();

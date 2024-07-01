@@ -16,14 +16,16 @@ using VoiceAssistant.Services.Misc.Interfaces;
 
 namespace VoiceAssistant.Services
 {
-	public class VoiceAssistantService : BackgroundService
+	public sealed class VoiceAssistantService : BackgroundService
 	{
 		private readonly CommandRecorder _commandRecorder;
 		private readonly ICommandResolver _commandResolver;
 		private readonly ConcurrentQueue<AssistantAction> _actionsQueue;
 		private readonly Provider<S2TConverterInfo> _S2TConverterProvider;
 		private readonly IExceptionNotifier _exceptionNotifier;
+		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
 
+		private readonly ConcurrentQueue<AssistantAction> _actionsQueue;
 		private readonly object _S2TLock = new();
 
 		private IS2TConverter? S2TConverter { get; set; }
@@ -34,7 +36,7 @@ namespace VoiceAssistant.Services
 			Provider<S2TConverterInfo> s2TConverterProvider,
 			IExceptionNotifier exceptionNotifier,
 			ICommandResolver commandResolver,
-			IEnumerable<IProviderInitializer> providerInitializers)
+			IVoiceAssistantMonitor voiceAssistantMonitor)
 		{
 			_commandRecorder = commandRecorder;
 			_commandRecorder.CommandRecorded += CommandRecorded;
@@ -46,13 +48,8 @@ namespace VoiceAssistant.Services
 			_exceptionNotifier = exceptionNotifier;
 			_commandResolver = commandResolver;
 
-			_providerInitialization = Task.Run(async () =>
-			{
-				foreach(var initializer in providerInitializers)
-				{
-					await initializer.InitializeAsync();
-				}
-			});
+			_voiceAssistantMonitor = voiceAssistantMonitor;
+			_voiceAssistantMonitor.PropertyChanged += VoiceAssistantMonitor_PropertyChanged;
 		}
 
 		protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -134,6 +131,21 @@ namespace VoiceAssistant.Services
 			}
 		}
 
+		private void VoiceAssistantMonitor_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+		{
+			if(e.PropertyName == nameof(IVoiceAssistantMonitor.IsListening))
+			{
+				if(_voiceAssistantMonitor.IsListening)
+				{
+					_commandRecorder.Start();
+				}
+				else
+				{
+					_commandRecorder.Stop();
+				}
+			}
+		}
+
 		#endregion
 
 		public override void Dispose()
@@ -141,6 +153,7 @@ namespace VoiceAssistant.Services
 			base.Dispose();
 
 			_S2TConverterProvider.PropertyChanged -= S2TConverterProvider_PropertyChanged;
+			_voiceAssistantMonitor.PropertyChanged -= VoiceAssistantMonitor_PropertyChanged;
 
 			_commandRecorder.Dispose();
 		}
