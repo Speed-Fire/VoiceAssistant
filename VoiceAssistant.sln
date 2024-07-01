@@ -35,7 +35,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{2947C079-6E2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBConfiguration", "DBConfiguration\DBConfiguration.csproj", "{DE7A9967-DDD1-47F2-AECC-9824760E6A24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.DAL", "VoiceAssistant.DAL\VoiceAssistant.DAL.csproj", "{6988F5E9-E662-4B10-A642-F66CBF8D359D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.DAL", "VoiceAssistant.DAL\VoiceAssistant.DAL.csproj", "{6988F5E9-E662-4B10-A642-F66CBF8D359D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{3930FE09-7925-43ED-BA5C-A851E062CCD8}"
+	ProjectSection(SolutionItems) = preProject
+		DefaultAppDbConfigurationScript.sql = DefaultAppDbConfigurationScript.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
