@@ -5,8 +5,9 @@ namespace VoiceAssistant.ActionManagement
 {
 	public interface ICommandResolver : IDisposable
 	{
+		public string Name { get; }
 		public bool IsInitialized { get; }
-		Task Initialize();
+		Task<bool> Initialize();
 		Task<OneOf<AssistantAction, Exception>> Resolve(string command);
 	}
 }

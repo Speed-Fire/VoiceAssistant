@@ -4,43 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.ActionManagement.Misc;
+using VoiceAssistant.ActionManagement.Switch;
 using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Domain.Models;
 
 namespace VoiceAssistant.ActionManagement
 {
-	public class CommandResolver(SmartCommandResolver smartResolver, 
-		DummyCommandResolver dummyResolver) : ICommandResolver
+	public class CommandResolver(IActiveCommandResolverSwitch activeCommandResolverSwitch)
+		: ICommandResolver
 	{
-		private readonly SmartCommandResolver _smartResolver = smartResolver;
-		private readonly DummyCommandResolver _dummyResolver = dummyResolver;
-
-		private ICommandResolver _activeResolver = smartResolver;
-		private DateTime? _lastSmartResolverCriticalError;
-
+		private readonly IActiveCommandResolverSwitch _resolverSwitch = activeCommandResolverSwitch;
 		private readonly Mutex _lock = new(false, ActionConsts.RESOLVER_MUTEX);
 
 		public bool IsInitialized => true;
 
-		public async Task Initialize()
+		public string Name => "Main Command Resolver";
+
+		public Task<bool> Initialize()
 		{
-			var smart = _smartResolver.Initialize();
-			var dummy = _dummyResolver.Initialize();
-
-			await smart;
-			await dummy;
-
-			if(!_smartResolver.IsInitialized)
-				SetDummyResolver();
+			return _resolverSwitch.Initialize();
 		}
 
 		public async Task<OneOf<AssistantAction, Exception>> Resolve(string command)
 		{
 			_lock.WaitOne();
 
-			TrySetSmartResolver();
+			var resolver = _resolverSwitch.GetActiveResolver();
 
-			var result = await _activeResolver.Resolve(command);
+			var result = await resolver.Resolve(command);
 
 			if (result.IsFirst || result.Second is VoicableException)
 			{
@@ -49,37 +40,18 @@ namespace VoiceAssistant.ActionManagement
 				return result; 
 			}
 
-			SetDummyResolver();
+			_resolverSwitch.SignalCurrentResolverError();
+			resolver = _resolverSwitch.GetActiveResolver();
 
-			result = await _activeResolver.Resolve(command);
+			result = await resolver.Resolve(command);
 
 			_lock.ReleaseMutex();
 
 			return result;
 		}
 
-		private void TrySetSmartResolver()
-		{
-			if (!_smartResolver.IsInitialized || _lastSmartResolverCriticalError is null)
-				return;
-
-			if (DateTime.Now - _lastSmartResolverCriticalError < TimeSpan.FromMinutes(5))
-				return;
-
-			_lastSmartResolverCriticalError = null;
-			_activeResolver = _smartResolver;
-		}
-
-		private void SetDummyResolver()
-		{
-			_lastSmartResolverCriticalError = DateTime.Now;
-			_activeResolver = _dummyResolver;
-		}
-
 		public void Dispose()
 		{
-			_smartResolver.Dispose();
-			_dummyResolver.Dispose();
 			_lock.Dispose();
 		}
 	}

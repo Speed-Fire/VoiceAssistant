@@ -62,7 +62,7 @@ namespace VoiceAssistant
 				.RegisterApp(builder.Configuration)
 				.RegisterHttpClient()
 				.RegisterChatGPT(builder.Configuration)
-				.RegisterCommandResolving();
+				.RegisterCommandResolving(builder.Configuration);
 
 			builder.Services.AddHostedService<WpfStarter>();
 

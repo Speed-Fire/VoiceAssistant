@@ -10,23 +10,28 @@ using VoiceAssistant.Domain.Models;
 
 namespace VoiceAssistant.ActionManagement
 {
-	public class SmartCommandResolver : ICommandResolver
+	internal class SmartCommandResolver : ICommandResolver
 	{
 		private const string SYSTEM_MSG = "Hi. I'll send you a enumerated list of possible actions. Then i'm going to send you some sentences and you must send me back the number of the most similar action. If the sentence is not similar to any actions, then send -1. You should send only number.";
 
-		private readonly IChatGPT _chat;
+		public string Name => "Smart command resolver";
+
+		private readonly Func<IChatGPT> _chatGPTFactory;
 		private readonly Provider<List<AssistantAction>> _actions;
 		private readonly Mutex _lock = new(false, ActionConsts.RESOLVER_MUTEX);
 
 		private bool isInitialized = false;
 		public bool IsInitialized => isInitialized;
 
+		private IChatGPT? _chat;
+
 		private DateTime? _lastHistoryClean;
 		private IEnumerable<AssistantAction> _enabledActions;
 
-		public SmartCommandResolver(IChatGPT chat, Provider<List<AssistantAction>> actions)
+		public SmartCommandResolver(Func<IChatGPT> chatGPTFactpry,
+			Provider<List<AssistantAction>> actions)
 		{
-			_chat = chat;
+			_chatGPTFactory = chatGPTFactpry;
 			_actions = actions;
 
 			_enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
@@ -34,12 +39,16 @@ namespace VoiceAssistant.ActionManagement
 			_actions.PropertyChanged += ActionsProvider_Updated;
 		}
 
-		public async Task Initialize()
+		public async Task<bool> Initialize()
 		{
 			isInitialized = false;
 
 			try
 			{
+				_chat = _chatGPTFactory.Invoke();
+				if (_chat is null)
+					return false;
+
 				await _chat.SendMessage(SYSTEM_MSG);
 
 				await _chat.SendMessage(GetActionsList());
@@ -47,11 +56,13 @@ namespace VoiceAssistant.ActionManagement
 				isInitialized = true;
 			}
 			catch { }
+
+			return isInitialized;
 		}
 
 		public async Task<OneOf<AssistantAction, Exception>> Resolve(string command)
 		{
-			if(!isInitialized)
+			if(!isInitialized || _chat is null)
 			{
 				return new(new NotInitializedException(nameof(SmartCommandResolver)));
 			}
@@ -89,7 +100,7 @@ namespace VoiceAssistant.ActionManagement
 				return;
 
 			_lastHistoryClean = DateTime.Now;
-			_chat.ClearHistory();
+			_chat?.ClearHistory();
 
 			await Initialize();
 		}

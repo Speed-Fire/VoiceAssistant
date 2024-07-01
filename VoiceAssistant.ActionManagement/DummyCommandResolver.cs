@@ -9,10 +9,12 @@ using VoiceAssistant.Domain.Models;
 
 namespace VoiceAssistant.ActionManagement
 {
-	public sealed class DummyCommandResolver : ICommandResolver
+	internal sealed class DummyCommandResolver : ICommandResolver
 	{
 		private readonly Provider<List<AssistantAction>> _actions;
 		private readonly Mutex _lock = new(false, ActionConsts.RESOLVER_MUTEX);
+
+		public string Name => "Dummy command resolver";
 
 		public bool IsInitialized => true;
 
@@ -26,9 +28,9 @@ namespace VoiceAssistant.ActionManagement
 			_actions.PropertyChanged += ActionsProvider_Updated;
 		}
 
-		public Task Initialize()
+		public Task<bool> Initialize()
 		{
-			return Task.CompletedTask;
+			return Task.FromResult(true);
 		}
 
 		public Task<OneOf<AssistantAction, Exception>> Resolve(string command)
