@@ -50,7 +50,6 @@ namespace VoiceAssistant
 			var (context, dbConfInitializer) = GetDbConfigInitializer(builder.Configuration);
 
 			RegisterPlugins(builder, dbConfInitializer);
-			InitDefaultAppDbConfiguration(dbConfInitializer);
 
 			context.Dispose();
 
@@ -97,17 +96,6 @@ namespace VoiceAssistant
 				settingsInitializer);
 
 			registrator.Register(builder.Services, builder.Configuration).Wait();
-		}
-
-		private static void InitDefaultAppDbConfiguration(IDefaultSettingsInitializer settingsInitializer)
-		{
-			var settings = new List<Settings>()
-			{
-				new("Application:InitializationConfig:Theme", "DarkTheme"),
-				new("Application:InitializationConfig:Language", "en-us"),
-			};
-
-			settingsInitializer.Initialize(settings);
 		}
 
 		private static void InitSubFolders()
