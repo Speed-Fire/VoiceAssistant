@@ -15,6 +15,8 @@ using VoiceAssistant.Misc.Options;
 using VoiceAssistant.Notifications;
 using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.ViewModels;
+using VoiceAssistant.ViewModels.Components;
+using VoiceAssistant.ViewModels.ScriptEditing;
 using VoiceAssistant.Views;
 using VoiceAssistant.Views.AssistantActions;
 
@@ -84,7 +86,8 @@ namespace VoiceAssistant.Extensions
 			services
 				.AddTransient<MainView>()
 				.AddTransient<AssistantActionsView>()
-				.AddTransient<ScriptEditorView>();
+				.AddTransient<ScriptEditorView>()
+				.AddTransient<VoiceAssistantListeningStatusComponent>();
 
 			return services;
 		}
@@ -94,7 +97,8 @@ namespace VoiceAssistant.Extensions
 			services
 				.AddTransient<MainVM>()
 				.AddTransient<AssistantActionsVM>()
-				.AddTransient<ScriptEditorVM>();
+				.AddTransient<ScriptEditorVM>()
+				.AddTransient<VoiceAssistantListeningStatusVM>();
 
 			return services;
 		}

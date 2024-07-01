@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Views;
 
-namespace VoiceAssistant.ViewModels
+namespace VoiceAssistant.ViewModels.ScriptEditing
 {
-	public class ScriptEditorVM : ViewModel<ScriptEditorView>
-	{
-	}
+    public class ScriptEditorVM : ViewModel<ScriptEditorView>
+    {
+    }
 }

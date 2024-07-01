@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VoiceAssistant.Components;
 
 namespace VoiceAssistant.Views
 {
@@ -24,9 +25,14 @@ namespace VoiceAssistant.Views
 	/// </summary>
 	public partial class MainView : UserControl
 	{
-		public MainView([FromKeyedServices(NavConsts.SCOPED_SERVICE)] UserControlFrame frame)
+		public MainView([FromKeyedServices(NavConsts.SCOPED_SERVICE)] UserControlFrame frame,
+			VoiceAssistantListeningStatusComponent listeningComponent)
 		{
 			InitializeComponent();
+
+			listeningComponent.Width = 40;
+			listeningComponent.Height = 40;
+			NavBar.BottomContent = listeningComponent;
 
 			frame.SetValue(Grid.ColumnProperty, 1);
 			MainGrid.Children.Add(frame);
