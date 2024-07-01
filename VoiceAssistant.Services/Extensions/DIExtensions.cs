@@ -10,6 +10,7 @@ using VoiceAssistant.Services.AssistantActionServices;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Services.Misc.Implementations;
 using VoiceAssistant.Services.Misc.Interfaces;
+using VoiceAssistant.Services.ProviderInitializers;
 namespace VoiceAssistant.Services.Extensions
 {
 	public static class DIExtensions

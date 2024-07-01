@@ -19,7 +19,7 @@ namespace VoiceAssistant.Services.AssistantActionServices
 		Provider<List<AssistantAction>> actions,
 		AppDbContext dbContext,
 		ILogger<AssistantActionService> logger)
-		: IAssistantActionService, IProviderInitializer
+		: IAssistantActionService
 	{
 		private readonly Provider<List<AssistantAction>> _actions = actions;
 		private readonly AppDbContext _dbContext = dbContext;
@@ -175,30 +175,6 @@ namespace VoiceAssistant.Services.AssistantActionServices
 			finally
 			{
 				await trans.DisposeAsync();
-			}
-		}
-
-		#endregion
-
-		#region Initialize provider
-
-		public async Task<bool> InitializeAsync()
-		{
-			try
-			{
-				var actions = await _dbContext.Actions.ToListAsync();
-
-				_dbContext.ChangeTracker.Clear();
-
-				_actions.Value = actions;
-
-				return true;
-			}
-			catch(Exception ex)
-			{
-				_logger.LogError(ex, "Cannot initialize AssistantAction provider!");
-
-				return false;
 			}
 		}
 
