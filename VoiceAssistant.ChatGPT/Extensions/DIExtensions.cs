@@ -18,7 +18,10 @@ namespace VoiceAssistant.ChatGPT.Extensions
 		{
 			var apikey = config.GetRequiredSection("Application:ChatGPT:Gemini")
 				.GetRequiredSection("ServiceApiKey").Value ?? string.Empty;
-			
+
+			if (string.IsNullOrWhiteSpace(apikey))
+				return services;
+
 #pragma warning disable SKEXP0070 // Тип предназначен только для оценки и может быть изменен или удален в будущих обновлениях. Чтобы продолжить, скройте эту диагностику.
 			services
 				.AddGoogleAIGeminiChatCompletion("gemini-1.5-flash", apikey);
