@@ -28,6 +28,7 @@ using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Recording.Extensions;
 using VoiceAssistant.Services;
 using VoiceAssistant.Services.Extensions;
+using VoiceAssistant.Services.Misc.Interfaces;
 
 namespace VoiceAssistant
 {
@@ -71,6 +72,8 @@ namespace VoiceAssistant
 			// Application Appearance initialization
 			InitThemes(host.Services);
 			InitLanguages(host.Services);
+
+			await InitProviders(host.Services);
 
 			await host.RunAsync();
 		}
@@ -137,6 +140,16 @@ namespace VoiceAssistant
 			foreach (var entry in entries)
 			{
 				languageSelector.AddSourcePath(entry);
+			}
+		}
+
+		private static async Task InitProviders(IServiceProvider services)
+		{
+			var initializers = services.GetServices<IProviderInitializer>();
+
+			foreach(var initializer in initializers)
+			{
+				await initializer.InitializeAsync();
 			}
 		}
 	}

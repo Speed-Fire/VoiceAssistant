@@ -20,7 +20,6 @@ namespace VoiceAssistant.Services
 	{
 		private readonly CommandRecorder _commandRecorder;
 		private readonly ICommandResolver _commandResolver;
-		private readonly ConcurrentQueue<AssistantAction> _actionsQueue;
 		private readonly Provider<S2TConverterInfo> _S2TConverterProvider;
 		private readonly IExceptionNotifier _exceptionNotifier;
 		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
@@ -29,7 +28,6 @@ namespace VoiceAssistant.Services
 		private readonly object _S2TLock = new();
 
 		private IS2TConverter? S2TConverter { get; set; }
-		private readonly Task _providerInitialization;
 
 		public VoiceAssistantService(
 			CommandRecorder commandRecorder,
@@ -56,8 +54,6 @@ namespace VoiceAssistant.Services
 		{
 			return Task.Run(async () =>
 			{
-				await _providerInitialization;
-
 				await _commandResolver.Initialize();
 
 				_commandRecorder.Start();
