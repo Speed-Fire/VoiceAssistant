@@ -157,7 +157,7 @@ namespace VoiceAssistant.Services
 			_S2TConverterProvider.PropertyChanged -= S2TConverterProvider_PropertyChanged;
 			_voiceAssistantMonitor.PropertyChanged -= VoiceAssistantMonitor_PropertyChanged;
 
-			_commandRecorder.Dispose();
+			//_commandRecorder.Dispose();
 		}
 	}
 }
