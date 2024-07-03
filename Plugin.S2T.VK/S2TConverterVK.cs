@@ -13,7 +13,7 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
-using VoiceAssistant.Core.Misc;
+using VoiceAssistant.Common;
 
 namespace Plugin.S2T.VK
 {

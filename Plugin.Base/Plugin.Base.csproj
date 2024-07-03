@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VoiceAssistant.Core\VoiceAssistant.Core.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.Common\VoiceAssistant.Common.csproj" />
   </ItemGroup>
 
 </Project>
