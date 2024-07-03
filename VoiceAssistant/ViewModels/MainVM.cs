@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Services.Misc.Interfaces;
+using VoiceAssistant.ViewModels.Plugins;
 using VoiceAssistant.ViewModels.ScriptEditing;
 using VoiceAssistant.Views;
 
@@ -48,7 +49,9 @@ namespace VoiceAssistant.ViewModels
 		[RelayCommand]
 		private void OpenPluginsTab()
 		{
-			_voiceAssistantMonitor.Lock();
+			_voiceAssistantMonitor.Unlock();
+
+			_localNavigation.NavigateTo<PluginsVM>();
 		}
 
 		[RelayCommand]
