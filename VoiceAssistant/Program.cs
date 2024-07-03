@@ -22,6 +22,7 @@ using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Extensions;
 using VoiceAssistant.DAL.Providers;
+using VoiceAssistant.Entities;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Misc;
 using VoiceAssistant.Misc.DictionarySelection;
@@ -46,12 +47,8 @@ namespace VoiceAssistant
 				.RegisterSynergyWPFCommon()
 				.RegisterSynergyWPFNavigation();
 
-			// Register plugins and default db config values
-			var (context, dbConfInitializer) = GetDbConfigInitializer(builder.Configuration);
-
-			RegisterPlugins(builder, dbConfInitializer);
-
-			context.Dispose();
+			// Register plugins
+			RegisterPlugins(builder);
 
 			// continue on service registration
 			builder.Services
@@ -77,30 +74,25 @@ namespace VoiceAssistant
 			await host.RunAsync();
 		}
 
-		private static (DbContext, IDefaultSettingsInitializer) GetDbConfigInitializer(IConfiguration config)
-		{
-			var context = new AppDbContext(
-				config.GetConnectionString("MainDb") ?? string.Empty);
-
-			var settingsInitializer = new DefaultDbConfigInitializer(context);
-
-			return (context, settingsInitializer);
-		}
-
-		private static void RegisterPlugins(HostApplicationBuilder builder,
-			IDefaultSettingsInitializer settingsInitializer)
+		private static void RegisterPlugins(HostApplicationBuilder builder)
 		{
 			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 
-			using var registrator = new PluginRegistrator(pluginFolder,
-				settingsInitializer);
+			using var registrator = new PluginRegistrator(pluginFolder);
 
-			registrator.Register(builder.Services, builder.Configuration).Wait();
+			var pluginInfos = registrator.Register(builder.Services, builder.Configuration);
+
+			var provider = new Provider<IEnumerable<PluginInfoEntity>>()
+			{
+				Value = pluginInfos.Select(p => new PluginInfoEntity(p)).ToList()
+			};
+
+			builder.Services.AddSingleton(provider);
 		}
 
 		private static void InitSubFolders()
 		{
-			string[] directories = ["Plugins", "Languages", "Themes"];
+			string[] directories = ["Plugins", "Languages", "Themes", "Config"];
 
 			foreach(var directory in directories)
 			{

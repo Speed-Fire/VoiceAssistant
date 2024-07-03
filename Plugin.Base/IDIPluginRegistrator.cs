@@ -11,8 +11,6 @@ namespace Plugin.Base
 {
 	public interface IDIPluginRegistrator
 	{
-		public IEnumerable<Settings>? DefaultSettings { get; }
-
 		public void RegisterPlugin(IServiceCollection services, IConfiguration config);
 	}
 }

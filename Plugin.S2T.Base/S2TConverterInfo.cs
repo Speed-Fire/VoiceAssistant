@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Plugin.S2T.Base
 {
-	public class S2TConverterInfo(string name, string description, Func<IS2TConverter> converterFactory)
+	public class S2TConverterInfo(string name, Func<IS2TConverter> converterFactory)
 	{
 		public string Name { get; } = name;
-		public string Description { get; } = description;
 		public Func<IS2TConverter> ConverterFactory { get; } = converterFactory;
+
+		public bool IsInfoOfConverter(IS2TConverter converter)
+		{
+			return ConverterFactory.Method.ReturnType == converter.GetType();
+		}
 	}
 }

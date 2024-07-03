@@ -8,20 +8,23 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
+using VoiceAssistant.Core.Misc;
 using VoiceAssistant.Core.Models;
 
 namespace Plugin.Registrator
 {
-	public class PluginRegistrator(string pluginFolderPath,
-		IDefaultSettingsInitializer settingsInitializer) : IDisposable
+	public sealed class PluginRegistrator(string pluginFolderPath) : IDisposable
 	{
 		private readonly string _pluginFolderPath = pluginFolderPath;
-		private readonly IDefaultSettingsInitializer _settingsInitializer = settingsInitializer;
 		private readonly List<PluginLoadContext> _contextes = [];
 
-		public async Task<int> Register(IServiceCollection services, IConfiguration config)
+		public IEnumerable<PluginInfo> Register(
+			IServiceCollection services, 
+			IConfiguration configuration)
 		{
 			var files = Directory.GetFiles(_pluginFolderPath, "*.dll");
+
+			var pluginInfos = new List<PluginInfo>();
 
 			foreach (var file in files)
 			{
@@ -40,54 +43,123 @@ namespace Plugin.Registrator
 					continue;
 				}
 
-				// find all implementations of IDIPluginRegistrator.
-				var implementations = assembly
-					.GetTypes()
-					.Where(t => t.IsAssignableTo(typeof(IDIPluginRegistrator)));
+				// try get plugin info.
+				var pluginInfo = GetPluginInfo(assembly);
 
-				// if not found, then unload this context and go next.
-				if (!implementations.Any())
+				// if there is no plugin info, go to next assembly
+				if (pluginInfo is null)
 				{
 					context.Unload();
 					continue;
 				}
 
-				// use all implementations to register plugin.
-				var count = 0;
-				foreach(var implementation in implementations)
-				{
-					IDIPluginRegistrator? instance;
+				// try register plugin
+				var registered = TryRegisterPlugin(services, configuration, assembly);
 
-					// try to create an instance of IDIPluginRegistrator.
-					//  if it can't be created, then try next implementation.
-					try
-					{
-						instance = (IDIPluginRegistrator?)Activator.CreateInstance(implementation);
-					}
-					catch { continue; }
-
-					if (instance is null)
-						continue;
-
-					count++;
-					instance.RegisterPlugin(services, config);
-					if (instance.DefaultSettings is null)
-						continue;
-
-					await _settingsInitializer.InitializeAsync(instance.DefaultSettings);
-				}
-
-				// if no implementation has been registered, then unload this context and go next.
-				if(count == 0)
+				// if plugin can't be registered, go to next assembly.
+				if (!registered)
 				{
 					context.Unload();
 					continue;
 				}
+
+				// if plugin is successfully registered, add its info to provider, 
+				//   save its assembly context
+				//   and try to register plugin's config.
+
+				var localConfigPath = TryCreatePluginDefaultConfig(assembly);
+
+				TryLoadPluginConfig(configuration, localConfigPath);
+
+				pluginInfos.Add(pluginInfo);
 
 				_contextes.Add(context);
 			}
 
-			return _contextes.Count;
+			return pluginInfos;
+		}
+
+		private bool TryRegisterPlugin(
+			IServiceCollection services,
+			IConfiguration config,
+			Assembly assembly)
+		{
+			// find an implementation of IDIPluginRegistrator.
+			var pluginRegistretorType = assembly
+				.GetTypes()
+				.Where(t => t.IsAssignableTo(typeof(IDIPluginRegistrator)))
+				.FirstOrDefault();
+
+			// if not found, then return false.
+			if (pluginRegistretorType is null)
+				return false;
+
+			IDIPluginRegistrator? instance;
+
+			// try to create an instance of IDIPluginRegistrator.
+			//  if it can't be created, then return false.
+			try
+			{
+				instance = (IDIPluginRegistrator?)Activator.CreateInstance(pluginRegistretorType);
+			}
+			catch { return false; }
+
+			if (instance is null)
+				return false;
+
+			instance.RegisterPlugin(services, config);
+
+			return true;
+		}
+
+		private static PluginInfo? GetPluginInfo(Assembly assembly)
+		{
+			var pluginInfoType = assembly
+				.GetTypes()
+				.Where(t => t.IsAssignableTo(typeof(PluginInfo)))
+				.FirstOrDefault();
+
+			if (pluginInfoType is null)
+				return null;
+
+			try
+			{
+				return (PluginInfo?)Activator.CreateInstance(pluginInfoType);
+			}
+			catch
+			{
+				return null;
+			}
+		}
+
+		private static string? TryCreatePluginDefaultConfig(Assembly assembly)
+		{
+			var assemblyName = assembly.GetName().Name;
+
+			var configName = $"{assemblyName}.json";
+			var config = assembly.GetManifestResourceStream($"{assemblyName}.DefaultConfig.json");
+			if (config is null)
+				return null;
+
+			var localPath = Path.Combine("Config", configName);
+			var globalPath = Path.Combine(Directory.GetCurrentDirectory(), localPath);
+			if (File.Exists(globalPath))
+				return globalPath;
+
+			using var file = File.Create(globalPath);
+
+			config.CopyTo(file);
+
+			return localPath;
+		}
+
+		private static void TryLoadPluginConfig(IConfiguration configuration, string? configPath)
+		{
+			if (string.IsNullOrWhiteSpace(configPath))
+				return;
+
+			var builder = (IConfigurationBuilder)configuration;
+			builder.AddJsonFile(configPath, false, true);
 		}
 
 		public void Dispose()
