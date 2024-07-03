@@ -3,6 +3,7 @@ using Plugin.S2T.Base;
 using Plugin.S2T.VK.Exceptions;
 using Plugin.S2T.VK.Extensions;
 using Plugin.S2T.VK.Models;
+using Plugin.S2T.VK.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,12 @@ using VoiceAssistant.Core.Misc;
 
 namespace Plugin.S2T.VK
 {
-	public class S2TConverterVK(
+    public class S2TConverterVK(
 		HttpClient client,
-		IOptionsMonitor<ConverterSettings> settings) : IS2TConverter
+		IOptionsMonitor<VkConverterOptions> settings) : IS2TConverter
 	{
 		private readonly HttpClient _client = client;
-		private readonly IOptionsMonitor<ConverterSettings> _settings = settings;
+		private readonly IOptionsMonitor<VkConverterOptions> _settings = settings;
 
 		private UploadUrlInfo? _uploadUrlInfo;
 

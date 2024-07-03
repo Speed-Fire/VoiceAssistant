@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Plugin.Base;
 using Plugin.S2T.Base;
-using Plugin.S2T.VK.Models;
+using Plugin.S2T.VK.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using VoiceAssistant.Core.Models;
 
 namespace Plugin.S2T.VK
 {
-	internal class DIS2TPluginVKRegistrator : IDIPluginRegistrator
+    internal class DIS2TPluginVKRegistrator : IDIPluginRegistrator
 	{
 		private static readonly List<Settings> _defaultSettings = [
 			new ("VK:ConverterSettings:ServiceApiKey", "", false)
@@ -37,18 +37,16 @@ namespace Plugin.S2T.VK
 			IConfiguration configuration)
 		{
 			services
-				.Configure<ConverterSettings>(
+				.Configure<VkConverterOptions>(
 					configuration.GetSection("VK:ConverterSettings"));
 
 			services
-				.AddSingleton<Func<S2TConverterVK>>(provider =>
-				{
-					return () =>
+				.AddTransient<S2TConverterInfo, S2TConverterInfoVK>(provider => 
 					{
-						return provider.GetRequiredService<S2TConverterVK>();
-					};
-				})
-				.AddSingleton<S2TConverterInfo, S2TConverterInfoVK>()
+						var converterFactory = () => provider.GetRequiredService<S2TConverterVK>();
+
+						return new(converterFactory);
+					})
 				.AddTransient<S2TConverterVK>();
 		}
 	}

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Plugin.S2T.VK
 {
-	internal class S2TConverterInfoVK : S2TConverterInfo
+	public class S2TConverterInfoVK(Func<IS2TConverter> factory) 
+		:
+		S2TConverterInfo("VK converter", factory)
 	{
-		public S2TConverterInfoVK(Func<S2TConverterVK> factory)
-			: base("VK Converter", "Supports only Russian language.", factory) { }
 	}
 }
