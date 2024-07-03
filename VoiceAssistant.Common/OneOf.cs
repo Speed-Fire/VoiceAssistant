@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 #nullable disable
 
-namespace VoiceAssistant.Core.Misc
+namespace VoiceAssistant.Common
 {
 	public class OneOf<T1, T2>
 	{

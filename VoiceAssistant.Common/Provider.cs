@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Core.Misc
+namespace VoiceAssistant.Common
 {
     public class Provider<T> : INotifyPropertyChanged
         where T : class

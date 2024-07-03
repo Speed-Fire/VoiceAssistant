@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using VoiceAssistant.ActionManagement.Extensions;
 using VoiceAssistant.ChatGPT.Extensions;
 using VoiceAssistant.Core.Interfaces;
-using VoiceAssistant.Core.Misc;
+using VoiceAssistant.Common;
 using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Extensions;
 using VoiceAssistant.DAL.Providers;

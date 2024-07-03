@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
-using VoiceAssistant.Core.Misc;
+using VoiceAssistant.Common;
 using VoiceAssistant.Core.Models;
 
 namespace Plugin.Registrator

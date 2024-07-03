@@ -12,7 +12,7 @@ using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.Core.Misc;
+using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Misc.FilteringCollection;

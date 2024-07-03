@@ -1,4 +1,4 @@
-﻿using VoiceAssistant.Core.Misc;
+﻿using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
 
 namespace VoiceAssistant.ActionManagement

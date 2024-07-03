@@ -1,6 +1,6 @@
 ﻿
 using System.Globalization;
-using VoiceAssistant.Core.Misc;
+using VoiceAssistant.Common;
 
 namespace VoiceAssistant.ActionManagement.Misc
 {

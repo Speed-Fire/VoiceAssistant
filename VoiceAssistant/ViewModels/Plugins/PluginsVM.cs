@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using VoiceAssistant.Core.Misc;
+using VoiceAssistant.Common;
 using VoiceAssistant.Entities;
 using VoiceAssistant.Views.Plugins;
 
