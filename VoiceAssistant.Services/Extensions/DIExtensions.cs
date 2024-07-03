@@ -37,7 +37,7 @@ namespace VoiceAssistant.Services.Extensions
 				.AddSingleton<IVoiceAssistantMonitor, VoiceAssistantMonitor>();
 
 			services
-				.AddSingleton<Provider<S2TConverterInfo>>();
+				.AddSingleton<Provider<IS2TConverter>>();
 
 			services
 				.AddSingleton<IExceptionNotifier, ExceptionNotifier>();

@@ -20,18 +20,15 @@ namespace VoiceAssistant.Services
 	{
 		private readonly CommandRecorder _commandRecorder;
 		private readonly CommandResolver _commandResolver;
-		private readonly Provider<S2TConverterInfo> _S2TConverterProvider;
+		private readonly Provider<IS2TConverter> _S2TConverterProvider;
 		private readonly IExceptionNotifier _exceptionNotifier;
 		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
 
 		private readonly ConcurrentQueue<AssistantAction> _actionsQueue;
-		private readonly object _S2TLock = new();
-
-		private IS2TConverter? S2TConverter { get; set; }
 
 		public VoiceAssistantService(
 			CommandRecorder commandRecorder,
-			Provider<S2TConverterInfo> s2TConverterProvider,
+			Provider<IS2TConverter> s2TConverterProvider,
 			IExceptionNotifier exceptionNotifier,
 			CommandResolver commandResolver,
 			IVoiceAssistantMonitor voiceAssistantMonitor)
@@ -41,8 +38,6 @@ namespace VoiceAssistant.Services
 
 			_actionsQueue = new();
 			_S2TConverterProvider = s2TConverterProvider;
-			_S2TConverterProvider.PropertyChanged += S2TConverterProvider_PropertyChanged;
-			S2TConverter = _S2TConverterProvider.Value?.ConverterFactory.Invoke();
 
 			_exceptionNotifier = exceptionNotifier;
 			_commandResolver = commandResolver;
@@ -82,12 +77,7 @@ namespace VoiceAssistant.Services
 		private async void CommandRecorded(Stream audio)
 		{
 			Exception? ex = null;
-			IS2TConverter? converter;
-
-			lock (_S2TLock)
-			{
-				converter = S2TConverter;
-			}
+			IS2TConverter? converter = _S2TConverterProvider.Value;
 
 			if (converter is null)
 				return;
@@ -119,20 +109,6 @@ namespace VoiceAssistant.Services
 
 		#region PropertyChanged
 
-		private void S2TConverterProvider_PropertyChanged(object? sender, PropertyChangedEventArgs e)
-		{
-			lock (_S2TLock)
-			{
-				if (_S2TConverterProvider.Value is null)
-					S2TConverter = null;
-				else
-				{
-					S2TConverter =
-						_S2TConverterProvider.Value.ConverterFactory.Invoke();
-				}
-			}
-		}
-
 		private void VoiceAssistantMonitor_PropertyChanged(object? sender, PropertyChangedEventArgs e)
 		{
 			if(e.PropertyName == nameof(IVoiceAssistantMonitor.IsListening))
@@ -154,10 +130,7 @@ namespace VoiceAssistant.Services
 		{
 			base.Dispose();
 
-			_S2TConverterProvider.PropertyChanged -= S2TConverterProvider_PropertyChanged;
 			_voiceAssistantMonitor.PropertyChanged -= VoiceAssistantMonitor_PropertyChanged;
-
-			//_commandRecorder.Dispose();
 		}
 	}
 }
