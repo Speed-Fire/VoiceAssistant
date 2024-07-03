@@ -13,8 +13,8 @@ namespace Plugin.S2T.VK
 				  "VK Converter",
 				  "Supports only Russian language.",
 				  "1.0.0",
-				  null,
-				  null,
+				  "Sidorovich Vladislav",
+				  "https://github.com/Speed-Fire/VoiceAssistant",
 				  Assembly
 					.GetExecutingAssembly()
 					.GetManifestResourceStream("Plugin.S2T.VK.Resources.vkontakte64.png"))
