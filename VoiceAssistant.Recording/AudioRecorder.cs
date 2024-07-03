@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Speech.Recognition;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace VoiceAssistant.Recording
@@ -16,6 +17,8 @@ namespace VoiceAssistant.Recording
 		private const short SILENCE_TREESHOLD = 500;
 
 		private readonly int MAX_SILENCE_DURATION = 2;
+
+		private readonly Mutex _mutex = new();
 
 		private readonly WaveInEvent _audioCapturer;
 		private Stream? _output;
@@ -58,29 +61,35 @@ namespace VoiceAssistant.Recording
 		{
 			if (_speechRecording)
 			{
-				lock (_locker)
+				_mutex.WaitOne();
+
+				if (_speechRecording)
 				{
-					if (_speechRecording)
+					_speechRecording = false;
+
+					_waveWriter?.Dispose();
+					_waveWriter = null;
+
+					if (_output is not null)
 					{
-						_speechRecording = false;
-
-						_waveWriter?.Dispose();
-						_waveWriter = null;
-
-						if (_output is not null)
-						{
-							_output.Position = 0;
-							Recorded?.Invoke(_output);
-						}
+						_output.Position = 0;
+						Recorded?.Invoke(_output);
 					}
 				}
+
+				_mutex.ReleaseMutex();
 			}
 		}
 
 		private async void Audio_DataAvailable(object? sender, WaveInEventArgs e)
 		{
+			_mutex.WaitOne();
+
 			if (_waveWriter is null)
+			{
+				_mutex.ReleaseMutex();
 				return;
+			}
 
 			var task = _waveWriter.WriteAsync(e.Buffer, 0, e.BytesRecorded);
 
@@ -100,7 +109,7 @@ namespace VoiceAssistant.Recording
 			var maxSilentChunks = _audioCapturer.WaveFormat.AverageBytesPerSecond
 				/ e.Buffer.Length * MAX_SILENCE_DURATION;
 
-			if(_silentChunkCount > maxSilentChunks)
+			if (_silentChunkCount > maxSilentChunks)
 			{
 				_audioCapturer.StopRecording();
 			}
@@ -110,6 +119,8 @@ namespace VoiceAssistant.Recording
 			{
 				_audioCapturer.StopRecording();
 			}
+
+			_mutex.ReleaseMutex();
 		}
 
 		private unsafe bool IsSilent(ReadOnlySpan<byte> buffer)
