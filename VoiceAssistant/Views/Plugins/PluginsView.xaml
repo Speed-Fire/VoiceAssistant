@@ -129,7 +129,10 @@
                                            Path=SelectedItem,
                                            Converter={StaticResource null2vconv}}"
                                        DataContext="{Binding ElementName=PluginsListBox,
-                                           Path=SelectedItem}"/>
+                                           Path=SelectedItem}"
+                                       SettingsCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                                AncestorType={x:Type local:PluginsView}},
+                                                Path=DataContext.OpenPluginSettingsCommand}"/>
 
             </Grid>
             

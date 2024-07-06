@@ -16,6 +16,8 @@
                 <ResourceDictionary Source="Styles/ReturnButton.xaml"/>
                 <ResourceDictionary Source="Styles/CheckBox.xaml"/>
 
+                <ResourceDictionary Source="Styles/NavPanelIcons.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

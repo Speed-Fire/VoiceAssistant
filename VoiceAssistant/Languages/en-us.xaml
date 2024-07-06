@@ -15,6 +15,8 @@
     <sys:String x:Key="Strings.Buttons.Delete">Delete</sys:String>
     <sys:String x:Key="Strings.Buttons.Apply">Apply</sys:String>
     <sys:String x:Key="Strings.Buttons.Clear">Clear</sys:String>
+    <sys:String x:Key="Strings.Buttons.Save">Save</sys:String>
+    <sys:String x:Key="Strings.Buttons.Default">Set defaults</sys:String>
 
     <sys:String x:Key="Strings.AsssistantAction.Change.Name.Colon">Name: *</sys:String>
     <sys:String x:Key="Strings.AsssistantAction.Change.Command.Colon">Command: *</sys:String>
@@ -31,5 +33,12 @@
     <sys:String x:Key="Strings.AssistantAction.Filter.Status.Colon">Status:</sys:String>
     <sys:String x:Key="Strings.AssistantAction.Filter.Status.Enabled">Enabled</sys:String>
     <sys:String x:Key="Strings.AssistantAction.Filter.Status.Disabled">Disabled</sys:String>
+
+    <sys:String x:Key="Strings.Plugins.Settings">Settings</sys:String>
+
+    <sys:String x:Key="Strings.Errors.Changes.Unsaved">Changes aren't saved. If you still want to return, press button again.</sys:String>
+    <sys:String x:Key="Strings.Errors.Internal">Something went wrong!</sys:String>
+
+    <sys:String x:Key="Strings.Plugins.Settings.Overflow">Value for parameter "{0}" is too large or too small!</sys:String>
     
 </ResourceDictionary>

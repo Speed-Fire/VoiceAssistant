@@ -20,6 +20,30 @@ namespace VoiceAssistant.Components
 	/// </summary>
 	public partial class PluginComponent : UserControl
 	{
+		#region Settings Command
+
+		public static readonly DependencyProperty SettingsCommandProperty =
+			DependencyProperty.Register("SettingsCommand", typeof(ICommand), typeof(PluginComponent),
+				new PropertyMetadata(null, SettingsCommandChanged));
+
+		private static void SettingsCommandChanged(DependencyObject d,
+			DependencyPropertyChangedEventArgs e)
+		{
+			if (d is not PluginComponent component)
+				return;
+
+			component.SettingsButton.Command = e.NewValue as ICommand;
+
+		}
+
+		public ICommand SettingsCommand
+		{
+			get => (ICommand)GetValue(SettingsCommandProperty);
+			set => SetValue(SettingsCommandProperty, value);
+		}
+
+		#endregion
+
 		public PluginComponent()
 		{
 			InitializeComponent();

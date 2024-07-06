@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Plugin.Registrator;
 using Plugin.S2T.Base;
 using Synergy.Core;
 using Synergy.WPF.Common.Extensions;
@@ -22,7 +21,6 @@ using VoiceAssistant.Common;
 using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Extensions;
 using VoiceAssistant.DAL.Providers;
-using VoiceAssistant.Entities;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Misc;
 using VoiceAssistant.Misc.DictionarySelection;
@@ -30,6 +28,9 @@ using VoiceAssistant.Recording.Extensions;
 using VoiceAssistant.Services;
 using VoiceAssistant.Services.Extensions;
 using VoiceAssistant.Services.Misc.Interfaces;
+using PluginsSystem;
+using System.Globalization;
+using Microsoft.Extensions.Logging;
 
 namespace VoiceAssistant
 {
@@ -37,9 +38,20 @@ namespace VoiceAssistant
 	{
 		public static async Task Main(string[] args)
 		{
+			CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
 			InitSubFolders();
 
 			var builder = Host.CreateApplicationBuilder(args);
+
+			var loggerFactory = LoggerFactory.Create(logBuilder =>
+			{
+				logBuilder
+					.AddConfiguration(builder.Configuration)
+					.AddConsole()
+					.AddEventLog()
+					.SetMinimumLevel(LogLevel.Information);
+			});
 
 			// register services
 			builder.Services
@@ -48,7 +60,7 @@ namespace VoiceAssistant
 				.RegisterSynergyWPFNavigation();
 
 			// Register plugins
-			RegisterPlugins(builder);
+			await LoadPlugins(builder, loggerFactory);
 
 			// continue on service registration
 			builder.Services
@@ -74,20 +86,20 @@ namespace VoiceAssistant
 			await host.RunAsync();
 		}
 
-		private static void RegisterPlugins(HostApplicationBuilder builder)
+		private static Task LoadPlugins(
+			HostApplicationBuilder builder,
+			ILoggerFactory loggerFactory)
 		{
 			var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
+			var configFolder = Path.Combine(Directory.GetCurrentDirectory(), "Config");
 
-			using var registrator = new PluginRegistrator(pluginFolder);
+			var pluginLoader = new PluginLoader(loggerFactory);
 
-			var pluginInfos = registrator.Register(builder.Services, builder.Configuration);
-
-			var provider = new Provider<IEnumerable<PluginInfoEntity>>()
-			{
-				Value = pluginInfos.Select(p => new PluginInfoEntity(p)).ToList()
-			};
-
-			builder.Services.AddSingleton(provider);
+			return pluginLoader.LoadAsync(
+				builder.Services,
+				builder.Configuration,
+				pluginFolder,
+				configFolder);
 		}
 
 		private static void InitSubFolders()

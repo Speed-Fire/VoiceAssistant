@@ -4,6 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VoiceAssistant.Components"
+             
+             xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"   
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -15,93 +18,130 @@
             <Setter Property="FontWeight" Value="Bold"/>
 
         </Style>
-        
+
+        <Style x:Key="Styles.Local.Button.Settings" TargetType="controls:NormalButton"
+               BasedOn="{StaticResource Styles.NormalButton.Beautiful}">
+
+            <Setter Property="Content">
+                <Setter.Value>
+
+                    <Path Fill="{StaticResource Brushes.Septenary}"
+                          Data="{StaticResource Icons.Settings}"
+                          MaxHeight="25"
+                          MaxWidth="25"
+                          Stretch="Uniform"/>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
 
-    <ScrollViewer Style="{StaticResource Styles.ScrollViewer}">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
         <Grid>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <DockPanel Grid.Row="0" Grid.ColumnSpan="3"
-                  Margin="0 0 0 10">
-
-                <Image DockPanel.Dock="Left"
-                       MaxHeight="48"
-                       Source="{Binding Image}"/>
-
-                <TextBlock FontSize="18"
-                           Margin="10 0 0 0"
-                           VerticalAlignment="Center"
-                           DockPanel.Dock="Left"
-                           Text="{Binding Name}"/>
-
-            </DockPanel>
-
-            <TextBlock Grid.Row="1" Grid.Column="0"
-                       Style="{StaticResource Styles.Local.TextBlock.StrTitle}"
-                       Margin="0 0 5 0"
-                       Text="Version:"/>
-
-            <TextBlock Grid.Row="1" Grid.Column="2"
-                       Text="{Binding Version}"/>
-
-            <Rectangle Grid.Row="2" Grid.ColumnSpan="3"
-                       Style="{StaticResource Styles.Delimeter.Horizontal}"
-                       Margin="0 15 0 15"/>
-
-            <TextBlock Grid.Row="3" Style="{StaticResource Styles.Local.TextBlock.StrTitle}"
-                       Text="Description:"
-                       Margin="0 0 0 10"/>
-
-            <TextBlock Grid.Row="4" Grid.ColumnSpan="3"
-                       TextWrapping="Wrap"
-                       Text="{Binding Description}"/>
-
-            <Rectangle Grid.Row="5" Grid.ColumnSpan="3"
-                       Style="{StaticResource Styles.Delimeter.Horizontal}"
-                       Margin="0 15 0 15"/>
-
-            <TextBlock Grid.Row="6" Style="{StaticResource Styles.Local.TextBlock.StrTitle}"
-                       Text="Authors:"
-                       Margin="0 0 0 10"/>
-
-            <TextBlock Grid.Row="6" Grid.Column="2"
-                       TextWrapping="Wrap"
-                       Text="{Binding Authors}"/>
-
-            <TextBlock Grid.Row="7" Style="{StaticResource Styles.Local.TextBlock.StrTitle}"
-                       Text="Project URL-address:"
-                       Margin="0 0 0 10"/>
-
-            <TextBlock Grid.Row="7" Grid.Column="2"
-                       TextWrapping="Wrap">
             
-                <Hyperlink NavigateUri="{Binding UrlAddress}"
-                           RequestNavigate="Hyperlink_RequestNavigate">
-                    <Run Text="{Binding UrlAddress, Mode=OneWay}"/>
-                </Hyperlink>
+            <Image Grid.Column="0"
+                   MaxHeight="48"
+                   Source="{Binding Image}"/>
 
-            </TextBlock>
+            <TextBlock Grid.Column="1"
+                       FontSize="18"
+                       Margin="10 0 0 0"
+                       VerticalAlignment="Center"
+                       Text="{Binding Name}"/>
+
+            <controls:NormalButton Name="SettingsButton"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Right"
+                                   Style="{StaticResource Styles.Local.Button.Settings}"
+                                   CommandParameter="{Binding}"/>
 
         </Grid>
 
-    </ScrollViewer>
+        <ScrollViewer Grid.Row="2"
+            Style="{StaticResource Styles.ScrollViewer}">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Style="{StaticResource Styles.Local.TextBlock.StrTitle}"
+                           Margin="0 0 5 0"
+                           Text="Version:"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="2"
+                           Text="{Binding Version}"/>
+
+                <Rectangle Grid.Row="1" Grid.ColumnSpan="3"
+                           Style="{StaticResource Styles.Delimeter.Horizontal}"
+                           Margin="0 15 0 15"/>
+
+                <TextBlock Grid.Row="2" Style="{StaticResource Styles.Local.TextBlock.StrTitle}"
+                           Text="Description:"
+                           Margin="0 0 0 10"/>
+
+                <TextBlock Grid.Row="3" Grid.ColumnSpan="3"
+                           TextWrapping="Wrap"
+                           Text="{Binding Description}"/>
+
+                <Rectangle Grid.Row="4" Grid.ColumnSpan="3"
+                           Style="{StaticResource Styles.Delimeter.Horizontal}"
+                           Margin="0 15 0 15"/>
+
+                <TextBlock Grid.Row="5" Style="{StaticResource Styles.Local.TextBlock.StrTitle}"
+                           Text="Authors:"
+                           Margin="0 0 0 10"/>
+
+                <TextBlock Grid.Row="5" Grid.Column="2"
+                           TextWrapping="Wrap"
+                           Text="{Binding Authors}"/>
+
+                <TextBlock Grid.Row="6" Style="{StaticResource Styles.Local.TextBlock.StrTitle}"
+                           Text="Project URL-address:"
+                           Margin="0 0 0 10"/>
+
+                <TextBlock Grid.Row="6" Grid.Column="2"
+                           TextWrapping="Wrap">
+            
+                    <Hyperlink NavigateUri="{Binding UrlAddress}"
+                               RequestNavigate="Hyperlink_RequestNavigate">
+                        <Run Text="{Binding UrlAddress, Mode=OneWay}"/>
+                    </Hyperlink>
+
+                </TextBlock>
+
+            </Grid>
+
+        </ScrollViewer>
+
+    </Grid>
 
 </UserControl>
