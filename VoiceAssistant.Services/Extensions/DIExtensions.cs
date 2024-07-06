@@ -42,9 +42,6 @@ namespace VoiceAssistant.Services.Extensions
 			services
 				.AddSingleton<IExceptionNotifier, ExceptionNotifier>();
 
-			services
-				.AddHostedService<VoiceAssistantService>();
-
 			return services;
 		}
 	}

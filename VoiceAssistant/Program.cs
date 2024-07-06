@@ -22,7 +22,6 @@ using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Extensions;
 using VoiceAssistant.DAL.Providers;
 using VoiceAssistant.Extensions;
-using VoiceAssistant.Misc;
 using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Recording.Extensions;
 using VoiceAssistant.Services;
@@ -31,10 +30,11 @@ using VoiceAssistant.Services.Misc.Interfaces;
 using PluginsSystem;
 using System.Globalization;
 using Microsoft.Extensions.Logging;
+using VoiceAssistant.HostedServices;
 
 namespace VoiceAssistant
 {
-	internal class Program
+    internal class Program
 	{
 		public static async Task Main(string[] args)
 		{
@@ -72,16 +72,10 @@ namespace VoiceAssistant
 				.RegisterChatGPT(builder.Configuration)
 				.RegisterCommandResolving(builder.Configuration);
 
-			builder.Services.AddHostedService<WpfStarter>();
+			RegisterHostedServices(builder.Services);
 
 			// host building
 			var host = builder.Build();
-
-			// Application Appearance initialization
-			InitThemes(host.Services);
-			InitLanguages(host.Services);
-
-			await InitProviders(host.Services);
 
 			await host.RunAsync();
 		}
@@ -113,36 +107,13 @@ namespace VoiceAssistant
 			}
 		}
 
-		private static void InitThemes(IServiceProvider services)
+		private static void RegisterHostedServices(IServiceCollection services)
 		{
-			var themeSelector = services.GetRequiredService<ThemeSelector>();
-
-			var entries = Directory.GetFiles("Themes", "*.xaml");
-			foreach (var entry in entries)
-			{
-				themeSelector.AddSourcePath(entry);
-			}
-		}
-
-		private static void InitLanguages(IServiceProvider services)
-		{
-			var languageSelector = services.GetRequiredService<LanguageSelector>();
-
-			var entries = Directory.GetFiles("Languages", "*.xaml");
-			foreach (var entry in entries)
-			{
-				languageSelector.AddSourcePath(entry);
-			}
-		}
-
-		private static async Task InitProviders(IServiceProvider services)
-		{
-			var initializers = services.GetServices<IProviderInitializer>();
-
-			foreach(var initializer in initializers)
-			{
-				await initializer.InitializeAsync();
-			}
+			services
+				.AddHostedService<ProviderInitializationService>()
+				.AddHostedService<VoiceAssistantService>()
+				.AddHostedService<AppearanceInitializationService>()
+				.AddHostedService<WpfStarterService>();
 		}
 	}
 }
