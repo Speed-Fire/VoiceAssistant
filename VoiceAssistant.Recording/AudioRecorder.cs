@@ -91,7 +91,7 @@ namespace VoiceAssistant.Recording
 				return;
 			}
 
-			var task = _waveWriter.WriteAsync(e.Buffer, 0, e.BytesRecorded);
+			_waveWriter.Write(e.Buffer, 0, e.BytesRecorded);
 
 			if (IsSilent(e.Buffer))
 			{
@@ -102,19 +102,11 @@ namespace VoiceAssistant.Recording
 				_silentChunkCount = 0;
 			}
 
-			Console.WriteLine(_silentChunkCount);
-
-			await task;
-
 			var maxSilentChunks = _audioCapturer.WaveFormat.AverageBytesPerSecond
 				/ e.Buffer.Length * MAX_SILENCE_DURATION;
 
-			if (_silentChunkCount > maxSilentChunks)
-			{
-				_audioCapturer.StopRecording();
-			}
-
-			if (_waveWriter.Position >
+			if (_silentChunkCount > maxSilentChunks ||
+				_waveWriter.Position >
 				_audioCapturer.WaveFormat.AverageBytesPerSecond * MAX_WAVE_LENGTH_SECONDS)
 			{
 				_audioCapturer.StopRecording();
