@@ -81,7 +81,7 @@ namespace VoiceAssistant.Recording
 			}
 		}
 
-		private async void Audio_DataAvailable(object? sender, WaveInEventArgs e)
+		private void Audio_DataAvailable(object? sender, WaveInEventArgs e)
 		{
 			_mutex.WaitOne();
 
