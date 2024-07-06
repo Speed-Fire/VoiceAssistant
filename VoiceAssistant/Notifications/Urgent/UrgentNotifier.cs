@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static VoiceAssistant.Notifications.UrgentNotificationService;
 using System.Windows;
+using VoiceAssistant.Core.Interfaces;
 
 namespace VoiceAssistant.Notifications.Urgent
 {

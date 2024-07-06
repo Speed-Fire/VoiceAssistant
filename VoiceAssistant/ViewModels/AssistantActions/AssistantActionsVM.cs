@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Common;
+using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Misc.FilteringCollection;

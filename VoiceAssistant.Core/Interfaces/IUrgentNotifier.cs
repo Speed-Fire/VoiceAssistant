@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Notifications.Urgent
+namespace VoiceAssistant.Core.Interfaces
 {
     public interface IUrgentNotifier
     {

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Components;
 using VoiceAssistant.Core;
+using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Misc;
 using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Misc.Options;
