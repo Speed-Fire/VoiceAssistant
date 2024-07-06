@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SettingsSchema"
+    elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:simpleType name="type">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="string"/>
+			<xs:enumeration value="int"/>
+			<xs:enumeration value="uint"/>
+			<xs:enumeration value="float"/>
+			<xs:enumeration value="bool"/>
+			<xs:enumeration value="datetime"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:attribute name="Title" type="xs:string"/>
+	<xs:attribute name="Type" type="type"/>
+	<xs:attribute name="ConfigKey" type="xs:string"/>
+	<xs:attribute name="DefaultValue" type="xs:string"/>
+
+	<xs:element name="Parameter">
+		<xs:complexType>
+			<xs:attribute ref="Title" use="required"/>
+			<xs:attribute ref="ConfigKey" use="required"/>
+			<xs:attribute ref="Type" use="required"/>
+			<xs:attribute ref="DefaultValue" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Settings">
+		<xs:complexType>
+			<xs:sequence>
+
+				<xs:element ref="Parameter" maxOccurs="unbounded"/>
+				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

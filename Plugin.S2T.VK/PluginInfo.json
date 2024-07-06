@@ -1,0 +1,9 @@
+﻿{
+  "PluginInfo": {
+    "Name": "VK Converter",
+    "Description": "Supports only Russian language.",
+    "Version": "1.0.0",
+    "Authors": "Sidorovich Vladislav",
+    "UrlAddress": "https://github.com/Speed-Fire/VoiceAssistant"
+  }
+}

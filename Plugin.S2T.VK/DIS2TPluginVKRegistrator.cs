@@ -9,28 +9,14 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.Core.Interfaces;
-using VoiceAssistant.Core.Models;
 
 namespace Plugin.S2T.VK
 {
     internal class DIS2TPluginVKRegistrator : IDIPluginRegistrator
 	{
-		private static readonly List<Settings> _defaultSettings = [
-			new ("VK:ConverterSettings:ServiceApiKey", "", false)
-		];
-
-		public IEnumerable<Settings>? DefaultSettings => _defaultSettings;
-
 		public void RegisterPlugin(IServiceCollection services, IConfiguration config)
 		{
-			RegisterConfiguration(config);
 			RegisterServices(services, config);
-		}
-
-		private void RegisterConfiguration(IConfiguration config)
-		{
-			
 		}
 
 		private static void RegisterServices(IServiceCollection services,
@@ -38,7 +24,7 @@ namespace Plugin.S2T.VK
 		{
 			services
 				.Configure<VkConverterOptions>(
-					configuration.GetSection("VK:ConverterSettings"));
+					configuration.GetSection(Plugin.Base.Plugin.ConfigPath("ConverterSettings")));
 
 			services
 				.AddTransient<S2TConverterInfo, S2TConverterInfoVK>(provider => 

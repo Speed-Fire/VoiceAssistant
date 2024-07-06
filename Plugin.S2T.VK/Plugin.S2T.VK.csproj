@@ -8,13 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="DefaultConfig.json" />
-    <None Remove="Resources\vkontakte64.png" />
+    <None Remove="PluginInfo.json" />
+    <None Remove="Resources\image.png" />
+    <None Remove="Settings.xml" />
   </ItemGroup>
 
   <ItemGroup>
-	  <EmbeddedResource Include="DefaultConfig.json"/>
-    <EmbeddedResource Include="Resources\vkontakte64.png" />
+	  <EmbeddedResource Include="PluginInfo.json" />
+    <EmbeddedResource Include="Resources\image.png" />
+    <EmbeddedResource Include="Settings.xml" />
   </ItemGroup>
 
   <ItemGroup>

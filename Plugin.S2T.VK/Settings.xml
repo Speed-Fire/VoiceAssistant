@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Settings>
+
+	<Parameter Title="Service api key"
+			   Type="string"
+			   ConfigKey="ConverterSettings:ServiceApiKey"
+			   DefaultValue=""/>
+
+	<Parameter Title="Enable"
+			   Type="bool"
+			   ConfigKey="ConverterSettings:Enability"
+			   DefaultValue="false"/>
+
+	<Parameter Title="Count"
+			   Type="uint"
+			   ConfigKey="ConverterSettings:Count"
+			   DefaultValue="10"/>
+
+	<Parameter Title="Kuaficient"
+			   Type="int"
+			   ConfigKey="ConverterSettings:Kuaficient"
+			   DefaultValue="1"/>
+
+	<Parameter Title="Kuaficient2"
+			   Type="float"
+			   ConfigKey="ConverterSettings:Kuaficient2"
+			   DefaultValue="1"/>
+	
+</Settings>

@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <ProjectReference Include="..\Plugin.Base\Plugin.Base.csproj"/>
-	  <ProjectReference Include="..\VoiceAssistant.Core\VoiceAssistant.Core.csproj"/>
+	  <ProjectReference Include="..\Plugin.Base\Plugin.Base.csproj" />
   </ItemGroup>
 
 </Project>
