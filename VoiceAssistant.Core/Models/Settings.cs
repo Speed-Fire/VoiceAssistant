@@ -6,5 +6,10 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Core.Models
 {
-	public record class Settings(string Id, string Value, bool ApplicationRestartNeeded = false);
+	public class Settings(string id, string value, bool applicationRestartNeeded = false)
+	{
+		public string Id { get; private set; } = id;
+		public string Value { get; set; } = value;
+		public bool ApplicationRestartNeeded { get; private set; } = applicationRestartNeeded;
+	}
 }
