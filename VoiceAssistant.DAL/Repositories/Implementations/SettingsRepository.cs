@@ -15,11 +15,6 @@ namespace VoiceAssistant.DAL.Repositories.Implementations
 
 		private volatile bool _notSaved = false;
 
-		public async Task<Settings?> FindById(long id)
-		{
-			return await _settingsSet.FindAsync(id);
-		}
-
 		public IQueryable<Settings> GetAll()
 		{
 			return _settingsSet;

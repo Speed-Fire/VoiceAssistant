@@ -10,7 +10,6 @@ namespace VoiceAssistant.DAL.Repositories
 		where TEntity : class
 	{
 		IQueryable<TEntity> GetAll();
-		Task<TEntity?> FindById(long id);
 		Task Add(TEntity entity, bool autoSave = true);
 		Task Update(TEntity entity, bool autoSave = true);
 		Task Delete(TEntity entity, bool autoSave = true);
