@@ -26,11 +26,15 @@ namespace VoiceAssistant.Services.ProviderInitializers
 		{
 			try
 			{
+				_logger.LogInformation("Starting AssistantActions provider initialization...");
+
 				var actions = await _dbContext.Actions.ToListAsync();
 
 				_dbContext.ChangeTracker.Clear();
 
 				_actions.Value = actions;
+
+				_logger.LogInformation("AssistantActions provider initialization finished.");
 
 				return true;
 			}
