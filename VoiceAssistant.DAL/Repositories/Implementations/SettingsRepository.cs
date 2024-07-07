@@ -20,9 +20,9 @@ namespace VoiceAssistant.DAL.Repositories.Implementations
 			return await _settingsSet.FindAsync(id);
 		}
 
-		public async Task<IEnumerable<Settings>> GetAll()
+		public IQueryable<Settings> GetAll()
 		{
-			return await _settingsSet.ToListAsync();
+			return _settingsSet;
 		}
 
 		public async Task Add(Settings entity, bool autoSave = true)
