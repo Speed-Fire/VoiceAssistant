@@ -31,7 +31,8 @@ namespace VoiceAssistant.Services.Extensions
 		{
 			services
 				.AddTransient<IAssistantActionService, AssistantActionService>()
-				.AddTransient<IProviderInitializer, AssistantActionsProviderInitializer>();
+				.AddTransient<IProviderInitializer, AssistantActionsProviderInitializer>()
+				.AddTransient<IProviderInitializer, S2TConverterProviderInitializer>();
 
 			services
 				.AddSingleton<IVoiceAssistantMonitor, VoiceAssistantMonitor>();
