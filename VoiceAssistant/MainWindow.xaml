@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:VoiceAssistant"
         mc:Ignorable="d"
         
+        xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"
+        xmlns:components="clr-namespace:Synergy.WPF.Navigation.Components;assembly=Synergy.WPF.Navigation"
         xmlns:comps="clr-namespace:VoiceAssistant.Components"
         
         WindowStyle="None"
@@ -14,12 +16,23 @@
         Background="{StaticResource Brushes.Background}"
         
         Title="MainWindow" Height="450" Width="800">
-    
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="Styles/NavPanelStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid x:Name="MainGrid">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.75*"/>
-            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="0.73*"/>
+            <ColumnDefinition Width="0.27*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -30,12 +43,45 @@
         </Grid.RowDefinitions>
         
         <comps:WindowUpperPanel
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             Panel.ZIndex="10"
             Margin="100 0 0 0"
             VerticalAlignment="Top"
             HorizontalAlignment="Stretch"/>
 
+        <controls:Sidebar
+            x:Name="NavBar"
+            Grid.RowSpan="4"
+            TitleIcon="{StaticResource Icons.Main}"
+            TitleIconColor="{StaticResource Brushes.Triple}"
+            Style="{StaticResource Styles.Sidebar}">
+
+            <controls:NavItem
+                Style="{StaticResource Styles.NavItem}"
+                NavCommand="{Binding OpenCommandsTabCommand}"
+                Icon="{StaticResource Icons.Commands}"
+                Content="Commands"/>
+
+            <controls:NavItem
+                Style="{StaticResource Styles.NavItem}"
+                NavCommand="{Binding OpenScriptEditorTabCommand}"
+                Icon="{StaticResource Icons.Scripts}"
+                Content="Script editor"/>
+
+            <controls:NavItem
+                Style="{StaticResource Styles.NavItem}"
+                NavCommand="{Binding OpenPluginsTabCommand}"
+                Icon="{StaticResource Icons.Plugin}"
+                Content="Plugins"/>
+
+            <controls:NavItem
+                Style="{StaticResource Styles.NavItem}"
+                NavCommand="{Binding OpenSettingsTabCommand}"
+                Icon="{StaticResource Icons.Settings}"
+                Content="Settings"/>
+
+        </controls:Sidebar>
+        
     </Grid>
     
 </Window>

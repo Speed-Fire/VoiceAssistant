@@ -27,12 +27,10 @@ using VoiceAssistant.Views.AssistantActions;
 namespace VoiceAssistant.ViewModels
 {
 	public partial class AssistantActionsVM(
-		[FromKeyedServices(NavConsts.SINGLETON_SERVICE)] INavigationService globalNavigation,
 		IAssistantActionService assistantActionService,
 		IUrgentNotifier urgentNotificator) 
 		: ViewModel<AssistantActionsView>
 	{
-		private readonly INavigationService _globalNavigation = globalNavigation;
 		private readonly IAssistantActionService _assistantActionService = assistantActionService;
 		private readonly IUrgentNotifier _urgentNotifier = urgentNotificator;
 
@@ -112,7 +110,7 @@ namespace VoiceAssistant.ViewModels
 		{
 			var vm = new ChangeAssistantActionVM(_assistantActionService, _urgentNotifier);
 
-			_globalNavigation.PushDialog<AssistantActionEntity?>(vm, (response) =>
+			this.Navigation.PushDialog<AssistantActionEntity?>(vm, (response) =>
 			{
 				if (response.Result != true || response.ReturnValue == null)
 					return;
@@ -129,7 +127,7 @@ namespace VoiceAssistant.ViewModels
 		{
 			var vm = new ChangeAssistantActionVM(_assistantActionService, _urgentNotifier, action);
 
-			_globalNavigation.PushDialog<AssistantActionEntity?>(vm, (response) =>
+			this.Navigation.PushDialog<AssistantActionEntity?>(vm, (response) =>
 			{
 				if (response.Result != true || response.ReturnValue == null)
 					return;

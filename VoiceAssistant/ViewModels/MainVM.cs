@@ -15,18 +15,13 @@ using VoiceAssistant.Views;
 
 namespace VoiceAssistant.ViewModels
 {
-    public partial class MainVM : ViewModel<MainView>
+    public partial class MainVM(
+			[FromKeyedServices(NavConsts.SINGLETON_SERVICE)] INavigationService globalNavigation,
+			IVoiceAssistantMonitor voiceAssistantMonitor) 
+		: ViewModel
 	{
-		private readonly INavigationService _localNavigation;
-		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
-
-		public MainVM(
-			[FromKeyedServices(NavConsts.SCOPED_SERVICE)] INavigationService localNavigation,
-			IVoiceAssistantMonitor voiceAssistantMonitor)
-		{
-			_localNavigation = localNavigation;
-			_voiceAssistantMonitor = voiceAssistantMonitor;
-		}
+		private readonly INavigationService _globalNavigation = globalNavigation;
+		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor = voiceAssistantMonitor;
 
 		#region Navigation
 
@@ -35,7 +30,7 @@ namespace VoiceAssistant.ViewModels
 		{
 			_voiceAssistantMonitor.Lock();
 
-            _localNavigation.NavigateTo<AssistantActionsVM>();
+            _globalNavigation.NavigateTo<AssistantActionsVM>();
         }
 
 		[RelayCommand]
@@ -43,7 +38,7 @@ namespace VoiceAssistant.ViewModels
 		{
 			_voiceAssistantMonitor.Unlock();
 
-			_localNavigation.NavigateTo<ScriptEditorVM>();
+			_globalNavigation.NavigateTo<ScriptEditorVM>();
 		}
 
 		[RelayCommand]
@@ -51,7 +46,7 @@ namespace VoiceAssistant.ViewModels
 		{
 			_voiceAssistantMonitor.Unlock();
 
-			_localNavigation.NavigateTo<PluginsVM>();
+			_globalNavigation.NavigateTo<PluginsVM>();
 		}
 
 		[RelayCommand]

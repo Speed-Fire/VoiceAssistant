@@ -1,4 +1,5 @@
-﻿using Synergy.WPF.Navigation.Components;
+﻿using Synergy.WPF.Common.Controls;
+using Synergy.WPF.Navigation.Components;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VoiceAssistant.Components;
 using VoiceAssistant.Notifications;
+using VoiceAssistant.ViewModels;
 
 namespace VoiceAssistant
 {
@@ -19,25 +21,37 @@ namespace VoiceAssistant
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private readonly UrgentNotificatorComponent _urgentNotificator;
-
-		public MainWindow(UserControlFrame frame,
-			UrgentNotificatorComponent urgentNotificator)
+		public MainWindow(
+			UserControlFrame frame,
+			UrgentNotificatorComponent urgentNotificator,
+			VoiceAssistantListeningStatusComponent listeningComponent,
+			MainVM vm)
 		{
 			InitializeComponent();
 
 			this.MaxWidth = SystemParameters.WorkArea.Width;
 			this.MaxHeight = SystemParameters.WorkArea.Height;
 
-			_urgentNotificator = urgentNotificator;
+			DataContext = vm;
 
 			SetupFrame(frame);
 			SetupUrgentNotificator(urgentNotificator);
+			SetupListeningComponent(listeningComponent);
+
+			Loaded += MainWindow_Loaded;
 		}
+
+		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+		{
+			var item = (NavItem)NavBar.Items[0];
+			item.IsSelected = true;
+		}
+
+		#region Setup components
 
 		private void SetupUrgentNotificator(UrgentNotificatorComponent urgentNotificator)
 		{
-			urgentNotificator.SetValue(Grid.ColumnProperty, 1);
+			urgentNotificator.SetValue(Grid.ColumnProperty, 2);
 			urgentNotificator.SetValue(Grid.RowProperty, 2);
 
 			MainGrid.Children.Add(urgentNotificator);
@@ -45,10 +59,20 @@ namespace VoiceAssistant
 
 		private void SetupFrame(UserControlFrame frame)
 		{
+			frame.SetValue(Grid.ColumnProperty, 1);
 			frame.SetValue(Grid.ColumnSpanProperty, 2);
 			frame.SetValue(Grid.RowSpanProperty, 4);
 
 			MainGrid.Children.Add(frame);
 		}
+
+		private void SetupListeningComponent(VoiceAssistantListeningStatusComponent listeningComponent)
+		{
+			listeningComponent.Width = 40;
+			listeningComponent.Height = 40;
+			NavBar.BottomContent = listeningComponent;
+		}
+
+		#endregion
 	}
 }

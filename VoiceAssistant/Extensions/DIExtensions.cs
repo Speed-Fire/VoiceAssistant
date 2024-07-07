@@ -87,7 +87,6 @@ namespace VoiceAssistant.Extensions
 		private static IServiceCollection RegisterViews(this IServiceCollection services)
 		{
 			services
-				.AddTransient<MainView>()
 				.AddTransient<AssistantActionsView>()
 				.AddTransient<ScriptEditorView>()
 				.AddTransient<VoiceAssistantListeningStatusComponent>()

@@ -41,10 +41,6 @@ namespace VoiceAssistant
 
 			WindowHelper.Init(window);
 
-			var navService = _services.GetRequiredKeyedService<INavigationService>(
-				Synergy.WPF.Navigation.Misc.NavConsts.SINGLETON_SERVICE);
-			navService.NavigateTo<MainVM>();
-
 			MainWindow.Show();
 		}
 	}
