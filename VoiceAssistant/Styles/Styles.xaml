@@ -139,4 +139,15 @@
 
     </Style>
 
+    <Style x:Key="Styles.ListBox.Transparent" TargetType="ListBox">
+
+        <Style.Resources>
+            <Style TargetType="ScrollViewer" BasedOn="{StaticResource Styles.ScrollViewer}"/>
+        </Style.Resources>
+
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+
+    </Style>
+    
 </ResourceDictionary>

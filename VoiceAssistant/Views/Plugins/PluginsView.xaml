@@ -79,14 +79,9 @@
             
         </Style>
 
-        <Style x:Key="Styles.Local.ListBox" TargetType="ListBox">
+        <Style x:Key="Styles.Local.ListBox" TargetType="ListBox"
+               BasedOn="{StaticResource Styles.ListBox.Transparent}">
 
-            <Style.Resources>
-                <Style TargetType="ScrollViewer" BasedOn="{StaticResource Styles.ScrollViewer}"/>
-            </Style.Resources>
-            
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="ItemContainerStyle" Value="{StaticResource Styles.Local.ListBoxItem.Plugin}"/>
 
         </Style>
