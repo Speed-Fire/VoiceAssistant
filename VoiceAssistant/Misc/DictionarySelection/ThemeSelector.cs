@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Misc.DictionarySelection
 {
-    internal class ThemeSelector : ResourceDictionarySelector
+    public class ThemeSelector : ResourceDictionarySelector
     {
         public ThemeSelector()
             :

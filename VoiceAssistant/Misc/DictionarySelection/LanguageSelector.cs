@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Misc.DictionarySelection
 {
-    internal class LanguageSelector : ResourceDictionarySelector
+    public class LanguageSelector : ResourceDictionarySelector
     {
         public LanguageSelector()
             :
