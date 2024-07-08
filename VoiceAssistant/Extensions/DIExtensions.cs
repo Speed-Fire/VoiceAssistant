@@ -11,7 +11,9 @@ using VoiceAssistant.Components;
 using VoiceAssistant.Core;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.HostedServices;
+using VoiceAssistant.Misc;
 using VoiceAssistant.Misc.DictionarySelection;
+using VoiceAssistant.Misc.Helpers;
 using VoiceAssistant.Misc.Options;
 using VoiceAssistant.Notifications;
 using VoiceAssistant.Notifications.Urgent;
@@ -54,7 +56,8 @@ namespace VoiceAssistant.Extensions
 
 			services
 				.AddSingleton<LanguageSelector>()
-				.AddSingleton<ThemeSelector>();
+				.AddSingleton<ThemeSelector>()
+				.AddTransient<AppearanceHelper>();
 
 			services
 				.AddSingleton<MainWindow>()
@@ -94,6 +97,7 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<VoiceAssistantListeningStatusComponent>()
 				.AddTransient<PluginsView>()
 				.AddTransient<SettingsView>()
+				.AddScoped<AppearanceSettingsView>();
 
 			return services;
 		}
@@ -107,6 +111,7 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<VoiceAssistantListeningStatusVM>()
 				.AddTransient<PluginsVM>()
 				.AddTransient<SettingsVM>()
+				.AddScoped<AppearanceSettingsVM>();
 
 			return services;
 		}
