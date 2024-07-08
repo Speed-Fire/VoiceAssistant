@@ -35,7 +35,7 @@ namespace VoiceAssistant.DAL.Extensions
 				.AddScoped<IAsyncRepository<Settings>, SettingsRepository>();
 
 			IConfigurationBuilder configBuilder = (IConfigurationBuilder)configuration;
-			configBuilder.AddEntityConfiguration<AppDbContext>(SetupDbBuilder, true);
+			configBuilder.AddEntityConfiguration<AppDbContext>(SetupDbBuilder, true, 2000);
 
 			return services;
 		}
