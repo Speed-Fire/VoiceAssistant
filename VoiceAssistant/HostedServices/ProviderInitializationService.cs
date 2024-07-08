@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,18 +12,20 @@ namespace VoiceAssistant.HostedServices
 {
 	internal class ProviderInitializationService(
 		ILogger<ProviderInitializationService> logger,
-		IEnumerable<IProviderInitializer> initializers)
+		IServiceProvider serviceProvider)
 		: IHostedService
 	{
 		private readonly ILogger _logger = logger;
-		private readonly IEnumerable<IProviderInitializer> _initializers = initializers;
+		private readonly IServiceProvider _serviceProvider = serviceProvider;
 
 		public async Task StartAsync(CancellationToken cancellationToken)
 		{
 			_logger.LogInformation("Starting providers initialization...");
 
+			var initializers = _serviceProvider.GetServices<IProviderInitializer>();
+
 			var count = 0;
-			foreach (var initializer in _initializers)
+			foreach (var initializer in initializers)
 			{
 				await initializer.InitializeAsync();
 
