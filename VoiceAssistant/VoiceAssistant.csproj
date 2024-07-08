@@ -77,7 +77,6 @@
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		<Link>Properties\appsettings.json</Link>
     </None>
   </ItemGroup>
 
