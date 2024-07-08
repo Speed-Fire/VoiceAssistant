@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.Common;
 using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Repositories;
 
@@ -14,6 +15,7 @@ namespace VoiceAssistant.Services
 		private const string DEFAULT_SECTION = "Application";
 
 		private readonly IAsyncRepository<Settings> _settings = settings;
+		private readonly SemaphoreSlim _semaphore = new(1, 1);
 
 		private string CurrentSection { get; set; } = $"{DEFAULT_SECTION}:";
 
@@ -22,13 +24,26 @@ namespace VoiceAssistant.Services
 		/// </summary>
 		/// <param name="key">Key. Must not have leading or tailing ':'.</param>
 		/// <returns>Settings value.</returns>
-		public async Task<string> GetValueAsync(string key)
+		public async Task<OneOf<string, Exception>> GetValueAsync(string key)
 		{
-			var fullKey = CurrentSection + key;
+			try
+			{
+				await _semaphore.WaitAsync();
 
-			var setting = await _settings.GetAll().FirstAsync(s => s.Id == fullKey);
+				var fullKey = CurrentSection + key;
 
-			return setting.Value;
+				var setting = await _settings.GetAll().FirstAsync(s => s.Id == fullKey);
+
+				return new(setting.Value);
+			}
+			catch (Exception ex)
+			{
+				return new(ex);
+			}
+			finally
+			{
+				_semaphore.Release();
+			}
 		}
 
 		/// <summary>
@@ -37,15 +52,30 @@ namespace VoiceAssistant.Services
 		/// <param name="key">Key. Must not have leading or tailing ':'.</param>
 		/// <param name="value">Value.</param>
 		/// <returns></returns>
-		public async Task SetValueAsync(string key, string value)
+		public async Task<Exception?> SetValueAsync(string key, string value)
 		{
-			var fullKey = CurrentSection + key;
+			try
+			{
+				await _semaphore.WaitAsync();
 
-			var setting = await _settings.GetAll().FirstAsync(s => s.Id == fullKey);
+				var fullKey = CurrentSection + key;
 
-			setting.Value = value;
+				var setting = await _settings.GetAll().FirstAsync(s => s.Id == fullKey);
 
-			await _settings.Update(setting);
+				setting.Value = value;
+
+				await _settings.Update(setting);
+
+				return null;
+			}
+			catch (Exception ex)
+			{
+				return ex;
+			}
+			finally 
+			{
+				_semaphore.Release(); 
+			}
 		}
 
 		/// <summary>
@@ -55,6 +85,8 @@ namespace VoiceAssistant.Services
 		/// <param name="section">Section.</param>
 		public void SetCurrentSection(string? section)
 		{
+			_semaphore.Wait();
+
 			var sb = new StringBuilder();
 			sb.Append(DEFAULT_SECTION);
 
@@ -70,11 +102,8 @@ namespace VoiceAssistant.Services
 				sb.Append(':');
 
 			CurrentSection = sb.ToString();
-		}
 
-		private string GetFullKey(string key)
-		{
-			return CurrentSection + key;
+			_semaphore.Release();
 		}
 	}
 }
