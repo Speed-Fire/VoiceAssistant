@@ -59,15 +59,47 @@
 
                                 </MultiTrigger.Conditions>
 
-                                <Setter TargetName="border" Property="Background"
-                                        Value="{StaticResource Brushes.Quinary}"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+
+                                        <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+
+                                            <GradientStop Color="{DynamicResource Colors.Quinary}"
+                                                          Offset="0"/>
+
+                                            <GradientStop Color="{DynamicResource Colors.Quinary}"
+                                                          Offset="0.8"/>
+
+                                            <GradientStop Color="{DynamicResource Colors.Secondary}"
+                                                          Offset="1"/>
+
+                                        </LinearGradientBrush>
+
+                                    </Setter.Value>
+                                </Setter>
 
                             </MultiTrigger>
 
                             <Trigger Property="IsSelected" Value="True">
 
-                                <Setter TargetName="border" Property="Background"
-                                        Value="{StaticResource Brushes.Denary}"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+
+                                        <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+
+                                            <GradientStop Color="{DynamicResource Colors.Denary}"
+                                                          Offset="0"/>
+
+                                            <GradientStop Color="{DynamicResource Colors.Denary}"
+                                                          Offset="0.8"/>
+
+                                            <GradientStop Color="{DynamicResource Colors.Secondary}"
+                                                          Offset="1"/>
+
+                                        </LinearGradientBrush>
+
+                                    </Setter.Value>
+                                </Setter>
 
                             </Trigger>
                             
