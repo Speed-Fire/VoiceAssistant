@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Services.Misc.Interfaces;
 
-namespace VoiceAssistant.HostedServices
+namespace VoiceAssistant.Services.Hosted
 {
-	internal class ProviderInitializationService(
+	public class ProviderInitializationService(
 		ILogger<ProviderInitializationService> logger,
 		IServiceProvider serviceProvider)
 		: IHostedService

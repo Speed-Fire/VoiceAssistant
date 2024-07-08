@@ -32,6 +32,7 @@ using Microsoft.Extensions.Logging;
 using VoiceAssistant.HostedServices;
 using VoiceAssistant.UI.Appearance.Extensions;
 using VoiceAssistant.UI.Appearance.HostedServices;
+using VoiceAssistant.Services.Hosted;
 
 namespace VoiceAssistant
 {
