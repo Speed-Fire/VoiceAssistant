@@ -19,9 +19,11 @@ using VoiceAssistant.ViewModels;
 using VoiceAssistant.ViewModels.Components;
 using VoiceAssistant.ViewModels.Plugins;
 using VoiceAssistant.ViewModels.ScriptEditing;
+using VoiceAssistant.ViewModels.Settings;
 using VoiceAssistant.Views;
 using VoiceAssistant.Views.AssistantActions;
 using VoiceAssistant.Views.Plugins;
+using VoiceAssistant.Views.Settings;
 
 namespace VoiceAssistant.Extensions
 {
@@ -90,7 +92,8 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<AssistantActionsView>()
 				.AddTransient<ScriptEditorView>()
 				.AddTransient<VoiceAssistantListeningStatusComponent>()
-				.AddTransient<PluginsView>();
+				.AddTransient<PluginsView>()
+				.AddTransient<SettingsView>()
 
 			return services;
 		}
@@ -102,7 +105,8 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<AssistantActionsVM>()
 				.AddTransient<ScriptEditorVM>()
 				.AddTransient<VoiceAssistantListeningStatusVM>()
-				.AddTransient<PluginsVM>();
+				.AddTransient<PluginsVM>()
+				.AddTransient<SettingsVM>()
 
 			return services;
 		}

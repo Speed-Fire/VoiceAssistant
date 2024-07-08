@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using VoiceAssistant.Services.Misc.Interfaces;
 using VoiceAssistant.ViewModels.Plugins;
 using VoiceAssistant.ViewModels.ScriptEditing;
+using VoiceAssistant.ViewModels.Settings;
 using VoiceAssistant.Views;
 
 namespace VoiceAssistant.ViewModels
@@ -53,6 +54,8 @@ namespace VoiceAssistant.ViewModels
 		private void OpenSettingsTab()
 		{
 			_voiceAssistantMonitor.Lock();
+
+			_globalNavigation.NavigateTo<SettingsVM>();
 		}
 
 		#endregion
