@@ -70,6 +70,7 @@ namespace DBConfiguration.Providers
 					if (!hash.SequenceEqual(_lastComputedHash))
 					{
 						Data = actualData;
+						_lastComputedHash = hash;
 						OnReload();
 					}
 				}
