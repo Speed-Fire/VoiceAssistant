@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using VoiceAssistant.Core.Interfaces;
-using VoiceAssistant.Misc.Helpers;
 using VoiceAssistant.Services;
 using VoiceAssistant.UI.Appearance.Helpers;
 using VoiceAssistant.Views.Settings;

@@ -11,7 +11,6 @@ using VoiceAssistant.Components;
 using VoiceAssistant.Core;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.HostedServices;
-using VoiceAssistant.Misc;
 using VoiceAssistant.Notifications;
 using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.ViewModels;

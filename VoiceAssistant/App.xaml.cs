@@ -4,8 +4,7 @@ using Synergy.WPF.Navigation.Services;
 using System.Configuration;
 using System.Data;
 using System.Windows;
-using VoiceAssistant.Misc;
-using VoiceAssistant.Misc.Helpers;
+using VoiceAssistant.Helpers;
 using VoiceAssistant.Notifications;
 using VoiceAssistant.ViewModels;
 

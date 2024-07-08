@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 #nullable disable
 
-namespace VoiceAssistant.Misc.Helpers
+namespace VoiceAssistant.Helpers
 {
 	internal static class WindowHelper
 	{
