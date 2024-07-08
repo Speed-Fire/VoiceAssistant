@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Misc.Options
 {
-	public class InitializationConfig
+	public class AppearanceOptions
 	{
 		public required string Theme { get; set; }
 		public required string Language { get; set; }

@@ -1,5 +1,5 @@
-INSERT INTO Settings VALUES ("Application:InitializationConfig:Language", "en-US", 0)
-INSERT INTO Settings VALUES ("Application:InitializationConfig:Theme", "DarkTheme", 0)
+INSERT INTO Settings VALUES ("Application:Appearance:Language", "en-US", 0)
+INSERT INTO Settings VALUES ("Application:Appearance:Theme", "DarkTheme", 0)
 INSERT INTO Settings VALUES ("Application:CommandResolverOptions:AutomaticResolverSelection", "true", 0)
 INSERT INTO Settings VALUES ("Application:CommandResolverOptions:SelectedResolver", "Smart command resolver", 0)
 INSERT INTO Settings VALUES ("Application:ChatGPT:Gemini:ServiceApiKey", "", 1)

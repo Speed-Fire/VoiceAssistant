@@ -129,7 +129,7 @@ namespace VoiceAssistant.Extensions
 		private static IServiceCollection ConfigureAppOptions(this IServiceCollection services,
 			IConfiguration config)
 		{
-			services.Configure<InitializationConfig>(config.GetSection("Application:InitializationConfig"));
+			services.Configure<AppearanceOptions>(config.GetSection("Application:Appearance"));
 
 			return services;
 		}
