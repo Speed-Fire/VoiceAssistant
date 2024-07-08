@@ -12,9 +12,6 @@ using VoiceAssistant.Core;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.HostedServices;
 using VoiceAssistant.Misc;
-using VoiceAssistant.Misc.DictionarySelection;
-using VoiceAssistant.Misc.Helpers;
-using VoiceAssistant.Misc.Options;
 using VoiceAssistant.Notifications;
 using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.ViewModels;
@@ -53,11 +50,6 @@ namespace VoiceAssistant.Extensions
 
 			services
 				.RegisterAppPaths();
-
-			services
-				.AddSingleton<LanguageSelector>()
-				.AddSingleton<ThemeSelector>()
-				.AddTransient<AppearanceHelper>();
 
 			services
 				.AddSingleton<MainWindow>()
@@ -134,7 +126,7 @@ namespace VoiceAssistant.Extensions
 		private static IServiceCollection ConfigureAppOptions(this IServiceCollection services,
 			IConfiguration config)
 		{
-			services.Configure<AppearanceOptions>(config.GetSection("Application:Appearance"));
+			
 
 			return services;
 		}

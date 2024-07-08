@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Misc.DictionarySelection
+namespace VoiceAssistant.UI.Appearance.DictionarySelection
 {
     public class ThemeSelector : ResourceDictionarySelector
     {
         public ThemeSelector()
             :
             base([
-                "pack://application:,,,/VoiceAssistant;component/Themes/DarkTheme.xaml",
-                "pack://application:,,,/VoiceAssistant;component/Themes/LightTheme.xaml"
-                ])
+				"pack://application:,,,/VoiceAssistant.UI.Appearance;component/Themes/DarkTheme.xaml",
+				"pack://application:,,,/VoiceAssistant.UI.Appearance;component/Themes/LightTheme.xaml"
+				])
         {
         }
     }

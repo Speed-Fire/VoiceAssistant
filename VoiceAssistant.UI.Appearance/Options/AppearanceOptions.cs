@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Misc.Options
+namespace VoiceAssistant.UI.Appearance.Options
 {
 	public class AppearanceOptions
 	{

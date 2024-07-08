@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace VoiceAssistant.Misc.DictionarySelection
+namespace VoiceAssistant.UI.Appearance.DictionarySelection
 {
     public class ResourceDictionarySelector(string[] embeddedDictionaries)
     {

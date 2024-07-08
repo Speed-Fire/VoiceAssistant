@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.Misc.DictionarySelection;
+using VoiceAssistant.UI.Appearance.DictionarySelection;
 
-namespace VoiceAssistant.Misc.Helpers
+namespace VoiceAssistant.UI.Appearance.Helpers
 {
     public class AppearanceHelper(ThemeSelector themeSelector, LanguageSelector languageSelector)
 	{

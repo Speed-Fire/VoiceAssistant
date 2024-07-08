@@ -5,9 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Windows;
 using VoiceAssistant.Misc;
-using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Misc.Helpers;
-using VoiceAssistant.Misc.Options;
 using VoiceAssistant.Notifications;
 using VoiceAssistant.ViewModels;
 

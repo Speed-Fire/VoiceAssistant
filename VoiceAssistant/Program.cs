@@ -22,7 +22,6 @@ using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Extensions;
 using VoiceAssistant.DAL.Providers;
 using VoiceAssistant.Extensions;
-using VoiceAssistant.Misc.DictionarySelection;
 using VoiceAssistant.Recording.Extensions;
 using VoiceAssistant.Services;
 using VoiceAssistant.Services.Extensions;
@@ -31,6 +30,8 @@ using PluginsSystem;
 using System.Globalization;
 using Microsoft.Extensions.Logging;
 using VoiceAssistant.HostedServices;
+using VoiceAssistant.UI.Appearance.Extensions;
+using VoiceAssistant.UI.Appearance.HostedServices;
 
 namespace VoiceAssistant
 {
@@ -70,7 +71,8 @@ namespace VoiceAssistant
 				.RegisterApp(builder.Configuration)
 				.RegisterHttpClient()
 				.RegisterChatGPT(builder.Configuration)
-				.RegisterCommandResolving(builder.Configuration);
+				.RegisterCommandResolving(builder.Configuration)
+				.RegisterAppearance(builder.Configuration);
 
 			RegisterHostedServices(builder.Services);
 

@@ -9,13 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
-using VoiceAssistant.Misc.DictionarySelection;
-using VoiceAssistant.Misc.Options;
+using VoiceAssistant.UI.Appearance.DictionarySelection;
+using VoiceAssistant.UI.Appearance.Options;
 using VoiceAssistant.Services;
 
-namespace VoiceAssistant.HostedServices
+namespace VoiceAssistant.UI.Appearance.HostedServices
 {
-	internal class AppearanceService(
+	public class AppearanceService(
 		IOptionsMonitor<AppearanceOptions> options,
 		ThemeSelector themeSelector,
 		LanguageSelector languageSelector,
