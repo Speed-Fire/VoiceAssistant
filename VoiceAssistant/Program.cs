@@ -112,7 +112,7 @@ namespace VoiceAssistant
 			services
 				.AddHostedService<ProviderInitializationService>()
 				.AddHostedService<VoiceAssistantService>()
-				.AddHostedService<AppearanceInitializationService>()
+				.AddHostedService<AppearanceService>()
 				.AddHostedService<WpfStarterService>();
 		}
 	}
