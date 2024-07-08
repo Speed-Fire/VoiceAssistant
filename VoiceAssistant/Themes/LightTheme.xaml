@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Colors.Primary">#DFDFDF</Color>
+    <Color x:Key="Colors.Secondary">#F8E9FE</Color>
+    <Color x:Key="Colors.Tertiary">#1F1F1F</Color>
+    <Color x:Key="Colors.Quaternary">#202020</Color>
+    <Color x:Key="Colors.Quinary">#3F3F3F</Color>
+    <Color x:Key="Colors.Senary">#161616</Color>
+    <Color x:Key="Colors.Septenary">#1B1B1B</Color>
+    <Color x:Key="Colors.Octonary">#0A000F</Color>
+    <Color x:Key="Colors.Nonary">#160022</Color>
+    <Color x:Key="Colors.Denary">#32004D</Color>
+    <Color x:Key="Colors.Sindenary">#440072</Color>
+    <Color x:Key="Colors.Duodenary">#924192</Color>
+    <Color x:Key="Colors.Terdenary">#A448FF</Color>
+
+</ResourceDictionary>
