@@ -8,9 +8,9 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
-namespace VoiceAssistant.Elements
+namespace VoiceAssistant.UI.Common.Elements
 {
-	internal class FadingListBox : ListBox
+	public class FadingListBox : ListBox
 	{
         private readonly Color COLOR_BLACK = new() { R = 0, G = 0, B = 0, A = 255 };
         private readonly Color COLOR_TRANSPARENT = new() { A = 0 };

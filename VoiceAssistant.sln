@@ -48,6 +48,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B33C7E51-B692-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.UI.Appearance", "VoiceAssistant.UI.Appearance\VoiceAssistant.UI.Appearance.csproj", "{020EC038-FE8E-40E6-A9B0-0B83FDCE661F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.UI.Common", "VoiceAssistant.UI.Common\VoiceAssistant.UI.Common.csproj", "{048BB06D-2097-48D1-B713-352C40CB05AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +120,10 @@ Global
 		{020EC038-FE8E-40E6-A9B0-0B83FDCE661F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{020EC038-FE8E-40E6-A9B0-0B83FDCE661F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{020EC038-FE8E-40E6-A9B0-0B83FDCE661F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048BB06D-2097-48D1-B713-352C40CB05AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048BB06D-2097-48D1-B713-352C40CB05AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048BB06D-2097-48D1-B713-352C40CB05AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048BB06D-2097-48D1-B713-352C40CB05AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +137,7 @@ Global
 		{DE7A9967-DDD1-47F2-AECC-9824760E6A24} = {2947C079-6E29-4B46-BF4B-C328B1BDB72D}
 		{6988F5E9-E662-4B10-A642-F66CBF8D359D} = {2947C079-6E29-4B46-BF4B-C328B1BDB72D}
 		{020EC038-FE8E-40E6-A9B0-0B83FDCE661F} = {B33C7E51-B692-4364-9A05-AC9B227FAA87}
+		{048BB06D-2097-48D1-B713-352C40CB05AF} = {B33C7E51-B692-4364-9A05-AC9B227FAA87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2870DBD0-1D63-4AF1-8706-07CD16EC4A04}

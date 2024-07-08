@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace VoiceAssistant.AttachedProperties
+namespace VoiceAssistant.UI.Common.AttachedProperties
 {
-	internal class CommandAttachedProperty : BaseAttachedProperty<CommandAttachedProperty, ICommand>
+	public class CommandAttachedProperty : BaseAttachedProperty<CommandAttachedProperty, ICommand>
 	{
 		private RoutedEventHandler? _unloaded;
 		private MouseButtonEventHandler? _click;

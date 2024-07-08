@@ -7,35 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Misc.FilteringCollection
+namespace VoiceAssistant.UI.Common.Collections.Filter
 {
 	public class FilteringCollection<T> : ICollection<T>, IList<T>
 		where T : INotifyPropertyChanged
 	{
-		//private class ItemContainer : INotifyPropertyChanged, IDisposable
-		//{
-		//	public event PropertyChangedEventHandler? PropertyChanged;
-
-		//	public T Item { get; }
-		//	public bool IsPresent { get; set; }
-
-  //          public ItemContainer(T item)
-  //          {
-		//		Item = item;
-		//		item.PropertyChanged += Handler;
-  //          }
-
-		//	public void Dispose()
-		//	{
-		//		Item.PropertyChanged -= Handler;
-		//	}
-
-		//	private void Handler(object? sender, PropertyChangedEventArgs e)
-		//	{
-		//		PropertyChanged?.Invoke(sender, e);
-		//	}
-		//}
-
 		private readonly FullyObservableCollection<T> _items = [];
 		private readonly FullyObservableCollection<T> _filtered = [];
 

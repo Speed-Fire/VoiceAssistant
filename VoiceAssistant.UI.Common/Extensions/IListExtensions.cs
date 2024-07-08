@@ -5,9 +5,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Extensions
+namespace VoiceAssistant.UI.Common.Extensions
 {
-	internal static class IListExtensions
+	public static class IListExtensions
 	{
 		public static int IndexOf<T>(this IList<T> list, Func<T, bool> predicate)
 		{

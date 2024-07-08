@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Misc.FilteringCollection
+namespace VoiceAssistant.UI.Common.Collections.Filter
 {
 	public interface ICollectionFilter<TItem>
 	{
