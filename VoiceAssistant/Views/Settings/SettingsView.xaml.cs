@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Synergy.WPF.Navigation.Components;
+using Synergy.WPF.Navigation.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,23 +24,26 @@ namespace VoiceAssistant.Views.Settings
 	/// </summary>
 	public partial class SettingsView : UserControl
 	{
-		public SettingsView(
-			[FromKeyedServices(Synergy.WPF.Navigation.Misc.NavConsts.SCOPED_SERVICE)]
-				UserControlFrame frame)
+		public SettingsView(NavigationManager navigationManager)
 		{
 			InitializeComponent();
 
-			SetupFrame(frame);
+			navigationManager.Attach("Settings", AttachFrame, DetachFrame);
 
 			Loaded += (sender, e) => { SettingsLB.SelectedIndex = 0; };
-			Unloaded += (sender, e) => { InnerGrid.Children.Clear(); };
+			//Unloaded += (sender, e) => { InnerGrid.Children.Clear(); };
 		}
 
-		private void SetupFrame(UserControlFrame frame)
+		private void AttachFrame(UserControlFrame frame)
 		{
 			frame.SetValue(Grid.ColumnProperty, 2);
 
 			InnerGrid.Children.Add(frame);
+		}
+
+		private void DetachFrame(UserControlFrame frame)
+		{
+			InnerGrid.Children.Remove(frame);
 		}
 
 		private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

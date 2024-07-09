@@ -12,11 +12,11 @@ using VoiceAssistant.Views.Settings;
 namespace VoiceAssistant.ViewModels.Settings
 {
 	internal partial class SettingsVM(
-			[FromKeyedServices(Synergy.WPF.Navigation.Misc.NavConsts.SCOPED_SERVICE)]
-				INavigationService localNavigation) 
+			Func<object, INavigationService> navigationServiceFactory) 
 		: ViewModel<SettingsView>
 	{
-		private readonly INavigationService _localNavigation = localNavigation;
+		private readonly INavigationService _localNavigation =
+			navigationServiceFactory.Invoke("Settings");
 
 		[RelayCommand]
 		private void OpenAppearanceSettings()
@@ -32,9 +32,7 @@ namespace VoiceAssistant.ViewModels.Settings
 
 		public override void Dispose()
 		{
-#pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
-			_localNavigation.NavigateTo(null);
-#pragma warning restore CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
+			_localNavigation.Dispose();
 		}
 	}
 }

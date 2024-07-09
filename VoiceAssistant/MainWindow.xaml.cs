@@ -1,5 +1,7 @@
 ﻿using Synergy.WPF.Common.Controls;
 using Synergy.WPF.Navigation.Components;
+using Synergy.WPF.Navigation.Managers;
+using Synergy.WPF.Navigation.Misc;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,19 +24,21 @@ namespace VoiceAssistant
 	public partial class MainWindow : Window
 	{
 		public MainWindow(
-			UserControlFrame frame,
+			NavigationManager navigationManager,
 			UrgentNotificatorComponent urgentNotificator,
 			VoiceAssistantListeningStatusComponent listeningComponent,
 			MainVM vm)
 		{
 			InitializeComponent();
 
+			navigationManager.Attach(NavConsts.MAIN_NAVIGATION_CHANNEL,
+				AttachFrame, DetachFrame);
+
 			this.MaxWidth = SystemParameters.WorkArea.Width;
 			this.MaxHeight = SystemParameters.WorkArea.Height;
 
 			DataContext = vm;
 
-			SetupFrame(frame);
 			SetupUrgentNotificator(urgentNotificator);
 			SetupListeningComponent(listeningComponent);
 
@@ -47,6 +51,24 @@ namespace VoiceAssistant
 			item.IsSelected = true;
 		}
 
+		#region Attach Frame
+
+		private void AttachFrame(UserControlFrame frame)
+		{
+			frame.SetValue(Grid.ColumnProperty, 1);
+			frame.SetValue(Grid.ColumnSpanProperty, 2);
+			frame.SetValue(Grid.RowSpanProperty, 4);
+
+			MainGrid.Children.Add(frame);
+		}
+
+		private void DetachFrame(UserControlFrame frame)
+		{
+			MainGrid.Children.Remove(frame);
+		}
+
+		#endregion
+
 		#region Setup components
 
 		private void SetupUrgentNotificator(UrgentNotificatorComponent urgentNotificator)
@@ -55,15 +77,6 @@ namespace VoiceAssistant
 			urgentNotificator.SetValue(Grid.RowProperty, 2);
 
 			MainGrid.Children.Add(urgentNotificator);
-		}
-
-		private void SetupFrame(UserControlFrame frame)
-		{
-			frame.SetValue(Grid.ColumnProperty, 1);
-			frame.SetValue(Grid.ColumnSpanProperty, 2);
-			frame.SetValue(Grid.RowSpanProperty, 4);
-
-			MainGrid.Children.Add(frame);
 		}
 
 		private void SetupListeningComponent(VoiceAssistantListeningStatusComponent listeningComponent)
