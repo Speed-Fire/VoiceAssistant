@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.ActionManagement.Misc
+namespace VoiceAssistant.CommandResolving.Misc
 {
 	internal class ActionConsts
 	{

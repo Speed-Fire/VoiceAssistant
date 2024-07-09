@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.ActionManagement.Options;
-using VoiceAssistant.ActionManagement.Switch;
+using VoiceAssistant.CommandResolving.Options;
+using VoiceAssistant.CommandResolving.Switch;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
 
-namespace VoiceAssistant.ActionManagement.Extensions
+namespace VoiceAssistant.CommandResolving.Extensions
 {
 	public static class DIExtensions
 	{

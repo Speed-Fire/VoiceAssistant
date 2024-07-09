@@ -1,7 +1,7 @@
 ﻿using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
 
-namespace VoiceAssistant.ActionManagement
+namespace VoiceAssistant.CommandResolving
 {
 	public interface ICommandResolver : IDisposable
 	{

@@ -51,7 +51,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DBConfiguration\DBConfiguration.csproj" />
     <ProjectReference Include="..\Plugins.System\Plugins.System.csproj" />
-    <ProjectReference Include="..\VoiceAssistant.ActionManagement\VoiceAssistant.ActionManagement.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.CommandResolving\VoiceAssistant.CommandResolving.csproj" />
     <ProjectReference Include="..\VoiceAssistant.ChatGPT\VoiceAssistant.ChatGPT.csproj" />
     <ProjectReference Include="..\VoiceAssistant.DAL\VoiceAssistant.DAL.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Recording\VoiceAssistant.Recording.csproj" />

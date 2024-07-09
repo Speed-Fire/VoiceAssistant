@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.ActionManagement.Switch
+namespace VoiceAssistant.CommandResolving.Switch
 {
 	public interface IActiveCommandResolverSwitch
 	{

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.ActionManagement.Misc;
-using VoiceAssistant.ActionManagement.Options;
+using VoiceAssistant.CommandResolving.Misc;
+using VoiceAssistant.CommandResolving.Options;
 
-namespace VoiceAssistant.ActionManagement.Switch
+namespace VoiceAssistant.CommandResolving.Switch
 {
 	internal class ActiveCommandResolverSwitch(
 		Func<IEnumerable<ICommandResolver>> commandResolversFactory,

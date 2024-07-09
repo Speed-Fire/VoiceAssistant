@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Base", "Plugin.Base\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugins.System", "Plugins.System\Plugins.System.csproj", "{10AC1094-15FE-4537-B47F-268C392898C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.ActionManagement", "VoiceAssistant.ActionManagement\VoiceAssistant.ActionManagement.csproj", "{590ABD09-DF97-43AD-A513-72188D8D48DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.CommandResolving", "VoiceAssistant.CommandResolving\VoiceAssistant.CommandResolving.csproj", "{590ABD09-DF97-43AD-A513-72188D8D48DD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.ChatGPT", "VoiceAssistant.ChatGPT\VoiceAssistant.ChatGPT.csproj", "{B15AA2C6-42E3-4E01-A21C-647834FCAB81}"
 EndProject
@@ -46,9 +46,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.Common", "Vo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B33C7E51-B692-4364-9A05-AC9B227FAA87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.UI.Appearance", "VoiceAssistant.UI.Appearance\VoiceAssistant.UI.Appearance.csproj", "{020EC038-FE8E-40E6-A9B0-0B83FDCE661F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.UI.Appearance", "VoiceAssistant.UI.Appearance\VoiceAssistant.UI.Appearance.csproj", "{020EC038-FE8E-40E6-A9B0-0B83FDCE661F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.UI.Common", "VoiceAssistant.UI.Common\VoiceAssistant.UI.Common.csproj", "{048BB06D-2097-48D1-B713-352C40CB05AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.UI.Common", "VoiceAssistant.UI.Common\VoiceAssistant.UI.Common.csproj", "{048BB06D-2097-48D1-B713-352C40CB05AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

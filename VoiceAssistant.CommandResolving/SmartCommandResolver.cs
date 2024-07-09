@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.ActionManagement.Misc;
+using VoiceAssistant.CommandResolving.Misc;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
 
-namespace VoiceAssistant.ActionManagement
+namespace VoiceAssistant.CommandResolving
 {
 	internal class SmartCommandResolver : ICommandResolver
 	{

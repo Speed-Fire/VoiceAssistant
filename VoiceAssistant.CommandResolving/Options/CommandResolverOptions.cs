@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.ActionManagement.Options
+namespace VoiceAssistant.CommandResolving.Options
 {
 	internal class CommandResolverOptions
 	{

@@ -14,7 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.ActionManagement.Extensions;
+using VoiceAssistant.CommandResolving.Extensions;
 using VoiceAssistant.ChatGPT.Extensions;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;

@@ -2,7 +2,7 @@
 using System.Globalization;
 using VoiceAssistant.Common;
 
-namespace VoiceAssistant.ActionManagement.Misc
+namespace VoiceAssistant.CommandResolving.Misc
 {
     public class UnrecognizedCommandException : VoicableException
     {

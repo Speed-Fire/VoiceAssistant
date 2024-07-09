@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.ActionManagement;
+using VoiceAssistant.CommandResolving;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
