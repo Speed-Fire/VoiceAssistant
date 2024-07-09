@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VoiceAssistant.Misc;
 using VoiceAssistant.UI.Common.AttachedProperties;
 
 namespace VoiceAssistant.Views.Settings
@@ -28,7 +29,7 @@ namespace VoiceAssistant.Views.Settings
 		{
 			InitializeComponent();
 
-			navigationManager.Attach("Settings", AttachFrame, DetachFrame);
+			navigationManager.Attach(NavigationChannels.SETTINGS_CHANNEL, AttachFrame, DetachFrame);
 
 			Loaded += (sender, e) => { SettingsLB.SelectedIndex = 0; };
 		}

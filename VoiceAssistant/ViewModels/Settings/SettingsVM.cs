@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.Misc;
 using VoiceAssistant.Views.Settings;
 
 namespace VoiceAssistant.ViewModels.Settings
@@ -16,7 +17,7 @@ namespace VoiceAssistant.ViewModels.Settings
 		: ViewModel<SettingsView>
 	{
 		private readonly INavigationService _localNavigation =
-			navigationServiceFactory.Invoke("Settings");
+			navigationServiceFactory.Invoke(NavigationChannels.SETTINGS_CHANNEL);
 
 		[RelayCommand]
 		private void OpenAppearanceSettings()
