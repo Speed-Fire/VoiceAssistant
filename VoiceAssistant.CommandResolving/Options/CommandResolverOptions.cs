@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.CommandResolving.Options
 {
-	internal class CommandResolverOptions
+	public class CommandResolverOptions
 	{
 		public bool AutomaticResolverSelection { get; set; }
 		public required string SelectedResolver { get; set; }
