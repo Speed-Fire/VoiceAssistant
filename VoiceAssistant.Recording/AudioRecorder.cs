@@ -18,6 +18,7 @@ namespace VoiceAssistant.Recording
 
 		private readonly int MAX_SILENCE_DURATION = 2;
 
+		private readonly SemaphoreSlim _semaphore = new(1, 1);
 		private readonly Mutex _mutex = new();
 
 		private readonly WaveInEvent _audioCapturer;
@@ -57,11 +58,12 @@ namespace VoiceAssistant.Recording
 
 		private readonly object _locker = new();
 
-		private void Audio_RecordingStopped(object? sender, StoppedEventArgs e)
+		private async void Audio_RecordingStopped(object? sender, StoppedEventArgs e)
 		{
 			if (_speechRecording)
 			{
-				_mutex.WaitOne();
+				//_mutex.WaitOne();
+				await _semaphore.WaitAsync();
 
 				if (_speechRecording)
 				{
@@ -77,13 +79,15 @@ namespace VoiceAssistant.Recording
 					}
 				}
 
-				_mutex.ReleaseMutex();
+				//_mutex.ReleaseMutex();
+				_semaphore.Release();
 			}
 		}
 
-		private void Audio_DataAvailable(object? sender, WaveInEventArgs e)
+		private async void Audio_DataAvailable(object? sender, WaveInEventArgs e)
 		{
-			_mutex.WaitOne();
+			//_mutex.WaitOne();
+			await _semaphore.WaitAsync();
 
 			if (_waveWriter is null)
 			{
@@ -91,7 +95,7 @@ namespace VoiceAssistant.Recording
 				return;
 			}
 
-			_waveWriter.Write(e.Buffer, 0, e.BytesRecorded);
+			var task = _waveWriter.WriteAsync(e.Buffer, 0, e.BytesRecorded);
 
 			if (IsSilent(e.Buffer))
 			{
@@ -101,6 +105,8 @@ namespace VoiceAssistant.Recording
 			{
 				_silentChunkCount = 0;
 			}
+
+			await task;
 
 			var maxSilentChunks = _audioCapturer.WaveFormat.AverageBytesPerSecond
 				/ e.Buffer.Length * MAX_SILENCE_DURATION;
@@ -112,7 +118,8 @@ namespace VoiceAssistant.Recording
 				_audioCapturer.StopRecording();
 			}
 
-			_mutex.ReleaseMutex();
+			//_mutex.ReleaseMutex();
+			_semaphore.Release();
 		}
 
 		private unsafe bool IsSilent(ReadOnlySpan<byte> buffer)
