@@ -18,7 +18,7 @@
 
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="0 0 0 3"/>
-            <Setter Property="FontSize" Value="18"/>
+            <!--<Setter Property="FontSize" Value="18"/>-->
 
         </Style>
         
@@ -46,8 +46,8 @@
                 <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBlock Text="Theme:"/>
+
+            <TextBlock Text="{DynamicResource Strings.Settings.Appearance.Theme.Colon}"/>
 
             <ComboBox
                 Grid.Row="1"
@@ -56,7 +56,7 @@
                 SelectedItem="{Binding SelectedTheme}"/>
 
             <TextBlock Grid.Row="3"
-                Text="Language:"/>
+                Text="{DynamicResource Strings.Settings.Appearance.Language.Colon}"/>
 
             <ComboBox
                 Grid.Row="4"

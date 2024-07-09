@@ -40,5 +40,10 @@
     <sys:String x:Key="Strings.Errors.Internal">Something went wrong!</sys:String>
 
     <sys:String x:Key="Strings.Plugins.Settings.Overflow">Value for parameter "{0}" is too large or too small!</sys:String>
+
+    <sys:String x:Key="Strings.Settings.Appearance">Appearance</sys:String>
+    <sys:String x:Key="Strings.Settings.Appearance.Theme.Colon">Theme:</sys:String>
+    <sys:String x:Key="Strings.Settings.Appearance.Language.Colon">Language:</sys:String>
+    <sys:String x:Key="Strings.Settings.VoiceRecognition">Voice recognition</sys:String>
     
 </ResourceDictionary>
