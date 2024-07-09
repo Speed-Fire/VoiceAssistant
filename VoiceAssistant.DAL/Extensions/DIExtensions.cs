@@ -29,10 +29,11 @@ namespace VoiceAssistant.DAL.Extensions
 
 			services
 				.AddDbContext<DbContext, AppDbContext>(SetupDbBuilder)
-				.AddDbContext<AppDbContext>(SetupDbBuilder);
+				.AddDbContext<AppDbContext>(SetupDbBuilder,
+					contextLifetime: ServiceLifetime.Transient);
 
 			services
-				.AddScoped<IAsyncRepository<Settings>, SettingsRepository>();
+				.AddTransient<IAsyncRepository<Settings>, SettingsRepository>();
 
 			IConfigurationBuilder configBuilder = (IConfigurationBuilder)configuration;
 			configBuilder.AddEntityConfiguration<AppDbContext>(SetupDbBuilder, true, 2000);
