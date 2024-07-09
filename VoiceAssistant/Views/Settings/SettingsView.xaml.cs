@@ -31,7 +31,6 @@ namespace VoiceAssistant.Views.Settings
 			navigationManager.Attach("Settings", AttachFrame, DetachFrame);
 
 			Loaded += (sender, e) => { SettingsLB.SelectedIndex = 0; };
-			//Unloaded += (sender, e) => { InnerGrid.Children.Clear(); };
 		}
 
 		private void AttachFrame(UserControlFrame frame)
