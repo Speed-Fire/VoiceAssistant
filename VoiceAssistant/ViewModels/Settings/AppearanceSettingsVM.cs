@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.Options;
 using Synergy.WPF.Navigation.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Windows.Controls;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Services;
 using VoiceAssistant.UI.Appearance.Helpers;
+using VoiceAssistant.UI.Appearance.Options;
 using VoiceAssistant.Views.Settings;
 
 namespace VoiceAssistant.ViewModels.Settings
@@ -35,7 +37,8 @@ namespace VoiceAssistant.ViewModels.Settings
 		public AppearanceSettingsVM(
 			IUrgentNotifier urgentNotifier,
 			ApplicationSettingsService settingsService, 
-			AppearanceHelper appearanceHelper)
+			AppearanceHelper appearanceHelper,
+			IOptions<AppearanceOptions> options)
 		{
 			_urgentNotifier = urgentNotifier;
 			_settingsService = settingsService;
@@ -43,17 +46,10 @@ namespace VoiceAssistant.ViewModels.Settings
 			_availableThemes = appearanceHelper.AvailableThemes;
 			_availableLanguages = appearanceHelper.AvailableLanguages;
 
-			_settingsService.SetCurrentSection("Appearance");
-		}
+			_selectedTheme = _availableThemes.FirstOrDefault(t => t == options.Value.Theme);
+			_selectedLanguage = _availableLanguages.FirstOrDefault(l => l == options.Value.Language);
 
-		[RelayCommand]
-		private async Task OnLoaded()
-		{
-			await Task.Run(async () =>
-			{
-				await InitSelectedLanguage();
-				await InitSelectedTheme();
-			});
+			_settingsService.SetCurrentSection("Appearance");
 		}
 
 		async partial void OnSelectedLanguageChanged(string? oldValue, string? newValue)
@@ -91,39 +87,5 @@ namespace VoiceAssistant.ViewModels.Settings
 				}
 			});
 		}
-
-		#region Selection initialization
-
-		private async Task InitSelectedTheme()
-		{
-			var currentThemeResult = await _settingsService.GetValueAsync("Theme");
-			if (!currentThemeResult.IsFirst)
-			{
-				_urgentNotifier.NotifyError("Can't get current theme!",
-					exception: currentThemeResult.Second);
-			}
-			else
-			{
-				SelectedTheme = AvailableThemes
-					.FirstOrDefault<string?>(t => t == currentThemeResult.First);
-			}
-		}
-
-		private async Task InitSelectedLanguage()
-		{
-			var currentLanguageResult = await _settingsService.GetValueAsync("Language");
-			if (!currentLanguageResult.IsFirst)
-			{
-				_urgentNotifier.NotifyError("Can't get current language!",
-					exception: currentLanguageResult.Second);
-			}
-			else
-			{
-				SelectedLanguage = AvailableLanguages
-					.FirstOrDefault<string?>(t => t == currentLanguageResult.First);
-			}
-		}
-
-		#endregion
 	}
 }
