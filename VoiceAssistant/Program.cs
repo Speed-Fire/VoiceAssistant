@@ -68,7 +68,7 @@ namespace VoiceAssistant
 			builder.Services
 				.RegisterDAL(builder.Configuration)
 				.RegisterVoiceRecording(builder.Configuration)
-				.RegisterServices()
+				.RegisterServices(builder.Configuration)
 				.RegisterApp(builder.Configuration)
 				.RegisterHttpClient()
 				.RegisterChatGPT(builder.Configuration)
@@ -114,6 +114,7 @@ namespace VoiceAssistant
 		{
 			services
 				.AddHostedService<ProviderInitializationService>()
+				.AddHostedService<S2TConverterService>()
 				.AddHostedService<VoiceAssistantService>()
 				.AddHostedService<AppearanceService>()
 				.AddHostedService<WpfStarterService>();

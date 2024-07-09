@@ -13,9 +13,12 @@ using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Services.Misc.Implementations;
 using VoiceAssistant.Services.Misc.Interfaces;
 using VoiceAssistant.Services.ProviderInitializers;
+using VoiceAssistant.Services.Hosted;
+using Microsoft.Extensions.Configuration;
+using VoiceAssistant.Services.Options;
 namespace VoiceAssistant.Services.Extensions
 {
-	public class ExceptionNotifier : IExceptionNotifier
+    public class ExceptionNotifier : IExceptionNotifier
 	{
 		public void Notify(Exception exception)
 		{
@@ -27,12 +30,13 @@ namespace VoiceAssistant.Services.Extensions
 	{
 		public static int AssistantActionEntity { get; private set; }
 
-		public static IServiceCollection RegisterServices(this IServiceCollection services)
+		public static IServiceCollection RegisterServices(
+			this IServiceCollection services,
+			IConfiguration config)
 		{
 			services
 				.AddTransient<IAssistantActionService, AssistantActionService>()
-				.AddTransient<IProviderInitializer, AssistantActionsProviderInitializer>()
-				.AddTransient<IProviderInitializer, S2TConverterProviderInitializer>();
+				.AddTransient<IProviderInitializer, AssistantActionsProviderInitializer>();
 
 			services
 				.AddSingleton<IVoiceAssistantMonitor, VoiceAssistantMonitor>();
@@ -44,7 +48,10 @@ namespace VoiceAssistant.Services.Extensions
 				.AddSingleton<IExceptionNotifier, ExceptionNotifier>();
 
 			services
-				.AddScoped<ApplicationSettingsService>();
+				.AddTransient<ApplicationSettingsService>();
+
+			services.
+				Configure<SpeechToTextOptions>(config.GetSection("Application:SpeechToText"));
 
 			return services;
 		}
