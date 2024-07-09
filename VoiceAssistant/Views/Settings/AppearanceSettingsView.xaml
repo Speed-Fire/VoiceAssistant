@@ -14,14 +14,8 @@
     <UserControl.Resources>
 
         <Style TargetType="TextBlock"
-               BasedOn="{StaticResource Styles.TextBlock}">
+               BasedOn="{StaticResource Styles.TextBlock.Settings}"/>
 
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="0 0 0 3"/>
-            <!--<Setter Property="FontSize" Value="18"/>-->
-
-        </Style>
-        
     </UserControl.Resources>
 
     <i:Interaction.Triggers>

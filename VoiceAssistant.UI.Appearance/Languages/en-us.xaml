@@ -45,5 +45,10 @@
     <sys:String x:Key="Strings.Settings.Appearance.Theme.Colon">Theme:</sys:String>
     <sys:String x:Key="Strings.Settings.Appearance.Language.Colon">Language:</sys:String>
     <sys:String x:Key="Strings.Settings.VoiceRecognition">Voice recognition</sys:String>
+    <sys:String x:Key="Strings.Settings.VoiceRecognition.S2T.Converter.Colon">Speech to text converter:</sys:String>
+    <sys:String x:Key="Strings.Settings.VoiceRecognition.CommandResolving.Colon">Command resolving:</sys:String>
+    <sys:String x:Key="Strings.Settings.VoiceRecognition.CommandResolving.AutoSelection">Automatic command resolver selection</sys:String>
+    <sys:String x:Key="Strings.Settings.VoiceRecognition.Gemini.ServiceApiKey.Colon">Gemini service API key:</sys:String>
+    <sys:String x:Key="Strings.Settings.VoiceRecognition.Gemini.ServiceApiKey.Warning">Gemini service API key cannot be applied at runtime. Please restart the application!</sys:String>
     
 </ResourceDictionary>

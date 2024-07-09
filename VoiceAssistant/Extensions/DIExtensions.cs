@@ -18,6 +18,7 @@ using VoiceAssistant.ViewModels.Components;
 using VoiceAssistant.ViewModels.Plugins;
 using VoiceAssistant.ViewModels.ScriptEditing;
 using VoiceAssistant.ViewModels.Settings;
+using VoiceAssistant.ViewModels.Settings.VoiceRecognition;
 using VoiceAssistant.Views;
 using VoiceAssistant.Views.AssistantActions;
 using VoiceAssistant.Views.Plugins;
@@ -88,7 +89,8 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<VoiceAssistantListeningStatusComponent>()
 				.AddTransient<PluginsView>()
 				.AddTransient<SettingsView>()
-				.AddScoped<AppearanceSettingsView>();
+				.AddTransient<AppearanceSettingsView>()
+				.AddTransient<VoiceRecognitionSettingsView>();
 
 			return services;
 		}
@@ -102,7 +104,11 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<VoiceAssistantListeningStatusVM>()
 				.AddTransient<PluginsVM>()
 				.AddTransient<SettingsVM>()
-				.AddScoped<AppearanceSettingsVM>();
+				.AddTransient<AppearanceSettingsVM>()
+				.AddTransient<VoiceRecognitionSettingsVM>()
+				.AddTransient<SpeechToTextSettingsVM>()
+				.AddTransient<CommandResolvingSettingsVM>()
+				.AddTransient<GeminiSettingsVM>();
 
 			return services;
 		}

@@ -28,7 +28,7 @@ namespace VoiceAssistant.ViewModels.Settings
 		[RelayCommand]
 		private void OpenVoiceRecognitionSettings()
 		{
-
+			_localNavigation.NavigateTo<VoiceRecognitionSettingsVM>();
 		}
 
 		public override void Dispose()
