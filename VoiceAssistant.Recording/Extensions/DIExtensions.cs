@@ -14,10 +14,10 @@ namespace VoiceAssistant.Recording.Extensions
 		public static IServiceCollection RegisterVoiceRecording(this IServiceCollection services,
 			IConfiguration configuration)
 		{
-			services.AddTransient<CommandRecorder>();
+			services.AddTransient<SpeechRecorder>();
 
-			services.Configure<CommandRecorderOptions>(
-				configuration.GetSection(nameof(CommandRecorderOptions)));
+			services.Configure<SpeechRecorderOptions>(
+				configuration.GetSection(nameof(SpeechRecorderOptions)));
 
 			return services;
 		}

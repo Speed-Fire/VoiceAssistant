@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Recording.Options
 {
-	public class CommandRecorderOptions
+	public class SpeechRecorderOptions
 	{
 		public int MaxSilenceDuration { get; set; }
 	}
