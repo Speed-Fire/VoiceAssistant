@@ -1,0 +1,1 @@
+﻿Commands.Confirmation.Request	Are you sure you want to execute this command?

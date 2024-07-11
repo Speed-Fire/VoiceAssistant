@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.Common;
 
 namespace VoiceAssistant.Core.Interfaces
 {
-	public interface IExceptionNotifier
+	public interface IAssistantVoice : IDisposable
 	{
-		void Notify(Exception exception);
+		Task Initialize();
+		Task Speak(string key);
+		Task Speak(VoicableException exception);
 	}
 }

@@ -1,0 +1,1 @@
+﻿Commands.Confirmation.Request	Jste si jistý, že chcete spustit tento příkaz?

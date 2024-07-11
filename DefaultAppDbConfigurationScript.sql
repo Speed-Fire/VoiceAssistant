@@ -4,3 +4,5 @@ INSERT INTO Settings VALUES ("Application:TextResolving:PreferredCommandResolver
 INSERT INTO Settings VALUES ("Application:TextResolving:PreferredConfirmationResolver", "", 0)
 INSERT INTO Settings VALUES ("Application:ChatGPT:Gemini:ServiceApiKey", "", 1)
 INSERT INTO Settings VALUES ("Application:SpeechToText:SelectedConverter", "", 1)
+INSERT INTO Settings VALUES ("Application:AssistantVoice:SelectedVoice", "", 1)
+INSERT INTO Settings VALUES ("Application:AssistantVoice:Volume", 100, 1)
