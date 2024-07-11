@@ -14,14 +14,14 @@ namespace VoiceAssistant.ViewModels.Settings.VoiceRecognition
 {
 	internal partial class GeminiSettingsVM : ViewModel
 	{
-		private readonly ApplicationSettingsService _settings;
+		private readonly IApplicationSettingsService _settings;
 		private readonly IUrgentNotifier _notifier;
 
 		[ObservableProperty]
 		private string _serviceApiKey;
 
 		public GeminiSettingsVM(
-			ApplicationSettingsService settings,
+			IApplicationSettingsService settings,
 			IUrgentNotifier notifier,
 			IConfiguration config)
 		{

@@ -21,7 +21,7 @@ namespace VoiceAssistant.ViewModels.Settings
 		: ViewModel<AppearanceSettingsView>
 	{
 		private readonly IUrgentNotifier _urgentNotifier;
-		private readonly ApplicationSettingsService _settingsService;
+		private readonly IApplicationSettingsService _settingsService;
 
 		[ObservableProperty]
 		private IEnumerable<string> _availableThemes;
@@ -37,7 +37,7 @@ namespace VoiceAssistant.ViewModels.Settings
 
 		public AppearanceSettingsVM(
 			IUrgentNotifier urgentNotifier,
-			ApplicationSettingsService settingsService, 
+			IApplicationSettingsService settingsService, 
 			IAppearanceSettingsHelper settingsHelper)
 		{
 			_urgentNotifier = urgentNotifier;

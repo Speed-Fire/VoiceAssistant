@@ -19,7 +19,7 @@ namespace VoiceAssistant.UI.Appearance.HostedServices
 		IOptionsMonitor<AppearanceOptions> options,
 		ThemeSelector themeSelector,
 		LanguageSelector languageSelector,
-		ApplicationSettingsService settingsService,
+		IApplicationSettingsService settingsService,
 		IUrgentNotifier urgentNotifier,
 		ILogger<AppearanceService> logger)
 		: IHostedService
@@ -27,7 +27,7 @@ namespace VoiceAssistant.UI.Appearance.HostedServices
 		private readonly IOptionsMonitor<AppearanceOptions> _options = options;
 		private readonly ThemeSelector _themeSelector = themeSelector;
 		private readonly LanguageSelector _languageSelector = languageSelector;
-		private readonly ApplicationSettingsService _settingsService = settingsService;
+		private readonly IApplicationSettingsService _settingsService = settingsService;
 		private readonly IUrgentNotifier _urgentNotifier = urgentNotifier;
 		private readonly ILogger _logger = logger;
 

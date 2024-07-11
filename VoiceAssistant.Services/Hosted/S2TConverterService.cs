@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Common;
+using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Repositories;
 using VoiceAssistant.Services.Misc.Interfaces;
@@ -19,13 +20,13 @@ namespace VoiceAssistant.Services.Hosted
 {
     public class S2TConverterService(
 		ILogger<S2TConverterService> logger,
-		IServiceScopeFactory scopeFactory,
+		IServiceProvider services,
 		Provider<IS2TConverter> converterProvider,
 		IEnumerable<S2TConverterInfo> converterInfos,
 		IOptionsMonitor<SpeechToTextOptions> options) : IHostedService
     {
         private readonly ILogger _logger = logger;
-        private readonly IServiceScopeFactory _scopeFactory = scopeFactory;
+        private readonly IServiceProvider _services = services;
         private readonly Provider<IS2TConverter> _converterProvider = converterProvider;
         private readonly IEnumerable<S2TConverterInfo> _converterInfos = converterInfos;
         private readonly IOptionsMonitor<SpeechToTextOptions> _options = options;
@@ -58,8 +59,7 @@ namespace VoiceAssistant.Services.Hosted
 
 		public async Task<bool> InitializeAsync()
         {
-            using var scope = _scopeFactory.CreateScope();
-            var settings = scope.ServiceProvider.GetRequiredService<ApplicationSettingsService>();
+            var settings = _services.GetRequiredService<IApplicationSettingsService>();
 			settings.SetCurrentSection("SpeechToText");
 
 			_logger.LogInformation("Starting S2TConverter provider initialization...");
@@ -88,7 +88,7 @@ namespace VoiceAssistant.Services.Hosted
             return result;
         }
 
-        private async Task<bool> SetFirstSatisfyingConverter(ApplicationSettingsService settings)
+        private async Task<bool> SetFirstSatisfyingConverter(IApplicationSettingsService settings)
         {
             foreach (var converterInfo in _converterInfos)
             {
@@ -105,7 +105,7 @@ namespace VoiceAssistant.Services.Hosted
             return false;
         }
 
-        private async Task<bool> TrySetSelectedConverter(ApplicationSettingsService settings)
+        private async Task<bool> TrySetSelectedConverter(IApplicationSettingsService settings)
         {
             _logger.LogInformation("Searching for selected converter...");
 

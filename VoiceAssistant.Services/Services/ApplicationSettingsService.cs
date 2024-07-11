@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Common;
+using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Repositories;
 
 namespace VoiceAssistant.Services
 {
-	public class ApplicationSettingsService(IAsyncRepository<Settings> settings)
+	internal class ApplicationSettingsService(IAsyncRepository<Settings> settings)
+		: IApplicationSettingsService
 	{
 		private const string DEFAULT_SECTION = "Application";
 
@@ -72,9 +74,9 @@ namespace VoiceAssistant.Services
 			{
 				return ex;
 			}
-			finally 
+			finally
 			{
-				_semaphore.Release(); 
+				_semaphore.Release();
 			}
 		}
 

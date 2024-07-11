@@ -17,7 +17,7 @@ namespace VoiceAssistant.ViewModels.Settings.VoiceRecognition
 {
 	internal partial class SpeechToTextSettingsVM : ViewModel
 	{
-		private readonly ApplicationSettingsService _settings;
+		private readonly IApplicationSettingsService _settings;
 		private readonly IUrgentNotifier _notifier;
 
 		public IEnumerable<string> AvailableConverters { get; }
@@ -26,7 +26,7 @@ namespace VoiceAssistant.ViewModels.Settings.VoiceRecognition
 		private string? _selectedConverter;
 
 		public SpeechToTextSettingsVM(
-			ApplicationSettingsService settings,
+			IApplicationSettingsService settings,
 			IUrgentNotifier notifier,
 			IS2TConverterSettingsHelper settingsHelper)
 		{

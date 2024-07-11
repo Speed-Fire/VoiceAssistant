@@ -15,7 +15,7 @@ namespace VoiceAssistant.ViewModels.Settings
 	internal partial class SpeechSynthesisSettingsVM : ViewModel<SpeechSynthesisSettingsView>
 	{
 		private readonly IUrgentNotifier _urgentNotifier;
-		private readonly ApplicationSettingsService _settings;
+		private readonly IApplicationSettingsService _settings;
 
 		public IEnumerable<string> AvailableVoices { get; }
 
@@ -26,7 +26,7 @@ namespace VoiceAssistant.ViewModels.Settings
 		private int _volume;
 
         public SpeechSynthesisSettingsVM(
-			ApplicationSettingsService settings,
+			IApplicationSettingsService settings,
 			IUrgentNotifier urgentNotifier,
 			IAssistantVoiceSettingsHelper assistantVoiceSettings)
         {
