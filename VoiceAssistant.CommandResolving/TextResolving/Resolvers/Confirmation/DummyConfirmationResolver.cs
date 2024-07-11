@@ -24,7 +24,7 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Confirmation
 				//Load sample data
 				var sampleData = new ConfirmationClassifierModel.ModelInput()
 				{
-					Sentence = text,
+					Sentence = text.ToLower(),
 				};
 
 				//Load model and predict output
