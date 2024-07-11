@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Models;
+using VoiceAssistant.DAL.Providers;
 
 namespace VoiceAssistant.DAL.Repositories.Implementations
 {
-	internal class SettingsRepository(DbContext context) : IAsyncRepository<Settings>
+	internal class SettingsRepository(AppDbContext context) : IAsyncRepository<Settings>
 	{
 		private readonly DbContext _context = context;
 		private readonly DbSet<Settings> _settingsSet = context.Set<Settings>();
