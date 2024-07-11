@@ -20,6 +20,7 @@ using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;
 using VoiceAssistant.Core.Models;
 using VoiceAssistant.DAL.Extensions;
+using VoiceAssistant.SpeechSynthesis.Extensions;
 using VoiceAssistant.DAL.Providers;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Recording.Extensions;
@@ -68,6 +69,7 @@ namespace VoiceAssistant
 			builder.Services
 				.RegisterDAL(builder.Configuration)
 				.RegisterVoiceRecording(builder.Configuration)
+				.RegisterSpeechSynthesis(builder.Configuration)
 				.RegisterServices(builder.Configuration)
 				.RegisterApp(builder.Configuration)
 				.RegisterHttpClient()

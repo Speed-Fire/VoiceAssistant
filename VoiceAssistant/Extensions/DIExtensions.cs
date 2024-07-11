@@ -90,7 +90,8 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<PluginsView>()
 				.AddTransient<SettingsView>()
 				.AddTransient<AppearanceSettingsView>()
-				.AddTransient<VoiceRecognitionSettingsView>();
+				.AddTransient<VoiceRecognitionSettingsView>()
+				.AddTransient<SpeechSynthesisSettingsView>();
 
 			return services;
 		}
@@ -107,8 +108,8 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<AppearanceSettingsVM>()
 				.AddTransient<VoiceRecognitionSettingsVM>()
 				.AddTransient<SpeechToTextSettingsVM>()
-				.AddTransient<CommandResolvingSettingsVM>()
-				.AddTransient<GeminiSettingsVM>();
+				.AddTransient<GeminiSettingsVM>()
+				.AddTransient<SpeechSynthesisSettingsVM>();
 
 			return services;
 		}

@@ -144,6 +144,11 @@
                                Text="{DynamicResource Strings.Settings.VoiceRecognition}"
                                locattach:CommandAttachedProperty.Value="{Binding OpenVoiceRecognitionSettingsCommand}"/>
 
+                    <TextBlock Style="{StaticResource Styles.TextBlock}"
+                               FontSize="20"
+                               Text="{DynamicResource Strings.Settings.SpeechSynthesis}"
+                               locattach:CommandAttachedProperty.Value="{Binding OpenSpeechSynthesisSettingsCommand}"/>
+
                 </ListBox>
 
                 <Rectangle Grid.Column="1"

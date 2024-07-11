@@ -31,6 +31,12 @@ namespace VoiceAssistant.ViewModels.Settings
 			_localNavigation.NavigateTo<VoiceRecognitionSettingsVM>();
 		}
 
+		[RelayCommand]
+		private void OpenSpeechSynthesisSettings()
+		{
+			_localNavigation.NavigateTo<SpeechSynthesisSettingsVM>();
+		}
+
 		public override void Dispose()
 		{
 			_localNavigation.Dispose();

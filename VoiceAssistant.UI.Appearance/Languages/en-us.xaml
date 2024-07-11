@@ -48,5 +48,8 @@
     <sys:String x:Key="Strings.Settings.VoiceRecognition.S2T.Converter.Colon">Speech to text converter:</sys:String>
     <sys:String x:Key="Strings.Settings.VoiceRecognition.Gemini.ServiceApiKey.Colon">Gemini service API key:</sys:String>
     <sys:String x:Key="Strings.Settings.VoiceRecognition.Gemini.ServiceApiKey.Warning">Gemini service API key cannot be applied at runtime. Please restart the application!</sys:String>
+    <sys:String x:Key="Strings.Settings.SpeechSynthesis">Speech synthesis</sys:String>
+    <sys:String x:Key="Strings.Settings.SpeechSynthesis.SelectedVoice.Colon">Selected voice:</sys:String>
+    <sys:String x:Key="Strings.Settings.SpeechSynthesis.Volume.Colon">Volume:</sys:String>
     
 </ResourceDictionary>

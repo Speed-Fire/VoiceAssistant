@@ -1,12 +1,9 @@
-﻿<UserControl x:Class="VoiceAssistant.Views.Settings.VoiceRecognitionSettingsView"
+﻿<UserControl x:Class="VoiceAssistant.Views.Settings.SpeechSynthesisSettingsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VoiceAssistant.Views.Settings"
-             
-             xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"
-             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -19,12 +16,6 @@
 
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="MinWidth" Value="300"/>
-
-        </Style>
-
-        <Style TargetType="controls:AdvancedTextBox" BasedOn="{StaticResource Styles.AdvancedTextBox}">
-
-            <Setter Property="Width" Value="300"/>
 
         </Style>
 
@@ -48,34 +39,23 @@
             </Grid.ColumnDefinitions>
             
             <TextBlock Grid.Row="0"
-                       Text="{DynamicResource Strings.Settings.VoiceRecognition.S2T.Converter.Colon}"/>
+                       Text="{DynamicResource Strings.Settings.SpeechSynthesis.SelectedVoice.Colon}"/>
 
-            <ComboBox
-                Grid.Row="1"
-                ItemsSource="{Binding SpeechToTextSettings.AvailableConverters}"
-                SelectedItem="{Binding SpeechToTextSettings.SelectedConverter}"/>
+            <ComboBox Grid.Row="1"
+                      ItemsSource="{Binding AvailableVoices}"
+                      SelectedItem="{Binding SelectedVoice}"/>
 
             <TextBlock Grid.Row="3"
-                       Text="{DynamicResource Strings.Settings.VoiceRecognition.Gemini.ServiceApiKey.Colon}"/>
+                       Text="{DynamicResource Strings.Settings.SpeechSynthesis.Volume.Colon}"/>
 
-            <Grid Grid.Row="4">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" MaxWidth="300"/>
-                    <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <controls:AdvancedTextBox
-                    Text="{Binding GeminiSettings.ServiceApiKey}"/>
-
-                <controls:NormalButton
-                    Grid.Column="2"
-                    Style="{StaticResource Styles.NormalButton}"
-                    Content="{DynamicResource Strings.Buttons.Apply}"
-                    Command="{Binding GeminiSettings.ApplyCommand}"/>
-
-            </Grid>
+            <Slider Grid.Row="4" x:Name="VolumeSlider"
+                    Minimum="0"
+                    Maximum="100"
+                    SmallChange="1"
+                    LargeChange="1"
+                    Thumb.DragStarted="Slider_DragStarted"
+                    Thumb.DragCompleted="Slider_DragCompleted"
+                    ValueChanged="Slider_ValueChanged"/>
 
         </Grid>
         
