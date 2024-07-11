@@ -18,29 +18,6 @@ using Microsoft.Extensions.Configuration;
 using VoiceAssistant.Services.Options;
 namespace VoiceAssistant.Services.Extensions
 {
-	public class ExceptionNotifier : IAssistantVoice
-	{
-		public void Notify(Exception exception)
-		{
-			
-		}
-
-		public Task RequestConfirmation()
-		{
-			return Task.CompletedTask;
-		}
-
-		public Task Speak(string text)
-		{
-			return Task.CompletedTask;
-		}
-
-		public Task Speak(VoicableException exception)
-		{
-			return Task.CompletedTask;
-		}
-	}
-
 	public static class DIExtensions
 	{
 		public static int AssistantActionEntity { get; private set; }
@@ -58,9 +35,6 @@ namespace VoiceAssistant.Services.Extensions
 
 			services
 				.AddSingleton<Provider<IS2TConverter>>();
-
-			services
-				.AddSingleton<IAssistantVoice, ExceptionNotifier>();
 
 			services
 				.AddTransient<ApplicationSettingsService>()
