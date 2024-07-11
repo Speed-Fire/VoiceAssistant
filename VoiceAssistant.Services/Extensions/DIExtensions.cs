@@ -16,6 +16,8 @@ using VoiceAssistant.Services.ProviderInitializers;
 using VoiceAssistant.Services.Hosted;
 using Microsoft.Extensions.Configuration;
 using VoiceAssistant.Services.Options;
+using VoiceAssistant.Core.SettingsHelpers;
+using VoiceAssistant.Services.SettingsHelpers;
 namespace VoiceAssistant.Services.Extensions
 {
 	public static class DIExtensions
@@ -38,7 +40,8 @@ namespace VoiceAssistant.Services.Extensions
 
 			services
 				.AddTransient<ApplicationSettingsService>()
-				.AddTransient<SpeechToTextService>();
+				.AddTransient<SpeechToTextService>()
+				.AddTransient<IS2TConverterSettingsHelper, S2TConverterSettingsHelper>();
 
 			services.
 				Configure<SpeechToTextOptions>(config.GetSection("Application:SpeechToText"));

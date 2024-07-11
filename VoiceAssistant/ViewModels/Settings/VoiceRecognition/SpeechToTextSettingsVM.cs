@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
+using VoiceAssistant.Core.SettingsHelpers;
 using VoiceAssistant.Services;
 using VoiceAssistant.Services.Options;
 
@@ -27,17 +28,16 @@ namespace VoiceAssistant.ViewModels.Settings.VoiceRecognition
 		public SpeechToTextSettingsVM(
 			ApplicationSettingsService settings,
 			IUrgentNotifier notifier,
-			IEnumerable<S2TConverterInfo> converterInfos,
-			IOptions<SpeechToTextOptions> options)
+			IS2TConverterSettingsHelper settingsHelper)
 		{
 			_settings = settings;
-			AvailableConverters = converterInfos.Select(i => i.Name).ToList();
+			AvailableConverters = settingsHelper.AvailableConverters;
 
 			_settings.SetCurrentSection("SpeechToText");
 			_notifier = notifier;
 
 			SelectedConverter = AvailableConverters
-					.FirstOrDefault(conv => conv == options.Value.SelectedConverter);
+					.FirstOrDefault(conv => conv == settingsHelper.SelectedConverter);
 		}
 
 		async partial void OnSelectedConverterChanged(string? value)

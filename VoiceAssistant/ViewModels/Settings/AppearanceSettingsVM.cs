@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using VoiceAssistant.Core.Interfaces;
+using VoiceAssistant.Core.SettingsHelpers;
 using VoiceAssistant.Services;
 using VoiceAssistant.UI.Appearance.Helpers;
 using VoiceAssistant.UI.Appearance.Options;
@@ -37,17 +38,16 @@ namespace VoiceAssistant.ViewModels.Settings
 		public AppearanceSettingsVM(
 			IUrgentNotifier urgentNotifier,
 			ApplicationSettingsService settingsService, 
-			AppearanceHelper appearanceHelper,
-			IOptions<AppearanceOptions> options)
+			IAppearanceSettingsHelper settingsHelper)
 		{
 			_urgentNotifier = urgentNotifier;
 			_settingsService = settingsService;
 			
-			_availableThemes = appearanceHelper.AvailableThemes;
-			_availableLanguages = appearanceHelper.AvailableLanguages;
+			_availableThemes = settingsHelper.AvailableThemes;
+			_availableLanguages = settingsHelper.AvailableLanguages;
 
-			_selectedTheme = _availableThemes.FirstOrDefault(t => t == options.Value.Theme);
-			_selectedLanguage = _availableLanguages.FirstOrDefault(l => l == options.Value.Language);
+			_selectedTheme = _availableThemes.FirstOrDefault(t => t == settingsHelper.SelectedTheme);
+			_selectedLanguage = _availableLanguages.FirstOrDefault(l => l == settingsHelper.SelectedLanguage);
 
 			_settingsService.SetCurrentSection("Appearance");
 		}
