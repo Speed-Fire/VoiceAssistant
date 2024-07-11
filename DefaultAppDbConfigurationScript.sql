@@ -1,8 +1,11 @@
 INSERT INTO Settings VALUES ("Application:Appearance:Language", "en-US", 0)
 INSERT INTO Settings VALUES ("Application:Appearance:Theme", "DarkTheme", 0)
+INSERT INTO Settings VALUES ("Application:ChatGPT:Gemini:ServiceApiKey", "", 1)
+INSERT INTO Settings VALUES ("Application:SpeechToText:SelectedConverter", "", 0)
+INSERT INTO Settings VALUES ("Application:AssistantVoice:SelectedVoice", "", 0)
+INSERT INTO Settings VALUES ("Application:AssistantVoice:Volume", 100, 0)
+
+
+-- in appsettings.json
 INSERT INTO Settings VALUES ("Application:TextResolving:PreferredCommandResolver", "", 0)
 INSERT INTO Settings VALUES ("Application:TextResolving:PreferredConfirmationResolver", "", 0)
-INSERT INTO Settings VALUES ("Application:ChatGPT:Gemini:ServiceApiKey", "", 1)
-INSERT INTO Settings VALUES ("Application:SpeechToText:SelectedConverter", "", 1)
-INSERT INTO Settings VALUES ("Application:AssistantVoice:SelectedVoice", "", 1)
-INSERT INTO Settings VALUES ("Application:AssistantVoice:Volume", 100, 1)
