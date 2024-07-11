@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MML.ConfirmationClassifier\MML.ConfirmationClassifier.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Core\VoiceAssistant.Core.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Domain\VoiceAssistant.Domain.csproj" />
   </ItemGroup>

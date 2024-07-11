@@ -14,8 +14,6 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
     {
         private const string SYSTEM_MSG = "Hi. I'll send you a enumerated list of possible actions. Then i'm going to send you some sentences and you must send me back the number of the most similar action. If the sentence is not similar to any actions, then send -1. You should send only number.";
 
-        public string Name => "Smart command resolver";
-
         private readonly Func<IChatGPT> _chatGPTFactory;
         private readonly Provider<List<AssistantAction>> _actions;
         private readonly Mutex _lock = new(false, TextResolvingConsts.RESOLVER_MUTEX);
