@@ -7,7 +7,12 @@ namespace VoiceAssistant.CommandResolving.Misc
     public class UnrecognizedCommandException : VoicableException
     {
         public UnrecognizedCommandException()
-            : base(CultureInfo.GetCultureInfo("ru-ru"), "Команда не распознана.")
+            : base(new()
+            {
+                ["ru-RU"] = "Команда не распознана.",
+                ["en-US"]="Command is not recognized.",
+                ["cs-CZ"]= "Příkaz je nerozpoznán"
+			})
         {
         }
     }
