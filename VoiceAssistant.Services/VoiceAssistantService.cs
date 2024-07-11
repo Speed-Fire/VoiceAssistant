@@ -13,99 +13,276 @@ using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Recording;
 using VoiceAssistant.Services.Misc.Interfaces;
+using VoiceAssistant.CommandResolving.TextResolving.Services;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace VoiceAssistant.Services
 {
 	public sealed class VoiceAssistantService : BackgroundService
 	{
-		private readonly CommandRecorder _commandRecorder;
-		private readonly CommandResolver _commandResolver;
-		private readonly Provider<IS2TConverter> _S2TConverterProvider;
-		private readonly IExceptionNotifier _exceptionNotifier;
+		private readonly struct PendingAssistantAction(AssistantAction action)
+		{
+			public AssistantAction Action { get; } = action;
+			public DateTime PendingStartTime { get; } = DateTime.Now;
+		}
+
+		private enum ConfirmationState
+		{
+			Pending,
+			Confirmed,
+			Denied
+		}
+
+		private readonly SpeechRecorder _speechRecorder;
+		private readonly ITextResolvingService _textResolvingService;
+		private readonly SpeechToTextService _speechToTextService;
+		private readonly IAssistantVoice _assistantVoice;
+		private readonly IUrgentNotifier _urgentNotifier;
 		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
 
 		private readonly ConcurrentQueue<AssistantAction> _actionsQueue;
+		private readonly TimeSpan ConfirmationTimeout = TimeSpan.FromSeconds(10);
+		private readonly SemaphoreSlim _semaphore = new(1, 1);
+
+		private PendingAssistantAction? _pendingAction;
+		private ConfirmationState? _confirmationState;
 
 		public VoiceAssistantService(
-			CommandRecorder commandRecorder,
-			Provider<IS2TConverter> s2TConverterProvider,
-			IExceptionNotifier exceptionNotifier,
-			CommandResolver commandResolver,
+			SpeechRecorder speechRecorder,
+			ITextResolvingService textResolvingService,
+			SpeechToTextService speechToTextService,
+			IAssistantVoice assistantVoice,
+			IUrgentNotifier urgentNotifier,
 			IVoiceAssistantMonitor voiceAssistantMonitor)
 		{
-			_commandRecorder = commandRecorder;
-			_commandRecorder.CommandRecorded += CommandRecorded;
+			_speechRecorder = speechRecorder;
+			
+			_urgentNotifier = urgentNotifier;
 
 			_actionsQueue = new();
-			_S2TConverterProvider = s2TConverterProvider;
+			_speechToTextService = speechToTextService;
+			_speechRecorder.SpeechRecorded += _speechToTextService.Convert;
+			_speechToTextService.Converted += CommandRecorded;
+			_speechToTextService.ConversionFailed += NotifyError;
 
-			_exceptionNotifier = exceptionNotifier;
-			_commandResolver = commandResolver;
+			_assistantVoice = assistantVoice;
+			_textResolvingService = textResolvingService;
 
 			_voiceAssistantMonitor = voiceAssistantMonitor;
 			_voiceAssistantMonitor.PropertyChanged += VoiceAssistantMonitor_PropertyChanged;
+		}
+
+		public override async Task StartAsync(CancellationToken cancellationToken)
+		{
+			if (!await Initialize())
+			{
+				_voiceAssistantMonitor.Block();
+			}
+			else
+			{
+				_speechRecorder.Start();
+			}
+
+			await StartAsync(cancellationToken);
 		}
 
 		protected override Task ExecuteAsync(CancellationToken stoppingToken)
 		{
 			return Task.Run(async () =>
 			{
-				if (!await _commandResolver.Initialize())
-				{
-					_voiceAssistantMonitor.Block();
-				}
-				else
-				{
-					_commandRecorder.Start();
-				}
-
 				while (!stoppingToken.IsCancellationRequested)
 				{
+					if(_pendingAction is not null)
+					{
+						var isNotPendingAnymore = await TryExecutePendingAction();
+						await TryDropPendingAction(isNotPendingAnymore);
+
+						continue;
+					}
+
 					if (_actionsQueue.IsEmpty)
 						continue;
 
 					if (_actionsQueue.TryDequeue(out var action))
 					{
-
+						if (action.NeedsConfirmation)
+						{
+							await PutPendingAction(action);
+						}
+						else
+						{
+							await ExecuteAction(action);
+						}
 					}
 				}
 
-				_commandRecorder.Stop();
+				_speechRecorder.Stop();
 			}, stoppingToken);
 		}
 
-		private async void CommandRecorded(Stream audio)
+		private async void CommandRecorded(string text)
 		{
 			Exception? ex = null;
-			IS2TConverter? converter = _S2TConverterProvider.Value;
 
-			if (converter is null)
-				return;
-
-			var res = await converter
-				.Convert(audio);
-
-			if (res.IsFirst)
+			if (_confirmationState == ConfirmationState.Pending)
 			{
-				var resolvingResult =
-					await _commandResolver.Resolve(res.First);
+				await _semaphore.WaitAsync();
 
-				if (resolvingResult.IsFirst)
+				if (_confirmationState == ConfirmationState.Pending)
 				{
-					_actionsQueue.Enqueue(resolvingResult.First);
+					ex = await ResolveConfirmation(text);
 				}
-				else
-				{
-					ex = resolvingResult.Second;
-				}
+
+				_semaphore.Release();
 			}
 			else
-				ex = res.Second;
+			{
+				ex = await ResolveCommand(text);
+			}
 
 			// error handling
 			if (ex is not null)
-				_exceptionNotifier.Notify(res.Second);
+				NotifyError(ex);
 		}
+
+		private void NotifyError(Exception obj)
+		{
+			if(obj is VoicableException voiceEx)
+			{
+				_ = _assistantVoice.Speak(voiceEx);
+			}
+			else
+			{
+				_urgentNotifier.NotifyError(string.Empty, exception: obj);
+			}
+		}
+
+		private async Task<bool> Initialize()
+		{
+			var textResolvingInit = _textResolvingService.Initialize();
+			var assistantVoiceInit = _assistantVoice.Initialize();
+
+			await assistantVoiceInit;
+			return await textResolvingInit;
+		}
+
+		#region Pending action
+
+		private async Task PutPendingAction(AssistantAction action)
+		{
+			await _assistantVoice.Speak("Commands.Confirmation.Request");
+			_speechRecorder.SetMode(SpeechRecognitionMode.Loop);
+
+			_pendingAction = new(action);
+			_confirmationState = ConfirmationState.Pending;
+		}
+
+		private async Task TryDropPendingAction(bool isNotPendingAnymore)
+		{
+			if (isNotPendingAnymore ||
+				DateTime.Now - _pendingAction!.Value.PendingStartTime >= ConfirmationTimeout)
+			{
+				await _semaphore.WaitAsync();
+
+				_pendingAction = null;
+				_confirmationState = null;
+
+				_speechRecorder.SetMode(SpeechRecognitionMode.OnKeyword);
+
+				_semaphore.Release();
+			}
+		}
+
+		/// <summary>
+		/// Tries to execute pending assistant action.
+		/// If action still pends, then return false.
+		/// If action is confirmed or denied, return true;
+		/// </summary>
+		/// <returns></returns>
+		private async Task<bool> TryExecutePendingAction()
+		{
+			if (_confirmationState!.Value != ConfirmationState.Pending)
+			{
+				await _semaphore.WaitAsync();
+
+				if (_confirmationState!.Value != ConfirmationState.Pending)
+				{
+					await _assistantVoice.Speak("Принято");
+
+					if (_confirmationState.Value == ConfirmationState.Confirmed)
+					{
+						await ExecuteAction(_pendingAction!.Value.Action);
+					}
+
+					_pendingAction = null;
+					_confirmationState = null;
+
+					return true;
+				}
+
+				_semaphore.Release();
+			}
+
+			return false;
+		}
+
+		#endregion
+
+		#region Command resolving
+
+		private async Task<Exception?> ResolveCommand(string command)
+		{
+			var resolvingResult =
+					await _textResolvingService.ResolveCommand(command);
+
+			if (resolvingResult.IsFirst)
+			{
+				_actionsQueue.Enqueue(resolvingResult.First);
+			}
+			else
+			{
+				return resolvingResult.Second;
+			}
+
+			return null;
+		}
+
+		private async Task<Exception?> ResolveConfirmation(string text)
+		{
+			var resolvingResult =
+					await _textResolvingService.ResolveConfirmation(text);
+
+			if (resolvingResult.IsFirst)
+			{
+				var confirmationResult = resolvingResult.First;
+
+				if(confirmationResult == true)
+				{
+					_confirmationState = ConfirmationState.Confirmed;
+				}
+				else if(confirmationResult == false)
+				{
+					_confirmationState = ConfirmationState.Denied;
+				}
+			}
+			else
+			{
+				return resolvingResult.Second;
+			}
+
+			return null;
+		}
+
+		#endregion
+
+		#region Assistant action execution
+
+		private Task ExecuteAction(AssistantAction action)
+		{
+			return Task.CompletedTask;
+		}
+
+		#endregion
 
 		#region PropertyChanged
 
@@ -115,22 +292,30 @@ namespace VoiceAssistant.Services
 			{
 				if(_voiceAssistantMonitor.IsListening)
 				{
-					_commandRecorder.Start();
+					_speechRecorder.Start();
 				}
 				else
 				{
-					_commandRecorder.Stop();
+					_speechRecorder.Stop();
 				}
 			}
 		}
 
 		#endregion
 
+		#region Dispose
+
 		public override void Dispose()
 		{
 			base.Dispose();
 
+			_speechRecorder.SpeechRecorded -= _speechToTextService.Convert;
+			_speechToTextService.Converted -= CommandRecorded;
+			_speechToTextService.ConversionFailed -= NotifyError;
+
 			_voiceAssistantMonitor.PropertyChanged -= VoiceAssistantMonitor_PropertyChanged;
 		}
+
+		#endregion
 	}
 }

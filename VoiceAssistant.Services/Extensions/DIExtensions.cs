@@ -18,11 +18,26 @@ using Microsoft.Extensions.Configuration;
 using VoiceAssistant.Services.Options;
 namespace VoiceAssistant.Services.Extensions
 {
-    public class ExceptionNotifier : IExceptionNotifier
+	public class ExceptionNotifier : IAssistantVoice
 	{
 		public void Notify(Exception exception)
 		{
 			
+		}
+
+		public Task RequestConfirmation()
+		{
+			return Task.CompletedTask;
+		}
+
+		public Task Speak(string text)
+		{
+			return Task.CompletedTask;
+		}
+
+		public Task Speak(VoicableException exception)
+		{
+			return Task.CompletedTask;
 		}
 	}
 
@@ -45,10 +60,11 @@ namespace VoiceAssistant.Services.Extensions
 				.AddSingleton<Provider<IS2TConverter>>();
 
 			services
-				.AddSingleton<IExceptionNotifier, ExceptionNotifier>();
+				.AddSingleton<IAssistantVoice, ExceptionNotifier>();
 
 			services
-				.AddTransient<ApplicationSettingsService>();
+				.AddTransient<ApplicationSettingsService>()
+				.AddTransient<SpeechToTextService>();
 
 			services.
 				Configure<SpeechToTextOptions>(config.GetSection("Application:SpeechToText"));
