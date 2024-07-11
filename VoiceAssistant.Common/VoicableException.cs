@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Common
 {
-	public class VoicableException(CultureInfo culture, string message) : Exception(message)
+	public class VoicableException(
+		Dictionary<string, string> voiceMessages,
+		string? message = null)
+		: Exception(message)
 	{
-		public CultureInfo Culture { get; } = culture;
+		public IReadOnlyDictionary<string, string> VoiceMessages { get; } = voiceMessages;
 	}
 }
