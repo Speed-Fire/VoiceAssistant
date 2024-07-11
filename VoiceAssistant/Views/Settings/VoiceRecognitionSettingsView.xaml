@@ -49,9 +49,6 @@
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -68,32 +65,9 @@
                 SelectedItem="{Binding SpeechToTextSettings.SelectedConverter}"/>
 
             <TextBlock Grid.Row="3"
-                       Text="{DynamicResource Strings.Settings.VoiceRecognition.CommandResolving.Colon}"/>
-
-            <GroupBox Grid.Row="4" Grid.ColumnSpan="2">
-
-                <GroupBox.Header>
-                    <CheckBox x:Name="AutoCommandResolvingCB"
-                              Style="{StaticResource Styles.CheckBox}"
-                              IsChecked="{Binding CommandResolvingSettings.AutomaticResolverSelection}"
-                              Content="{DynamicResource Strings.Settings.VoiceRecognition.CommandResolving.AutoSelection}"/>
-                </GroupBox.Header>
-
-                <Grid Margin="0 3 0 3"
-                      IsEnabled="{Binding ElementName=AutoCommandResolvingCB,
-                        Path=IsChecked, Converter={StaticResource invconv}}">
-
-                    <ComboBox ItemsSource="{Binding CommandResolvingSettings.AvailableResolvers}"
-                              SelectedItem="{Binding CommandResolvingSettings.SelectedResolver}"/>
-
-                </Grid>
-                
-            </GroupBox>
-
-            <TextBlock Grid.Row="6"
                        Text="{DynamicResource Strings.Settings.VoiceRecognition.Gemini.ServiceApiKey.Colon}"/>
 
-            <Grid Grid.Row="7">
+            <Grid Grid.Row="4">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" MaxWidth="300"/>
