@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.CommandResolving.Misc
 {
-	internal class ActionConsts
+	internal class TextResolvingConsts
 	{
 		internal const string RESOLVER_MUTEX = "CommandResolverMutex";
 	}

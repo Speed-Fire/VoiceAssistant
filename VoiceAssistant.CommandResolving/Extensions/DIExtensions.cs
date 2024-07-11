@@ -10,22 +10,29 @@ using VoiceAssistant.CommandResolving.Switch;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands;
+using VoiceAssistant.CommandResolving.TextResolving.Services;
+using VoiceAssistant.CommandResolving.TextResolving.Resolvers.Confirmation;
 
 namespace VoiceAssistant.CommandResolving.Extensions
 {
-	public static class DIExtensions
+    public static class DIExtensions
 	{
 		public static IServiceCollection RegisterCommandResolving(
 			this IServiceCollection services,
 			IConfiguration config)
 		{
 			services
-				.Configure<CommandResolverOptions>(config.GetSection("Application:CommandResolverOptions"));
+				.Configure<TextResolvingOptions>(config.GetSection("Application:TextResolving"));
 
 			services
-				.AddTransient<CommandResolver>()
-				.AddTransient<ICommandResolver, DummyCommandResolver>()
-				.AddTransient<ICommandResolver, SmartCommandResolver>();
+				.AddTransient<ITextResolvingService, TextResolvingService>()
+				.AddTransient<ActiveTextResolverSwitch<bool?>, ActiveConfirmationResolverSwitch>()
+				.AddTransient<ActiveTextResolverSwitch<AssistantAction>, ActiveCommandResolverSwitch>()
+				.AddTransient<SmartCommandResolver>()
+				.AddTransient<DummyCommandResolver>()
+				.AddTransient<SmartConfirmationResolver>()
+				.AddTransient<DummyConfirmationResolver>();
 
 			var actProvider = new Provider<List<AssistantAction>>
 			{
@@ -33,13 +40,10 @@ namespace VoiceAssistant.CommandResolving.Extensions
 			};
 
 			services
-				.AddSingleton(actProvider)
-				.AddSingleton<IActiveCommandResolverSwitch, ActiveCommandResolverSwitch>();
+				.AddSingleton(actProvider);
 
 			services
-				.AddSingleton<Func<IChatGPT?>>(provider => () => provider.GetService<IChatGPT>())
-				.AddSingleton<Func<IEnumerable<ICommandResolver>>>(provider => 
-					() => provider.GetServices<ICommandResolver>());
+				.AddSingleton<Func<IChatGPT?>>(provider => () => provider.GetService<IChatGPT>());
 
 			return services;
 		}
