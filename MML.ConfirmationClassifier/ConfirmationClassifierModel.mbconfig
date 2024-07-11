@@ -1,0 +1,264 @@
+﻿{
+  "Scenario": "Classification",
+  "DataSource": {
+    "Version": 3,
+    "EscapeCharacter": "\"",
+    "ReadMultiLines": false,
+    "KeepDiacritics": false,
+    "KeepPunctuations": false,
+    "AllowQuoting": false,
+    "Type": "TabularFile",
+    "FilePath": "D:\\VS_Projects\\VoiceAssistant\\MML.ConfirmationClassifier\\Models\\TrainingData.tsv",
+    "Delimiter": "\t",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "Sentence",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "ConfirmationResult",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmMulti",
+        "Score": 0.99897820758664779,
+        "RuntimeInSeconds": 35.025,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5 * e10",
+          "e0": {
+            "InputColumnName": "Sentence",
+            "OutputColumnName": "Sentence"
+          },
+          "e1": {
+            "InputColumnNames": [
+              "Sentence"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "OutputColumnName": "ConfirmationResult",
+            "InputColumnName": "ConfirmationResult",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e5": {
+            "NumberOfLeaves": 812,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.20940341296735346,
+            "NumberOfTrees": 2642,
+            "SubsampleFraction": 0.19674899959571115,
+            "MaximumBinCountPerFeature": 311,
+            "FeatureFraction": 0.98977893019661511,
+            "L1Regularization": 6.7348105718974962E-10,
+            "L2Regularization": 0.58824351414030318,
+            "LabelColumnName": "ConfirmationResult",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmMulti",
+        "Score": 0.99168939589074867,
+        "RuntimeInSeconds": 3.894,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5 * e10",
+          "e0": {
+            "InputColumnName": "Sentence",
+            "OutputColumnName": "Sentence"
+          },
+          "e1": {
+            "InputColumnNames": [
+              "Sentence"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "OutputColumnName": "ConfirmationResult",
+            "InputColumnName": "ConfirmationResult",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e5": {
+            "NumberOfLeaves": 948,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.88474768047934693,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 0.82745979878301867,
+            "MaximumBinCountPerFeature": 264,
+            "FeatureFraction": 0.95969148338481625,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 0.56479418480754073,
+            "LabelColumnName": "ConfirmationResult",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsMaximumEntropyMulti",
+        "Score": 0.98788373169707966,
+        "RuntimeInSeconds": 1.099,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e7 * e10",
+          "e0": {
+            "InputColumnName": "Sentence",
+            "OutputColumnName": "Sentence"
+          },
+          "e1": {
+            "InputColumnNames": [
+              "Sentence"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "OutputColumnName": "ConfirmationResult",
+            "InputColumnName": "ConfirmationResult",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e7": {
+            "L1Regularization": 0.2613657,
+            "L2Regularization": 1.41661417,
+            "LabelColumnName": "ConfirmationResult",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestOva",
+        "Score": 0.97547869963682865,
+        "RuntimeInSeconds": 3.977,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e4 * e10",
+          "e0": {
+            "InputColumnName": "Sentence",
+            "OutputColumnName": "Sentence"
+          },
+          "e1": {
+            "InputColumnNames": [
+              "Sentence"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "OutputColumnName": "ConfirmationResult",
+            "InputColumnName": "ConfirmationResult",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "ConfirmationResult",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsMaximumEntropyMulti",
+        "Score": 0.97281836963751245,
+        "RuntimeInSeconds": 1.283,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e7 * e10",
+          "e0": {
+            "InputColumnName": "Sentence",
+            "OutputColumnName": "Sentence"
+          },
+          "e1": {
+            "InputColumnNames": [
+              "Sentence"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "OutputColumnName": "ConfirmationResult",
+            "InputColumnName": "ConfirmationResult",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e7": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "ConfirmationResult",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "FeaturizeText",
+      "e1": "Concatenate",
+      "e2": "MapValueToKey",
+      "e3": "FastTreeOva",
+      "e4": "FastForestOva",
+      "e5": "LightGbmMulti",
+      "e6": "LbfgsLogisticRegressionOva",
+      "e7": "LbfgsMaximumEntropyMulti",
+      "e8": "SdcaMaximumEntropyMulti",
+      "e9": "SdcaLogisticRegressionOva",
+      "e10": "MapKeyToValue"
+    },
+    "Schema": "e0 * e1 * e2 * (e3 + e4 + e5 + e6 + e7 + e8 + e9) * e10",
+    "MetricName": "MacroAccuracy",
+    "ModelFilePath": "D:\\VS_Projects\\VoiceAssistant\\MML.ConfirmationClassifier\\ConfirmationClassifierModel.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 2,
+    "Subsampling": false,
+    "Type": "ClassificationTrainingOption",
+    "TrainingTime": 60,
+    "LabelColumn": "ConfirmationResult",
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}

@@ -1,0 +1,4696 @@
+﻿Sentence	ConfirmationResult
+да	1
+нет	0
+конечно	1
+конечно да	1
+конечно нет	0
+да, конечно	1
+нет, конечно	0
+уверен	1
+не уверен	0
+естественно	1
+естественно да	1
+естественно нет	0
+ну да	1
+подтверждаю	1
+отменить	0
+отмена	0
+не	0
+не не	0
+не не не	0
+не не не не	0
+определённо	1
+определённо да	1
+определённо нет	0
+определенно	1
+определенно да	1
+определенно нет	0
+продолжить	1
+продолжай	1
+стой	0
+стоп	0
+абсолютно	1
+нет нет	0
+нет нет нет	0
+нет нет нет нет	0
+отменяй	0
+отмени	0
+убедительное да	1
+убедительное нет	0
+да, я уверен	1
+нет, я передумал	0
+ano, jsem si jistý	1
+ne, rozmyslel jsem si to	0
+yes, I am sure	1
+no, I changed my mind	0
+конечно	1
+нет, не хочу это делать	0
+určitě	1
+ne, nechci to udělat	0
+definitely	1
+no, I don't want to do it	0
+я хочу это сделать	1
+я не хочу это делать	0
+chci to udělat	1
+nechci to udělat	0
+I want to do it	1
+I don't want to do it	0
+да, точно	1
+нет, я не уверен	0
+ano, určitě	1
+ne, nejsem si jistý	0
+yes, absolutely	1
+no, I am not sure	0
+без сомнений	1
+нет, лучше не надо	0
+bez pochyb	1
+ne, radši ne	0
+without a doubt	1
+no, better not	0
+конечно, хочу	1
+нет, не буду это делать	0
+samozřejmě, chci	1
+ne, nebudu to dělat	0
+of course, I want to	1
+no, I will not do it	0
+да, хочу	1
+нет, я не готов	0
+ano, chci	1
+ne, nejsem připravený	0
+yes, I want to	1
+no, I am not ready	0
+да, абсолютно	1
+нет, я сомневаюсь	0
+ano, naprosto	1
+ne, pochybuji	0
+yes, definitely	1
+no, I have doubts	0
+я уверен в этом	1
+я не уверен в этом	0
+jsem si tím jistý	1
+nejsem si tím jistý	0
+I am sure about it	1
+I am not sure about it	0
+да, это моя цель	1
+нет, это не моя цель	0
+ano, to je můj cíl	1
+ne, to není můj cíl	0
+yes, it is my goal	1
+no, it is not my goal	0
+точно, я готов	1
+нет, я не готов	0
+určitě, jsem připraven	1
+ne, nejsem připraven	0
+certainly, I am ready	1
+no, I am not ready	0
+да, я уверен в своем решении	1
+нет, я не уверен в своем решении	0
+ano, jsem si jistý svým rozhodnutím	1
+ne, nejsem si jistý svým rozhodnutím	0
+yes, I am confident in my decision	1
+no, I am not confident in my decision	0
+я готов идти вперед	1
+нет, я не готов идти вперед	0
+jsem připraven jít dál	1
+nejsem připraven jít dál	0
+I am ready to move forward	1
+no, I am not ready to move forward	0
+конечно, я согласен	1
+нет, я не согласен	0
+samozřejmě, souhlasím	1
+ne, nesouhlasím	0
+of course, I agree	1
+no, I disagree	0
+да, это правильный выбор	1
+нет, это неправильный выбор	0
+ano, to je správná volba	1
+ne, to je špatná volba	0
+yes, it is the right choice	1
+no, it is the wrong choice	0
+да, я так думаю	1
+нет, я так не думаю	0
+ano, myslím si to	1
+ne, nemyslím si to	0
+yes, I think so	1
+no, I don't think so	0
+я полон решимости	1
+нет, я потерял решимость	0
+jsem rozhodnutý	1
+ztratil jsem rozhodnost	0
+I am determined	1
+no, I lost my determination	0
+да, я хочу это сделать сейчас	1
+нет, я не хочу это делать сейчас	0
+ano, chci to udělat teď	1
+ne, nechci to udělat teď	0
+yes, I want to do it now	1
+no, I don't want to do it now	0
+да, я полностью готов	1
+нет, я не готов полностью	0
+ano, jsem plně připravený	1
+ne, nejsem plně připravený	0
+yes, I am fully prepared	1
+no, I am not fully prepared	0
+да, у меня нет сомнений	1
+нет, у меня есть сомнения	0
+ano, nemám pochybnosti	1
+ne, mám pochybnosti	0
+yes, I have no doubts	1
+no, I have doubts	0
+да, я согласен с этим	1
+нет, я не согласен с этим	0
+ano, souhlasím s tím	1
+ne, nesouhlasím s tím	0
+yes, I agree with that	1
+no, I don't agree with that	0
+конечно, да	1
+нет, конечно, нет	0
+samozřejmě, ano	1
+ne, samozřejmě, že ne	0
+of course, yes	1
+no, of course not	0
+да, без вопросов	1
+нет, это не так	0
+ano, bez otázek	1
+ne, není to tak	0
+yes, without question	1
+no, it is not	0
+да, это правильное решение	1
+нет, это неправильное решение	0
+ano, to je správné rozhodnutí	1
+ne, to je špatné rozhodnutí	0
+yes, it is the right decision	1
+no, it is the wrong decision	0
+да, я думаю, это правильно	1
+нет, я думаю, это неправильно	0
+ano, myslím, že je to správně	1
+ne, myslím, že to je špatně	0
+yes, I think it is right	1
+no, I think it is wrong	0
+я чувствую уверенность в этом	1
+я не чувствую уверенности в этом	0
+cítím se v tom jistý	1
+necítím se v tom jistý	0
+I feel confident about it	1
+I don't feel confident about it	0
+да, я убежден	1
+нет, я не убежден	0
+ano, jsem přesvědčen	1
+ne, nejsem přesvědčen	0
+yes, I am convinced	1
+no, I am not convinced	0
+да, я намерен это сделать	1
+нет, я не намерен это делать	0
+ano, hodlám to udělat	1
+ne, nehodlám to udělat	0
+yes, I intend to do it	1
+no, I do not intend to do it	0
+да, я готов к этому	1
+нет, я не готов к этому	0
+ano, jsem na to připraven	1
+ne, nejsem na to připraven	0
+yes, I am ready for it	1
+no, I am not ready for it	0
+да, это то, что я хочу	1
+нет, это не то, что я хочу	0
+ano, to je to, co chci	1
+ne, to není to, co chci	0
+yes, it is what I want	1
+no, it is not what I want	0
+да, я готов сделать это сейчас	1
+нет, я не готов сделать это сейчас	0
+ano, jsem připraven to udělat teď	1
+ne, nejsem připraven to udělat teď	0
+yes, I am ready to do it now	1
+no, I am not ready to do it now	0
+да, у меня есть все, что нужно	1
+нет, у меня нет всего, что нужно	0
+ano, mám všechno, co potřebuji	1
+ne, nemám všechno, co potřebuji	0
+yes, I have everything I need	1
+no, I don't have everything I need	0
+да, я готов принять решение	1
+нет, я не готов принять решение	0
+ano, jsem připraven rozhodnout	1
+ne, nejsem připraven rozhodnout	0
+yes, I am ready to decide	1
+no, I am not ready to decide	0
+да, я согласен с этим решением	1
+нет, я не согласен с этим решением	0
+ano, souhlasím s tím rozhodnutím	1
+ne, nesouhlasím s tím rozhodnutím	0
+yes, I agree with this decision	1
+no, I don't agree with this decision	0
+да, это разумно	1
+нет, это неразумно	0
+ano, to je rozumné	1
+ne, to není rozumné	0
+yes, it is reasonable	1
+no, it is not reasonable	0
+да, это будет хорошо	1
+нет, это не будет хорошо	0
+ano, to bude dobré	1
+ne, to nebude dobré	0
+yes, it will be good	1
+no, it will not be good	0
+да, я согласен сделать это	1
+нет, я не согласен сделать это	0
+ano, souhlasím to udělat	1
+ne, nesouhlasím to udělat	0
+yes, I agree to do it	1
+no, I don't agree to do it	0
+да, я полностью поддерживаю это	1
+нет, я не поддерживаю это	0
+ano, plně to podporuji	1
+ne, nepodporuji to	0
+yes, I fully support it	1
+no, I don't support it	0
+да, это правильное направление	1
+нет, это неправильное направление	0
+ano, to je správný směr	1
+ne, to není správný směr	0
+yes, it is the right direction	1
+no, it is not the right direction	0
+да, я уверен в этом на 100%	1
+нет, я не уверен в этом на 100%	0
+ano, jsem si tím 100% jistý	1
+ne, nejsem si tím 100% jistý	0
+yes, I am 100% sure about it	1
+no, I am not 100% sure about it	0
+да, это именно то, что нужно	1
+нет, это не то, что нужно	0
+ano, to je přesně to, co potřebuji	1
+ne, to není to, co potřebuji	0
+yes, it is exactly what is needed	1
+no, it is not what is needed	0
+да, это лучший выбор	1
+нет, это не лучший выбор	0
+ano, to je nejlepší volba	1
+ne, to není nejlepší volba	0
+yes, it is the best choice	1
+no, it is not the best choice	0
+да, это идеально	1
+нет, это не идеально	0
+ano, to je ideální	1
+ne, to není ideální	0
+yes, it is perfect	1
+no, it is not perfect	0
+да, это именно то, что я хочу	1
+нет, это не то, что я хочу	0
+ano, to je přesně to, co chci	1
+ne, to není to, co chci	0
+yes, it is exactly what I want	1
+no, it is not what I want	0
+да, я готов это принять	1
+нет, я не готов это принять	0
+ano, jsem připraven to přijmout	1
+ne, nejsem připraven to přijmout	0
+yes, I am ready to accept it	1
+no, I am not ready to accept it	0
+да, я согласен с этим предложением	1
+нет, я не согласен с этим предложением	0
+ano, souhlasím s tímto návrhem	1
+ne, nesouhlasím s tímto návrhem	0
+yes, I agree with this proposal	1
+no, I don't agree with this proposal	0
+да, это оптимальное решение	1
+нет, это не оптимальное решение	0
+ano, to je optimální řešení	1
+ne, to není optimální řešení	0
+yes, it is the optimal solution	1
+no, it is not the optimal solution	0
+да, это правильное действие	1
+нет, это неправильное действие	0
+ano, to je správné jednání	1
+ne, to není správné jednání	0
+yes, it is the right action	1
+no, it is not the right action	0
+да, я уверен в своих силах	1
+нет, я не уверен в своих силах	0
+ano, věřím si	1
+ne, nevěřím si	0
+yes, I believe in myself	1
+no, I don't believe in myself	0
+да, я готов начать	1
+нет, я не готов начать	0
+ano, jsem připraven začít	1
+ne, nejsem připraven začít	0
+yes, I am ready to start	1
+no, I am not ready to start	0
+да, это необходимо	1
+нет, это не необходимо	0
+ano, to je nutné	1
+ne, to není nutné	0
+yes, it is necessary	1
+no, it is not necessary	0
+да, это будет полезно	1
+нет, это не будет полезно	0
+ano, to bude užitečné	1
+ne, to nebude užitečné	0
+yes, it will be useful	1
+no, it will not be useful	0
+да, я поддерживаю это решение	1
+нет, я не поддерживаю это решение	0
+ano, podporuji to rozhodnutí	1
+ne, nepodporuji to rozhodnutí	0
+yes, I support this decision	1
+no, I don't support this decision	0
+да, я готов выполнить это действие	1
+нет, я не готов выполнить это действие	0
+ano, jsem připraven to provést	1
+ne, nejsem připraven to provést	0
+yes, I am ready to perform this action	1
+no, I am not ready to perform this action	0
+да, я согласен с этим решением	1
+нет, я не согласен с этим решением	0
+ano, souhlasím s tím rozhodnutím	1
+ne, nesouhlasím s tím rozhodnutím	0
+yes, I agree with this decision	1
+no, I don't agree with this decision	0
+да, я уверен, что это правильно	1
+нет, я не уверен, что это правильно	0
+ano, jsem si jistý, že je to správné	1
+ne, nejsem si jistý, že je to správné	0
+yes, I am sure it is right	1
+no, I am not sure it is right	0
+да, это разумное решение	1
+нет, это неразумное решение	0
+ano, to je rozumné rozhodnutí	1
+ne, to není rozumné rozhodnutí	0
+yes, it is a sensible decision	1
+no, it is not a sensible decision	0
+да, я хочу это сделать	1
+нет, я не хочу это делать	0
+ano, chci to udělat	1
+ne, nechci to udělat	0
+yes, I want to do it	1
+no, I don't want to do it	0
+да, я уверен в этом решении	1
+нет, я не уверен в этом решении	0
+ano, jsem si jistý tímto rozhodnutím	1
+ne, nejsem si jistý tímto rozhodnutím	0
+yes, I am sure about this decision	1
+no, I am not sure about this decision	0
+да, я готов к выполнению	1
+нет, я не готов к выполнению	0
+ano, jsem připraven na provedení	1
+ne, nejsem připraven na provedení	0
+yes, I am ready for execution	1
+no, I am not ready for execution	0
+да, это важно	1
+нет, это не важно	0
+ano, to je důležité	1
+ne, to není důležité	0
+yes, it is important	1
+no, it is not important	0
+да, это необходимо сделать	1
+нет, это не нужно делать	0
+ano, to je nutné udělat	1
+ne, to není nutné udělat	0
+yes, it is necessary to do it	1
+no, it is not necessary to do it	0
+да, это верное решение	1
+нет, это неверное решение	0
+ano, to je správné rozhodnutí	1
+ne, to není správné rozhodnutí	0
+yes, it is the correct decision	1
+no, it is not the correct decision	0
+да, это полезно	1
+нет, это не полезно	0
+ano, to je užitečné	1
+ne, to není užitečné	0
+yes, it is useful	1
+no, it is not useful	0
+да, я уверен в своем решении	1
+нет, я не уверен в своем решении	0
+ano, jsem si jistý svým rozhodnutím	1
+ne, nejsem si jistý svým rozhodnutím	0
+yes, I am confident in my decision	1
+no, I am not confident in my decision	0
+да, я хочу это сделать	1
+нет, я не хочу это делать	0
+ano, chci to udělat	1
+ne, nechci to udělat	0
+yes, I want to do it	1
+no, I don't want to do it	0
+да, я готов начать	1
+нет, я не готов начать	0
+ano, jsem připraven začít	1
+ne, nejsem připraven začít	0
+yes, I am ready to start	1
+no, I am not ready to start	0
+
+да я уверен	1
+нет я передумал	0
+ano jsem si jistý	1
+ne rozmyslel jsem si to	0
+yes I am sure	1
+no I changed my mind	0
+конечно	1
+нет не хочу это делать	0
+určitě	1
+ne nechci to udělat	0
+definitely	1
+no I don't want to do it	0
+я хочу это сделать	1
+я не хочу это делать	0
+chci to udělat	1
+nechci to udělat	0
+I want to do it	1
+I don't want to do it	0
+да точно	1
+нет я не уверен	0
+ano určitě	1
+ne nejsem si jistý	0
+yes absolutely	1
+no I am not sure	0
+без сомнений	1
+нет лучше не надо	0
+bez pochyb	1
+ne radši ne	0
+without a doubt	1
+no better not	0
+конечно хочу	1
+нет не буду это делать	0
+samozřejmě chci	1
+ne nebudu to dělat	0
+of course I want to	1
+no I will not do it	0
+да хочу	1
+нет я не готов	0
+ano chci	1
+ne nejsem připravený	0
+yes I want to	1
+no I am not ready	0
+да абсолютно	1
+нет я сомневаюсь	0
+ano naprosto	1
+ne pochybuji	0
+yes definitely	1
+no I have doubts	0
+я уверен в этом	1
+я не уверен в этом	0
+jsem si tím jistý	1
+nejsem si tím jistý	0
+I am sure about it	1
+I am not sure about it	0
+да это моя цель	1
+нет это не моя цель	0
+ano to je můj cíl	1
+ne to není můj cíl	0
+yes it is my goal	1
+no it is not my goal	0
+точно я готов	1
+нет я не готов	0
+určitě jsem připraven	1
+ne nejsem připraven	0
+certainly I am ready	1
+no I am not ready	0
+да я уверен в своем решении	1
+нет я не уверен в своем решении	0
+ano jsem si jistý svým rozhodnutím	1
+ne nejsem si jistý svým rozhodnutím	0
+yes I am confident in my decision	1
+no I am not confident in my decision	0
+я готов идти вперед	1
+нет я не готов идти вперед	0
+jsem připraven jít dál	1
+nejsem připraven jít dál	0
+I am ready to move forward	1
+no I am not ready to move forward	0
+конечно я согласен	1
+нет я не согласен	0
+samozřejmě souhlasím	1
+ne nesouhlasím	0
+of course I agree	1
+no I disagree	0
+да это правильный выбор	1
+нет это неправильный выбор	0
+ano to je správná volba	1
+ne to je špatná volba	0
+yes it is the right choice	1
+no it is the wrong choice	0
+да я так думаю	1
+нет я так не думаю	0
+ano myslím si to	1
+ne nemyslím si to	0
+yes I think so	1
+no I don't think so	0
+я полон решимости	1
+нет я потерял решимость	0
+jsem rozhodnutý	1
+ztratil jsem rozhodnost	0
+I am determined	1
+no I lost my determination	0
+да я хочу это сделать сейчас	1
+нет я не хочу это делать сейчас	0
+ano chci to udělat teď	1
+ne nechci to udělat teď	0
+yes I want to do it now	1
+no I don't want to do it now	0
+да я полностью готов	1
+нет я не готов полностью	0
+ano jsem plně připravený	1
+ne nejsem plně připravený	0
+yes I am fully prepared	1
+no I am not fully prepared	0
+да у меня нет сомнений	1
+нет у меня есть сомнения	0
+ano nemám pochybnosti	1
+ne mám pochybnosti	0
+yes I have no doubts	1
+no I have doubts	0
+да я согласен с этим	1
+нет я не согласен с этим	0
+ano souhlasím s tím	1
+ne nesouhlasím s tím	0
+yes I agree with that	1
+no I don't agree with that	0
+конечно да	1
+нет конечно нет	0
+samozřejmě ano	1
+ne samozřejmě že ne	0
+of course yes	1
+no of course not	0
+да без вопросов	1
+нет это не так	0
+ano bez otázek	1
+ne není to tak	0
+yes without question	1
+no it is not	0
+да это правильное решение	1
+нет это неправильное решение	0
+ano to je správné rozhodnutí	1
+ne to je špatné rozhodnutí	0
+yes it is the right decision	1
+no it is the wrong decision	0
+да я думаю это правильно	1
+нет я думаю это неправильно	0
+ano myslím že je to správně	1
+ne myslím že to je špatně	0
+yes I think it is right	1
+no I think it is wrong	0
+я чувствую уверенность в этом	1
+я не чувствую уверенности в этом	0
+cítím se v tom jistý	1
+necítím se v tom jistý	0
+I feel confident about it	1
+I don't feel confident about it	0
+да я убежден	1
+нет я не убежден	0
+ano jsem přesvědčen	1
+ne nejsem přesvědčen	0
+yes I am convinced	1
+no I am not convinced	0
+да я намерен это сделать	1
+нет я не намерен это делать	0
+ano hodlám to udělat	1
+ne nehodlám to udělat	0
+yes I intend to do it	1
+no I do not intend to do it	0
+да я готов к этому	1
+нет я не готов к этому	0
+ano jsem na to připraven	1
+ne nejsem na to připraven	0
+yes I am ready for it	1
+no I am not ready for it	0
+да это то что я хочу	1
+нет это не то что я хочу	0
+ano to je to co chci	1
+ne to není to co chci	0
+yes it is what I want	1
+no it is not what I want	0
+да я готов сделать это сейчас	1
+нет я не готов сделать это сейчас	0
+ano jsem připraven to udělat teď	1
+ne nejsem připraven to udělat teď	0
+yes I am ready to do it now	1
+no I am not ready to do it now	0
+да у меня есть все что нужно	1
+нет у меня нет всего что нужно	0
+ano mám všechno co potřebuji	1
+ne nemám všechno co potřebuji	0
+yes I have everything I need	1
+no I don't have everything I need	0
+да я готов принять решение	1
+нет я не готов принять решение	0
+ano jsem připraven rozhodnout	1
+ne nejsem připraven rozhodnout	0
+yes I am ready to decide	1
+no I am not ready to decide	0
+да я согласен с этим решением	1
+нет я не согласен с этим решением	0
+ano souhlasím s tím rozhodnutím	1
+ne nesouhlasím s tím rozhodnutím	0
+yes I agree with this decision	1
+no I don't agree with this decision	0
+да это разумно	1
+нет это неразумно	0
+ano to je rozumné	1
+ne to není rozumné	0
+yes it is reasonable	1
+no it is not reasonable	0
+да это будет хорошо	1
+нет это не будет хорошо	0
+ano to bude dobré	1
+ne to nebude dobré	0
+yes it will be good	1
+no it will not be good	0
+да я согласен сделать это	1
+нет я не согласен сделать это	0
+ano souhlasím to udělat	1
+ne nesouhlasím to udělat	0
+yes I agree to do it	1
+no I don't agree to do it	0
+да я полностью поддерживаю это	1
+нет я не поддерживаю это	0
+ano plně to podporuji	1
+ne nepodporuji to	0
+yes I fully support it	1
+no I don't support it	0
+да это правильное направление	1
+нет это неправильное направление	0
+ano to je správný směr	1
+ne to není správný směr	0
+yes it is the right direction	1
+no it is not the right direction	0
+да я уверен в этом на 100%	1
+нет я не уверен в этом на 100%	0
+ano jsem si tím 100% jistý	1
+ne nejsem si tím 100% jistý	0
+yes I am 100% sure about it	1
+no I am not 100% sure about it	0
+да это именно то что нужно	1
+нет это не то что нужно	0
+ano to je přesně to co potřebuji	1
+ne to není to co potřebuji	0
+yes it is exactly what is needed	1
+no it is not what is needed	0
+да это лучший выбор	1
+нет это не лучший выбор	0
+ano to je nejlepší volba	1
+ne to není nejlepší volba	0
+yes it is the best choice	1
+no it is not the best choice	0
+да это идеально	1
+нет это не идеально	0
+ano to je ideální	1
+ne to není ideální	0
+yes it is perfect	1
+no it is not perfect	0
+да это именно то что я хочу	1
+нет это не то что я хочу	0
+ano to je přesně to co chci	1
+ne to není to co chci	0
+yes it is exactly what I want	1
+no it is not what I want	0
+да я готов это принять	1
+нет я не готов это принять	0
+ano jsem připraven to přijmout	1
+ne nejsem připraven to přijmout	0
+yes I am ready to accept it	1
+no I am not ready to accept it	0
+да я согласен с этим предложением	1
+нет я не согласен с этим предложением	0
+ano souhlasím s tímto návrhem	1
+ne nesouhlasím s tímto návrhem	0
+yes I agree with this proposal	1
+no I don't agree with this proposal	0
+да это оптимальное решение	1
+нет это не оптимальное решение	0
+ano to je optimální řešení	1
+ne to není optimální řešení	0
+yes it is the optimal solution	1
+no it is not the optimal solution	0
+да это правильное действие	1
+нет это неправильное действие	0
+ano to je správné jednání	1
+ne to není správné jednání	0
+yes it is the right action	1
+no it is not the right action	0
+да я уверен в своих силах	1
+нет я не уверен в своих силах	0
+ano věřím si	1
+ne nevěřím si	0
+yes I believe in myself	1
+no I don't believe in myself	0
+да я готов начать	1
+нет я не готов начать	0
+ano jsem připraven začít	1
+ne nejsem připraven začít	0
+yes I am ready to start	1
+no I am not ready to start	0
+да это необходимо	1
+нет это не необходимо	0
+ano to je nutné	1
+ne to není nutné	0
+yes it is necessary	1
+no it is not necessary	0
+да это будет полезно	1
+нет это не будет полезно	0
+ano to bude užitečné	1
+ne to nebude užitečné	0
+yes it will be useful	1
+no it will not be useful	0
+да я поддерживаю это решение	1
+нет я не поддерживаю это решение	0
+ano podporuji to rozhodnutí	1
+ne nepodporuji to rozhodnutí	0
+yes I support this decision	1
+no I don't support this decision	0
+да я готов выполнить это действие	1
+нет я не готов выполнить это действие	0
+ano jsem připraven to provést	1
+ne nejsem připraven to provést	0
+yes I am ready to perform this action	1
+no I am not ready to perform this action	0
+да я согласен с этим решением	1
+нет я не согласен с этим решением	0
+ano souhlasím s tím rozhodnutím	1
+ne nesouhlasím s tím rozhodnutím	0
+yes I agree with this decision	1
+no I don't agree with this decision	0
+да я уверен что это правильно	1
+нет я не уверен что это правильно	0
+ano jsem si jistý že je to správné	1
+ne nejsem si jistý že je to správné	0
+yes I am sure it is right	1
+no I am not sure it is right	0
+да это разумное решение	1
+нет это неразумное решение	0
+ano to je rozumné rozhodnutí	1
+ne to není rozumné rozhodnutí	0
+yes it is a sensible decision	1
+no it is not a sensible decision	0
+да я хочу это сделать	1
+нет я не хочу это делать	0
+ano chci to udělat	1
+ne nechci to udělat	0
+yes I want to do it	1
+no I don't want to do it	0
+да я уверен в этом решении	1
+нет я не уверен в этом решении	0
+ano jsem si jistý tímto rozhodnutím	1
+ne nejsem si jistý tímto rozhodnutím	0
+yes I am sure about this decision	1
+no I am not sure about this decision	0
+да я готов к выполнению	1
+нет я не готов к выполнению	0
+ano jsem připraven na provedení	1
+ne nejsem připraven na provedení	0
+yes I am ready for execution	1
+no I am not ready for execution	0
+да это важно	1
+нет это не важно	0
+ano to je důležité	1
+ne to není důležité	0
+yes it is important	1
+no it is not important	0
+да это необходимо сделать	1
+нет это не нужно делать	0
+ano to je nutné udělat	1
+ne to není nutné udělat	0
+yes it is necessary to do it	1
+no it is not necessary to do it	0
+да это верное решение	1
+нет это неверное решение	0
+ano to je správné rozhodnutí	1
+ne to není správné rozhodnutí	0
+yes it is the correct decision	1
+no it is not the correct decision	0
+да это полезно	1
+нет это не полезно	0
+ano to je užitečné	1
+ne to není užitečné	0
+yes it is useful	1
+no it is not useful	0
+да я уверен в своем решении	1
+нет я не уверен в своем решении	0
+ano jsem si jistý svým rozhodnutím	1
+ne nejsem si jistý svým rozhodnutím	0
+yes I am confident in my decision	1
+no I am not confident in my decision	0
+да я хочу это сделать	1
+нет я не хочу это делать	0
+ano chci to udělat	1
+ne nechci to udělat	0
+yes I want to do it	1
+no I don't want to do it	0
+да я готов начать	1
+нет я не готов начать	0
+ano jsem připraven začít	1
+ne nejsem připraven začít	0
+yes I am ready to start	1
+no I am not ready to start	0
+
+это правильно	1
+это неправильно	0
+to je správně	1
+to je špatně	0
+It is right	1
+It is wrong	0
+я думаю, это правильно	1
+я думаю, это неправильно	0
+myslím, že je to správně	1
+myslím, že to je špatně	0
+I think it is right	1
+I think it is wrong	0
+я чувствую уверенность в этом	1
+я не чувствую уверенности в этом	0
+cítím se v tom jistý	1
+necítím se v tom jistý	0
+I feel confident about it	1
+I don't feel confident about it	0
+я убежден	1
+я не убежден	0
+jsem přesvědčen	1
+nejsem přesvědčen	0
+I am convinced	1
+I am not convinced	0
+я намерен это сделать	1
+я не намерен это делать	0
+hodlám to udělat	1
+nehodlám to udělat	0
+I intend to do it	1
+I do not intend to do it	0
+я готов к этому	1
+я не готов к этому	0
+jsem na to připraven	1
+nejsem na to připraven	0
+I am ready for it	1
+I am not ready for it	0
+это то, что я хочу	1
+это не то, что я хочу	0
+to je to, co chci	1
+to není to, co chci	0
+It is what I want	1
+It is not what I want	0
+я готов сделать это сейчас	1
+я не готов сделать это сейчас	0
+jsem připraven to udělat teď	1
+nejsem připraven to udělat teď	0
+I am ready to do it now	1
+I am not ready to do it now	0
+у меня есть все, что нужно	1
+у меня нет всего, что нужно	0
+mám všechno, co potřebuji	1
+nemám všechno, co potřebuji	0
+I have everything I need	1
+I don't have everything I need	0
+я готов принять решение	1
+я не готов принять решение	0
+jsem připraven rozhodnout	1
+nejsem připraven rozhodnout	0
+I am ready to decide	1
+I am not ready to decide	0
+я согласен с этим решением	1
+я не согласен с этим решением	0
+souhlasím s tím rozhodnutím	1
+nesouhlasím s tím rozhodnutím	0
+I agree with this decision	1
+I don't agree with this decision	0
+это разумно	1
+это неразумно	0
+to je rozumné	1
+to není rozumné	0
+It is reasonable	1
+It is not reasonable	0
+это будет хорошо	1
+это не будет хорошо	0
+to bude dobré	1
+to nebude dobré	0
+It will be good	1
+It will not be good	0
+я согласен сделать это	1
+я не согласен сделать это	0
+souhlasím to udělat	1
+nesouhlasím to udělat	0
+I agree to do it	1
+I don't agree to do it	0
+я полностью поддерживаю это	1
+я не поддерживаю это	0
+plně to podporuji	1
+nepodporuji to	0
+I fully support it	1
+I don't support it	0
+это правильное направление	1
+это неправильное направление	0
+to je správný směr	1
+to není správný směr	0
+It is the right direction	1
+It is not the right direction	0
+я уверен в этом на 100%	1
+я не уверен в этом на 100%	0
+jsem si tím 100% jistý	1
+nejsem si tím 100% jistý	0
+I am 100% sure about it	1
+I am not 100% sure about it	0
+это именно то, что нужно	1
+это не то, что нужно	0
+to je přesně to, co potřebuji	1
+to není to, co potřebuji	0
+It is exactly what is needed	1
+It is not what is needed	0
+это лучший выбор	1
+это не лучший выбор	0
+to je nejlepší volba	1
+to není nejlepší volba	0
+It is the best choice	1
+It is not the best choice	0
+это идеально	1
+это не идеально	0
+to je ideální	1
+to není ideální	0
+It is perfect	1
+It is not perfect	0
+это именно то, что я хочу	1
+это не то, что я хочу	0
+to je přesně to, co chci	1
+to není to, co chci	0
+It is exactly what I want	1
+It is not what I want	0
+я готов это принять	1
+я не готов это принять	0
+jsem připraven to přijmout	1
+nejsem připraven to přijmout	0
+I am ready to accept it	1
+I am not ready to accept it	0
+я согласен с этим предложением	1
+я не согласен с этим предложением	0
+souhlasím s tímto návrhem	1
+nesouhlasím s tímto návrhem	0
+I agree with this proposal	1
+I don't agree with this proposal	0
+это оптимальное решение	1
+это не оптимальное решение	0
+to je optimální řešení	1
+to není optimální řešení	0
+It is the optimal solution	1
+It is not the optimal solution	0
+это правильное действие	1
+это неправильное действие	0
+to je správné jednání	1
+to není správné jednání	0
+It is the right action	1
+It is not the right action	0
+я уверен в своих силах	1
+я не уверен в своих силах	0
+věřím si	1
+nevěřím si	0
+I believe in myself	1
+I don't believe in myself	0
+я готов начать	1
+я не готов начать	0
+jsem připraven začít	1
+nejsem připraven začít	0
+I am ready to start	1
+I am not ready to start	0
+это необходимо	1
+это не необходимо	0
+to je nutné	1
+to není nutné	0
+It is necessary	1
+It is not necessary	0
+это будет полезно	1
+это не будет полезно	0
+to bude užitečné	1
+to nebude užitečné	0
+It will be useful	1
+It will not be useful	0
+я поддерживаю это решение	1
+я не поддерживаю это решение	0
+podporuji to rozhodnutí	1
+nepodporuji to rozhodnutí	0
+I support this decision	1
+I don't support this decision	0
+я готов выполнить это действие	1
+я не готов выполнить это действие	0
+jsem připraven to provést	1
+nejsem připraven to provést	0
+I am ready to perform this action	1
+I am not ready to perform this action	0
+я уверен, что это правильно	1
+я не уверен, что это правильно	0
+jsem si jistý, že je to správné	1
+nejsem si jistý, že je to správné	0
+I am sure it is right	1
+I am not sure it is right	0
+это разумное решение	1
+это неразумное решение	0
+to je rozumné rozhodnutí	1
+to není rozumné rozhodnutí	0
+It is a sensible decision	1
+It is not a sensible decision	0
+я хочу это сделать	1
+я не хочу это делать	0
+chci to udělat	1
+nechci to udělat	0
+I want to do it	1
+I don't want to do it	0
+я уверен в этом решении	1
+я не уверен в этом решении	0
+jsem si jistý tímto rozhodnutím	1
+nejsem si jistý tímto rozhodnutím	0
+I am sure about this decision	1
+I am not sure about this decision	0
+я готов к выполнению	1
+я не готов к выполнению	0
+jsem připraven na provedení	1
+nejsem připraven na provedení	0
+I am ready for execution	1
+I am not ready for execution	0
+это важно	1
+это не важно	0
+to je důležité	1
+to není důležité	0
+It is important	1
+It is not important	0
+это необходимо сделать	1
+это не нужно делать	0
+to je nutné udělat	1
+to není nutné udělat	0
+It is necessary to do it	1
+It is not necessary to do it	0
+это верное решение	1
+это неверное решение	0
+to je správné rozhodnutí	1
+to není správné rozhodnutí	0
+It is the correct decision	1
+It is not the correct decision	0
+это полезно	1
+это не полезно	0
+to je užitečné	1
+to není užitečné	0
+It is useful	1
+It is not useful	0
+я уверен в своем решении	1
+я не уверен в своем решении	0
+jsem si jistý svým rozhodnutím	1
+nejsem si jistý svým rozhodnutím	0
+I am confident in my decision	1
+I am not confident in my decision	0
+я хочу это сделать	1
+я не хочу это делать	0
+chci to udělat	1
+nechci to udělat	0
+I want to do it	1
+I don't want to do it	0
+я готов начать	1
+я не готов начать	0
+jsem připraven začít	1
+nejsem připraven začít	0
+I am ready to start	1
+I am not ready to start	0
+
+это правильно	1
+это неправильно	0
+to je správně	1
+to je špatně	0
+It is right	1
+It is wrong	0
+я думаю это правильно	1
+я думаю это неправильно	0
+myslím že je to správně	1
+myslím že to je špatně	0
+I think it is right	1
+I think it is wrong	0
+я чувствую уверенность в этом	1
+я не чувствую уверенности в этом	0
+cítím se v tom jistý	1
+necítím se v tom jistý	0
+I feel confident about it	1
+I don't feel confident about it	0
+я убежден	1
+я не убежден	0
+jsem přesvědčen	1
+nejsem přesvědčen	0
+I am convinced	1
+I am not convinced	0
+я намерен это сделать	1
+я не намерен это делать	0
+hodlám to udělat	1
+nehodlám to udělat	0
+I intend to do it	1
+I do not intend to do it	0
+я готов к этому	1
+я не готов к этому	0
+jsem na to připraven	1
+nejsem na to připraven	0
+I am ready for it	1
+I am not ready for it	0
+это то что я хочу	1
+это не то что я хочу	0
+to je to co chci	1
+to není to co chci	0
+It is what I want	1
+It is not what I want	0
+я готов сделать это сейчас	1
+я не готов сделать это сейчас	0
+jsem připraven to udělat teď	1
+nejsem připraven to udělat teď	0
+I am ready to do it now	1
+I am not ready to do it now	0
+у меня есть все что нужно	1
+у меня нет всего что нужно	0
+mám všechno co potřebuji	1
+nemám všechno co potřebuji	0
+I have everything I need	1
+I don't have everything I need	0
+я готов принять решение	1
+я не готов принять решение	0
+jsem připraven rozhodnout	1
+nejsem připraven rozhodnout	0
+I am ready to decide	1
+I am not ready to decide	0
+я согласен с этим решением	1
+я не согласен с этим решением	0
+souhlasím s tím rozhodnutím	1
+nesouhlasím s tím rozhodnutím	0
+I agree with this decision	1
+I don't agree with this decision	0
+это разумно	1
+это неразумно	0
+to je rozumné	1
+to není rozumné	0
+It is reasonable	1
+It is not reasonable	0
+это будет хорошо	1
+это не будет хорошо	0
+to bude dobré	1
+to nebude dobré	0
+It will be good	1
+It will not be good	0
+я согласен сделать это	1
+я не согласен сделать это	0
+souhlasím to udělat	1
+nesouhlasím to udělat	0
+I agree to do it	1
+I don't agree to do it	0
+я полностью поддерживаю это	1
+я не поддерживаю это	0
+plně to podporuji	1
+nepodporuji to	0
+I fully support it	1
+I don't support it	0
+это правильное направление	1
+это неправильное направление	0
+to je správný směr	1
+to není správný směr	0
+It is the right direction	1
+It is not the right direction	0
+я уверен в этом на 100%	1
+я не уверен в этом на 100%	0
+jsem si tím 100% jistý	1
+nejsem si tím 100% jistý	0
+I am 100% sure about it	1
+I am not 100% sure about it	0
+это именно то что нужно	1
+это не то что нужно	0
+to je přesně to co potřebuji	1
+to není to co potřebuji	0
+It is exactly what is needed	1
+It is not what is needed	0
+это лучший выбор	1
+это не лучший выбор	0
+to je nejlepší volba	1
+to není nejlepší volba	0
+It is the best choice	1
+It is not the best choice	0
+это идеально	1
+это не идеально	0
+to je ideální	1
+to není ideální	0
+It is perfect	1
+It is not perfect	0
+это именно то что я хочу	1
+это не то что я хочу	0
+to je přesně to co chci	1
+to není to co chci	0
+It is exactly what I want	1
+It is not what I want	0
+я готов это принять	1
+я не готов это принять	0
+jsem připraven to přijmout	1
+nejsem připraven to přijmout	0
+I am ready to accept it	1
+I am not ready to accept it	0
+я согласен с этим предложением	1
+я не согласен с этим предложением	0
+souhlasím s tímto návrhem	1
+nesouhlasím s tímto návrhem	0
+I agree with this proposal	1
+I don't agree with this proposal	0
+это оптимальное решение	1
+это не оптимальное решение	0
+to je optimální řešení	1
+to není optimální řešení	0
+It is the optimal solution	1
+It is not the optimal solution	0
+это правильное действие	1
+это неправильное действие	0
+to je správné jednání	1
+to není správné jednání	0
+It is the right action	1
+It is not the right action	0
+я уверен в своих силах	1
+я не уверен в своих силах	0
+věřím si	1
+nevěřím si	0
+I believe in myself	1
+I don't believe in myself	0
+я готов начать	1
+я не готов начать	0
+jsem připraven začít	1
+nejsem připraven začít	0
+I am ready to start	1
+I am not ready to start	0
+это необходимо	1
+это не необходимо	0
+to je nutné	1
+to není nutné	0
+It is necessary	1
+It is not necessary	0
+это будет полезно	1
+это не будет полезно	0
+to bude užitečné	1
+to nebude užitečné	0
+It will be useful	1
+It will not be useful	0
+я поддерживаю это решение	1
+я не поддерживаю это решение	0
+podporuji to rozhodnutí	1
+nepodporuji to rozhodnutí	0
+I support this decision	1
+I don't support this decision	0
+я готов выполнить это действие	1
+я не готов выполнить это действие	0
+jsem připraven to provést	1
+nejsem připraven to provést	0
+I am ready to perform this action	1
+I am not ready to perform this action	0
+я уверен что это правильно	1
+я не уверен что это правильно	0
+jsem si jistý že je to správné	1
+nejsem si jistý že je to správné	0
+I am sure it is right	1
+I am not sure it is right	0
+это разумное решение	1
+это неразумное решение	0
+to je rozumné rozhodnutí	1
+to není rozumné rozhodnutí	0
+It is a sensible decision	1
+It is not a sensible decision	0
+я хочу это сделать	1
+я не хочу это делать	0
+chci to udělat	1
+nechci to udělat	0
+I want to do it	1
+I don't want to do it	0
+я уверен в этом решении	1
+я не уверен в этом решении	0
+jsem si jistý tímto rozhodnutím	1
+nejsem si jistý tímto rozhodnutím	0
+I am sure about this decision	1
+I am not sure about this decision	0
+я готов к выполнению	1
+я не готов к выполнению	0
+jsem připraven na provedení	1
+nejsem připraven na provedení	0
+I am ready for execution	1
+I am not ready for execution	0
+это важно	1
+это не важно	0
+to je důležité	1
+to není důležité	0
+It is important	1
+It is not important	0
+это необходимо сделать	1
+это не нужно делать	0
+to je nutné udělat	1
+to není nutné udělat	0
+It is necessary to do it	1
+It is not necessary to do it	0
+это верное решение	1
+это неверное решение	0
+to je správné rozhodnutí	1
+to není správné rozhodnutí	0
+It is the correct decision	1
+It is not the correct decision	0
+это полезно	1
+это не полезно	0
+to je užitečné	1
+to není užitečné	0
+It is useful	1
+It is not useful	0
+я уверен в своем решении	1
+я не уверен в своем решении	0
+jsem si jistý svým rozhodnutím	1
+nejsem si jistý svým rozhodnutím	0
+I am confident in my decision	1
+I am not confident in my decision	0
+я хочу это сделать	1
+я не хочу это делать	0
+chci to udělat	1
+nechci to udělat	0
+I want to do it	1
+I don't want to do it	0
+я готов начать	1
+я не готов начать	0
+jsem připraven začít	1
+nejsem připraven začít	0
+I am ready to start	1
+I am not ready to start	0
+
+может быть, погода сегодня хорошая	2
+kolik je hodin?	2
+It depends on the context	2
+жизнь полна сюрпризов	2
+to není můj problém	2
+the sky is particularly blue today	2
+у меня нет на это однозначного ответа	2
+mám rád jablka	2
+what did you have for breakfast?	2
+это сложный вопрос	2
+jak se máš?	2
+I read an interesting book yesterday	2
+время покажет	2
+už jsi viděl ten nový film?	2
+that's a good question	2
+здесь нужен более тщательный анализ	2
+je to zajímavé téma k diskusi	2
+I think I saw a cat	2
+в какой-то степени да, в какой-то нет	2
+tohle je opravdu složité	2
+I enjoy listening to music	2
+это стоит обдумать	2
+máš rád kávu nebo čaj?	2
+I remember a funny story	2
+погода такая переменчивая	2
+to je zajímavý úhel pohledu	2
+have you ever been to paris?	2
+мне нужно больше времени	2
+dnes je krásný den	2
+I think we should consider other options	2
+это оставляет пространство для размышлений	2
+kde je nejbližší kavárna?	2
+what is your favorite color?	2
+мир не стоит на месте	2
+tohle mě nikdy nenapadlo	2
+I saw a bird flying high	2
+утро вечера мудренее	2
+kolik ti je let?	2
+the cake is delicious	2
+это вызывает много вопросов	2
+máš nějaké plány na víkend?	2
+what's the time?	2
+рано или поздно всё станет ясно	2
+co by sis dal k večeři?	2
+I have a meeting tomorrow	2
+это действительно стоит обсудить	2
+co je to za zvuk?	2
+I enjoy walking in the park	2
+всё зависит от обстоятельств	2
+máš rád hudbu?	2
+I think it's a complex issue	2
+это очень интересный случай	2
+je to otázka perspektivy	2
+what's your opinion on this?	2
+давайте посмотрим на это с другой стороны	2
+kolik máš času?	2
+I saw it on the news	2
+всё может быть иначе	2
+kde je nejbližší zastávka?	2
+have you tried the new restaurant?	2
+это вопрос времени	2
+máš nějaký tip?	2
+I need to think it over	2
+это заставляет задуматься	2
+máš rád zmrzlinu?	2
+I think it's worth a discussion	2
+это довольно сложная тема	2
+co si o tom myslíš?	2
+I heard it on the radio	2
+время покажет свои результаты	2
+máš nějaký nápad?	2
+I saw it in a movie	2
+это требует большего внимания	2
+jaký máš názor na tohle?	2
+I enjoy reading books	2
+это философский вопрос	2
+je to hodně otevřené téma	2
+what's the weather like?	2
+иногда стоит подождать	2
+kdy máš čas na setkání?	2
+I have a different perspective	2
+это требует дальнейшего обсуждения	2
+jaký máš plán na dnešek?	2
+I heard a strange noise	2
+это может быть интересным опытом	2
+co si myslíš o tom novém filmu?	2
+I think it's a fascinating topic	2
+это вопрос интерпретации	2
+jak dlouho to potrvá?	2
+I saw a rainbow yesterday	2
+это может изменить всё	2
+co plánuješ na zítra?	2
+have you seen the latest episode?	2
+это требует времени	2
+máš nějaké doporučení?	2
+I need more details	2
+это зависит от многих факторов	2
+máš rád sport?	2
+I think it's a significant matter	2
+это требует дополнительного анализа	2
+co je nového ve světě?	2
+what's your plan for today?	2
+может быть, стоит пересмотреть это	2
+je to komplikované	2
+I think it's a noteworthy point	2
+это философский вопрос	2
+je to hodně otevřené téma	2
+what's the weather like?	2
+иногда стоит подождать	2
+kdy máš čas na setkání?	2
+I have a different perspective	2
+это требует дальнейшего обсуждения	2
+jaký máš plán na dnešek?	2
+I heard a strange noise	2
+это может быть интересным опытом	2
+co si myslíš o tom novém filmu?	2
+I think it's a fascinating topic	2
+это вопрос интерпретации	2
+jak dlouho to potrvá?	2
+I saw a rainbow yesterday	2
+это может изменить всё	2
+co plánuješ na zítra?	2
+have you seen the latest episode?	2
+это требует времени	2
+máš nějaké doporučení?	2
+I need more details	2
+это зависит от многих факторов	2
+máš rád sport?	2
+I think it's a significant matter	2
+это требует дополнительного анализа	2
+co je nového ve světě?	2
+what's your plan for today?	2
+может быть, стоит пересмотреть это	2
+je to komplikované	2
+I think it's a noteworthy point	2
+это довольно спорный вопрос	2
+máš nějaké novinky?	2
+have you met him before?	2
+это требует некоторых размышлений	2
+co si myslíš o tom novém seriálu?	2
+I heard it's a popular place	2
+это можно обсуждать часами	2
+kde jsi byl včera?	2
+what's your dream destination?	2
+может быть, в следующий раз	2
+je to velmi široké téma	2
+I think it's an open-ended question	2
+это оставляет много простора для интерпретаций	2
+jaký máš vztah k této otázce?	2
+I saw it on the internet	2
+это может быть связано с чем угодно	2
+co máš dnes v plánu?	2
+I think it's a matter of opinion	2
+это требует времени для анализа	2
+kde se to koná?	2
+what's your favorite hobby?	2
+может быть, это не так уж и важно	2
+je to otázka pohledu	2
+I think it's a broad topic	2
+это можно обсудить подробнее	2
+jaký máš na to názor?	2
+I saw it on tv	2
+это зависит от многих переменных	2
+co plánuješ na víkend?	2
+I think it's a complex question	2
+это стоит дальнейшего исследования	2
+kolik stojí tenhle produkt?	2
+what's your favorite season?	2
+может быть, мы сможем это обсудить позже	2
+je to téma na dlouhou debatu	2
+I think it's a debatable issue	2
+это требует большего понимания	2
+jak dlouho to trvá?	2
+I saw it in a magazine	2
+это довольно сложная ситуация	2
+co děláš ve volném čase?	2
+I think it's an intricate matter	2
+это можно обсудить с разных сторон	2
+kolik času potřebuješ?	2
+what's your favorite book?	2
+может быть, мы сможем это обдумать	2
+je to náročné na rozhodnutí	2
+I think it's a multifaceted issue	2
+это требует больше ресурсов	2
+jaký je tvůj oblíbený film?	2
+I think it's an important point	2
+это требует тщательного анализа	2
+kde jsi se narodil?	2
+what's your favorite animal?	2
+может быть, мы сможем это обсудить завтра	2
+je to hodně specifické téma	2
+I think it's an ongoing discussion	2
+это требует новых подходов	2
+jaký je tvůj oblíbený sport?	2
+I think it's a point worth considering	2
+это требует новых решений	2
+kde bydlíš?	2
+what's your favorite food?	2
+может быть, это не так важно, как кажется	2
+je to velmi individuální otázka	2
+I think it's quite subjective	2
+это открыто для интерпретации	2
+jak se máš dneska?	2
+I think it's a matter of perspective	2
+это может иметь различные исходы	2
+kolik máš sourozenců?	2
+what's your favorite place to visit?	2
+может быть, это просто вопрос времени	2
+je to otázka vkusu	2
+I think it's up for interpretation	2
+это требует обсуждения	2
+kde si to přečetl?	2
+what's your favorite movie?	2
+может быть, стоит подождать	2
+je to dlouhodobý proces	2
+I think it's a matter of taste	2
+это может привести к неожиданным результатам	2
+kdy jsi se to dozvěděl?	2
+what's your favorite song?	2
+может быть, это стоит пересмотреть	2
+je to individuální přístup	2
+I think it's a long-term process	2
+это может вызвать разные реакции	2
+kdo to udělal?	2
+what's your favorite season?	2
+может быть, это не так просто	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может иметь разные последствия	2
+kde byl tvůj poslední dovolená?	2
+what's your favorite hobby?	2
+может быть, стоит обратить внимание	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это требует более глубокого изучения	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite color?	2
+может быть, это зависит от обстоятельств	2
+je to otázka času	2
+I think it's a matter of time	2
+это может вызвать разные эмоции	2
+kde jsi našel tu informaci?	2
+what's your favorite book?	2
+может быть, это требует дальнейшего исследования	2
+je to věc názoru	2
+I think it's a matter of opinion	2
+это может быть долгосрочное решение	2
+kdy jsi naposledy viděl toho přítele?	2
+what's your favorite animal?	2
+может быть, это сложный вопрос	2
+je to otevřená otázka	2
+I think it's an open question	2
+это может быть неожиданным поворотом	2
+kde jsi se naučil tak dobře česky?	2
+what's your favorite sport?	2
+может быть, это не так важно	2
+je to složitá otázka	2
+I think it's a complex question	2
+это может вызвать неожиданные последствия	2
+kolik let pracuješ v tomto oboru?	2
+what's your favorite movie genre?	2
+может быть, это не так просто, как кажется	2
+je to otázka perspektivy	2
+I think it's a matter of perspective	2
+это может быть интересным исследованием	2
+kdy jsi naposledy byl v divadle?	2
+what's your favorite food?	2
+может быть, это сложный вопрос	2
+je to otázka osobní volby	2
+I think it's a matter of personal choice	2
+это может быть обсуждаемой темой	2
+kde jsi strávil prázdniny?	2
+what's your favorite place to relax?	2
+может быть, это стоит обдумать	2
+je to záležitost preference	2
+I think it's a matter of preference	2
+это можно рассматривать с разных сторон	2
+kolik máš dětí?	2
+what's your favorite holiday destination?	2
+может быть, это не так важно, как кажется	2
+je to otázka osobní preference	2
+I think it's a matter of personal preference	2
+это может иметь разные интерпретации	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть, это зависит от ситуации	2
+je to otázka vzdělání	2
+I think it's a matter of education	2
+это может привести к различным результатам	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть, это не стоит торопиться	2
+je to otázka hodnoty	2
+I think it's a matter of value	2
+это может быть долгосрочное решение	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть, это не столь важно	2
+je to otázka preferencí	2
+I think it's a matter of preferences	2
+это может вызвать разные реакции	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть, это зависит от обстоятельств	2
+je to otázka vkusu	2
+I think it's a matter of taste	2
+это может быть долгосрочным решением	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть, это требует времени для размышлений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть долгосрочным планом	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть, это не так просто	2
+je to otázka příležitosti	2
+I think it's a matter of opportunity	2
+это может вызвать неожиданные последствия	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть, это стоит обратить внимание	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может требовать дополнительных исследований	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть, это зависит от обстоятельств	2
+je to otázka přístupu	2
+I think it's a matter of approach	2
+это может быть открытым вопросом	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть, это не столь важно	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может иметь различные решения	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть, это требует дальнейших обсуждений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть проблемой времени	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть, это зависит от обстоятельств	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может быть интересной темой для изучения	2
+kolik hodin je teď?	2
+what's your favorite season?	2
+может быть, это не так важно, как кажется	2
+je to otázka osobní preference	2
+I think it's a matter of personal preference	2
+это может иметь разные интерпретации	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть, это зависит от ситуации	2
+je to otázka vzdělání	2
+I think it's a matter of education	2
+это может привести к различным результатам	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть, это не стоит торопиться	2
+je to otázka hodnoty	2
+I think it's a matter of value	2
+это может быть долгосрочное решение	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть, это не столь важно	2
+je to otázka preferencí	2
+I think it's a matter of preferences	2
+это может вызвать разные реакции	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть, это зависит от обстоятельств	2
+je to otázka vkusu	2
+I think it's a matter of taste	2
+это может быть долгосрочным решением	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть, это требует времени для размышлений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть долгосрочным планом	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть, это не так просто	2
+je to otázka příležitosti	2
+I think it's a matter of opportunity	2
+это может вызвать неожиданные последствия	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть, это стоит обратить внимание	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может требовать дополнительных исследований	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть, это зависит от обстоятельств	2
+je to otázka přístupu	2
+I think it's a matter of approach	2
+это может быть открытым вопросом	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть, это не столь важно	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может иметь различные решения	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть, это требует дальнейших обсуждений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть проблемой времени	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть, это зависит от обстоятельств	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может быть интересной темой для обсуждения	2
+kolik let pracuješ v tomto oboru?	2
+what's your favorite holiday destination?	2
+может быть, это не так важно, как кажется	2
+je to otázka osobní preference	2
+I think it's a matter of personal preference	2
+это может иметь разные интерпретации	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть, это зависит от ситуации	2
+je to otázka vzdělání	2
+I think it's a matter of education	2
+это может привести к различным результатам	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть, это не стоит торопиться	2
+je to otázka hodnoty	2
+I think it's a matter of value	2
+это может быть долгосрочное решение	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть, это не столь важно	2
+je to otázka preferencí	2
+I think it's a matter of preferences	2
+это может вызвать разные реакции	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть, это зависит от обстоятельств	2
+je to otázka vkusu	2
+I think it's a matter of taste	2
+это может быть долгосрочным решением	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть, это требует времени для размышлений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть долгосрочным планом	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть, это не так просто	2
+je to otázka příležitosti	2
+I think it's a matter of opportunity	2
+это может вызвать неожиданные последствия	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть, это стоит обратить внимание	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может требовать дополнительных исследований	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть, это зависит от обстоятельств	2
+je to otázka přístupu	2
+I think it's a matter of approach	2
+это может быть открытым вопросом	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть, это не столь важно	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может иметь различные решения	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть, это требует дальнейших обсуждений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть проблемой времени	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть, это зависит от обстоятельств	2
+je to otázka preference	2
+I think it's a matter of preference	2
+
+может быть погода сегодня хорошая	2
+kolik je hodin?	2
+It depends on the context	2
+жизнь полна сюрпризов	2
+to není můj problém	2
+the sky is particularly blue today	2
+у меня нет на это однозначного ответа	2
+mám rád jablka	2
+what did you have for breakfast?	2
+это сложный вопрос	2
+jak se máš?	2
+I read an interesting book yesterday	2
+время покажет	2
+už jsi viděl ten nový film?	2
+that's a good question	2
+здесь нужен более тщательный анализ	2
+je to zajímavé téma k diskusi	2
+I think I saw a cat	2
+в какой-то степени да в какой-то нет	2
+tohle je opravdu složité	2
+I enjoy listening to music	2
+это стоит обдумать	2
+máš rád kávu nebo čaj?	2
+I remember a funny story	2
+погода такая переменчивая	2
+to je zajímavý úhel pohledu	2
+have you ever been to paris?	2
+мне нужно больше времени	2
+dnes je krásný den	2
+I think we should consider other options	2
+это оставляет пространство для размышлений	2
+kde je nejbližší kavárna?	2
+what is your favorite color?	2
+мир не стоит на месте	2
+tohle mě nikdy nenapadlo	2
+I saw a bird flying high	2
+утро вечера мудренее	2
+kolik ti je let?	2
+the cake is delicious	2
+это вызывает много вопросов	2
+máš nějaké plány na víkend?	2
+what's the time?	2
+рано или поздно всё станет ясно	2
+co by sis dal k večeři?	2
+I have a meeting tomorrow	2
+это действительно стоит обсудить	2
+co je to za zvuk?	2
+I enjoy walking in the park	2
+всё зависит от обстоятельств	2
+máš rád hudbu?	2
+I think it's a complex issue	2
+это очень интересный случай	2
+je to otázka perspektivy	2
+what's your opinion on this?	2
+давайте посмотрим на это с другой стороны	2
+kolik máš času?	2
+I saw it on the news	2
+всё может быть иначе	2
+kde je nejbližší zastávka?	2
+have you tried the new restaurant?	2
+это вопрос времени	2
+máš nějaký tip?	2
+I need to think it over	2
+это заставляет задуматься	2
+máš rád zmrzlinu?	2
+I think it's worth a discussion	2
+это довольно сложная тема	2
+co si o tom myslíš?	2
+I heard it on the radio	2
+время покажет свои результаты	2
+máš nějaký nápad?	2
+I saw it in a movie	2
+это требует большего внимания	2
+jaký máš názor na tohle?	2
+I enjoy reading books	2
+это философский вопрос	2
+je to hodně otevřené téma	2
+what's the weather like?	2
+иногда стоит подождать	2
+kdy máš čas na setkání?	2
+I have a different perspective	2
+это требует дальнейшего обсуждения	2
+jaký máš plán na dnešek?	2
+I heard a strange noise	2
+это может быть интересным опытом	2
+co si myslíš o tom novém filmu?	2
+I think it's a fascinating topic	2
+это вопрос интерпретации	2
+jak dlouho to potrvá?	2
+I saw a rainbow yesterday	2
+это может изменить всё	2
+co plánuješ na zítra?	2
+have you seen the latest episode?	2
+это требует времени	2
+máš nějaké doporučení?	2
+I need more details	2
+это зависит от многих факторов	2
+máš rád sport?	2
+I think it's a significant matter	2
+это требует дополнительного анализа	2
+co je nového ve světě?	2
+what's your plan for today?	2
+может быть стоит пересмотреть это	2
+je to komplikované	2
+I think it's a noteworthy point	2
+это философский вопрос	2
+je to hodně otevřené téma	2
+what's the weather like?	2
+иногда стоит подождать	2
+kdy máš čas na setkání?	2
+I have a different perspective	2
+это требует дальнейшего обсуждения	2
+jaký máš plán na dnešek?	2
+I heard a strange noise	2
+это может быть интересным опытом	2
+co si myslíš o tom novém filmu?	2
+I think it's a fascinating topic	2
+это вопрос интерпретации	2
+jak dlouho to potrvá?	2
+I saw a rainbow yesterday	2
+это может изменить всё	2
+co plánuješ na zítra?	2
+have you seen the latest episode?	2
+это требует времени	2
+máš nějaké doporučení?	2
+I need more details	2
+это зависит от многих факторов	2
+máš rád sport?	2
+I think it's a significant matter	2
+это требует дополнительного анализа	2
+co je nového ve světě?	2
+what's your plan for today?	2
+может быть стоит пересмотреть это	2
+je to komplikované	2
+I think it's a noteworthy point	2
+это довольно спорный вопрос	2
+máš nějaké novinky?	2
+have you met him before?	2
+это требует некоторых размышлений	2
+co si myslíš o tom novém seriálu?	2
+I heard it's a popular place	2
+это можно обсуждать часами	2
+kde jsi byl včera?	2
+what's your dream destination?	2
+может быть в следующий раз	2
+je to velmi široké téma	2
+I think it's an open-ended question	2
+это оставляет много простора для интерпретаций	2
+jaký máš vztah k této otázce?	2
+I saw it on the internet	2
+это может быть связано с чем угодно	2
+co máš dnes v plánu?	2
+I think it's a matter of opinion	2
+это требует времени для анализа	2
+kde se to koná?	2
+what's your favorite hobby?	2
+может быть это не так уж и важно	2
+je to otázka pohledu	2
+I think it's a broad topic	2
+это можно обсудить подробнее	2
+jaký máš na to názor?	2
+I saw it on tv	2
+это зависит от многих переменных	2
+co plánuješ na víkend?	2
+I think it's a complex question	2
+это стоит дальнейшего исследования	2
+kolik stojí tenhle produkt?	2
+what's your favorite season?	2
+может быть мы сможем это обсудить позже	2
+je to téma na dlouhou debatu	2
+I think it's a debatable issue	2
+это требует большего понимания	2
+jak dlouho to trvá?	2
+I saw it in a magazine	2
+это довольно сложная ситуация	2
+co děláš ve volném čase?	2
+I think it's an intricate matter	2
+это можно обсудить с разных сторон	2
+kolik času potřebuješ?	2
+what's your favorite book?	2
+может быть мы сможем это обдумать	2
+je to náročné na rozhodnutí	2
+I think it's a multifaceted issue	2
+это требует больше ресурсов	2
+jaký je tvůj oblíbený film?	2
+I think it's an important point	2
+это требует тщательного анализа	2
+kde jsi se narodil?	2
+what's your favorite animal?	2
+может быть мы сможем это обсудить завтра	2
+je to hodně specifické téma	2
+I think it's an ongoing discussion	2
+это требует новых подходов	2
+jaký je tvůj oblíbený sport?	2
+I think it's a point worth considering	2
+это требует новых решений	2
+kde bydlíš?	2
+what's your favorite food?	2
+может быть это не так важно как кажется	2
+je to velmi individuální otázka	2
+I think it's quite subjective	2
+это открыто для интерпретации	2
+jak se máš dneska?	2
+I think it's a matter of perspective	2
+это может иметь различные исходы	2
+kolik máš sourozenců?	2
+what's your favorite place to visit?	2
+может быть это просто вопрос времени	2
+je to otázka vkusu	2
+I think it's up for interpretation	2
+это требует обсуждения	2
+kde si to přečetl?	2
+what's your favorite movie?	2
+может быть стоит подождать	2
+je to dlouhodobý proces	2
+I think it's a matter of taste	2
+это может привести к неожиданным результатам	2
+kdy jsi se to dozvěděl?	2
+what's your favorite song?	2
+может быть это стоит пересмотреть	2
+je to individuální přístup	2
+I think it's a long-term process	2
+это может вызвать разные реакции	2
+kdo to udělal?	2
+what's your favorite season?	2
+может быть это не так просто	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может иметь разные последствия	2
+kde byl tvůj poslední dovolená?	2
+what's your favorite hobby?	2
+может быть стоит обратить внимание	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это требует более глубокого изучения	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite color?	2
+может быть это зависит от обстоятельств	2
+je to otázka času	2
+I think it's a matter of time	2
+это может вызвать разные эмоции	2
+kde jsi našel tu informaci?	2
+what's your favorite book?	2
+может быть это требует дальнейшего исследования	2
+je to věc názoru	2
+I think it's a matter of opinion	2
+это может быть долгосрочное решение	2
+kdy jsi naposledy viděl toho přítele?	2
+what's your favorite animal?	2
+может быть это сложный вопрос	2
+je to otevřená otázka	2
+I think it's an open question	2
+это может быть неожиданным поворотом	2
+kde jsi se naučil tak dobře česky?	2
+what's your favorite sport?	2
+может быть это не так важно	2
+je to složitá otázka	2
+I think it's a complex question	2
+это может вызвать неожиданные последствия	2
+kolik let pracuješ v tomto oboru?	2
+what's your favorite movie genre?	2
+может быть это не так просто как кажется	2
+je to otázka perspektivy	2
+I think it's a matter of perspective	2
+это может быть интересным исследованием	2
+kdy jsi naposledy byl v divadle?	2
+what's your favorite food?	2
+может быть это сложный вопрос	2
+je to otázka osobní volby	2
+I think it's a matter of personal choice	2
+это может быть обсуждаемой темой	2
+kde jsi strávil prázdniny?	2
+what's your favorite place to relax?	2
+может быть это стоит обдумать	2
+je to záležitost preference	2
+I think it's a matter of preference	2
+это можно рассматривать с разных сторон	2
+kolik máš dětí?	2
+what's your favorite holiday destination?	2
+может быть это не так важно как кажется	2
+je to otázka osobní preference	2
+I think it's a matter of personal preference	2
+это может иметь разные интерпретации	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть это зависит от ситуации	2
+je to otázka vzdělání	2
+I think it's a matter of education	2
+это может привести к различным результатам	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть это не стоит торопиться	2
+je to otázka hodnoty	2
+I think it's a matter of value	2
+это может быть долгосрочное решение	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть это не столь важно	2
+je to otázka preferencí	2
+I think it's a matter of preferences	2
+это может вызвать разные реакции	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть это зависит от обстоятельств	2
+je to otázka vkusu	2
+I think it's a matter of taste	2
+это может быть долгосрочным решением	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть это требует времени для размышлений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть долгосрочным планом	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть это не так просто	2
+je to otázka příležitosti	2
+I think it's a matter of opportunity	2
+это может вызвать неожиданные последствия	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть это стоит обратить внимание	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может требовать дополнительных исследований	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть это зависит от обстоятельств	2
+je to otázka přístupu	2
+I think it's a matter of approach	2
+это может быть открытым вопросом	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть это не столь важно	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может иметь различные решения	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть это требует дальнейших обсуждений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть проблемой времени	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть это зависит от обстоятельств	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может быть интересной темой для изучения	2
+kolik hodin je teď?	2
+what's your favorite season?	2
+может быть это не так важно как кажется	2
+je to otázka osobní preference	2
+I think it's a matter of personal preference	2
+это может иметь разные интерпретации	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть это зависит от ситуации	2
+je to otázka vzdělání	2
+I think it's a matter of education	2
+это может привести к различным результатам	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть это не стоит торопиться	2
+je to otázka hodnoty	2
+I think it's a matter of value	2
+это может быть долгосрочное решение	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть это не столь важно	2
+je to otázka preferencí	2
+I think it's a matter of preferences	2
+это может вызвать разные реакции	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть это зависит от обстоятельств	2
+je to otázka vkusu	2
+I think it's a matter of taste	2
+это может быть долгосрочным решением	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть это требует времени для размышлений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть долгосрочным планом	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть это не так просто	2
+je to otázka příležitosti	2
+I think it's a matter of opportunity	2
+это может вызвать неожиданные последствия	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть это стоит обратить внимание	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может требовать дополнительных исследований	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть это зависит от обстоятельств	2
+je to otázka přístupu	2
+I think it's a matter of approach	2
+это может быть открытым вопросом	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть это не столь важно	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может иметь различные решения	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть это требует дальнейших обсуждений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть проблемой времени	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть это зависит от обстоятельств	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может быть интересной темой для обсуждения	2
+kolik let pracuješ v tomto oboru?	2
+what's your favorite holiday destination?	2
+может быть это не так важно как кажется	2
+je to otázka osobní preference	2
+I think it's a matter of personal preference	2
+это может иметь разные интерпретации	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть это зависит от ситуации	2
+je to otázka vzdělání	2
+I think it's a matter of education	2
+это может привести к различным результатам	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть это не стоит торопиться	2
+je to otázka hodnoty	2
+I think it's a matter of value	2
+это может быть долгосрочное решение	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть это не столь важно	2
+je to otázka preferencí	2
+I think it's a matter of preferences	2
+это может вызвать разные реакции	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть это зависит от обстоятельств	2
+je to otázka vkusu	2
+I think it's a matter of taste	2
+это может быть долгосрочным решением	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть это требует времени для размышлений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть долгосрочным планом	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть это не так просто	2
+je to otázka příležitosti	2
+I think it's a matter of opportunity	2
+это может вызвать неожиданные последствия	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть это стоит обратить внимание	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может требовать дополнительных исследований	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть это зависит от обстоятельств	2
+je to otázka přístupu	2
+I think it's a matter of approach	2
+это может быть открытым вопросом	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть это не столь важно	2
+je to otázka preference	2
+I think it's a matter of preference	2
+это может иметь различные решения	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть это требует дальнейших обсуждений	2
+je to otázka situace	2
+I think it's a matter of situation	2
+это может быть проблемой времени	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть это зависит от обстоятельств	2
+je to otázka preference	2
+I think it's a matter of preference	2
+
+да.	1
+нет.	0
+конечно.	1
+конечно да.	1
+конечно нет.	0
+да, конечно.	1
+нет, конечно.	0
+уверен.	1
+не уверен.	0
+естественно.	1
+естественно да.	1
+естественно нет.	0
+ну да.	1
+подтверждаю.	1
+отменить.	0
+отмена.	0
+не.	0
+не не.	0
+не не не.	0
+не не не не.	0
+определённо.	1
+определённо да.	1
+определённо нет.	0
+определенно.	1
+определенно да.	1
+определенно нет.	0
+продолжить.	1
+продолжай.	1
+стой.	0
+стоп.	0
+абсолютно.	1
+нет нет.	0
+нет нет нет.	0
+нет нет нет нет.	0
+отменяй.	0
+отмени.	0
+убедительное да.	1
+убедительное нет.	0
+да, я уверен.	1
+нет, я передумал.	0
+ano, jsem si jistý.	1
+ne, rozmyslel jsem si to.	0
+yes, I am sure.	1
+no, I changed my mind.	0
+конечно.	1
+нет, не хочу это делать.	0
+určitě.	1
+ne, nechci to udělat.	0
+definitely.	1
+no, I don't want to do it.	0
+я хочу это сделать.	1
+я не хочу это делать.	0
+chci to udělat.	1
+nechci to udělat.	0
+I want to do it.	1
+I don't want to do it.	0
+да, точно.	1
+нет, я не уверен.	0
+ano, určitě.	1
+ne, nejsem si jistý.	0
+yes, absolutely.	1
+no, I am not sure.	0
+без сомнений.	1
+нет, лучше не надо.	0
+bez pochyb.	1
+ne, radši ne.	0
+without a doubt.	1
+no, better not.	0
+конечно, хочу.	1
+нет, не буду это делать.	0
+samozřejmě, chci.	1
+ne, nebudu to dělat.	0
+of course, I want to.	1
+no, I will not do it.	0
+да, хочу.	1
+нет, я не готов.	0
+ano, chci.	1
+ne, nejsem připravený.	0
+yes, I want to.	1
+no, I am not ready.	0
+да, абсолютно.	1
+нет, я сомневаюсь.	0
+ano, naprosto.	1
+ne, pochybuji.	0
+yes, definitely.	1
+no, I have doubts.	0
+я уверен в этом.	1
+я не уверен в этом.	0
+jsem si tím jistý.	1
+nejsem si tím jistý.	0
+I am sure about it.	1
+I am not sure about it.	0
+да, это моя цель.	1
+нет, это не моя цель.	0
+ano, to je můj cíl.	1
+ne, to není můj cíl.	0
+yes, it is my goal.	1
+no, it is not my goal.	0
+точно, я готов.	1
+нет, я не готов.	0
+určitě, jsem připraven.	1
+ne, nejsem připraven.	0
+certainly, I am ready.	1
+no, I am not ready.	0
+да, я уверен в своем решении.	1
+нет, я не уверен в своем решении.	0
+ano, jsem si jistý svým rozhodnutím.	1
+ne, nejsem si jistý svým rozhodnutím.	0
+yes, I am confident in my decision.	1
+no, I am not confident in my decision.	0
+я готов идти вперед.	1
+нет, я не готов идти вперед.	0
+jsem připraven jít dál.	1
+nejsem připraven jít dál.	0
+I am ready to move forward.	1
+no, I am not ready to move forward.	0
+конечно, я согласен.	1
+нет, я не согласен.	0
+samozřejmě, souhlasím.	1
+ne, nesouhlasím.	0
+of course, I agree.	1
+no, I disagree.	0
+да, это правильный выбор.	1
+нет, это неправильный выбор.	0
+ano, to je správná volba.	1
+ne, to je špatná volba.	0
+yes, it is the right choice.	1
+no, it is the wrong choice.	0
+да, я так думаю.	1
+нет, я так не думаю.	0
+ano, myslím si to.	1
+ne, nemyslím si to.	0
+yes, I think so.	1
+no, I don't think so.	0
+я полон решимости.	1
+нет, я потерял решимость.	0
+jsem rozhodnutý.	1
+ztratil jsem rozhodnost.	0
+I am determined.	1
+no, I lost my determination.	0
+да, я хочу это сделать сейчас.	1
+нет, я не хочу это делать сейчас.	0
+ano, chci to udělat teď.	1
+ne, nechci to udělat teď.	0
+yes, I want to do it now.	1
+no, I don't want to do it now.	0
+да, я полностью готов.	1
+нет, я не готов полностью.	0
+ano, jsem plně připravený.	1
+ne, nejsem plně připravený.	0
+yes, I am fully prepared.	1
+no, I am not fully prepared.	0
+да, у меня нет сомнений.	1
+нет, у меня есть сомнения.	0
+ano, nemám pochybnosti.	1
+ne, mám pochybnosti.	0
+yes, I have no doubts.	1
+no, I have doubts.	0
+да, я согласен с этим.	1
+нет, я не согласен с этим.	0
+ano, souhlasím s tím.	1
+ne, nesouhlasím s tím.	0
+yes, I agree with that.	1
+no, I don't agree with that.	0
+конечно, да.	1
+нет, конечно, нет.	0
+samozřejmě, ano.	1
+ne, samozřejmě, že ne.	0
+of course, yes.	1
+no, of course not.	0
+да, без вопросов.	1
+нет, это не так.	0
+ano, bez otázek.	1
+ne, není to tak.	0
+yes, without question.	1
+no, it is not.	0
+да, это правильное решение.	1
+нет, это неправильное решение.	0
+ano, to je správné rozhodnutí.	1
+ne, to je špatné rozhodnutí.	0
+yes, it is the right decision.	1
+no, it is the wrong decision.	0
+да, я думаю, это правильно.	1
+нет, я думаю, это неправильно.	0
+ano, myslím, že je to správně.	1
+ne, myslím, že to je špatně.	0
+yes, I think it is right.	1
+no, I think it is wrong.	0
+я чувствую уверенность в этом.	1
+я не чувствую уверенности в этом.	0
+cítím se v tom jistý.	1
+necítím se v tom jistý.	0
+I feel confident about it.	1
+I don't feel confident about it.	0
+да, я убежден.	1
+нет, я не убежден.	0
+ano, jsem přesvědčen.	1
+ne, nejsem přesvědčen.	0
+yes, I am convinced.	1
+no, I am not convinced.	0
+да, я намерен это сделать.	1
+нет, я не намерен это делать.	0
+ano, hodlám to udělat.	1
+ne, nehodlám to udělat.	0
+yes, I intend to do it.	1
+no, I do not intend to do it.	0
+да, я готов к этому.	1
+нет, я не готов к этому.	0
+ano, jsem na to připraven.	1
+ne, nejsem na to připraven.	0
+yes, I am ready for it.	1
+no, I am not ready for it.	0
+да, это то, что я хочу.	1
+нет, это не то, что я хочу.	0
+ano, to je to, co chci.	1
+ne, to není to, co chci.	0
+yes, it is what I want.	1
+no, it is not what I want.	0
+да, я готов сделать это сейчас.	1
+нет, я не готов сделать это сейчас.	0
+ano, jsem připraven to udělat teď.	1
+ne, nejsem připraven to udělat teď.	0
+yes, I am ready to do it now.	1
+no, I am not ready to do it now.	0
+да, у меня есть все, что нужно.	1
+нет, у меня нет всего, что нужно.	0
+ano, mám všechno, co potřebuji.	1
+ne, nemám všechno, co potřebuji.	0
+yes, I have everything I need.	1
+no, I don't have everything I need.	0
+да, я готов принять решение.	1
+нет, я не готов принять решение.	0
+ano, jsem připraven rozhodnout.	1
+ne, nejsem připraven rozhodnout.	0
+yes, I am ready to decide.	1
+no, I am not ready to decide.	0
+да, я согласен с этим решением.	1
+нет, я не согласен с этим решением.	0
+ano, souhlasím s tím rozhodnutím.	1
+ne, nesouhlasím s tím rozhodnutím.	0
+yes, I agree with this decision.	1
+no, I don't agree with this decision.	0
+да, это разумно.	1
+нет, это неразумно.	0
+ano, to je rozumné.	1
+ne, to není rozumné.	0
+yes, it is reasonable.	1
+no, it is not reasonable.	0
+да, это будет хорошо.	1
+нет, это не будет хорошо.	0
+ano, to bude dobré.	1
+ne, to nebude dobré.	0
+yes, it will be good.	1
+no, it will not be good.	0
+да, я согласен сделать это.	1
+нет, я не согласен сделать это.	0
+ano, souhlasím to udělat.	1
+ne, nesouhlasím to udělat.	0
+yes, I agree to do it.	1
+no, I don't agree to do it.	0
+да, я полностью поддерживаю это.	1
+нет, я не поддерживаю это.	0
+ano, plně to podporuji.	1
+ne, nepodporuji to.	0
+yes, I fully support it.	1
+no, I don't support it.	0
+да, это правильное направление.	1
+нет, это неправильное направление.	0
+ano, to je správný směr.	1
+ne, to není správný směr.	0
+yes, it is the right direction.	1
+no, it is not the right direction.	0
+да, я уверен в этом на 100%.	1
+нет, я не уверен в этом на 100%.	0
+ano, jsem si tím 100% jistý.	1
+ne, nejsem si tím 100% jistý.	0
+yes, I am 100% sure about it.	1
+no, I am not 100% sure about it.	0
+да, это именно то, что нужно.	1
+нет, это не то, что нужно.	0
+ano, to je přesně to, co potřebuji.	1
+ne, to není to, co potřebuji.	0
+yes, it is exactly what is needed.	1
+no, it is not what is needed.	0
+да, это лучший выбор.	1
+нет, это не лучший выбор.	0
+ano, to je nejlepší volba.	1
+ne, to není nejlepší volba.	0
+yes, it is the best choice.	1
+no, it is not the best choice.	0
+да, это идеально.	1
+нет, это не идеально.	0
+ano, to je ideální.	1
+ne, to není ideální.	0
+yes, it is perfect.	1
+no, it is not perfect.	0
+да, это именно то, что я хочу.	1
+нет, это не то, что я хочу.	0
+ano, to je přesně to, co chci.	1
+ne, to není to, co chci.	0
+yes, it is exactly what I want.	1
+no, it is not what I want.	0
+да, я готов это принять.	1
+нет, я не готов это принять.	0
+ano, jsem připraven to přijmout.	1
+ne, nejsem připraven to přijmout.	0
+yes, I am ready to accept it.	1
+no, I am not ready to accept it.	0
+да, я согласен с этим предложением.	1
+нет, я не согласен с этим предложением.	0
+ano, souhlasím s tímto návrhem.	1
+ne, nesouhlasím s tímto návrhem.	0
+yes, I agree with this proposal.	1
+no, I don't agree with this proposal.	0
+да, это оптимальное решение.	1
+нет, это не оптимальное решение.	0
+ano, to je optimální řešení.	1
+ne, to není optimální řešení.	0
+yes, it is the optimal solution.	1
+no, it is not the optimal solution.	0
+да, это правильное действие.	1
+нет, это неправильное действие.	0
+ano, to je správné jednání.	1
+ne, to není správné jednání.	0
+yes, it is the right action.	1
+no, it is not the right action.	0
+да, я уверен в своих силах.	1
+нет, я не уверен в своих силах.	0
+ano, věřím si.	1
+ne, nevěřím si.	0
+yes, I believe in myself.	1
+no, I don't believe in myself.	0
+да, я готов начать.	1
+нет, я не готов начать.	0
+ano, jsem připraven začít.	1
+ne, nejsem připraven začít.	0
+yes, I am ready to start.	1
+no, I am not ready to start.	0
+да, это необходимо.	1
+нет, это не необходимо.	0
+ano, to je nutné.	1
+ne, to není nutné.	0
+yes, it is necessary.	1
+no, it is not necessary.	0
+да, это будет полезно.	1
+нет, это не будет полезно.	0
+ano, to bude užitečné.	1
+ne, to nebude užitečné.	0
+yes, it will be useful.	1
+no, it will not be useful.	0
+да, я поддерживаю это решение.	1
+нет, я не поддерживаю это решение.	0
+ano, podporuji to rozhodnutí.	1
+ne, nepodporuji to rozhodnutí.	0
+yes, I support this decision.	1
+no, I don't support this decision.	0
+да, я готов выполнить это действие.	1
+нет, я не готов выполнить это действие.	0
+ano, jsem připraven to provést.	1
+ne, nejsem připraven to provést.	0
+yes, I am ready to perform this action.	1
+no, I am not ready to perform this action.	0
+да, я согласен с этим решением.	1
+нет, я не согласен с этим решением.	0
+ano, souhlasím s tím rozhodnutím.	1
+ne, nesouhlasím s tím rozhodnutím.	0
+yes, I agree with this decision.	1
+no, I don't agree with this decision.	0
+да, я уверен, что это правильно.	1
+нет, я не уверен, что это правильно.	0
+ano, jsem si jistý, že je to správné.	1
+ne, nejsem si jistý, že je to správné.	0
+yes, I am sure it is right.	1
+no, I am not sure it is right.	0
+да, это разумное решение.	1
+нет, это неразумное решение.	0
+ano, to je rozumné rozhodnutí.	1
+ne, to není rozumné rozhodnutí.	0
+yes, it is a sensible decision.	1
+no, it is not a sensible decision.	0
+да, я хочу это сделать.	1
+нет, я не хочу это делать.	0
+ano, chci to udělat.	1
+ne, nechci to udělat.	0
+yes, I want to do it.	1
+no, I don't want to do it.	0
+да, я уверен в этом решении.	1
+нет, я не уверен в этом решении.	0
+ano, jsem si jistý tímto rozhodnutím.	1
+ne, nejsem si jistý tímto rozhodnutím.	0
+yes, I am sure about this decision.	1
+no, I am not sure about this decision.	0
+да, я готов к выполнению.	1
+нет, я не готов к выполнению.	0
+ano, jsem připraven na provedení.	1
+ne, nejsem připraven na provedení.	0
+yes, I am ready for execution.	1
+no, I am not ready for execution.	0
+да, это важно.	1
+нет, это не важно.	0
+ano, to je důležité.	1
+ne, to není důležité.	0
+yes, it is important.	1
+no, it is not important.	0
+да, это необходимо сделать.	1
+нет, это не нужно делать.	0
+ano, to je nutné udělat.	1
+ne, to není nutné udělat.	0
+yes, it is necessary to do it.	1
+no, it is not necessary to do it.	0
+да, это верное решение.	1
+нет, это неверное решение.	0
+ano, to je správné rozhodnutí.	1
+ne, to není správné rozhodnutí.	0
+yes, it is the correct decision.	1
+no, it is not the correct decision.	0
+да, это полезно.	1
+нет, это не полезно.	0
+ano, to je užitečné.	1
+ne, to není užitečné.	0
+yes, it is useful.	1
+no, it is not useful.	0
+да, я уверен в своем решении.	1
+нет, я не уверен в своем решении.	0
+ano, jsem si jistý svým rozhodnutím.	1
+ne, nejsem si jistý svým rozhodnutím.	0
+yes, I am confident in my decision.	1
+no, I am not confident in my decision.	0
+да, я хочу это сделать.	1
+нет, я не хочу это делать.	0
+ano, chci to udělat.	1
+ne, nechci to udělat.	0
+yes, I want to do it.	1
+no, I don't want to do it.	0
+да, я готов начать.	1
+нет, я не готов начать.	0
+ano, jsem připraven začít.	1
+ne, nejsem připraven začít.	0
+yes, I am ready to start.	1
+no, I am not ready to start.	0
+
+да я уверен.	1
+нет я передумал.	0
+ano jsem si jistý.	1
+ne rozmyslel jsem si to.	0
+yes I am sure.	1
+no I changed my mind.	0
+конечно.	1
+нет не хочу это делать.	0
+určitě.	1
+ne nechci to udělat.	0
+definitely.	1
+no I don't want to do it.	0
+я хочу это сделать.	1
+я не хочу это делать.	0
+chci to udělat.	1
+nechci to udělat.	0
+I want to do it.	1
+I don't want to do it.	0
+да точно.	1
+нет я не уверен.	0
+ano určitě.	1
+ne nejsem si jistý.	0
+yes absolutely.	1
+no I am not sure.	0
+без сомнений.	1
+нет лучше не надо.	0
+bez pochyb.	1
+ne radši ne.	0
+without a doubt.	1
+no better not.	0
+конечно хочу.	1
+нет не буду это делать.	0
+samozřejmě chci.	1
+ne nebudu to dělat.	0
+of course I want to.	1
+no I will not do it.	0
+да хочу.	1
+нет я не готов.	0
+ano chci.	1
+ne nejsem připravený.	0
+yes I want to.	1
+no I am not ready.	0
+да абсолютно.	1
+нет я сомневаюсь.	0
+ano naprosto.	1
+ne pochybuji.	0
+yes definitely.	1
+no I have doubts.	0
+я уверен в этом.	1
+я не уверен в этом.	0
+jsem si tím jistý.	1
+nejsem si tím jistý.	0
+I am sure about it.	1
+I am not sure about it.	0
+да это моя цель.	1
+нет это не моя цель.	0
+ano to je můj cíl.	1
+ne to není můj cíl.	0
+yes it is my goal.	1
+no it is not my goal.	0
+точно я готов.	1
+нет я не готов.	0
+určitě jsem připraven.	1
+ne nejsem připraven.	0
+certainly I am ready.	1
+no I am not ready.	0
+да я уверен в своем решении.	1
+нет я не уверен в своем решении.	0
+ano jsem si jistý svým rozhodnutím.	1
+ne nejsem si jistý svým rozhodnutím.	0
+yes I am confident in my decision.	1
+no I am not confident in my decision.	0
+я готов идти вперед.	1
+нет я не готов идти вперед.	0
+jsem připraven jít dál.	1
+nejsem připraven jít dál.	0
+I am ready to move forward.	1
+no I am not ready to move forward.	0
+конечно я согласен.	1
+нет я не согласен.	0
+samozřejmě souhlasím.	1
+ne nesouhlasím.	0
+of course I agree.	1
+no I disagree.	0
+да это правильный выбор.	1
+нет это неправильный выбор.	0
+ano to je správná volba.	1
+ne to je špatná volba.	0
+yes it is the right choice.	1
+no it is the wrong choice.	0
+да я так думаю.	1
+нет я так не думаю.	0
+ano myslím si to.	1
+ne nemyslím si to.	0
+yes I think so.	1
+no I don't think so.	0
+я полон решимости.	1
+нет я потерял решимость.	0
+jsem rozhodnutý.	1
+ztratil jsem rozhodnost.	0
+I am determined.	1
+no I lost my determination.	0
+да я хочу это сделать сейчас.	1
+нет я не хочу это делать сейчас.	0
+ano chci to udělat teď.	1
+ne nechci to udělat teď.	0
+yes I want to do it now.	1
+no I don't want to do it now.	0
+да я полностью готов.	1
+нет я не готов полностью.	0
+ano jsem plně připravený.	1
+ne nejsem plně připravený.	0
+yes I am fully prepared.	1
+no I am not fully prepared.	0
+да у меня нет сомнений.	1
+нет у меня есть сомнения.	0
+ano nemám pochybnosti.	1
+ne mám pochybnosti.	0
+yes I have no doubts.	1
+no I have doubts.	0
+да я согласен с этим.	1
+нет я не согласен с этим.	0
+ano souhlasím s tím.	1
+ne nesouhlasím s tím.	0
+yes I agree with that.	1
+no I don't agree with that.	0
+конечно да.	1
+нет конечно нет.	0
+samozřejmě ano.	1
+ne samozřejmě že ne.	0
+of course yes.	1
+no of course not.	0
+да без вопросов.	1
+нет это не так.	0
+ano bez otázek.	1
+ne není to tak.	0
+yes without question.	1
+no it is not.	0
+да это правильное решение.	1
+нет это неправильное решение.	0
+ano to je správné rozhodnutí.	1
+ne to je špatné rozhodnutí.	0
+yes it is the right decision.	1
+no it is the wrong decision.	0
+да я думаю это правильно.	1
+нет я думаю это неправильно.	0
+ano myslím že je to správně.	1
+ne myslím že to je špatně.	0
+yes I think it is right.	1
+no I think it is wrong.	0
+я чувствую уверенность в этом.	1
+я не чувствую уверенности в этом.	0
+cítím se v tom jistý.	1
+necítím se v tom jistý.	0
+I feel confident about it.	1
+I don't feel confident about it.	0
+да я убежден.	1
+нет я не убежден.	0
+ano jsem přesvědčen.	1
+ne nejsem přesvědčen.	0
+yes I am convinced.	1
+no I am not convinced.	0
+да я намерен это сделать.	1
+нет я не намерен это делать.	0
+ano hodlám to udělat.	1
+ne nehodlám to udělat.	0
+yes I intend to do it.	1
+no I do not intend to do it.	0
+да я готов к этому.	1
+нет я не готов к этому.	0
+ano jsem na to připraven.	1
+ne nejsem na to připraven.	0
+yes I am ready for it.	1
+no I am not ready for it.	0
+да это то что я хочу.	1
+нет это не то что я хочу.	0
+ano to je to co chci.	1
+ne to není to co chci.	0
+yes it is what I want.	1
+no it is not what I want.	0
+да я готов сделать это сейчас.	1
+нет я не готов сделать это сейчас.	0
+ano jsem připraven to udělat teď.	1
+ne nejsem připraven to udělat teď.	0
+yes I am ready to do it now.	1
+no I am not ready to do it now.	0
+да у меня есть все что нужно.	1
+нет у меня нет всего что нужно.	0
+ano mám všechno co potřebuji.	1
+ne nemám všechno co potřebuji.	0
+yes I have everything I need.	1
+no I don't have everything I need.	0
+да я готов принять решение.	1
+нет я не готов принять решение.	0
+ano jsem připraven rozhodnout.	1
+ne nejsem připraven rozhodnout.	0
+yes I am ready to decide.	1
+no I am not ready to decide.	0
+да я согласен с этим решением.	1
+нет я не согласен с этим решением.	0
+ano souhlasím s tím rozhodnutím.	1
+ne nesouhlasím s tím rozhodnutím.	0
+yes I agree with this decision.	1
+no I don't agree with this decision.	0
+да это разумно.	1
+нет это неразумно.	0
+ano to je rozumné.	1
+ne to není rozumné.	0
+yes it is reasonable.	1
+no it is not reasonable.	0
+да это будет хорошо.	1
+нет это не будет хорошо.	0
+ano to bude dobré.	1
+ne to nebude dobré.	0
+yes it will be good.	1
+no it will not be good.	0
+да я согласен сделать это.	1
+нет я не согласен сделать это.	0
+ano souhlasím to udělat.	1
+ne nesouhlasím to udělat.	0
+yes I agree to do it.	1
+no I don't agree to do it.	0
+да я полностью поддерживаю это.	1
+нет я не поддерживаю это.	0
+ano plně to podporuji.	1
+ne nepodporuji to.	0
+yes I fully support it.	1
+no I don't support it.	0
+да это правильное направление.	1
+нет это неправильное направление.	0
+ano to je správný směr.	1
+ne to není správný směr.	0
+yes it is the right direction.	1
+no it is not the right direction.	0
+да я уверен в этом на 100%.	1
+нет я не уверен в этом на 100%.	0
+ano jsem si tím 100% jistý.	1
+ne nejsem si tím 100% jistý.	0
+yes I am 100% sure about it.	1
+no I am not 100% sure about it.	0
+да это именно то что нужно.	1
+нет это не то что нужно.	0
+ano to je přesně to co potřebuji.	1
+ne to není to co potřebuji.	0
+yes it is exactly what is needed.	1
+no it is not what is needed.	0
+да это лучший выбор.	1
+нет это не лучший выбор.	0
+ano to je nejlepší volba.	1
+ne to není nejlepší volba.	0
+yes it is the best choice.	1
+no it is not the best choice.	0
+да это идеально.	1
+нет это не идеально.	0
+ano to je ideální.	1
+ne to není ideální.	0
+yes it is perfect.	1
+no it is not perfect.	0
+да это именно то что я хочу.	1
+нет это не то что я хочу.	0
+ano to je přesně to co chci.	1
+ne to není to co chci.	0
+yes it is exactly what I want.	1
+no it is not what I want.	0
+да я готов это принять.	1
+нет я не готов это принять.	0
+ano jsem připraven to přijmout.	1
+ne nejsem připraven to přijmout.	0
+yes I am ready to accept it.	1
+no I am not ready to accept it.	0
+да я согласен с этим предложением.	1
+нет я не согласен с этим предложением.	0
+ano souhlasím s tímto návrhem.	1
+ne nesouhlasím s tímto návrhem.	0
+yes I agree with this proposal.	1
+no I don't agree with this proposal.	0
+да это оптимальное решение.	1
+нет это не оптимальное решение.	0
+ano to je optimální řešení.	1
+ne to není optimální řešení.	0
+yes it is the optimal solution.	1
+no it is not the optimal solution.	0
+да это правильное действие.	1
+нет это неправильное действие.	0
+ano to je správné jednání.	1
+ne to není správné jednání.	0
+yes it is the right action.	1
+no it is not the right action.	0
+да я уверен в своих силах.	1
+нет я не уверен в своих силах.	0
+ano věřím si.	1
+ne nevěřím si.	0
+yes I believe in myself.	1
+no I don't believe in myself.	0
+да я готов начать.	1
+нет я не готов начать.	0
+ano jsem připraven začít.	1
+ne nejsem připraven začít.	0
+yes I am ready to start.	1
+no I am not ready to start.	0
+да это необходимо.	1
+нет это не необходимо.	0
+ano to je nutné.	1
+ne to není nutné.	0
+yes it is necessary.	1
+no it is not necessary.	0
+да это будет полезно.	1
+нет это не будет полезно.	0
+ano to bude užitečné.	1
+ne to nebude užitečné.	0
+yes it will be useful.	1
+no it will not be useful.	0
+да я поддерживаю это решение.	1
+нет я не поддерживаю это решение.	0
+ano podporuji to rozhodnutí.	1
+ne nepodporuji to rozhodnutí.	0
+yes I support this decision.	1
+no I don't support this decision.	0
+да я готов выполнить это действие.	1
+нет я не готов выполнить это действие.	0
+ano jsem připraven to provést.	1
+ne nejsem připraven to provést.	0
+yes I am ready to perform this action.	1
+no I am not ready to perform this action.	0
+да я согласен с этим решением.	1
+нет я не согласен с этим решением.	0
+ano souhlasím s tím rozhodnutím.	1
+ne nesouhlasím s tím rozhodnutím.	0
+yes I agree with this decision.	1
+no I don't agree with this decision.	0
+да я уверен что это правильно.	1
+нет я не уверен что это правильно.	0
+ano jsem si jistý že je to správné.	1
+ne nejsem si jistý že je to správné.	0
+yes I am sure it is right.	1
+no I am not sure it is right.	0
+да это разумное решение.	1
+нет это неразумное решение.	0
+ano to je rozumné rozhodnutí.	1
+ne to není rozumné rozhodnutí.	0
+yes it is a sensible decision.	1
+no it is not a sensible decision.	0
+да я хочу это сделать.	1
+нет я не хочу это делать.	0
+ano chci to udělat.	1
+ne nechci to udělat.	0
+yes I want to do it.	1
+no I don't want to do it.	0
+да я уверен в этом решении.	1
+нет я не уверен в этом решении.	0
+ano jsem si jistý tímto rozhodnutím.	1
+ne nejsem si jistý tímto rozhodnutím.	0
+yes I am sure about this decision.	1
+no I am not sure about this decision.	0
+да я готов к выполнению.	1
+нет я не готов к выполнению.	0
+ano jsem připraven na provedení.	1
+ne nejsem připraven na provedení.	0
+yes I am ready for execution.	1
+no I am not ready for execution.	0
+да это важно.	1
+нет это не важно.	0
+ano to je důležité.	1
+ne to není důležité.	0
+yes it is important.	1
+no it is not important.	0
+да это необходимо сделать.	1
+нет это не нужно делать.	0
+ano to je nutné udělat.	1
+ne to není nutné udělat.	0
+yes it is necessary to do it.	1
+no it is not necessary to do it.	0
+да это верное решение.	1
+нет это неверное решение.	0
+ano to je správné rozhodnutí.	1
+ne to není správné rozhodnutí.	0
+yes it is the correct decision.	1
+no it is not the correct decision.	0
+да это полезно.	1
+нет это не полезно.	0
+ano to je užitečné.	1
+ne to není užitečné.	0
+yes it is useful.	1
+no it is not useful.	0
+да я уверен в своем решении.	1
+нет я не уверен в своем решении.	0
+ano jsem si jistý svým rozhodnutím.	1
+ne nejsem si jistý svým rozhodnutím.	0
+yes I am confident in my decision.	1
+no I am not confident in my decision.	0
+да я хочу это сделать.	1
+нет я не хочу это делать.	0
+ano chci to udělat.	1
+ne nechci to udělat.	0
+yes I want to do it.	1
+no I don't want to do it.	0
+да я готов начать.	1
+нет я не готов начать.	0
+ano jsem připraven začít.	1
+ne nejsem připraven začít.	0
+yes I am ready to start.	1
+no I am not ready to start.	0
+
+это правильно.	1
+это неправильно.	0
+to je správně.	1
+to je špatně.	0
+It is right.	1
+It is wrong.	0
+я думаю, это правильно.	1
+я думаю, это неправильно.	0
+myslím, že je to správně.	1
+myslím, že to je špatně.	0
+I think it is right.	1
+I think it is wrong.	0
+я чувствую уверенность в этом.	1
+я не чувствую уверенности в этом.	0
+cítím se v tom jistý.	1
+necítím se v tom jistý.	0
+I feel confident about it.	1
+I don't feel confident about it.	0
+я убежден.	1
+я не убежден.	0
+jsem přesvědčen.	1
+nejsem přesvědčen.	0
+I am convinced.	1
+I am not convinced.	0
+я намерен это сделать.	1
+я не намерен это делать.	0
+hodlám to udělat.	1
+nehodlám to udělat.	0
+I intend to do it.	1
+I do not intend to do it.	0
+я готов к этому.	1
+я не готов к этому.	0
+jsem na to připraven.	1
+nejsem na to připraven.	0
+I am ready for it.	1
+I am not ready for it.	0
+это то, что я хочу.	1
+это не то, что я хочу.	0
+to je to, co chci.	1
+to není to, co chci.	0
+It is what I want.	1
+It is not what I want.	0
+я готов сделать это сейчас.	1
+я не готов сделать это сейчас.	0
+jsem připraven to udělat teď.	1
+nejsem připraven to udělat teď.	0
+I am ready to do it now.	1
+I am not ready to do it now.	0
+у меня есть все, что нужно.	1
+у меня нет всего, что нужно.	0
+mám všechno, co potřebuji.	1
+nemám všechno, co potřebuji.	0
+I have everything I need.	1
+I don't have everything I need.	0
+я готов принять решение.	1
+я не готов принять решение.	0
+jsem připraven rozhodnout.	1
+nejsem připraven rozhodnout.	0
+I am ready to decide.	1
+I am not ready to decide.	0
+я согласен с этим решением.	1
+я не согласен с этим решением.	0
+souhlasím s tím rozhodnutím.	1
+nesouhlasím s tím rozhodnutím.	0
+I agree with this decision.	1
+I don't agree with this decision.	0
+это разумно.	1
+это неразумно.	0
+to je rozumné.	1
+to není rozumné.	0
+It is reasonable.	1
+It is not reasonable.	0
+это будет хорошо.	1
+это не будет хорошо.	0
+to bude dobré.	1
+to nebude dobré.	0
+It will be good.	1
+It will not be good.	0
+я согласен сделать это.	1
+я не согласен сделать это.	0
+souhlasím to udělat.	1
+nesouhlasím to udělat.	0
+I agree to do it.	1
+I don't agree to do it.	0
+я полностью поддерживаю это.	1
+я не поддерживаю это.	0
+plně to podporuji.	1
+nepodporuji to.	0
+I fully support it.	1
+I don't support it.	0
+это правильное направление.	1
+это неправильное направление.	0
+to je správný směr.	1
+to není správný směr.	0
+It is the right direction.	1
+It is not the right direction.	0
+я уверен в этом на 100%.	1
+я не уверен в этом на 100%.	0
+jsem si tím 100% jistý.	1
+nejsem si tím 100% jistý.	0
+I am 100% sure about it.	1
+I am not 100% sure about it.	0
+это именно то, что нужно.	1
+это не то, что нужно.	0
+to je přesně to, co potřebuji.	1
+to není to, co potřebuji.	0
+It is exactly what is needed.	1
+It is not what is needed.	0
+это лучший выбор.	1
+это не лучший выбор.	0
+to je nejlepší volba.	1
+to není nejlepší volba.	0
+It is the best choice.	1
+It is not the best choice.	0
+это идеально.	1
+это не идеально.	0
+to je ideální.	1
+to není ideální.	0
+It is perfect.	1
+It is not perfect.	0
+это именно то, что я хочу.	1
+это не то, что я хочу.	0
+to je přesně to, co chci.	1
+to není to, co chci.	0
+It is exactly what I want.	1
+It is not what I want.	0
+я готов это принять.	1
+я не готов это принять.	0
+jsem připraven to přijmout.	1
+nejsem připraven to přijmout.	0
+I am ready to accept it.	1
+I am not ready to accept it.	0
+я согласен с этим предложением.	1
+я не согласен с этим предложением.	0
+souhlasím s tímto návrhem.	1
+nesouhlasím s tímto návrhem.	0
+I agree with this proposal.	1
+I don't agree with this proposal.	0
+это оптимальное решение.	1
+это не оптимальное решение.	0
+to je optimální řešení.	1
+to není optimální řešení.	0
+It is the optimal solution.	1
+It is not the optimal solution.	0
+это правильное действие.	1
+это неправильное действие.	0
+to je správné jednání.	1
+to není správné jednání.	0
+It is the right action.	1
+It is not the right action.	0
+я уверен в своих силах.	1
+я не уверен в своих силах.	0
+věřím si.	1
+nevěřím si.	0
+I believe in myself.	1
+I don't believe in myself.	0
+я готов начать.	1
+я не готов начать.	0
+jsem připraven začít.	1
+nejsem připraven začít.	0
+I am ready to start.	1
+I am not ready to start.	0
+это необходимо.	1
+это не необходимо.	0
+to je nutné.	1
+to není nutné.	0
+It is necessary.	1
+It is not necessary.	0
+это будет полезно.	1
+это не будет полезно.	0
+to bude užitečné.	1
+to nebude užitečné.	0
+It will be useful.	1
+It will not be useful.	0
+я поддерживаю это решение.	1
+я не поддерживаю это решение.	0
+podporuji to rozhodnutí.	1
+nepodporuji to rozhodnutí.	0
+I support this decision.	1
+I don't support this decision.	0
+я готов выполнить это действие.	1
+я не готов выполнить это действие.	0
+jsem připraven to provést.	1
+nejsem připraven to provést.	0
+I am ready to perform this action.	1
+I am not ready to perform this action.	0
+я уверен, что это правильно.	1
+я не уверен, что это правильно.	0
+jsem si jistý, že je to správné.	1
+nejsem si jistý, že je to správné.	0
+I am sure it is right.	1
+I am not sure it is right.	0
+это разумное решение.	1
+это неразумное решение.	0
+to je rozumné rozhodnutí.	1
+to není rozumné rozhodnutí.	0
+It is a sensible decision.	1
+It is not a sensible decision.	0
+я хочу это сделать.	1
+я не хочу это делать.	0
+chci to udělat.	1
+nechci to udělat.	0
+I want to do it.	1
+I don't want to do it.	0
+я уверен в этом решении.	1
+я не уверен в этом решении.	0
+jsem si jistý tímto rozhodnutím.	1
+nejsem si jistý tímto rozhodnutím.	0
+I am sure about this decision.	1
+I am not sure about this decision.	0
+я готов к выполнению.	1
+я не готов к выполнению.	0
+jsem připraven na provedení.	1
+nejsem připraven na provedení.	0
+I am ready for execution.	1
+I am not ready for execution.	0
+это важно.	1
+это не важно.	0
+to je důležité.	1
+to není důležité.	0
+It is important.	1
+It is not important.	0
+это необходимо сделать.	1
+это не нужно делать.	0
+to je nutné udělat.	1
+to není nutné udělat.	0
+It is necessary to do it.	1
+It is not necessary to do it.	0
+это верное решение.	1
+это неверное решение.	0
+to je správné rozhodnutí.	1
+to není správné rozhodnutí.	0
+It is the correct decision.	1
+It is not the correct decision.	0
+это полезно.	1
+это не полезно.	0
+to je užitečné.	1
+to není užitečné.	0
+It is useful.	1
+It is not useful.	0
+я уверен в своем решении.	1
+я не уверен в своем решении.	0
+jsem si jistý svým rozhodnutím.	1
+nejsem si jistý svým rozhodnutím.	0
+I am confident in my decision.	1
+I am not confident in my decision.	0
+я хочу это сделать.	1
+я не хочу это делать.	0
+chci to udělat.	1
+nechci to udělat.	0
+I want to do it.	1
+I don't want to do it.	0
+я готов начать.	1
+я не готов начать.	0
+jsem připraven začít.	1
+nejsem připraven začít.	0
+I am ready to start.	1
+I am not ready to start.	0
+
+это правильно.	1
+это неправильно.	0
+to je správně.	1
+to je špatně.	0
+It is right.	1
+It is wrong.	0
+я думаю это правильно.	1
+я думаю это неправильно.	0
+myslím že je to správně.	1
+myslím že to je špatně.	0
+I think it is right.	1
+I think it is wrong.	0
+я чувствую уверенность в этом.	1
+я не чувствую уверенности в этом.	0
+cítím se v tom jistý.	1
+necítím se v tom jistý.	0
+I feel confident about it.	1
+I don't feel confident about it.	0
+я убежден.	1
+я не убежден.	0
+jsem přesvědčen.	1
+nejsem přesvědčen.	0
+I am convinced.	1
+I am not convinced.	0
+я намерен это сделать.	1
+я не намерен это делать.	0
+hodlám to udělat.	1
+nehodlám to udělat.	0
+I intend to do it.	1
+I do not intend to do it.	0
+я готов к этому.	1
+я не готов к этому.	0
+jsem na to připraven.	1
+nejsem na to připraven.	0
+I am ready for it.	1
+I am not ready for it.	0
+это то что я хочу.	1
+это не то что я хочу.	0
+to je to co chci.	1
+to není to co chci.	0
+It is what I want.	1
+It is not what I want.	0
+я готов сделать это сейчас.	1
+я не готов сделать это сейчас.	0
+jsem připraven to udělat teď.	1
+nejsem připraven to udělat teď.	0
+I am ready to do it now.	1
+I am not ready to do it now.	0
+у меня есть все что нужно.	1
+у меня нет всего что нужно.	0
+mám všechno co potřebuji.	1
+nemám všechno co potřebuji.	0
+I have everything I need.	1
+I don't have everything I need.	0
+я готов принять решение.	1
+я не готов принять решение.	0
+jsem připraven rozhodnout.	1
+nejsem připraven rozhodnout.	0
+I am ready to decide.	1
+I am not ready to decide.	0
+я согласен с этим решением.	1
+я не согласен с этим решением.	0
+souhlasím s tím rozhodnutím.	1
+nesouhlasím s tím rozhodnutím.	0
+I agree with this decision.	1
+I don't agree with this decision.	0
+это разумно.	1
+это неразумно.	0
+to je rozumné.	1
+to není rozumné.	0
+It is reasonable.	1
+It is not reasonable.	0
+это будет хорошо.	1
+это не будет хорошо.	0
+to bude dobré.	1
+to nebude dobré.	0
+It will be good.	1
+It will not be good.	0
+я согласен сделать это.	1
+я не согласен сделать это.	0
+souhlasím to udělat.	1
+nesouhlasím to udělat.	0
+I agree to do it.	1
+I don't agree to do it.	0
+я полностью поддерживаю это.	1
+я не поддерживаю это.	0
+plně to podporuji.	1
+nepodporuji to.	0
+I fully support it.	1
+I don't support it.	0
+это правильное направление.	1
+это неправильное направление.	0
+to je správný směr.	1
+to není správný směr.	0
+It is the right direction.	1
+It is not the right direction.	0
+я уверен в этом на 100%.	1
+я не уверен в этом на 100%.	0
+jsem si tím 100% jistý.	1
+nejsem si tím 100% jistý.	0
+I am 100% sure about it.	1
+I am not 100% sure about it.	0
+это именно то что нужно.	1
+это не то что нужно.	0
+to je přesně to co potřebuji.	1
+to není to co potřebuji.	0
+It is exactly what is needed.	1
+It is not what is needed.	0
+это лучший выбор.	1
+это не лучший выбор.	0
+to je nejlepší volba.	1
+to není nejlepší volba.	0
+It is the best choice.	1
+It is not the best choice.	0
+это идеально.	1
+это не идеально.	0
+to je ideální.	1
+to není ideální.	0
+It is perfect.	1
+It is not perfect.	0
+это именно то что я хочу.	1
+это не то что я хочу.	0
+to je přesně to co chci.	1
+to není to co chci.	0
+It is exactly what I want.	1
+It is not what I want.	0
+я готов это принять.	1
+я не готов это принять.	0
+jsem připraven to přijmout.	1
+nejsem připraven to přijmout.	0
+I am ready to accept it.	1
+I am not ready to accept it.	0
+я согласен с этим предложением.	1
+я не согласен с этим предложением.	0
+souhlasím s tímto návrhem.	1
+nesouhlasím s tímto návrhem.	0
+I agree with this proposal.	1
+I don't agree with this proposal.	0
+это оптимальное решение.	1
+это не оптимальное решение.	0
+to je optimální řešení.	1
+to není optimální řešení.	0
+It is the optimal solution.	1
+It is not the optimal solution.	0
+это правильное действие.	1
+это неправильное действие.	0
+to je správné jednání.	1
+to není správné jednání.	0
+It is the right action.	1
+It is not the right action.	0
+я уверен в своих силах.	1
+я не уверен в своих силах.	0
+věřím si.	1
+nevěřím si.	0
+I believe in myself.	1
+I don't believe in myself.	0
+я готов начать.	1
+я не готов начать.	0
+jsem připraven začít.	1
+nejsem připraven začít.	0
+I am ready to start.	1
+I am not ready to start.	0
+это необходимо.	1
+это не необходимо.	0
+to je nutné.	1
+to není nutné.	0
+It is necessary.	1
+It is not necessary.	0
+это будет полезно.	1
+это не будет полезно.	0
+to bude užitečné.	1
+to nebude užitečné.	0
+It will be useful.	1
+It will not be useful.	0
+я поддерживаю это решение.	1
+я не поддерживаю это решение.	0
+podporuji to rozhodnutí.	1
+nepodporuji to rozhodnutí.	0
+I support this decision.	1
+I don't support this decision.	0
+я готов выполнить это действие.	1
+я не готов выполнить это действие.	0
+jsem připraven to provést.	1
+nejsem připraven to provést.	0
+I am ready to perform this action.	1
+I am not ready to perform this action.	0
+я уверен что это правильно.	1
+я не уверен что это правильно.	0
+jsem si jistý že je to správné.	1
+nejsem si jistý že je to správné.	0
+I am sure it is right.	1
+I am not sure it is right.	0
+это разумное решение.	1
+это неразумное решение.	0
+to je rozumné rozhodnutí.	1
+to není rozumné rozhodnutí.	0
+It is a sensible decision.	1
+It is not a sensible decision.	0
+я хочу это сделать.	1
+я не хочу это делать.	0
+chci to udělat.	1
+nechci to udělat.	0
+I want to do it.	1
+I don't want to do it.	0
+я уверен в этом решении.	1
+я не уверен в этом решении.	0
+jsem si jistý tímto rozhodnutím.	1
+nejsem si jistý tímto rozhodnutím.	0
+I am sure about this decision.	1
+I am not sure about this decision.	0
+я готов к выполнению.	1
+я не готов к выполнению.	0
+jsem připraven na provedení.	1
+nejsem připraven na provedení.	0
+I am ready for execution.	1
+I am not ready for execution.	0
+это важно.	1
+это не важно.	0
+to je důležité.	1
+to není důležité.	0
+It is important.	1
+It is not important.	0
+это необходимо сделать.	1
+это не нужно делать.	0
+to je nutné udělat.	1
+to není nutné udělat.	0
+It is necessary to do it.	1
+It is not necessary to do it.	0
+это верное решение.	1
+это неверное решение.	0
+to je správné rozhodnutí.	1
+to není správné rozhodnutí.	0
+It is the correct decision.	1
+It is not the correct decision.	0
+это полезно.	1
+это не полезно.	0
+to je užitečné.	1
+to není užitečné.	0
+It is useful.	1
+It is not useful.	0
+я уверен в своем решении.	1
+я не уверен в своем решении.	0
+jsem si jistý svým rozhodnutím.	1
+nejsem si jistý svým rozhodnutím.	0
+I am confident in my decision.	1
+I am not confident in my decision.	0
+я хочу это сделать.	1
+я не хочу это делать.	0
+chci to udělat.	1
+nechci to udělat.	0
+I want to do it.	1
+I don't want to do it.	0
+я готов начать.	1
+я не готов начать.	0
+jsem připraven začít.	1
+nejsem připraven začít.	0
+I am ready to start.	1
+I am not ready to start.	0
+
+может быть, погода сегодня хорошая.	2
+kolik je hodin?	2
+It depends on the context.	2
+жизнь полна сюрпризов.	2
+to není můj problém.	2
+the sky is particularly blue today.	2
+у меня нет на это однозначного ответа.	2
+mám rád jablka.	2
+what did you have for breakfast?	2
+это сложный вопрос.	2
+jak se máš?	2
+I read an interesting book yesterday.	2
+время покажет.	2
+už jsi viděl ten nový film?	2
+that's a good question.	2
+здесь нужен более тщательный анализ.	2
+je to zajímavé téma k diskusi.	2
+I think I saw a cat.	2
+в какой-то степени да, в какой-то нет.	2
+tohle je opravdu složité.	2
+I enjoy listening to music.	2
+это стоит обдумать.	2
+máš rád kávu nebo čaj?	2
+I remember a funny story.	2
+погода такая переменчивая.	2
+to je zajímavý úhel pohledu.	2
+have you ever been to paris?	2
+мне нужно больше времени.	2
+dnes je krásný den.	2
+I think we should consider other options.	2
+это оставляет пространство для размышлений.	2
+kde je nejbližší kavárna?	2
+what is your favorite color?	2
+мир не стоит на месте.	2
+tohle mě nikdy nenapadlo.	2
+I saw a bird flying high.	2
+утро вечера мудренее.	2
+kolik ti je let?	2
+the cake is delicious.	2
+это вызывает много вопросов.	2
+máš nějaké plány na víkend?	2
+what's the time?	2
+рано или поздно всё станет ясно.	2
+co by sis dal k večeři?	2
+I have a meeting tomorrow.	2
+это действительно стоит обсудить.	2
+co je to za zvuk?	2
+I enjoy walking in the park.	2
+всё зависит от обстоятельств.	2
+máš rád hudbu?	2
+I think it's a complex issue.	2
+это очень интересный случай.	2
+je to otázka perspektivy.	2
+what's your opinion on this?	2
+давайте посмотрим на это с другой стороны.	2
+kolik máš času?	2
+I saw it on the news.	2
+всё может быть иначе.	2
+kde je nejbližší zastávka?	2
+have you tried the new restaurant?	2
+это вопрос времени.	2
+máš nějaký tip?	2
+I need to think it over.	2
+это заставляет задуматься.	2
+máš rád zmrzlinu?	2
+I think it's worth a discussion.	2
+это довольно сложная тема.	2
+co si o tom myslíš?	2
+I heard it on the radio.	2
+время покажет свои результаты.	2
+máš nějaký nápad?	2
+I saw it in a movie.	2
+это требует большего внимания.	2
+jaký máš názor na tohle?	2
+I enjoy reading books.	2
+это философский вопрос.	2
+je to hodně otevřené téma.	2
+what's the weather like?	2
+иногда стоит подождать.	2
+kdy máš čas na setkání?	2
+I have a different perspective.	2
+это требует дальнейшего обсуждения.	2
+jaký máš plán na dnešek?	2
+I heard a strange noise.	2
+это может быть интересным опытом.	2
+co si myslíš o tom novém filmu?	2
+I think it's a fascinating topic.	2
+это вопрос интерпретации.	2
+jak dlouho to potrvá?	2
+I saw a rainbow yesterday.	2
+это может изменить всё.	2
+co plánuješ na zítra?	2
+have you seen the latest episode?	2
+это требует времени.	2
+máš nějaké doporučení?	2
+I need more details.	2
+это зависит от многих факторов.	2
+máš rád sport?	2
+I think it's a significant matter.	2
+это требует дополнительного анализа.	2
+co je nového ve světě?	2
+what's your plan for today?	2
+может быть, стоит пересмотреть это.	2
+je to komplikované.	2
+I think it's a noteworthy point.	2
+это философский вопрос.	2
+je to hodně otevřené téma.	2
+what's the weather like?	2
+иногда стоит подождать.	2
+kdy máš čas na setkání?	2
+I have a different perspective.	2
+это требует дальнейшего обсуждения.	2
+jaký máš plán na dnešek?	2
+I heard a strange noise.	2
+это может быть интересным опытом.	2
+co si myslíš o tom novém filmu?	2
+I think it's a fascinating topic.	2
+это вопрос интерпретации.	2
+jak dlouho to potrvá?	2
+I saw a rainbow yesterday.	2
+это может изменить всё.	2
+co plánuješ na zítra?	2
+have you seen the latest episode?	2
+это требует времени.	2
+máš nějaké doporučení?	2
+I need more details.	2
+это зависит от многих факторов.	2
+máš rád sport?	2
+I think it's a significant matter.	2
+это требует дополнительного анализа.	2
+co je nového ve světě?	2
+what's your plan for today?	2
+может быть, стоит пересмотреть это.	2
+je to komplikované.	2
+I think it's a noteworthy point.	2
+это довольно спорный вопрос.	2
+máš nějaké novinky?	2
+have you met him before?	2
+это требует некоторых размышлений.	2
+co si myslíš o tom novém seriálu?	2
+I heard it's a popular place.	2
+это можно обсуждать часами.	2
+kde jsi byl včera?	2
+what's your dream destination?	2
+может быть, в следующий раз.	2
+je to velmi široké téma.	2
+I think it's an open-ended question.	2
+это оставляет много простора для интерпретаций.	2
+jaký máš vztah k této otázce?	2
+I saw it on the internet.	2
+это может быть связано с чем угодно.	2
+co máš dnes v plánu?	2
+I think it's a matter of opinion.	2
+это требует времени для анализа.	2
+kde se to koná?	2
+what's your favorite hobby?	2
+может быть, это не так уж и важно.	2
+je to otázka pohledu.	2
+I think it's a broad topic.	2
+это можно обсудить подробнее.	2
+jaký máš na to názor?	2
+I saw it on tv.	2
+это зависит от многих переменных.	2
+co plánuješ na víkend?	2
+I think it's a complex question.	2
+это стоит дальнейшего исследования.	2
+kolik stojí tenhle produkt?	2
+what's your favorite season?	2
+может быть, мы сможем это обсудить позже.	2
+je to téma na dlouhou debatu.	2
+I think it's a debatable issue.	2
+это требует большего понимания.	2
+jak dlouho to trvá?	2
+I saw it in a magazine.	2
+это довольно сложная ситуация.	2
+co děláš ve volném čase?	2
+I think it's an intricate matter.	2
+это можно обсудить с разных сторон.	2
+kolik času potřebuješ?	2
+what's your favorite book?	2
+может быть, мы сможем это обдумать.	2
+je to náročné na rozhodnutí.	2
+I think it's a multifaceted issue.	2
+это требует больше ресурсов.	2
+jaký je tvůj oblíbený film?	2
+I think it's an important point.	2
+это требует тщательного анализа.	2
+kde jsi se narodil?	2
+what's your favorite animal?	2
+может быть, мы сможем это обсудить завтра.	2
+je to hodně specifické téma.	2
+I think it's an ongoing discussion.	2
+это требует новых подходов.	2
+jaký je tvůj oblíbený sport?	2
+I think it's a point worth considering.	2
+это требует новых решений.	2
+kde bydlíš?	2
+what's your favorite food?	2
+может быть, это не так важно, как кажется.	2
+je to velmi individuální otázka.	2
+I think it's quite subjective.	2
+это открыто для интерпретации.	2
+jak se máš dneska?	2
+I think it's a matter of perspective.	2
+это может иметь различные исходы.	2
+kolik máš sourozenců?	2
+what's your favorite place to visit?	2
+может быть, это просто вопрос времени.	2
+je to otázka vkusu.	2
+I think it's up for interpretation.	2
+это требует обсуждения.	2
+kde si to přečetl?	2
+what's your favorite movie?	2
+может быть, стоит подождать.	2
+je to dlouhodobý proces.	2
+I think it's a matter of taste.	2
+это может привести к неожиданным результатам.	2
+kdy jsi se to dozvěděl?	2
+what's your favorite song?	2
+может быть, это стоит пересмотреть.	2
+je to individuální přístup.	2
+I think it's a long-term process.	2
+это может вызвать разные реакции.	2
+kdo to udělal?	2
+what's your favorite season?	2
+может быть, это не так просто.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может иметь разные последствия.	2
+kde byl tvůj poslední dovolená?	2
+what's your favorite hobby?	2
+может быть, стоит обратить внимание.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это требует более глубокого изучения.	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite color?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka času.	2
+I think it's a matter of time.	2
+это может вызвать разные эмоции.	2
+kde jsi našel tu informaci?	2
+what's your favorite book?	2
+может быть, это требует дальнейшего исследования.	2
+je to věc názoru.	2
+I think it's a matter of opinion.	2
+это может быть долгосрочное решение.	2
+kdy jsi naposledy viděl toho přítele?	2
+what's your favorite animal?	2
+может быть, это сложный вопрос.	2
+je to otevřená otázka.	2
+I think it's an open question.	2
+это может быть неожиданным поворотом.	2
+kde jsi se naučil tak dobře česky?	2
+what's your favorite sport?	2
+может быть, это не так важно.	2
+je to složitá otázka.	2
+I think it's a complex question.	2
+это может вызвать неожиданные последствия.	2
+kolik let pracuješ v tomto oboru?	2
+what's your favorite movie genre?	2
+может быть, это не так просто, как кажется.	2
+je to otázka perspektivy.	2
+I think it's a matter of perspective.	2
+это может быть интересным исследованием.	2
+kdy jsi naposledy byl v divadle?	2
+what's your favorite food?	2
+может быть, это сложный вопрос.	2
+je to otázka osobní volby.	2
+I think it's a matter of personal choice.	2
+это может быть обсуждаемой темой.	2
+kde jsi strávil prázdniny?	2
+what's your favorite place to relax?	2
+может быть, это стоит обдумать.	2
+je to záležitost preference.	2
+I think it's a matter of preference.	2
+это можно рассматривать с разных сторон.	2
+kolik máš dětí?	2
+what's your favorite holiday destination?	2
+может быть, это не так важно, как кажется.	2
+je to otázka osobní preference.	2
+I think it's a matter of personal preference.	2
+это может иметь разные интерпретации.	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть, это зависит от ситуации.	2
+je to otázka vzdělání.	2
+I think it's a matter of education.	2
+это может привести к различным результатам.	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть, это не стоит торопиться.	2
+je to otázka hodnoty.	2
+I think it's a matter of value.	2
+это может быть долгосрочное решение.	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть, это не столь важно.	2
+je to otázka preferencí.	2
+I think it's a matter of preferences.	2
+это может вызвать разные реакции.	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka vkusu.	2
+I think it's a matter of taste.	2
+это может быть долгосрочным решением.	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть, это требует времени для размышлений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть долгосрочным планом.	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть, это не так просто.	2
+je to otázka příležitosti.	2
+I think it's a matter of opportunity.	2
+это может вызвать неожиданные последствия.	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть, это стоит обратить внимание.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может требовать дополнительных исследований.	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka přístupu.	2
+I think it's a matter of approach.	2
+это может быть открытым вопросом.	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть, это не столь важно.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может иметь различные решения.	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть, это требует дальнейших обсуждений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть проблемой времени.	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может быть интересной темой для изучения.	2
+kolik hodin je teď?	2
+what's your favorite season?	2
+может быть, это не так важно, как кажется.	2
+je to otázka osobní preference.	2
+I think it's a matter of personal preference.	2
+это может иметь разные интерпретации.	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть, это зависит от ситуации.	2
+je to otázka vzdělání.	2
+I think it's a matter of education.	2
+это может привести к различным результатам.	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть, это не стоит торопиться.	2
+je to otázka hodnoty.	2
+I think it's a matter of value.	2
+это может быть долгосрочное решение.	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть, это не столь важно.	2
+je to otázka preferencí.	2
+I think it's a matter of preferences.	2
+это может вызвать разные реакции.	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka vkusu.	2
+I think it's a matter of taste.	2
+это может быть долгосрочным решением.	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть, это требует времени для размышлений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть долгосрочным планом.	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть, это не так просто.	2
+je to otázka příležitosti.	2
+I think it's a matter of opportunity.	2
+это может вызвать неожиданные последствия.	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть, это стоит обратить внимание.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может требовать дополнительных исследований.	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka přístupu.	2
+I think it's a matter of approach.	2
+это может быть открытым вопросом.	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть, это не столь важно.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может иметь различные решения.	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть, это требует дальнейших обсуждений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть проблемой времени.	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может быть интересной темой для обсуждения.	2
+kolik let pracuješ v tomto oboru?	2
+what's your favorite holiday destination?	2
+может быть, это не так важно, как кажется.	2
+je to otázka osobní preference.	2
+I think it's a matter of personal preference.	2
+это может иметь разные интерпретации.	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть, это зависит от ситуации.	2
+je to otázka vzdělání.	2
+I think it's a matter of education.	2
+это может привести к различным результатам.	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть, это не стоит торопиться.	2
+je to otázka hodnoty.	2
+I think it's a matter of value.	2
+это может быть долгосрочное решение.	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть, это не столь важно.	2
+je to otázka preferencí.	2
+I think it's a matter of preferences.	2
+это может вызвать разные реакции.	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka vkusu.	2
+I think it's a matter of taste.	2
+это может быть долгосрочным решением.	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть, это требует времени для размышлений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть долгосрочным планом.	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть, это не так просто.	2
+je to otázka příležitosti.	2
+I think it's a matter of opportunity.	2
+это может вызвать неожиданные последствия.	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть, это стоит обратить внимание.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может требовать дополнительных исследований.	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka přístupu.	2
+I think it's a matter of approach.	2
+это может быть открытым вопросом.	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть, это не столь важно.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может иметь различные решения.	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть, это требует дальнейших обсуждений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть проблемой времени.	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть, это зависит от обстоятельств.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+
+может быть погода сегодня хорошая.	2
+kolik je hodin?	2
+It depends on the context.	2
+жизнь полна сюрпризов.	2
+to není můj problém.	2
+the sky is particularly blue today.	2
+у меня нет на это однозначного ответа.	2
+mám rád jablka.	2
+what did you have for breakfast?	2
+это сложный вопрос.	2
+jak se máš?	2
+I read an interesting book yesterday.	2
+время покажет.	2
+už jsi viděl ten nový film?	2
+that's a good question.	2
+здесь нужен более тщательный анализ.	2
+je to zajímavé téma k diskusi.	2
+I think I saw a cat.	2
+в какой-то степени да в какой-то нет.	2
+tohle je opravdu složité.	2
+I enjoy listening to music.	2
+это стоит обдумать.	2
+máš rád kávu nebo čaj?	2
+I remember a funny story.	2
+погода такая переменчивая.	2
+to je zajímavý úhel pohledu.	2
+have you ever been to paris?	2
+мне нужно больше времени.	2
+dnes je krásný den.	2
+I think we should consider other options.	2
+это оставляет пространство для размышлений.	2
+kde je nejbližší kavárna?	2
+what is your favorite color?	2
+мир не стоит на месте.	2
+tohle mě nikdy nenapadlo.	2
+I saw a bird flying high.	2
+утро вечера мудренее.	2
+kolik ti je let?	2
+the cake is delicious.	2
+это вызывает много вопросов.	2
+máš nějaké plány na víkend?	2
+what's the time?	2
+рано или поздно всё станет ясно.	2
+co by sis dal k večeři?	2
+I have a meeting tomorrow.	2
+это действительно стоит обсудить.	2
+co je to za zvuk?	2
+I enjoy walking in the park.	2
+всё зависит от обстоятельств.	2
+máš rád hudbu?	2
+I think it's a complex issue.	2
+это очень интересный случай.	2
+je to otázka perspektivy.	2
+what's your opinion on this?	2
+давайте посмотрим на это с другой стороны.	2
+kolik máš času?	2
+I saw it on the news.	2
+всё может быть иначе.	2
+kde je nejbližší zastávka?	2
+have you tried the new restaurant?	2
+это вопрос времени.	2
+máš nějaký tip?	2
+I need to think it over.	2
+это заставляет задуматься.	2
+máš rád zmrzlinu?	2
+I think it's worth a discussion.	2
+это довольно сложная тема.	2
+co si o tom myslíš?	2
+I heard it on the radio.	2
+время покажет свои результаты.	2
+máš nějaký nápad?	2
+I saw it in a movie.	2
+это требует большего внимания.	2
+jaký máš názor na tohle?	2
+I enjoy reading books.	2
+это философский вопрос.	2
+je to hodně otevřené téma.	2
+what's the weather like?	2
+иногда стоит подождать.	2
+kdy máš čas na setkání?	2
+I have a different perspective.	2
+это требует дальнейшего обсуждения.	2
+jaký máš plán na dnešek?	2
+I heard a strange noise.	2
+это может быть интересным опытом.	2
+co si myslíš o tom novém filmu?	2
+I think it's a fascinating topic.	2
+это вопрос интерпретации.	2
+jak dlouho to potrvá?	2
+I saw a rainbow yesterday.	2
+это может изменить всё.	2
+co plánuješ na zítra?	2
+have you seen the latest episode?	2
+это требует времени.	2
+máš nějaké doporučení?	2
+I need more details.	2
+это зависит от многих факторов.	2
+máš rád sport?	2
+I think it's a significant matter.	2
+это требует дополнительного анализа.	2
+co je nového ve světě?	2
+what's your plan for today?	2
+может быть стоит пересмотреть это.	2
+je to komplikované.	2
+I think it's a noteworthy point.	2
+это философский вопрос.	2
+je to hodně otevřené téma.	2
+what's the weather like?	2
+иногда стоит подождать.	2
+kdy máš čas na setkání?	2
+I have a different perspective.	2
+это требует дальнейшего обсуждения.	2
+jaký máš plán na dnešek?	2
+I heard a strange noise.	2
+это может быть интересным опытом.	2
+co si myslíš o tom novém filmu?	2
+I think it's a fascinating topic.	2
+это вопрос интерпретации.	2
+jak dlouho to potrvá?	2
+I saw a rainbow yesterday.	2
+это может изменить всё.	2
+co plánuješ na zítra?	2
+have you seen the latest episode?	2
+это требует времени.	2
+máš nějaké doporučení?	2
+I need more details.	2
+это зависит от многих факторов.	2
+máš rád sport?	2
+I think it's a significant matter.	2
+это требует дополнительного анализа.	2
+co je nového ve světě?	2
+what's your plan for today?	2
+может быть стоит пересмотреть это.	2
+je to komplikované.	2
+I think it's a noteworthy point.	2
+это довольно спорный вопрос.	2
+máš nějaké novinky?	2
+have you met him before?	2
+это требует некоторых размышлений.	2
+co si myslíš o tom novém seriálu?	2
+I heard it's a popular place.	2
+это можно обсуждать часами.	2
+kde jsi byl včera?	2
+what's your dream destination?	2
+может быть в следующий раз.	2
+je to velmi široké téma.	2
+I think it's an open-ended question.	2
+это оставляет много простора для интерпретаций.	2
+jaký máš vztah k této otázce?	2
+I saw it on the internet.	2
+это может быть связано с чем угодно.	2
+co máš dnes v plánu?	2
+I think it's a matter of opinion.	2
+это требует времени для анализа.	2
+kde se to koná?	2
+what's your favorite hobby?	2
+может быть это не так уж и важно.	2
+je to otázka pohledu.	2
+I think it's a broad topic.	2
+это можно обсудить подробнее.	2
+jaký máš na to názor?	2
+I saw it on tv.	2
+это зависит от многих переменных.	2
+co plánuješ na víkend?	2
+I think it's a complex question.	2
+это стоит дальнейшего исследования.	2
+kolik stojí tenhle produkt?	2
+what's your favorite season?	2
+может быть мы сможем это обсудить позже.	2
+je to téma na dlouhou debatu.	2
+I think it's a debatable issue.	2
+это требует большего понимания.	2
+jak dlouho to trvá?	2
+I saw it in a magazine.	2
+это довольно сложная ситуация.	2
+co děláš ve volném čase?	2
+I think it's an intricate matter.	2
+это можно обсудить с разных сторон.	2
+kolik času potřebuješ?	2
+what's your favorite book?	2
+может быть мы сможем это обдумать.	2
+je to náročné na rozhodnutí.	2
+I think it's a multifaceted issue.	2
+это требует больше ресурсов.	2
+jaký je tvůj oblíbený film?	2
+I think it's an important point.	2
+это требует тщательного анализа.	2
+kde jsi se narodil?	2
+what's your favorite animal?	2
+может быть мы сможем это обсудить завтра.	2
+je to hodně specifické téma.	2
+I think it's an ongoing discussion.	2
+это требует новых подходов.	2
+jaký je tvůj oblíbený sport?	2
+I think it's a point worth considering.	2
+это требует новых решений.	2
+kde bydlíš?	2
+what's your favorite food?	2
+может быть это не так важно как кажется.	2
+je to velmi individuální otázka.	2
+I think it's quite subjective.	2
+это открыто для интерпретации.	2
+jak se máš dneska?	2
+I think it's a matter of perspective.	2
+это может иметь различные исходы.	2
+kolik máš sourozenců?	2
+what's your favorite place to visit?	2
+может быть это просто вопрос времени.	2
+je to otázka vkusu.	2
+I think it's up for interpretation.	2
+это требует обсуждения.	2
+kde si to přečetl?	2
+what's your favorite movie?	2
+может быть стоит подождать.	2
+je to dlouhodobý proces.	2
+I think it's a matter of taste.	2
+это может привести к неожиданным результатам.	2
+kdy jsi se to dozvěděl?	2
+what's your favorite song?	2
+может быть это стоит пересмотреть.	2
+je to individuální přístup.	2
+I think it's a long-term process.	2
+это может вызвать разные реакции.	2
+kdo to udělal?	2
+what's your favorite season?	2
+может быть это не так просто.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может иметь разные последствия.	2
+kde byl tvůj poslední dovolená?	2
+what's your favorite hobby?	2
+может быть стоит обратить внимание.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это требует более глубокого изучения.	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite color?	2
+может быть это зависит от обстоятельств.	2
+je to otázka času.	2
+I think it's a matter of time.	2
+это может вызвать разные эмоции.	2
+kde jsi našel tu informaci?	2
+what's your favorite book?	2
+может быть это требует дальнейшего исследования.	2
+je to věc názoru.	2
+I think it's a matter of opinion.	2
+это может быть долгосрочное решение.	2
+kdy jsi naposledy viděl toho přítele?	2
+what's your favorite animal?	2
+может быть это сложный вопрос.	2
+je to otevřená otázka.	2
+I think it's an open question.	2
+это может быть неожиданным поворотом.	2
+kde jsi se naučil tak dobře česky?	2
+what's your favorite sport?	2
+может быть это не так важно.	2
+je to složitá otázka.	2
+I think it's a complex question.	2
+это может вызвать неожиданные последствия.	2
+kolik let pracuješ v tomto oboru?	2
+what's your favorite movie genre?	2
+может быть это не так просто как кажется.	2
+je to otázka perspektivy.	2
+I think it's a matter of perspective.	2
+это может быть интересным исследованием.	2
+kdy jsi naposledy byl v divadle?	2
+what's your favorite food?	2
+может быть это сложный вопрос.	2
+je to otázka osobní volby.	2
+I think it's a matter of personal choice.	2
+это может быть обсуждаемой темой.	2
+kde jsi strávil prázdniny?	2
+what's your favorite place to relax?	2
+может быть это стоит обдумать.	2
+je to záležitost preference.	2
+I think it's a matter of preference.	2
+это можно рассматривать с разных сторон.	2
+kolik máš dětí?	2
+what's your favorite holiday destination?	2
+может быть это не так важно как кажется.	2
+je to otázka osobní preference.	2
+I think it's a matter of personal preference.	2
+это может иметь разные интерпретации.	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть это зависит от ситуации.	2
+je to otázka vzdělání.	2
+I think it's a matter of education.	2
+это может привести к различным результатам.	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть это не стоит торопиться.	2
+je to otázka hodnoty.	2
+I think it's a matter of value.	2
+это может быть долгосрочное решение.	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть это не столь важно.	2
+je to otázka preferencí.	2
+I think it's a matter of preferences.	2
+это может вызвать разные реакции.	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть это зависит от обстоятельств.	2
+je to otázka vkusu.	2
+I think it's a matter of taste.	2
+это может быть долгосрочным решением.	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть это требует времени для размышлений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть долгосрочным планом.	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть это не так просто.	2
+je to otázka příležitosti.	2
+I think it's a matter of opportunity.	2
+это может вызвать неожиданные последствия.	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть это стоит обратить внимание.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может требовать дополнительных исследований.	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть это зависит от обстоятельств.	2
+je to otázka přístupu.	2
+I think it's a matter of approach.	2
+это может быть открытым вопросом.	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть это не столь важно.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может иметь различные решения.	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть это требует дальнейших обсуждений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть проблемой времени.	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть это зависит от обстоятельств.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может быть интересной темой для изучения.	2
+kolik hodin je teď?	2
+what's your favorite season?	2
+может быть это не так важно как кажется.	2
+je to otázka osobní preference.	2
+I think it's a matter of personal preference.	2
+это может иметь разные интерпретации.	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть это зависит от ситуации.	2
+je to otázka vzdělání.	2
+I think it's a matter of education.	2
+это может привести к различным результатам.	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть это не стоит торопиться.	2
+je to otázka hodnoty.	2
+I think it's a matter of value.	2
+это может быть долгосрочное решение.	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть это не столь важно.	2
+je to otázka preferencí.	2
+I think it's a matter of preferences.	2
+это может вызвать разные реакции.	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть это зависит от обстоятельств.	2
+je to otázka vkusu.	2
+I think it's a matter of taste.	2
+это может быть долгосрочным решением.	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть это требует времени для размышлений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть долгосрочным планом.	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть это не так просто.	2
+je to otázka příležitosti.	2
+I think it's a matter of opportunity.	2
+это может вызвать неожиданные последствия.	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть это стоит обратить внимание.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может требовать дополнительных исследований.	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть это зависит от обстоятельств.	2
+je to otázka přístupu.	2
+I think it's a matter of approach.	2
+это может быть открытым вопросом.	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть это не столь важно.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может иметь различные решения.	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть это требует дальнейших обсуждений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть проблемой времени.	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть это зависит от обстоятельств.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может быть интересной темой для обсуждения.	2
+kolik let pracuješ v tomto oboru?	2
+what's your favorite holiday destination?	2
+может быть это не так важно как кажется.	2
+je to otázka osobní preference.	2
+I think it's a matter of personal preference.	2
+это может иметь разные интерпретации.	2
+kde jsi se to naučil?	2
+what's your favorite type of music?	2
+может быть это зависит от ситуации.	2
+je to otázka vzdělání.	2
+I think it's a matter of education.	2
+это может привести к различным результатам.	2
+kde jsi se narodil?	2
+what's your favorite type of cuisine?	2
+может быть это не стоит торопиться.	2
+je to otázka hodnoty.	2
+I think it's a matter of value.	2
+это может быть долгосрочное решение.	2
+kdy jsi naposledy byl na dovolené?	2
+what's your favorite time of day?	2
+может быть это не столь важно.	2
+je to otázka preferencí.	2
+I think it's a matter of preferences.	2
+это может вызвать разные реакции.	2
+kolik máš sourozenců?	2
+what's your favorite dessert?	2
+может быть это зависит от обстоятельств.	2
+je to otázka vkusu.	2
+I think it's a matter of taste.	2
+это может быть долгосрочным решением.	2
+kdy jsi naposledy byl v kině?	2
+what's your favorite tv show?	2
+может быть это требует времени для размышлений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть долгосрочным планом.	2
+kde jsi strávil prázdniny?	2
+what's your favorite pastime?	2
+может быть это не так просто.	2
+je to otázka příležitosti.	2
+I think it's a matter of opportunity.	2
+это может вызвать неожиданные последствия.	2
+kdy jsi naposledy cestoval?	2
+what's your favorite subject in school?	2
+может быть это стоит обратить внимание.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может требовать дополнительных исследований.	2
+kde jsi se to naučil?	2
+what's your favorite way to relax?	2
+может быть это зависит от обстоятельств.	2
+je to otázka přístupu.	2
+I think it's a matter of approach.	2
+это может быть открытым вопросом.	2
+kolik máš zkušeností v tomto oboru?	2
+what's your favorite outdoor activity?	2
+может быть это не столь важно.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
+это может иметь различные решения.	2
+kde jsi se to dozvěděl?	2
+what's your favorite type of movie?	2
+может быть это требует дальнейших обсуждений.	2
+je to otázka situace.	2
+I think it's a matter of situation.	2
+это может быть проблемой времени.	2
+kdy jsi naposledy mluvil s rodiči?	2
+what's your favorite place to visit?	2
+может быть это зависит от обстоятельств.	2
+je to otázka preference.	2
+I think it's a matter of preference.	2
