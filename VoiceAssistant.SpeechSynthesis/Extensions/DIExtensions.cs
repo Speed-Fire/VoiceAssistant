@@ -14,7 +14,7 @@ namespace VoiceAssistant.SpeechSynthesis.Extensions
 {
 	public static class DIExtensions
 	{
-		public static IServiceCollection RegisterAssistantVoice(
+		public static IServiceCollection RegisterSpeechSynthesis(
 			this IServiceCollection services,
 			IConfiguration config)
 		{
