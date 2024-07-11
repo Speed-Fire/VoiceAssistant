@@ -114,6 +114,12 @@ namespace VoiceAssistant.SpeechSynthesis
 				return;
 			}
 
+			if (!voice.Enabled)
+			{
+				_urgentNotifier.NotifyError($"Voice \"{voiceName}\" cannot be set!");
+				return;
+			}
+
 			if (!_phraseDictionary.IsCultureSupported(voice.VoiceInfo.Culture))
 			{
 				_urgentNotifier.NotifyError($"Unsupported voice culture!");
