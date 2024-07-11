@@ -14,7 +14,6 @@ using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Recording;
 using VoiceAssistant.Services.Misc.Interfaces;
 using VoiceAssistant.CommandResolving.TextResolving.Services;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace VoiceAssistant.Services
 {
@@ -74,7 +73,9 @@ namespace VoiceAssistant.Services
 
 		public override async Task StartAsync(CancellationToken cancellationToken)
 		{
-			if (!await Initialize())
+			var initializationResult = await Initialize();
+
+			if (!initializationResult)
 			{
 				_voiceAssistantMonitor.Block();
 			}
@@ -83,7 +84,7 @@ namespace VoiceAssistant.Services
 				_speechRecorder.Start();
 			}
 
-			await StartAsync(cancellationToken);
+			await base.StartAsync(cancellationToken);
 		}
 
 		protected override Task ExecuteAsync(CancellationToken stoppingToken)
