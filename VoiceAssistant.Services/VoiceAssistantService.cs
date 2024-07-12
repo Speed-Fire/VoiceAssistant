@@ -14,6 +14,7 @@ using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Recording;
 using VoiceAssistant.Services.Misc.Interfaces;
 using VoiceAssistant.CommandResolving.TextResolving.Services;
+using Microsoft.Extensions.Logging;
 
 namespace VoiceAssistant.Services
 {
@@ -38,6 +39,7 @@ namespace VoiceAssistant.Services
 		private readonly IAssistantVoice _assistantVoice;
 		private readonly IUrgentNotifier _urgentNotifier;
 		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
+		private readonly ILogger _logger;
 
 		private readonly ConcurrentQueue<AssistantAction> _actionsQueue;
 		private readonly TimeSpan ConfirmationTimeout = TimeSpan.FromSeconds(10);
@@ -52,11 +54,12 @@ namespace VoiceAssistant.Services
 			SpeechToTextService speechToTextService,
 			IAssistantVoice assistantVoice,
 			IUrgentNotifier urgentNotifier,
-			IVoiceAssistantMonitor voiceAssistantMonitor)
+			IVoiceAssistantMonitor voiceAssistantMonitor,
+			ILogger<VoiceAssistantService> logger)
 		{
 			_speechRecorder = speechRecorder;
-			
 			_urgentNotifier = urgentNotifier;
+			_logger = logger;
 
 			_actionsQueue = new();
 			_speechToTextService = speechToTextService;
@@ -73,14 +76,18 @@ namespace VoiceAssistant.Services
 
 		public override async Task StartAsync(CancellationToken cancellationToken)
 		{
+			_logger.LogInformation("Initializing...");
+
 			var initializationResult = await Initialize();
 
 			if (!initializationResult)
 			{
+				_logger.LogInformation("Initialization failed. Assistant won't be recognizing speech.");
 				_voiceAssistantMonitor.Block();
 			}
 			else
 			{
+				_logger.LogInformation("Initialization completed.");
 				_speechRecorder.Start();
 			}
 
@@ -154,6 +161,7 @@ namespace VoiceAssistant.Services
 			}
 			else
 			{
+				_logger.LogError(obj, "Something went wrong.");
 				_urgentNotifier.NotifyError(string.Empty, exception: obj);
 			}
 		}
@@ -171,6 +179,8 @@ namespace VoiceAssistant.Services
 
 		private async Task PutPendingAction(AssistantAction action)
 		{
+			_logger.LogInformation("Action needs confirmation. Mark action as pending...");
+
 			await _assistantVoice.Speak("Commands.Confirmation.Request");
 			_speechRecorder.SetMode(SpeechRecognitionMode.Loop);
 
@@ -189,6 +199,8 @@ namespace VoiceAssistant.Services
 				_confirmationState = null;
 
 				_speechRecorder.SetMode(SpeechRecognitionMode.OnKeyword);
+
+				_logger.LogInformation("Pending action is dropped.");
 
 				_semaphore.Release();
 			}
@@ -280,6 +292,8 @@ namespace VoiceAssistant.Services
 
 		private Task ExecuteAction(AssistantAction action)
 		{
+			_logger.LogInformation("Executing action...");
+
 			return Task.CompletedTask;
 		}
 
