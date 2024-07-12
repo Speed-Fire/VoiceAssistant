@@ -12,34 +12,36 @@ using VoiceAssistant.Services.AssistantActionServices;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Services.Misc.Implementations;
 using VoiceAssistant.Services.Misc.Interfaces;
-using VoiceAssistant.Services.ProviderInitializers;
 using VoiceAssistant.Services.Hosted;
 using Microsoft.Extensions.Configuration;
 using VoiceAssistant.Services.Options;
 using VoiceAssistant.Core.SettingsHelpers;
-using VoiceAssistant.Services.SettingsHelpers;
+using VoiceAssistant.Services.Helpers;
+using VoiceAssistant.Services.Initializers;
+using VoiceAssistant.Services.Misc;
+
 namespace VoiceAssistant.Services.Extensions
 {
-	public static class DIExtensions
+    public static class DIExtensions
 	{
-		public static int AssistantActionEntity { get; private set; }
-
 		public static IServiceCollection RegisterServices(
 			this IServiceCollection services,
 			IConfiguration config)
 		{
 			services
 				.AddTransient<IAssistantActionService, AssistantActionService>()
-				.AddTransient<IProviderInitializer, AssistantActionsProviderInitializer>();
+				.AddTransient<AssistantActionsProviderInitializer>()
+				.AddTransient<SequentialInitializerQueue>();
 
 			services
 				.AddSingleton<IVoiceAssistantMonitor, VoiceAssistantMonitor>();
 
 			services
-				.AddSingleton<Provider<IS2TConverter>>();
+				.AddSingleton<Provider<IS2TConverter>>()
+				.AddSingleton<S2TConverterService>();
 
 			services
-				.AddTransient<ApplicationSettingsService>()
+				.AddSingleton<IApplicationSettingsService, ApplicationSettingsService>()
 				.AddTransient<SpeechToTextService>()
 				.AddTransient<IS2TConverterSettingsHelper, S2TConverterSettingsHelper>();
 

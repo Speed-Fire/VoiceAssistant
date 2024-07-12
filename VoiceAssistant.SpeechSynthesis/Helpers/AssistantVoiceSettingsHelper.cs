@@ -19,7 +19,7 @@ namespace VoiceAssistant.SpeechSynthesis.Helpers
 
 		public AssistantVoiceSettingsHelper(
 			IAssistantVoice assistantVoice,
-			IOptions<AssistantVoiceOptions> options)
+			IOptionsMonitor<AssistantVoiceOptions> options)
         {
             var assvoice = assistantVoice as AssistantVoice;
             if (assvoice is null)
@@ -30,8 +30,8 @@ namespace VoiceAssistant.SpeechSynthesis.Helpers
 				.Select(iv => iv.VoiceInfo.Name)
 				.ToList();
 
-			SelectedVoice = options.Value.SelectedVoice;
-			Volume = options.Value.Volume;
+			SelectedVoice = options.CurrentValue.SelectedVoice;
+			Volume = options.CurrentValue.Volume;
 		}
 	}
 }

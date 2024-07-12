@@ -23,7 +23,8 @@ namespace VoiceAssistant.Services.Hosted
 		IServiceProvider services,
 		Provider<IS2TConverter> converterProvider,
 		IEnumerable<S2TConverterInfo> converterInfos,
-		IOptionsMonitor<SpeechToTextOptions> options) : IHostedService
+		IOptionsMonitor<SpeechToTextOptions> options) 
+        : ISequentialInitializer
     {
         private readonly ILogger _logger = logger;
         private readonly IServiceProvider _services = services;
@@ -31,16 +32,11 @@ namespace VoiceAssistant.Services.Hosted
         private readonly IEnumerable<S2TConverterInfo> _converterInfos = converterInfos;
         private readonly IOptionsMonitor<SpeechToTextOptions> _options = options;
 
-		public async Task StartAsync(CancellationToken cancellationToken)
+		public async Task Initialize()
 		{
-            var res = await InitializeAsync();
+            var res = await InitializeInternal();
 
             _options.OnChange(OptionsChanged);
-		}
-
-		public Task StopAsync(CancellationToken cancellationToken)
-		{
-			return Task.CompletedTask;
 		}
 
         private void OptionsChanged(SpeechToTextOptions options)
@@ -57,7 +53,7 @@ namespace VoiceAssistant.Services.Hosted
 
 		#region Initialization
 
-		public async Task<bool> InitializeAsync()
+		public async Task<bool> InitializeInternal()
         {
             var settings = _services.GetRequiredService<IApplicationSettingsService>();
 			settings.SetCurrentSection("SpeechToText");

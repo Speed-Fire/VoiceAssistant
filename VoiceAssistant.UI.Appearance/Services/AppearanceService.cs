@@ -12,8 +12,9 @@ using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.UI.Appearance.DictionarySelection;
 using VoiceAssistant.UI.Appearance.Options;
 using VoiceAssistant.Services;
+using System.Windows;
 
-namespace VoiceAssistant.UI.Appearance.HostedServices
+namespace VoiceAssistant.UI.Appearance.Services
 {
 	public class AppearanceService(
 		IOptionsMonitor<AppearanceOptions> options,
@@ -22,7 +23,6 @@ namespace VoiceAssistant.UI.Appearance.HostedServices
 		IApplicationSettingsService settingsService,
 		IUrgentNotifier urgentNotifier,
 		ILogger<AppearanceService> logger)
-		: IHostedService
 	{
 		private readonly IOptionsMonitor<AppearanceOptions> _options = options;
 		private readonly ThemeSelector _themeSelector = themeSelector;
@@ -31,25 +31,20 @@ namespace VoiceAssistant.UI.Appearance.HostedServices
 		private readonly IUrgentNotifier _urgentNotifier = urgentNotifier;
 		private readonly ILogger _logger = logger;
 
-		public async Task StartAsync(CancellationToken cancellationToken)
+		public void Initialize()
 		{
 			_logger.LogInformation("Starting application appearance initialization...");
 
 			_settingsService.SetCurrentSection("Appearance");
 
-			Initialize();
+			InitializeInternal();
 
-			await SetCurrentValues();
+			SetCurrentValues();
 
 			_logger.LogInformation("Application appearance initialized successfully.");
 		}
 
-		public Task StopAsync(CancellationToken cancellationToken)
-		{
-			return Task.CompletedTask;
-		}
-
-		private async Task SetCurrentValues()
+		private void SetCurrentValues()
 		{
 			var theme = _options.CurrentValue.Theme;
 			var language = _options.CurrentValue.Language;
@@ -57,13 +52,13 @@ namespace VoiceAssistant.UI.Appearance.HostedServices
 			if (!_themeSelector.ContainsKey(theme))
 			{
 				theme = "DarkTheme";
-				await _settingsService.SetValueAsync("Theme", theme);
+				_settingsService.SetValueAsync("Theme", theme).Wait();
 			}
 
 			if (!_languageSelector.ContainsKey(language))
 			{
 				language = "en-us";
-				await _settingsService.SetValueAsync("Language", language);
+				_settingsService.SetValueAsync("Language", language).Wait();
 			}
 
 			_themeSelector.Select(theme);
@@ -72,7 +67,7 @@ namespace VoiceAssistant.UI.Appearance.HostedServices
 			_logger.LogInformation("Theme \"{theme} is set.\"", theme);
 			_logger.LogInformation("Language \"{language}\" is set.", language);
 
-			await Task.Delay(2100);
+			Task.Delay(2100).Wait();
 
 			_options.OnChange(AppearanceChanged);
 		}
@@ -102,7 +97,7 @@ namespace VoiceAssistant.UI.Appearance.HostedServices
 
 		#region Initialization
 
-		private void Initialize()
+		private void InitializeInternal()
 		{
 			var themeCount = InitThemes();
 

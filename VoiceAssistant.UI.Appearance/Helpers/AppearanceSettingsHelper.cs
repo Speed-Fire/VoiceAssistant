@@ -13,12 +13,12 @@ namespace VoiceAssistant.UI.Appearance.Helpers
     internal class AppearanceSettingsHelper(
         ThemeSelector themeSelector,
         LanguageSelector languageSelector,
-        IOptions<AppearanceOptions> options)
+        IOptionsMonitor<AppearanceOptions> options)
         : IAppearanceSettingsHelper
 	{
         public IEnumerable<string> AvailableThemes => themeSelector.AvailableKeys.ToList();
         public IEnumerable<string> AvailableLanguages => languageSelector.AvailableKeys.ToList();
-        public string? SelectedTheme => options.Value.Theme;
-		public string? SelectedLanguage => options.Value.Language;
+        public string? SelectedTheme => options.CurrentValue.Theme;
+		public string? SelectedLanguage => options.CurrentValue.Language;
 	}
 }

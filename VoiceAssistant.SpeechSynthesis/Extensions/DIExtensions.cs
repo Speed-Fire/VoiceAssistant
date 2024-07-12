@@ -9,6 +9,7 @@ using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Core.SettingsHelpers;
 using VoiceAssistant.SpeechSynthesis.Helpers;
 using VoiceAssistant.SpeechSynthesis.Options;
+using VoiceAssistant.SpeechSynthesis.Services;
 
 namespace VoiceAssistant.SpeechSynthesis.Extensions
 {
@@ -23,7 +24,8 @@ namespace VoiceAssistant.SpeechSynthesis.Extensions
 
 			services
 				.AddSingleton<IAssistantVoice, AssistantVoice>()
-				.AddTransient<IAssistantVoiceSettingsHelper, AssistantVoiceSettingsHelper>();
+				.AddTransient<IAssistantVoiceSettingsHelper, AssistantVoiceSettingsHelper>()
+				.AddTransient<SynthesizerVoiceSelectingService>();
 
 			return services;
 		}

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using VoiceAssistant.Core.SettingsHelpers;
 using VoiceAssistant.Services.Options;
 
-namespace VoiceAssistant.Services.SettingsHelpers
+namespace VoiceAssistant.Services.Helpers
 {
 	internal class S2TConverterSettingsHelper : IS2TConverterSettingsHelper
 	{
@@ -17,10 +17,10 @@ namespace VoiceAssistant.Services.SettingsHelpers
 
         public S2TConverterSettingsHelper(
             IEnumerable<S2TConverterInfo> converterInfos,
-            IOptions<SpeechToTextOptions> options)
+            IOptionsMonitor<SpeechToTextOptions> options)
         {
             AvailableConverters = converterInfos.Select(c => c.Name).ToList();
-            SelectedConverter = options.Value.SelectedConverter;
+            SelectedConverter = options.CurrentValue.SelectedConverter;
         }
     }
 }

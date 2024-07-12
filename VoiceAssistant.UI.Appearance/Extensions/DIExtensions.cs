@@ -9,6 +9,7 @@ using VoiceAssistant.Core.SettingsHelpers;
 using VoiceAssistant.UI.Appearance.DictionarySelection;
 using VoiceAssistant.UI.Appearance.Helpers;
 using VoiceAssistant.UI.Appearance.Options;
+using VoiceAssistant.UI.Appearance.Services;
 
 namespace VoiceAssistant.UI.Appearance.Extensions
 {
@@ -21,7 +22,8 @@ namespace VoiceAssistant.UI.Appearance.Extensions
 			services
 				.AddSingleton<LanguageSelector>()
 				.AddSingleton<ThemeSelector>()
-				.AddTransient<IAppearanceSettingsHelper, AppearanceSettingsHelper>();
+				.AddTransient<IAppearanceSettingsHelper, AppearanceSettingsHelper>()
+				.AddSingleton<AppearanceService>();
 
 			services.Configure<AppearanceOptions>(config.GetSection("Application:Appearance"));
 

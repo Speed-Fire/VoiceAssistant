@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.UI.Appearance.Services;
 
 namespace VoiceAssistant.HostedServices
 {
@@ -18,6 +19,7 @@ namespace VoiceAssistant.HostedServices
         public WpfStarterService(
             IServiceProvider provider,
             IHostApplicationLifetime appLifetime,
+            AppearanceService appearanceService,
             ILogger<WpfStarterService> logger)
         {
             _applicationLifetime = appLifetime;
@@ -26,6 +28,8 @@ namespace VoiceAssistant.HostedServices
             _thread = new(() =>
             {
                 var app = provider.GetRequiredService<App>();
+
+                appearanceService.Initialize();
 
                 app.Exit += App_Exit;
 

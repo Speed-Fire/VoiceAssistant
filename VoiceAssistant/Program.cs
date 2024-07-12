@@ -32,8 +32,11 @@ using System.Globalization;
 using Microsoft.Extensions.Logging;
 using VoiceAssistant.HostedServices;
 using VoiceAssistant.UI.Appearance.Extensions;
-using VoiceAssistant.UI.Appearance.HostedServices;
 using VoiceAssistant.Services.Hosted;
+using VoiceAssistant.Services.Misc;
+using VoiceAssistant.Services.Initializers;
+using VoiceAssistant.UI.Appearance.Services;
+using VoiceAssistant.SpeechSynthesis.Services;
 
 namespace VoiceAssistant
 {
@@ -82,6 +85,10 @@ namespace VoiceAssistant
 			// host building
 			var host = builder.Build();
 
+			var initializerQueue = host.Services.GetRequiredService<SequentialInitializerQueue>();
+			EnqueueInitializers(initializerQueue);
+			await initializerQueue.Execute();
+
 			await host.RunAsync();
 		}
 
@@ -112,13 +119,18 @@ namespace VoiceAssistant
 			}
 		}
 
+		private static void EnqueueInitializers(SequentialInitializerQueue queue)
+		{
+			queue
+				.Add<SynthesizerVoiceSelectingService>()
+				.Add<S2TConverterService>()
+				.Add<AssistantActionsProviderInitializer>();
+		}
+
 		private static void RegisterHostedServices(IServiceCollection services)
 		{
 			services
-				.AddHostedService<ProviderInitializationService>()
-				.AddHostedService<S2TConverterService>()
 				.AddHostedService<VoiceAssistantService>()
-				.AddHostedService<AppearanceService>()
 				.AddHostedService<WpfStarterService>();
 		}
 	}
