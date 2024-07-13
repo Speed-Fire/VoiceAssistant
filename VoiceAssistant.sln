@@ -52,9 +52,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.UI.Common", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MML", "MML", "{AAA9D188-BE22-4F21-8D79-3D4142DC8726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MML.ConfirmationClassifier", "MML.ConfirmationClassifier\MML.ConfirmationClassifier.csproj", "{AB17642C-6E91-4EAD-896C-165AFFBBAB58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MML.ConfirmationClassifier", "MML.ConfirmationClassifier\MML.ConfirmationClassifier.csproj", "{AB17642C-6E91-4EAD-896C-165AFFBBAB58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.SpeechSynthesis", "VoiceAssistant.SpeechSynthesis\VoiceAssistant.SpeechSynthesis.csproj", "{65CB3D54-FDE3-43FE-BAC8-D70AE448663E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.SpeechSynthesis", "VoiceAssistant.SpeechSynthesis\VoiceAssistant.SpeechSynthesis.csproj", "{65CB3D54-FDE3-43FE-BAC8-D70AE448663E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{03EC55A9-D5CD-47A0-8455-C45D084E25F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.Scripts", "VoiceAssistant.Scripts\VoiceAssistant.Scripts.csproj", "{35F6253F-261A-4F3C-92CF-8E04AE8B9DDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.Scripts.Construction", "VoiceAssistant.Scripts.Construction\VoiceAssistant.Scripts.Construction.csproj", "{E63F289E-8750-4735-B9C9-85924E3FD038}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.Scripts.Compilation", "VoiceAssistant.Scripts.Compilation\VoiceAssistant.Scripts.Compilation.csproj", "{19E13DE9-318A-442E-A65B-CA0249FE5128}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.Scripts.Services", "VoiceAssistant.Scripts.Services\VoiceAssistant.Scripts.Services.csproj", "{4639F0E3-2A55-4AC8-ABAA-9CA08BCCA89C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,6 +148,22 @@ Global
 		{65CB3D54-FDE3-43FE-BAC8-D70AE448663E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65CB3D54-FDE3-43FE-BAC8-D70AE448663E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65CB3D54-FDE3-43FE-BAC8-D70AE448663E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35F6253F-261A-4F3C-92CF-8E04AE8B9DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35F6253F-261A-4F3C-92CF-8E04AE8B9DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35F6253F-261A-4F3C-92CF-8E04AE8B9DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35F6253F-261A-4F3C-92CF-8E04AE8B9DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E63F289E-8750-4735-B9C9-85924E3FD038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63F289E-8750-4735-B9C9-85924E3FD038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E63F289E-8750-4735-B9C9-85924E3FD038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E63F289E-8750-4735-B9C9-85924E3FD038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E13DE9-318A-442E-A65B-CA0249FE5128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E13DE9-318A-442E-A65B-CA0249FE5128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E13DE9-318A-442E-A65B-CA0249FE5128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E13DE9-318A-442E-A65B-CA0249FE5128}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4639F0E3-2A55-4AC8-ABAA-9CA08BCCA89C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4639F0E3-2A55-4AC8-ABAA-9CA08BCCA89C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4639F0E3-2A55-4AC8-ABAA-9CA08BCCA89C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4639F0E3-2A55-4AC8-ABAA-9CA08BCCA89C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +179,10 @@ Global
 		{020EC038-FE8E-40E6-A9B0-0B83FDCE661F} = {B33C7E51-B692-4364-9A05-AC9B227FAA87}
 		{048BB06D-2097-48D1-B713-352C40CB05AF} = {B33C7E51-B692-4364-9A05-AC9B227FAA87}
 		{AB17642C-6E91-4EAD-896C-165AFFBBAB58} = {AAA9D188-BE22-4F21-8D79-3D4142DC8726}
+		{35F6253F-261A-4F3C-92CF-8E04AE8B9DDF} = {03EC55A9-D5CD-47A0-8455-C45D084E25F4}
+		{E63F289E-8750-4735-B9C9-85924E3FD038} = {03EC55A9-D5CD-47A0-8455-C45D084E25F4}
+		{19E13DE9-318A-442E-A65B-CA0249FE5128} = {03EC55A9-D5CD-47A0-8455-C45D084E25F4}
+		{4639F0E3-2A55-4AC8-ABAA-9CA08BCCA89C} = {03EC55A9-D5CD-47A0-8455-C45D084E25F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2870DBD0-1D63-4AF1-8706-07CD16EC4A04}
