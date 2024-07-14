@@ -24,5 +24,8 @@ namespace VoiceAssistant.Common
 		{
 			Second = value;
 		}
+
+		public static implicit operator OneOf<T1, T2>(T1 value) => new(value);
+		public static implicit operator OneOf<T1, T2>(T2 value) => new(value);
 	}
 }
