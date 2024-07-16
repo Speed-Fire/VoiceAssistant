@@ -41,6 +41,8 @@ namespace VoiceAssistant.Services.Entities
 		[ObservableProperty]
 		private bool _isEnabled;
 
+		public string Input => throw new NotImplementedException();
+
 #nullable disable
 
 		[ObservableProperty]
