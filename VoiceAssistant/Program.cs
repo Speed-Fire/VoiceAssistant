@@ -34,9 +34,9 @@ using VoiceAssistant.HostedServices;
 using VoiceAssistant.UI.Appearance.Extensions;
 using VoiceAssistant.Services.Hosted;
 using VoiceAssistant.Services.Misc;
-using VoiceAssistant.Services.Initializers;
 using VoiceAssistant.UI.Appearance.Services;
 using VoiceAssistant.SpeechSynthesis.Services;
+using VoiceAssistant.Services.UnderlyingCommands;
 
 namespace VoiceAssistant
 {
@@ -124,7 +124,7 @@ namespace VoiceAssistant
 			queue
 				.Add<SynthesizerVoiceSelectingService>()
 				.Add<S2TConverterService>()
-				.Add<AssistantActionsProviderInitializer>();
+				.Add<UnderlyingCommandsProviderInitializer>();
 		}
 
 		private static void RegisterHostedServices(IServiceCollection services)

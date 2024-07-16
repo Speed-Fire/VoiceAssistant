@@ -32,7 +32,7 @@ namespace VoiceAssistant.Services.Extensions
 		{
 			services
 				.AddTransient<IAssistantActionService, AssistantActionService>()
-				.AddTransient<AssistantActionsProviderInitializer>()
+				.AddTransient<UnderlyingCommandsProviderInitializer>()
 				.AddTransient<SequentialInitializerQueue>();
 
 			services
