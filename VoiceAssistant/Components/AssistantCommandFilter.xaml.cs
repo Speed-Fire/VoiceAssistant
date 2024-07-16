@@ -18,7 +18,7 @@ namespace VoiceAssistant.Components
 	/// <summary>
 	/// Логика взаимодействия для AssistantActionFilter.xaml
 	/// </summary>
-	public partial class AssistantActionFilter : UserControl
+	public partial class AssistantCommandFilter : UserControl
 	{
 		#region Dependency properties
 
@@ -26,12 +26,12 @@ namespace VoiceAssistant.Components
 
 		public static readonly DependencyProperty ClearCommandProperty =
 			DependencyProperty.Register("ClearCommand", typeof(ICommand),
-				typeof(AssistantActionFilter), new PropertyMetadata(null, ClearCommandPropertyChanged));
+				typeof(AssistantCommandFilter), new PropertyMetadata(null, ClearCommandPropertyChanged));
 
 		private static void ClearCommandPropertyChanged(DependencyObject d,
 			DependencyPropertyChangedEventArgs e)
 		{
-			var obj = d as AssistantActionFilter;
+			var obj = d as AssistantCommandFilter;
 			if (obj is null)
 				return;
 
@@ -55,12 +55,12 @@ namespace VoiceAssistant.Components
 
 		public static readonly DependencyProperty ApplyCommandProperty =
 			DependencyProperty.Register("ApplyCommand", typeof(ICommand),
-				typeof(AssistantActionFilter), new PropertyMetadata(null, ApplyCommandPropertyChanged));
+				typeof(AssistantCommandFilter), new PropertyMetadata(null, ApplyCommandPropertyChanged));
 
 		private static void ApplyCommandPropertyChanged(DependencyObject d,
 			DependencyPropertyChangedEventArgs e)
 		{
-			var obj = d as AssistantActionFilter;
+			var obj = d as AssistantCommandFilter;
 			if (obj is null)
 				return;
 
@@ -82,7 +82,7 @@ namespace VoiceAssistant.Components
 
 		#endregion
 
-		public AssistantActionFilter()
+		public AssistantCommandFilter()
 		{
 			InitializeComponent();
 		}

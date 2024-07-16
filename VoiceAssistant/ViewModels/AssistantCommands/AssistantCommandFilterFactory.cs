@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.UI.Common.Collections.Filter;
 
-namespace VoiceAssistant.ViewModels.AssistantActions
+namespace VoiceAssistant.ViewModels.AssistantCommands
 {
-	public partial class AssistantActionFilterFactory : ObservableObject
+	public partial class AssistantCommandFilterFactory : ObservableObject
 	{
 		[ObservableProperty]
 		private string _name = string.Empty;

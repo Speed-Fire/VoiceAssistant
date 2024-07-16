@@ -20,7 +20,7 @@ using VoiceAssistant.ViewModels.ScriptEditing;
 using VoiceAssistant.ViewModels.Settings;
 using VoiceAssistant.ViewModels.Settings.VoiceRecognition;
 using VoiceAssistant.Views;
-using VoiceAssistant.Views.AssistantActions;
+using VoiceAssistant.Views.AssistantCommands;
 using VoiceAssistant.Views.Plugins;
 using VoiceAssistant.Views.Settings;
 
@@ -84,7 +84,7 @@ namespace VoiceAssistant.Extensions
 		private static IServiceCollection RegisterViews(this IServiceCollection services)
 		{
 			services
-				.AddTransient<AssistantActionsView>()
+				.AddTransient<AssistantCommandsView>()
 				.AddTransient<ScriptEditorView>()
 				.AddTransient<VoiceAssistantListeningStatusComponent>()
 				.AddTransient<PluginsView>()
@@ -100,7 +100,7 @@ namespace VoiceAssistant.Extensions
 		{
 			services
 				.AddTransient<MainVM>()
-				.AddTransient<AssistantActionsVM>()
+				.AddTransient<AssistantCommandsVM>()
 				.AddTransient<ScriptEditorVM>()
 				.AddTransient<VoiceAssistantListeningStatusVM>()
 				.AddTransient<PluginsVM>()

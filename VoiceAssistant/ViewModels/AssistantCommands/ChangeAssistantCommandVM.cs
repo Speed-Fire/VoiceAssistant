@@ -12,40 +12,40 @@ using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.Services.AssistantCommands;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Views;
-using VoiceAssistant.Views.AssistantActions;
+using VoiceAssistant.Views.AssistantCommands;
 
-namespace VoiceAssistant.ViewModels.AssistantActions
+namespace VoiceAssistant.ViewModels.AssistantCommands
 {
-	internal partial class ChangeAssistantActionVM : ViewModel<ChangeAssistantActionView>
+	internal partial class ChangeAssistantCommandVM : ViewModel<ChangeAssistantCommandView>
 	{
-        private readonly IAssistantCommandService _assistantActionService;
+        private readonly IAssistantCommandService _assistantCommandService;
         private readonly IUrgentNotifier _urgentNotifier;
 
         public bool IsUpdatingMode { get; }
-        public AssistantCommandEntity AssistantAction { get; }
+        public AssistantCommandEntity AssistantCommand { get; }
 
-		public ChangeAssistantActionVM(IAssistantCommandService service,
+		public ChangeAssistantCommandVM(IAssistantCommandService service,
             IUrgentNotifier urgentNotifier)
 		{
-			_assistantActionService = service;
+			_assistantCommandService = service;
 
 			IsUpdatingMode = false;
-			AssistantAction = new();
+			AssistantCommand = new();
 
-			AssistantAction.ErrorsChanged += AssistantAction_ErrorsChanged;
+			AssistantCommand.ErrorsChanged += AssistantCommand_ErrorsChanged;
 			_urgentNotifier = urgentNotifier;
 		}
 
-		public ChangeAssistantActionVM(IAssistantCommandService service,
+		public ChangeAssistantCommandVM(IAssistantCommandService service,
 			IUrgentNotifier urgentNotifier,
-			AssistantCommandEntity action)
+			AssistantCommandEntity command)
 		{
-			_assistantActionService = service;
+			_assistantCommandService = service;
 
 			IsUpdatingMode = true;
-			AssistantAction = new(action);
+			AssistantCommand = new(command);
 
-			AssistantAction.ErrorsChanged += AssistantAction_ErrorsChanged;
+			AssistantCommand.ErrorsChanged += AssistantCommand_ErrorsChanged;
 			_urgentNotifier = urgentNotifier;
 		}
 
@@ -62,33 +62,33 @@ namespace VoiceAssistant.ViewModels.AssistantActions
 
             if(IsUpdatingMode)
             {
-                res = await _assistantActionService.UpdateAsync(AssistantAction);
+                res = await _assistantCommandService.UpdateAsync(AssistantCommand);
             }
             else
             {
-                res = await _assistantActionService.CreateAsync(AssistantAction);
+                res = await _assistantCommandService.CreateAsync(AssistantCommand);
             }
 
             if (!res)
             {
                 // error handling
-                var msg = IsUpdatingMode ? "Can't change this action." : "Can't create an action.";
+                var msg = IsUpdatingMode ? "Can't change this command." : "Can't create a command.";
                 _urgentNotifier
                     .NotifyError(msg);
 
                 return;
             }
 
-			AssistantAction.ErrorsChanged -= AssistantAction_ErrorsChanged;
-			Navigation.ReleaseDialog<AssistantCommandEntity?>(true, AssistantAction);
+			AssistantCommand.ErrorsChanged -= AssistantCommand_ErrorsChanged;
+			Navigation.ReleaseDialog<AssistantCommandEntity?>(true, AssistantCommand);
         }
 
         private bool CanChangeCommandExecute()
         {
-            return !AssistantAction.HasErrors;
+            return !AssistantCommand.HasErrors;
         }
 
-		private void AssistantAction_ErrorsChanged(object? sender,
+		private void AssistantCommand_ErrorsChanged(object? sender,
 			System.ComponentModel.DataErrorsChangedEventArgs e)
 		{
             ChangeCommand.NotifyCanExecuteChanged();

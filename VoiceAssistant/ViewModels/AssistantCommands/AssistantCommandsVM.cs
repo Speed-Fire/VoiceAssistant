@@ -21,24 +21,24 @@ using VoiceAssistant.Services.AssistantCommands;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.UI.Common.Collections.Filter;
 using VoiceAssistant.UI.Common.Extensions;
-using VoiceAssistant.ViewModels.AssistantActions;
+using VoiceAssistant.ViewModels.AssistantCommands;
 using VoiceAssistant.Views;
-using VoiceAssistant.Views.AssistantActions;
+using VoiceAssistant.Views.AssistantCommands;
 
 namespace VoiceAssistant.ViewModels
 {
-	public partial class AssistantActionsVM(
-		IAssistantCommandService assistantActionService,
+	public partial class AssistantCommandsVM(
+		IAssistantCommandService assistantCommandService,
 		IUrgentNotifier urgentNotificator) 
-		: ViewModel<AssistantActionsView>
+		: ViewModel<AssistantCommandsView>
 	{
-		private readonly IAssistantCommandService _assistantActionService = assistantActionService;
+		private readonly IAssistantCommandService _assistantCommandService = assistantCommandService;
 		private readonly IUrgentNotifier _urgentNotifier = urgentNotificator;
 
 		private volatile bool _initialized = false;
-		public FilteringCollection<AssistantCommandEntity> AssistantActions { get; } = [];
+		public FilteringCollection<AssistantCommandEntity> AssistantCommands { get; } = [];
 
-		public AssistantActionFilterFactory AssistantActionFilterFactory { get; } = new();
+		public AssistantCommandFilterFactory AssistantCommandFilterFactory { get; } = new();
 
 		#region Commands
 
@@ -52,13 +52,13 @@ namespace VoiceAssistant.ViewModels
 
 			return Task.Run(async () =>
 			{
-				var actions = await _assistantActionService.GetAllAsync();
+				var actions = await _assistantCommandService.GetAllAsync();
 
 				Dispatcher.Invoke(() =>
 				{
 					foreach (var action in actions)
 					{
-						AssistantActions.Add(action);
+						AssistantCommands.Add(action);
 					}
 
 					//TestElements();
@@ -75,17 +75,17 @@ namespace VoiceAssistant.ViewModels
 		[RelayCommand]
 		private void ApplyFilter()
 		{
-			var filter = AssistantActionFilterFactory.Create();
+			var filter = AssistantCommandFilterFactory.Create();
 
-			AssistantActions.Filter(filter);
+			AssistantCommands.Filter(filter);
 		}
 
 		[RelayCommand]
 		private void ClearFilter()
 		{
-			AssistantActionFilterFactory.Clear();
+			AssistantCommandFilterFactory.Clear();
 
-			AssistantActions.ClearFilter();
+			AssistantCommands.ClearFilter();
 		}
 
 		#endregion
@@ -93,9 +93,9 @@ namespace VoiceAssistant.ViewModels
 		#region DAL commands
 
 		[RelayCommand]
-		private async Task EnableAction(AssistantCommandEntity action)
+		private async Task EnableCommand(AssistantCommandEntity action)
 		{
-			var res = await _assistantActionService.UpdateAsync(action);
+			var res = await _assistantCommandService.UpdateAsync(action);
 			if (!res)
 			{
 				action.IsEnabled = !action.IsEnabled;
@@ -107,9 +107,9 @@ namespace VoiceAssistant.ViewModels
 		}
 
 		[RelayCommand]
-		private void CreateAction()
+		private void CreateCommand()
 		{
-			var vm = new ChangeAssistantActionVM(_assistantActionService, _urgentNotifier);
+			var vm = new ChangeAssistantCommandVM(_assistantCommandService, _urgentNotifier);
 
 			this.Navigation.PushDialog<AssistantCommandEntity?>(vm, (response) =>
 			{
@@ -118,15 +118,15 @@ namespace VoiceAssistant.ViewModels
 
 				Dispatcher.Invoke(() =>
 				{
-					AssistantActions.Add(response.ReturnValue);
+					AssistantCommands.Add(response.ReturnValue);
 				});
 			});
 		}
 
 		[RelayCommand]
-		private void EditAction(AssistantCommandEntity action)
+		private void EditCommand(AssistantCommandEntity action)
 		{
-			var vm = new ChangeAssistantActionVM(_assistantActionService, _urgentNotifier, action);
+			var vm = new ChangeAssistantCommandVM(_assistantCommandService, _urgentNotifier, action);
 
 			this.Navigation.PushDialog<AssistantCommandEntity?>(vm, (response) =>
 			{
@@ -135,22 +135,22 @@ namespace VoiceAssistant.ViewModels
 
 				Dispatcher.Invoke(() =>
 				{
-					var pos = AssistantActions.IndexOf(act => act.Id == response.ReturnValue.Id);
-					AssistantActions[pos] = response.ReturnValue;
+					var pos = AssistantCommands.IndexOf(act => act.Id == response.ReturnValue.Id);
+					AssistantCommands[pos] = response.ReturnValue;
 				});
 			});
 		}
 
 		[RelayCommand]
-		private async Task DeleteAction(AssistantCommandEntity action)
+		private async Task DeleteCommand(AssistantCommandEntity action)
 		{
-			var res = await _assistantActionService.DeleteAsync(action);
+			var res = await _assistantCommandService.DeleteAsync(action);
 
 			if (res)
 			{
 				Dispatcher.Invoke(() =>
 				{
-					AssistantActions.Remove(action);
+					AssistantCommands.Remove(action);
 				});
 			}
 			else
@@ -179,7 +179,7 @@ namespace VoiceAssistant.ViewModels
 					NeedsConfirmation = i % 2 == 1
 				};
 
-				AssistantActions.Add(action);
+				AssistantCommands.Add(action);
 			}
 		}
 	}

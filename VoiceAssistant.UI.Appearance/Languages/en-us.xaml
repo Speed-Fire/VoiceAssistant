@@ -18,21 +18,21 @@
     <sys:String x:Key="Strings.Buttons.Save">Save</sys:String>
     <sys:String x:Key="Strings.Buttons.Default">Set defaults</sys:String>
 
-    <sys:String x:Key="Strings.AsssistantAction.Change.Name.Colon">Name: *</sys:String>
-    <sys:String x:Key="Strings.AsssistantAction.Change.Command.Colon">Command: *</sys:String>
-    <sys:String x:Key="Strings.AsssistantAction.Change.Description.Colon">Description:</sys:String>
-    <sys:String x:Key="Strings.AsssistantAction.Change.Script.Colon">Script: *</sys:String>
-    <sys:String x:Key="Strings.AsssistantAction.Change.UserConfirmation">Requires user confirmation</sys:String>
+    <sys:String x:Key="Strings.AsssistantCommand.Change.Name.Colon">Name: *</sys:String>
+    <sys:String x:Key="Strings.AsssistantCommand.Change.Command.Colon">Command: *</sys:String>
+    <sys:String x:Key="Strings.AsssistantCommand.Change.Description.Colon">Description:</sys:String>
+    <sys:String x:Key="Strings.AsssistantCommand.Change.Script.Colon">Script: *</sys:String>
+    <sys:String x:Key="Strings.AsssistantCommand.Change.UserConfirmation">Requires user confirmation</sys:String>
 
     <sys:String x:Key="Strings.Filter">Filter</sys:String>
-    <sys:String x:Key="Strings.AssistantAction.Filter.Name.Colon">Name:</sys:String>
-    <sys:String x:Key="Strings.AssistantAction.Filter.StrictName">Strict search</sys:String>
-    <sys:String x:Key="Strings.AssistantAction.Filter.UConfirmation.Colon">User confirmation:</sys:String>
-    <sys:String x:Key="Strings.AssistantAction.Filter.UConfirmation.NotNeeded">No confirmation</sys:String>
-    <sys:String x:Key="Strings.AssistantAction.Filter.UConfirmation.Needed">Need confirmation</sys:String>
-    <sys:String x:Key="Strings.AssistantAction.Filter.Status.Colon">Status:</sys:String>
-    <sys:String x:Key="Strings.AssistantAction.Filter.Status.Enabled">Enabled</sys:String>
-    <sys:String x:Key="Strings.AssistantAction.Filter.Status.Disabled">Disabled</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Filter.Name.Colon">Name:</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Filter.StrictName">Strict search</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Filter.UConfirmation.Colon">User confirmation:</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Filter.UConfirmation.NotNeeded">No confirmation</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Filter.UConfirmation.Needed">Need confirmation</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Filter.Status.Colon">Status:</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Filter.Status.Enabled">Enabled</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Filter.Status.Disabled">Disabled</sys:String>
 
     <sys:String x:Key="Strings.Plugins.Settings">Settings</sys:String>
 

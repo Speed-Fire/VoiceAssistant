@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="VoiceAssistant.Views.AssistantActions.ChangeAssistantActionView"
+﻿<UserControl x:Class="VoiceAssistant.Views.AssistantCommands.ChangeAssistantCommandView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -103,11 +103,11 @@
                            Height="32"
                            VerticalAlignment="Bottom"
                            Margin="0 0 0 3"
-                           Text="{DynamicResource Strings.AsssistantAction.Change.Name.Colon}"/>
+                           Text="{DynamicResource Strings.AssistantCommand.Change.Name.Colon}"/>
 
                 <controls:AdvancedTextBox Grid.Row="1" Grid.Column="2"
                                           Placeholder="Name"
-                                          Text="{Binding AssistantAction.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                                          Text="{Binding AssistantCommand.Name, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!-- Command -->
 
@@ -115,10 +115,10 @@
                        Source="{StaticResource Bitmaps.Voice64}"/>
 
                 <TextBlock Grid.Row="3" Grid.Column="2"
-                           Text="{DynamicResource Strings.AsssistantAction.Change.Command.Colon}"/>
+                           Text="{DynamicResource Strings.AssistantCommand.Change.Command.Colon}"/>
 
                 <controls:AdvancedTextBox Grid.Row="4" Grid.Column="2"
-                                          Text="{Binding AssistantAction.Command, UpdateSourceTrigger=PropertyChanged}"/>
+                                          Text="{Binding AssistantCommand.Command, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!-- Description -->
 
@@ -126,10 +126,10 @@
                        Source="{StaticResource Bitmaps.Description64}"/>
 
                 <TextBlock Grid.Row="6" Grid.Column="2"
-                           Text="{DynamicResource Strings.AsssistantAction.Change.Description.Colon}"/>
+                           Text="{DynamicResource Strings.AssistantCommand.Change.Description.Colon}"/>
 
                 <controls:AdvancedTextBox Grid.Row="7" Grid.Column="2"
-                                          Text="{Binding AssistantAction.Description}"/>
+                                          Text="{Binding AssistantCommand.Description}"/>
 
                 <!-- Script -->
 
@@ -137,7 +137,7 @@
                        Source="{StaticResource Bitmaps.Script64}"/>
 
                 <TextBlock Grid.Row="9" Grid.Column="2"
-                           Text="{DynamicResource Strings.AsssistantAction.Change.Script.Colon}"/>
+                           Text="{DynamicResource Strings.AssistantCommand.Change.Script.Colon}"/>
 
                 <Grid Grid.Row="10" Grid.Column="2">
                     <Grid.ColumnDefinitions>
@@ -171,10 +171,10 @@
                 <CheckBox x:Name="confirm_checkBox"
                           Grid.Column="4" Margin="0 0 10 0"
                           Style="{StaticResource Styles.CheckBox}"
-                          Content="{DynamicResource Strings.AsssistantAction.Change.UserConfirmation}"
+                          Content="{DynamicResource Strings.AssistantCommand.Change.UserConfirmation}"
                           HorizontalAlignment="Right"
                           VerticalAlignment="Center"
-                          IsChecked="{Binding AssistantAction.NeedsConfirmation}"/>
+                          IsChecked="{Binding AssistantCommand.NeedsConfirmation}"/>
 
                 <Image Grid.Column="6" Source="{StaticResource Bitmaps.Attention64}"
                        Visibility="{Binding ElementName=confirm_checkBox, Path=IsChecked,

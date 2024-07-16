@@ -31,7 +31,7 @@ namespace VoiceAssistant.ViewModels
 		{
 			_voiceAssistantMonitor.Lock();
 
-            _globalNavigation.NavigateTo<AssistantActionsVM>();
+            _globalNavigation.NavigateTo<AssistantCommandsVM>();
         }
 
 		[RelayCommand]

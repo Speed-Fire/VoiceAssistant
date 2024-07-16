@@ -21,7 +21,7 @@ namespace VoiceAssistant.Components
 	/// <summary>
 	/// Логика взаимодействия для AssistantActionComponent.xaml
 	/// </summary>
-	public partial class AssistantActionComponent : UserControl
+	public partial class AssistantCommandComponent : UserControl
 	{
 		#region Dependency properties
 
@@ -29,12 +29,12 @@ namespace VoiceAssistant.Components
 
 		public static readonly DependencyProperty EnableCommandProperty=
 			DependencyProperty.Register("EnableCommand", typeof(ICommand),
-				typeof(AssistantActionComponent), new PropertyMetadata(null, EnableCommandPropertyChanged));
+				typeof(AssistantCommandComponent), new PropertyMetadata(null, EnableCommandPropertyChanged));
 
 		private static void EnableCommandPropertyChanged(DependencyObject d,
 			DependencyPropertyChangedEventArgs e)
 		{
-			var obj = d as AssistantActionComponent;
+			var obj = d as AssistantCommandComponent;
 			if (obj is null)
 				return;
 
@@ -58,12 +58,12 @@ namespace VoiceAssistant.Components
 
 		public static readonly DependencyProperty EditCommandProperty =
 			DependencyProperty.Register("EditCommand", typeof(ICommand),
-				typeof(AssistantActionComponent), new PropertyMetadata(null, EditCommandPropertyChanged));
+				typeof(AssistantCommandComponent), new PropertyMetadata(null, EditCommandPropertyChanged));
 
 		private static void EditCommandPropertyChanged(DependencyObject d,
 			DependencyPropertyChangedEventArgs e)
 		{
-			var obj = d as AssistantActionComponent;
+			var obj = d as AssistantCommandComponent;
 			if (obj is null)
 				return;
 
@@ -87,12 +87,12 @@ namespace VoiceAssistant.Components
 
 		public static readonly DependencyProperty DeleteCommandProperty =
 			DependencyProperty.Register("DeleteCommand", typeof(ICommand),
-				typeof(AssistantActionComponent), new PropertyMetadata(null, DeleteCommandPropertyChanged));
+				typeof(AssistantCommandComponent), new PropertyMetadata(null, DeleteCommandPropertyChanged));
 
 		private static void DeleteCommandPropertyChanged(DependencyObject d,
 			DependencyPropertyChangedEventArgs e)
 		{
-			var obj = d as AssistantActionComponent;
+			var obj = d as AssistantCommandComponent;
 			if (obj is null)
 				return;
 
@@ -117,7 +117,7 @@ namespace VoiceAssistant.Components
 		private readonly Storyboard _enableStoryboard;
 		private readonly Storyboard _disableStoryboard;
 
-		public AssistantActionComponent()
+		public AssistantCommandComponent()
 		{
 			InitializeComponent();
 
@@ -126,7 +126,7 @@ namespace VoiceAssistant.Components
 
 			InitAnimations();
 
-			Loaded += AssistantActionComponent_Loaded;
+			Loaded += AssistantCommandComponent_Loaded;
 		}
 
 		private void InitAnimations()
@@ -156,14 +156,14 @@ namespace VoiceAssistant.Components
 				_disableStoryboard.Freeze();
 		}
 
-		private void AssistantActionComponent_Loaded(object sender, RoutedEventArgs e)
+		private void AssistantCommandComponent_Loaded(object sender, RoutedEventArgs e)
 		{
 			var context = DataContext as INotifyPropertyChanged;
 			if (context is null)
 				return;
 
 			context.PropertyChanged += Context_PropertyChanged;
-			SynchronizeActionEnability();
+			SynchronizeCommandEnability();
 		}
 
 		private void Context_PropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -171,7 +171,7 @@ namespace VoiceAssistant.Components
 			if (e.PropertyName != nameof(AssistantCommandEntity.IsEnabled))
 				return;
 
-			SynchronizeActionEnability();
+			SynchronizeCommandEnability();
 		}
 
 #nullable disable
@@ -186,7 +186,7 @@ namespace VoiceAssistant.Components
 				EnabilityBorder.Visibility = Visibility.Collapsed;
 		}
 
-		private void SynchronizeActionEnability()
+		private void SynchronizeCommandEnability()
 		{
 			var action = DataContext as AssistantCommandEntity;
 			if (action is null)

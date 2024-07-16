@@ -12,17 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using VoiceAssistant.Domain.Models;
-using VoiceAssistant.Services.Entities;
 
-namespace VoiceAssistant.Views.AssistantActions
+namespace VoiceAssistant.Views.AssistantCommands
 {
 	/// <summary>
-	/// Логика взаимодействия для CommandsView.xaml
+	/// Логика взаимодействия для ChangeAssistantActionView.xaml
 	/// </summary>
-	public partial class AssistantActionsView : UserControl
+	public partial class ChangeAssistantCommandView : UserControl
 	{
-		public AssistantActionsView()
+		public ChangeAssistantCommandView()
 		{
 			InitializeComponent();
 		}
