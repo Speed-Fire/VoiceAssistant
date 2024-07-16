@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Domain.Models
 {
-    public abstract class AssistantScript
+    public class AssistantScript
     {
         public required long Id { get; set; }
         public required string Name { get; set; }
