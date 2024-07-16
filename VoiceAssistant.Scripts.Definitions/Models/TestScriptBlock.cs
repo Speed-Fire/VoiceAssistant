@@ -15,7 +15,6 @@ namespace VoiceAssistant.Scripts.Definitions.Models
 			 Tuple.Create("str", typeof(string)),
 			 Tuple.Create("dubble", typeof(double))],
 			false,
-			false,
 			[],
 			[],
 			[],

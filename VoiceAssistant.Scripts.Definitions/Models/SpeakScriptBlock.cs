@@ -14,7 +14,6 @@ namespace VoiceAssistant.Scripts.Definitions.Models
 			"Speak",
 			[Tuple.Create("Text", typeof(string))],
 			true,
-			false,
 			[typeof(IAssistantVoice).Assembly,
 			 typeof(VoicableException).Assembly],
 			[typeof(IAssistantVoice).Namespace!],

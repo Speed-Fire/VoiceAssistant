@@ -12,7 +12,6 @@ namespace VoiceAssistant.Scripts.Definitions.Models
 			"Delay",
 			[Tuple.Create("Duration", typeof(TimeSpan))],
 			true,
-			false,
 			[],
 			["System.Threading.Tasks"],
 			[],
