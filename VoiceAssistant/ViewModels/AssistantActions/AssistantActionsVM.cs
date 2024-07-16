@@ -17,7 +17,7 @@ using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Notifications.Urgent;
-using VoiceAssistant.Services.AssistantActionServices;
+using VoiceAssistant.Services.AssistantCommands;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.UI.Common.Collections.Filter;
 using VoiceAssistant.UI.Common.Extensions;
@@ -28,11 +28,11 @@ using VoiceAssistant.Views.AssistantActions;
 namespace VoiceAssistant.ViewModels
 {
 	public partial class AssistantActionsVM(
-		IAssistantActionService assistantActionService,
+		IAssistantCommandService assistantActionService,
 		IUrgentNotifier urgentNotificator) 
 		: ViewModel<AssistantActionsView>
 	{
-		private readonly IAssistantActionService _assistantActionService = assistantActionService;
+		private readonly IAssistantCommandService _assistantActionService = assistantActionService;
 		private readonly IUrgentNotifier _urgentNotifier = urgentNotificator;
 
 		private volatile bool _initialized = false;

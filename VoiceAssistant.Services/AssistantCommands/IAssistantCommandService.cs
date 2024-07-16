@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Services.Entities;
 
-namespace VoiceAssistant.Services.AssistantActionServices
+namespace VoiceAssistant.Services.AssistantCommands
 {
-	public interface IAssistantActionService
+	public interface IAssistantCommandService
 	{
 		Task<IEnumerable<AssistantCommandEntity>> GetAllAsync();
 		Task<bool> CreateAsync(AssistantCommandEntity action);

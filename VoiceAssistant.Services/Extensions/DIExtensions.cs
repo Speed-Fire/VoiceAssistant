@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
-using VoiceAssistant.Services.AssistantActionServices;
+using VoiceAssistant.Services.AssistantCommands;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Services.Misc.Implementations;
 using VoiceAssistant.Services.Misc.Interfaces;
@@ -30,7 +30,7 @@ namespace VoiceAssistant.Services.Extensions
 			IConfiguration config)
 		{
 			services
-				.AddTransient<IAssistantActionService, AssistantActionService>()
+				.AddTransient<IAssistantCommandService, AssistantCommandService>()
 				.AddTransient<UnderlyingCommandsProviderInitializer>()
 				.AddTransient<SequentialInitializerQueue>();
 

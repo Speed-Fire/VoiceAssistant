@@ -14,13 +14,13 @@ using VoiceAssistant.Services.Extensions;
 using VoiceAssistant.Services.Misc.Interfaces;
 using VoiceAssistant.Services.UnderlyingCommands;
 
-namespace VoiceAssistant.Services.AssistantActionServices
+namespace VoiceAssistant.Services.AssistantCommands
 {
-	internal class AssistantActionService(
+	internal class AssistantCommandService(
 		IUnderlyingCommandService underlyingCommandService,
 		AppDbContext dbContext,
-		ILogger<AssistantActionService> logger)
-		: IAssistantActionService
+		ILogger<AssistantCommandService> logger)
+		: IAssistantCommandService
 	{
 		private readonly IUnderlyingCommandService _underlyingCommandService = underlyingCommandService;
 		private readonly AppDbContext _dbContext = dbContext;

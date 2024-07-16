@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Notifications.Urgent;
-using VoiceAssistant.Services.AssistantActionServices;
+using VoiceAssistant.Services.AssistantCommands;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Views;
 using VoiceAssistant.Views.AssistantActions;
@@ -18,13 +18,13 @@ namespace VoiceAssistant.ViewModels.AssistantActions
 {
 	internal partial class ChangeAssistantActionVM : ViewModel<ChangeAssistantActionView>
 	{
-        private readonly IAssistantActionService _assistantActionService;
+        private readonly IAssistantCommandService _assistantActionService;
         private readonly IUrgentNotifier _urgentNotifier;
 
         public bool IsUpdatingMode { get; }
         public AssistantCommandEntity AssistantAction { get; }
 
-		public ChangeAssistantActionVM(IAssistantActionService service,
+		public ChangeAssistantActionVM(IAssistantCommandService service,
             IUrgentNotifier urgentNotifier)
 		{
 			_assistantActionService = service;
@@ -36,7 +36,7 @@ namespace VoiceAssistant.ViewModels.AssistantActions
 			_urgentNotifier = urgentNotifier;
 		}
 
-		public ChangeAssistantActionVM(IAssistantActionService service,
+		public ChangeAssistantActionVM(IAssistantCommandService service,
 			IUrgentNotifier urgentNotifier,
 			AssistantCommandEntity action)
 		{
