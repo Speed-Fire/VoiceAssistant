@@ -15,14 +15,17 @@ using VoiceAssistant.Recording;
 using VoiceAssistant.Services.Misc.Interfaces;
 using VoiceAssistant.CommandResolving.TextResolving.Services;
 using Microsoft.Extensions.Logging;
+using VoiceAssistant.Domain.Underlying;
+using Microsoft.Extensions.DependencyInjection;
+using VoiceAssistant.Services.Misc;
 
 namespace VoiceAssistant.Services
 {
 	public sealed class VoiceAssistantService : BackgroundService
 	{
-		private readonly struct PendingAssistantAction(AssistantAction action)
+		private readonly struct PendingAssistantCommand(UnderlyingCommand command)
 		{
-			public AssistantAction Action { get; } = action;
+			public UnderlyingCommand Command { get; } = command;
 			public DateTime PendingStartTime { get; } = DateTime.Now;
 		}
 
@@ -39,13 +42,14 @@ namespace VoiceAssistant.Services
 		private readonly IAssistantVoice _assistantVoice;
 		private readonly IUrgentNotifier _urgentNotifier;
 		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
+		private readonly SemaphoreSlim _underlyingExecutionSemaphore;
 		private readonly ILogger _logger;
 
-		private readonly ConcurrentQueue<AssistantAction> _actionsQueue;
+		private readonly ConcurrentQueue<UnderlyingCommand> _actionsQueue;
 		private readonly TimeSpan ConfirmationTimeout = TimeSpan.FromSeconds(10);
 		private readonly SemaphoreSlim _semaphore = new(1, 1);
 
-		private PendingAssistantAction? _pendingAction;
+		private PendingAssistantCommand? _pendingCommand;
 		private ConfirmationState? _confirmationState;
 
 		public VoiceAssistantService(
@@ -55,10 +59,13 @@ namespace VoiceAssistant.Services
 			IAssistantVoice assistantVoice,
 			IUrgentNotifier urgentNotifier,
 			IVoiceAssistantMonitor voiceAssistantMonitor,
+			[FromKeyedServices(ServiceConsts.UNDERLYING_COMMAND_EXECUTION)]
+				SemaphoreSlim underlyingExecutionSemaphore,
 			ILogger<VoiceAssistantService> logger)
 		{
 			_speechRecorder = speechRecorder;
 			_urgentNotifier = urgentNotifier;
+			_underlyingExecutionSemaphore = underlyingExecutionSemaphore;
 			_logger = logger;
 
 			_actionsQueue = new();
@@ -100,10 +107,10 @@ namespace VoiceAssistant.Services
 			{
 				while (!stoppingToken.IsCancellationRequested)
 				{
-					if(_pendingAction is not null)
+					if(_pendingCommand is not null)
 					{
-						var isNotPendingAnymore = await TryExecutePendingAction();
-						await TryDropPendingAction(isNotPendingAnymore);
+						var isNotPendingAnymore = await TryExecutePendingCommand();
+						await TryDropPendingCommand(isNotPendingAnymore);
 
 						continue;
 					}
@@ -115,11 +122,11 @@ namespace VoiceAssistant.Services
 					{
 						if (action.NeedsConfirmation)
 						{
-							await PutPendingAction(action);
+							await PutPendingCommand(action);
 						}
 						else
 						{
-							await ExecuteAction(action);
+							await ExecuteCommand(action);
 						}
 					}
 				}
@@ -131,6 +138,8 @@ namespace VoiceAssistant.Services
 		private async void CommandRecorded(string text)
 		{
 			Exception? ex = null;
+
+			await _underlyingExecutionSemaphore.WaitAsync();
 
 			if (_confirmationState == ConfirmationState.Pending)
 			{
@@ -151,6 +160,8 @@ namespace VoiceAssistant.Services
 			// error handling
 			if (ex is not null)
 				NotifyError(ex);
+
+			_underlyingExecutionSemaphore.Release();
 		}
 
 		private void NotifyError(Exception obj)
@@ -177,30 +188,30 @@ namespace VoiceAssistant.Services
 
 		#region Pending action
 
-		private async Task PutPendingAction(AssistantAction action)
+		private async Task PutPendingCommand(UnderlyingCommand command)
 		{
-			_logger.LogInformation("Action needs confirmation. Mark action as pending...");
+			_logger.LogInformation("Command needs confirmation. Mark command as pending...");
 
 			await _assistantVoice.Speak("Commands.Confirmation.Request");
 			_speechRecorder.SetMode(SpeechRecognitionMode.Loop);
 
-			_pendingAction = new(action);
+			_pendingCommand = new(command);
 			_confirmationState = ConfirmationState.Pending;
 		}
 
-		private async Task TryDropPendingAction(bool isNotPendingAnymore)
+		private async Task TryDropPendingCommand(bool isNotPendingAnymore)
 		{
 			if (isNotPendingAnymore ||
-				DateTime.Now - _pendingAction!.Value.PendingStartTime >= ConfirmationTimeout)
+				DateTime.Now - _pendingCommand!.Value.PendingStartTime >= ConfirmationTimeout)
 			{
 				await _semaphore.WaitAsync();
 
-				_pendingAction = null;
+				_pendingCommand = null;
 				_confirmationState = null;
 
 				_speechRecorder.SetMode(SpeechRecognitionMode.OnKeyword);
 
-				_logger.LogInformation("Pending action is dropped.");
+				_logger.LogInformation("Pending command is dropped.");
 
 				_semaphore.Release();
 			}
@@ -212,7 +223,7 @@ namespace VoiceAssistant.Services
 		/// If action is confirmed or denied, return true;
 		/// </summary>
 		/// <returns></returns>
-		private async Task<bool> TryExecutePendingAction()
+		private async Task<bool> TryExecutePendingCommand()
 		{
 			if (_confirmationState!.Value != ConfirmationState.Pending)
 			{
@@ -224,10 +235,10 @@ namespace VoiceAssistant.Services
 
 					if (_confirmationState.Value == ConfirmationState.Confirmed)
 					{
-						await ExecuteAction(_pendingAction!.Value.Action);
+						await ExecuteCommand(_pendingCommand!.Value.Command);
 					}
 
-					_pendingAction = null;
+					_pendingCommand = null;
 					_confirmationState = null;
 
 					return true;
@@ -288,13 +299,15 @@ namespace VoiceAssistant.Services
 
 		#endregion
 
-		#region Assistant action execution
+		#region Assistant command execution
 
-		private Task ExecuteAction(AssistantAction action)
+		private async Task ExecuteCommand(UnderlyingCommand command)
 		{
-			_logger.LogInformation("Executing action...");
+			await _underlyingExecutionSemaphore.WaitAsync();
 
-			return Task.CompletedTask;
+			_logger.LogInformation("Executing command...");
+
+			_underlyingExecutionSemaphore.Release();
 		}
 
 		#endregion
@@ -323,6 +336,8 @@ namespace VoiceAssistant.Services
 		public override void Dispose()
 		{
 			base.Dispose();
+
+			_semaphore.Dispose();
 
 			_speechRecorder.SpeechRecorded -= _speechToTextService.Convert;
 			_speechToTextService.Converted -= CommandRecorded;
