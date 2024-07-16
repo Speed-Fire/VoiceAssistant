@@ -6,14 +6,19 @@ using System.Runtime.Loader;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Scripts.Models
+namespace VoiceAssistant.Domain.Underlying
 {
 	public sealed class UnderlyingScript(
+		long id,
 		AssemblyLoadContext loadContext,
+		object instance,
 		MethodInfo method) 
 		: IDisposable
 	{
+		public long Id { get; } = id;
+
 		private AssemblyLoadContext? _loadContext = loadContext;
+		private object? _instance = instance;
 		private MethodInfo? _method = method;
 
 		private bool _disposed;
@@ -22,7 +27,7 @@ namespace VoiceAssistant.Scripts.Models
 		{
 			ObjectDisposedException.ThrowIf(_disposed, this);
 
-			return (Task<bool>)_method!.Invoke(null, [args])!;
+			return (Task<bool>)_method!.Invoke(_instance, [args])!;
 		}
 
 		public void Dispose()
@@ -33,6 +38,7 @@ namespace VoiceAssistant.Scripts.Models
 			_loadContext!.Unload();
 			_loadContext = null;
 			_method = null;
+			_instance = null;
 
 			_disposed = true;
 		}
