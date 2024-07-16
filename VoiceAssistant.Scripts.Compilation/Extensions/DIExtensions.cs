@@ -15,7 +15,8 @@ namespace VoiceAssistant.Scripts.Compilation.Extensions
 		{
 			services
 				.AddTransient<JsonToScriptBlocksParser>()
-				.AddTransient<IScriptCompiler, ScriptCompiler>();
+				.AddTransient<IScriptCompiler, ScriptCompiler>()
+				.AddTransient<IUnderlyingScriptFactory, UnderlyingScriptFactory>();
 
 			return services;
 		}

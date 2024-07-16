@@ -41,8 +41,6 @@ namespace VoiceAssistant.Scripts.Compilation
 
 			if (!result.Success)
 				return null;
-
-			ms.Close();
 			
 			return ms;
 		}
