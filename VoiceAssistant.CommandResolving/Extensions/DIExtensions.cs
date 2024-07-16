@@ -13,6 +13,7 @@ using VoiceAssistant.Domain.Models;
 using VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands;
 using VoiceAssistant.CommandResolving.TextResolving.Services;
 using VoiceAssistant.CommandResolving.TextResolving.Resolvers.Confirmation;
+using VoiceAssistant.Domain.Underlying;
 
 namespace VoiceAssistant.CommandResolving.Extensions
 {
@@ -28,7 +29,7 @@ namespace VoiceAssistant.CommandResolving.Extensions
 			services
 				.AddTransient<ITextResolvingService, TextResolvingService>()
 				.AddTransient<ActiveTextResolverSwitch<bool?>, ActiveConfirmationResolverSwitch>()
-				.AddTransient<ActiveTextResolverSwitch<AssistantAction>, ActiveCommandResolverSwitch>()
+				.AddTransient<ActiveTextResolverSwitch<UnderlyingCommand>, ActiveCommandResolverSwitch>()
 				.AddTransient<SmartCommandResolver>()
 				.AddTransient<DummyCommandResolver>()
 				.AddTransient<SmartConfirmationResolver>()

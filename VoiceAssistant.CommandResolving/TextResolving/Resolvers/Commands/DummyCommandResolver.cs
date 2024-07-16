@@ -6,21 +6,20 @@ using System.Threading.Tasks;
 using VoiceAssistant.CommandResolving.Misc;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Domain.Underlying;
 
 namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
 {
-    internal sealed class DummyCommandResolver : ITextResolver<AssistantAction>
+    internal sealed class DummyCommandResolver : ITextResolver<UnderlyingCommand>
     {
-        private readonly Provider<List<AssistantAction>> _actions;
-        private readonly Mutex _lock = new(false, TextResolvingConsts.RESOLVER_MUTEX);
-
-        public string Name => "Dummy command resolver";
+        private readonly Provider<List<UnderlyingCommand>> _actions;
+        private readonly SemaphoreSlim _semaphore = new(1, 1);
 
         public bool IsInitialized => true;
 
-        private IEnumerable<AssistantAction> _enabledActions;
+        private IEnumerable<UnderlyingCommand> _enabledActions;
 
-        public DummyCommandResolver(Provider<List<AssistantAction>> actions)
+        public DummyCommandResolver(Provider<List<UnderlyingCommand>> actions)
         {
             _actions = actions;
             _enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
@@ -33,12 +32,12 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
             return Task.FromResult(true);
         }
 
-        public Task<OneOf<AssistantAction, Exception>> Resolve(string command)
+        public Task<OneOf<UnderlyingCommand, Exception>> Resolve(string command)
         {
-            OneOf<AssistantAction, Exception> result;
+            OneOf<UnderlyingCommand, Exception> result;
             if (_actions.Value is null)
             {
-                result = new(new InvalidOperationException("AssistantActions aren't loaded!"));
+                result = new InvalidOperationException("AssistantActions aren't loaded!");
                 goto finish;
             }
 
@@ -47,9 +46,9 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
                 StringComparison.OrdinalIgnoreCase));
 
             if (action is null)
-                result = new(new UnrecognizedCommandException());
+                result = new UnrecognizedCommandException();
             else
-                result = new(action);
+                result = action;
 
             finish:
             return Task.FromResult(result);
@@ -57,16 +56,17 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
 
         private void ActionsProvider_Updated(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            _lock.WaitOne();
+            _semaphore.Wait();
 
             _enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
 
-            _lock.ReleaseMutex();
+            _semaphore.Release();
         }
 
         public void Dispose()
         {
             _actions.PropertyChanged -= ActionsProvider_Updated;
+            _semaphore.Dispose();
         }
     }
 }

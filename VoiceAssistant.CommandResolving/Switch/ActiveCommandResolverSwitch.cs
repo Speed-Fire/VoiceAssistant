@@ -8,6 +8,7 @@ using VoiceAssistant.CommandResolving.Options;
 using VoiceAssistant.CommandResolving.TextResolving.Resolvers;
 using VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Domain.Underlying;
 
 namespace VoiceAssistant.CommandResolving.Switch
 {
@@ -15,7 +16,7 @@ namespace VoiceAssistant.CommandResolving.Switch
 		DummyCommandResolver dummyResolver,
 		SmartCommandResolver smartResolver,
 		IOptions<TextResolvingOptions> options)
-		: ActiveTextResolverSwitch<AssistantAction>(
+		: ActiveTextResolverSwitch<UnderlyingCommand>(
 			dummyResolver, 
 			smartResolver, 
 			options.Value.PreferredCommandResolver)

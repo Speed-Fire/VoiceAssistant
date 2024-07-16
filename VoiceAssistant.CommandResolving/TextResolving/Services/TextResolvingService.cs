@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 using VoiceAssistant.CommandResolving.Switch;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Domain.Underlying;
 
 namespace VoiceAssistant.CommandResolving.TextResolving.Services
 {
 	internal class TextResolvingService(
 		ActiveTextResolverSwitch<bool?> confirmationResolverSwitch, 
-		ActiveTextResolverSwitch<AssistantAction> commandResolverSwitch)
+		ActiveTextResolverSwitch<UnderlyingCommand> commandResolverSwitch)
 		: ITextResolvingService
 	{
 		private readonly ActiveTextResolverSwitch<bool?> _confirmationResolverSwitch 
 			= confirmationResolverSwitch;
-		private readonly ActiveTextResolverSwitch<AssistantAction> _commandResolverSwitch 
+		private readonly ActiveTextResolverSwitch<UnderlyingCommand> _commandResolverSwitch 
 			= commandResolverSwitch;
 		private readonly SemaphoreSlim _semaphore = new(1, 1);
 
@@ -29,7 +30,7 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Services
 				   await commandResolversInitialization;
 		}
 
-		public Task<OneOf<AssistantAction, Exception>> ResolveCommand(string text)
+		public Task<OneOf<UnderlyingCommand, Exception>> ResolveCommand(string text)
 		{
 			return Resolve(_commandResolverSwitch, text);
 		}

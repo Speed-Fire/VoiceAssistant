@@ -7,16 +7,17 @@ using VoiceAssistant.CommandResolving.Misc;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Domain.Underlying;
 
 namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
 {
-    internal class SmartCommandResolver : ITextResolver<AssistantAction>
+    internal class SmartCommandResolver : ITextResolver<UnderlyingCommand>
     {
         private const string SYSTEM_MSG = "Hi. I'll send you a enumerated list of possible actions. Then i'm going to send you some sentences and you must send me back the number of the most similar action. If the sentence is not similar to any actions, then send -1. You should send only number.";
 
         private readonly Func<IChatGPT> _chatGPTFactory;
-        private readonly Provider<List<AssistantAction>> _actions;
-        private readonly Mutex _lock = new(false, TextResolvingConsts.RESOLVER_MUTEX);
+        private readonly Provider<List<UnderlyingCommand>> _commands;
+        private readonly SemaphoreSlim _semaphore = new(1, 1);
 
         private bool isInitialized = false;
         public bool IsInitialized => isInitialized;
@@ -24,17 +25,17 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
         private IChatGPT? _chat;
 
         private DateTime? _lastHistoryClean;
-        private IEnumerable<AssistantAction> _enabledActions;
+        private IEnumerable<UnderlyingCommand> _enabledCommands;
 
         public SmartCommandResolver(Func<IChatGPT> chatGPTFactpry,
-            Provider<List<AssistantAction>> actions)
+            Provider<List<UnderlyingCommand>> commands)
         {
             _chatGPTFactory = chatGPTFactpry;
-            _actions = actions;
+            _commands = commands;
 
-            _enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
+            _enabledCommands = _commands.Value is null ? [] : _commands.Value.Where(a => a.IsEnabled);
 
-            _actions.PropertyChanged += ActionsProvider_Updated;
+            _commands.PropertyChanged += ActionsProvider_Updated;
         }
 
         public async Task<bool> Initialize()
@@ -48,7 +49,7 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
                     return false;
 
                 await _chat.SendMessage(SYSTEM_MSG);
-
+                
                 await _chat.SendMessage(GetActionsList());
 
                 isInitialized = true;
@@ -58,11 +59,11 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
             return isInitialized;
         }
 
-        public async Task<OneOf<AssistantAction, Exception>> Resolve(string command)
+        public async Task<OneOf<UnderlyingCommand, Exception>> Resolve(string command)
         {
             if (!isInitialized || _chat is null)
             {
-                return new(new NotInitializedException(nameof(SmartCommandResolver)));
+                return new NotInitializedException(nameof(SmartCommandResolver));
             }
 
             try
@@ -73,16 +74,16 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
                 if (int.TryParse(response, out var number))
                 {
                     if (number < 0)
-                        return new(new UnrecognizedCommandException());
+                        return new UnrecognizedCommandException();
                     else
-                        return new(_enabledActions.ElementAt(number));
+                        return _enabledCommands.ElementAt(number);
                 }
 
-                return new(new UnrecognizedResponseException());
+                return new UnrecognizedResponseException();
             }
             catch (Exception ex)
             {
-                return new(ex);
+                return ex;
             }
         }
 
@@ -108,7 +109,7 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
             var sb = new StringBuilder();
 
             var i = 0;
-            foreach (var action in _enabledActions)
+            foreach (var action in _enabledCommands)
             {
                 sb.Append($"{i++}. ");
                 sb.AppendLine(action.Command);
@@ -119,20 +120,21 @@ namespace VoiceAssistant.CommandResolving.TextResolving.Resolvers.Commands
 
         private async void ActionsProvider_Updated(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            _lock.WaitOne();
+            await _semaphore.WaitAsync();
 
-            _enabledActions = _actions.Value is null ? [] : _actions.Value.Where(a => a.IsEnabled);
+            _enabledCommands = _commands.Value is null ? [] : _commands.Value.Where(a => a.IsEnabled);
 
             _lastHistoryClean = DateTime.Now.AddDays(-1);
 
             await TryClearHistory();
 
-            _lock.ReleaseMutex();
+            _semaphore.Release();
         }
 
         public void Dispose()
         {
-            _actions.PropertyChanged -= ActionsProvider_Updated;
+            _commands.PropertyChanged -= ActionsProvider_Updated;
+            _semaphore.Dispose();
         }
     }
 }
