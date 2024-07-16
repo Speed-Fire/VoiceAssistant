@@ -37,6 +37,8 @@ using VoiceAssistant.Services.Misc;
 using VoiceAssistant.UI.Appearance.Services;
 using VoiceAssistant.SpeechSynthesis.Services;
 using VoiceAssistant.Services.UnderlyingCommands;
+using VoiceAssistant.Scripts.Compilation.Extensions;
+using VoiceAssistant.Scripts.Definitions.Extensions;
 
 namespace VoiceAssistant
 {
@@ -71,6 +73,8 @@ namespace VoiceAssistant
 			// continue on service registration
 			builder.Services
 				.RegisterDAL(builder.Configuration)
+				.RegisterScriptCompilation()
+				.RegisterScriptDefinitions()
 				.RegisterVoiceRecording(builder.Configuration)
 				.RegisterSpeechSynthesis(builder.Configuration)
 				.RegisterServices(builder.Configuration)

@@ -55,6 +55,8 @@
     <ProjectReference Include="..\VoiceAssistant.ChatGPT\VoiceAssistant.ChatGPT.csproj" />
     <ProjectReference Include="..\VoiceAssistant.DAL\VoiceAssistant.DAL.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Recording\VoiceAssistant.Recording.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.Scripts.Compilation\VoiceAssistant.Scripts.Compilation.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.Scripts.Definitions\VoiceAssistant.Scripts.Definitions.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Services\VoiceAssistant.Services.csproj" />
     <ProjectReference Include="..\VoiceAssistant.SpeechSynthesis\VoiceAssistant.SpeechSynthesis.csproj" />
     <ProjectReference Include="..\VoiceAssistant.UI.Appearance\VoiceAssistant.UI.Appearance.csproj" />
