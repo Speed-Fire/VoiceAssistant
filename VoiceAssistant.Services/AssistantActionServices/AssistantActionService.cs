@@ -12,16 +12,17 @@ using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Services.Extensions;
 using VoiceAssistant.Services.Misc.Interfaces;
+using VoiceAssistant.Services.UnderlyingCommands;
 
 namespace VoiceAssistant.Services.AssistantActionServices
 {
 	internal class AssistantActionService(
-		Provider<List<AssistantAction>> actions,
+		IUnderlyingCommandService underlyingCommandService,
 		AppDbContext dbContext,
 		ILogger<AssistantActionService> logger)
 		: IAssistantActionService
 	{
-		private readonly Provider<List<AssistantAction>> _actions = actions;
+		private readonly IUnderlyingCommandService _underlyingCommandService = underlyingCommandService;
 		private readonly AppDbContext _dbContext = dbContext;
 		private readonly ILogger _logger = logger;
 
@@ -29,10 +30,14 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		public Task<IEnumerable<AssistantActionEntity>> GetAllAsync()
 		{
-			if (_actions.Value is null)
-				return Task.FromResult<IEnumerable<AssistantActionEntity>>([]);
+			return Task.Run(GetAllAsyncInternal);
+		}
 
-			return Task.FromResult(_actions.Value.Select(x => x.Map()));
+		private async Task<IEnumerable<AssistantActionEntity>> GetAllAsyncInternal()
+		{
+			var result = await _dbContext.Actions.AsNoTracking().ToListAsync();
+
+			return result.Select(a => a.Map()).ToList();
 		}
 
 		#endregion
@@ -46,9 +51,6 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		private async Task<bool> CreateAsyncInternal(AssistantActionEntity action)
 		{
-			if(_actions.Value is null)
-				return false;
-
 			var trans = await _dbContext.Database.BeginTransactionAsync();
 
 			try
@@ -59,9 +61,10 @@ namespace VoiceAssistant.Services.AssistantActionServices
 				await _dbContext.SaveChangesAsync();
 				await trans.CommitAsync();
 
-				_actions.Value.Add(entity);
-
-				RefreshProvider();
+				var res = await _underlyingCommandService.AddAsync(action);
+				if (res is not null)
+					_logger.LogWarning(res, 
+						"AssistantCommand was added to db, but cannot be used in the application!");
 
 				return true;
 			}
@@ -92,9 +95,6 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		private async Task<bool> UpdateAsyncInternal(AssistantActionEntity action)
 		{
-			if (_actions.Value is null)
-				return false;
-
 			var trans = await _dbContext.Database.BeginTransactionAsync();
 
 			try
@@ -110,11 +110,10 @@ namespace VoiceAssistant.Services.AssistantActionServices
 				await _dbContext.SaveChangesAsync();
 				await trans.CommitAsync();
 
-				var providerEntry = _actions.Value.First(a => a.Id == action.Id);
-				var entryPos = _actions.Value.IndexOf(providerEntry);
-				_actions.Value[entryPos] = entity;
-
-				RefreshProvider();
+				var res = await _underlyingCommandService.UpdateAsync(action);
+				if(res is not null)
+					_logger.LogWarning(res,
+						"AssistantCommand was updated in db, but cannot be used in the application!");
 
 				return true;
 			}
@@ -145,9 +144,6 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		private async Task<bool> DeleteAsyncInternal(AssistantActionEntity action)
 		{
-			if (_actions.Value is null)
-				return false;
-
 			var trans = await _dbContext.Database.BeginTransactionAsync();
 
 			try
@@ -157,10 +153,10 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 				await trans.CommitAsync();
 
-				var providerEntry = _actions.Value.First(a => a.Id == action.Id);
-				_actions.Value.Remove(providerEntry);
-
-				RefreshProvider();
+				var res = await _underlyingCommandService.DeleteAsync(action);
+				if (res is not null)
+					_logger.LogWarning(res,
+						"AssistantCommand was deleted from db, but cannot be deleted from the application!");
 
 				return true;
 			}
@@ -180,10 +176,5 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		#endregion
 
-		private void RefreshProvider()
-		{
-			var tmp = new List<AssistantAction>(_actions.Value ?? []);
-			_actions.Value = tmp;
-		}
 	}
 }
