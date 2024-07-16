@@ -28,5 +28,10 @@ namespace VoiceAssistant.Common
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public void Refresh()
+        {
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
+		}
     }
 }
