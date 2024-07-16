@@ -19,6 +19,8 @@ using VoiceAssistant.Core.SettingsHelpers;
 using VoiceAssistant.Services.Helpers;
 using VoiceAssistant.Services.Initializers;
 using VoiceAssistant.Services.Misc;
+using VoiceAssistant.Services.UnderlyingCommands;
+using VoiceAssistant.Scripts.Interfaces;
 
 namespace VoiceAssistant.Services.Extensions
 {
@@ -48,6 +50,10 @@ namespace VoiceAssistant.Services.Extensions
 			services.
 				Configure<SpeechToTextOptions>(config.GetSection("Application:SpeechToText"));
 
+			services
+				.AddSingleton<UnderlyingCommandService>()
+				.AddSingleton<IUnderlyingCommandService>(provider => provider.GetRequiredService<UnderlyingCommandService>())
+				.AddSingleton<IUnderlyingScriptService>(provider => provider.GetRequiredService<UnderlyingCommandService>());
 			return services;
 		}
 	}
