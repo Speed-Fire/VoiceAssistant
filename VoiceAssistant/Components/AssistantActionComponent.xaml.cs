@@ -168,7 +168,7 @@ namespace VoiceAssistant.Components
 
 		private void Context_PropertyChanged(object? sender, PropertyChangedEventArgs e)
 		{
-			if (e.PropertyName != nameof(AssistantActionEntity.IsEnabled))
+			if (e.PropertyName != nameof(AssistantCommandEntity.IsEnabled))
 				return;
 
 			SynchronizeActionEnability();
@@ -178,7 +178,7 @@ namespace VoiceAssistant.Components
 
 		private void Enabling_Completed(object sender, EventArgs e)
 		{
-			var action = DataContext as AssistantActionEntity;
+			var action = DataContext as AssistantCommandEntity;
 			if (action is null)
 				return;
 
@@ -188,7 +188,7 @@ namespace VoiceAssistant.Components
 
 		private void SynchronizeActionEnability()
 		{
-			var action = DataContext as AssistantActionEntity;
+			var action = DataContext as AssistantCommandEntity;
 			if (action is null)
 				return;
 

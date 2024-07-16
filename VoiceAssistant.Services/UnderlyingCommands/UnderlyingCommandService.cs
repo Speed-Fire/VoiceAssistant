@@ -30,7 +30,7 @@ namespace VoiceAssistant.Services.UnderlyingCommands
 
 		#region Update Commands
 
-		public async Task<Exception?> AddAsync(AssistantActionEntity entity)
+		public async Task<Exception?> AddAsync(AssistantCommandEntity entity)
 		{
 			await _underlyingExecutionSemaphore.WaitAsync();
 
@@ -78,7 +78,7 @@ namespace VoiceAssistant.Services.UnderlyingCommands
 			return null;
 		}
 
-		public async Task<Exception?> UpdateAsync(AssistantActionEntity entity)
+		public async Task<Exception?> UpdateAsync(AssistantCommandEntity entity)
 		{
 			await _underlyingExecutionSemaphore.WaitAsync();
 
@@ -124,7 +124,7 @@ namespace VoiceAssistant.Services.UnderlyingCommands
 			return null;
 		}
 
-		public Task<Exception?> DeleteAsync(AssistantActionEntity entity)
+		public Task<Exception?> DeleteAsync(AssistantCommandEntity entity)
 		{
 			_underlyingExecutionSemaphore.Wait();
 

@@ -36,7 +36,7 @@ namespace VoiceAssistant.ViewModels
 		private readonly IUrgentNotifier _urgentNotifier = urgentNotificator;
 
 		private volatile bool _initialized = false;
-		public FilteringCollection<AssistantActionEntity> AssistantActions { get; } = [];
+		public FilteringCollection<AssistantCommandEntity> AssistantActions { get; } = [];
 
 		public AssistantActionFilterFactory AssistantActionFilterFactory { get; } = new();
 
@@ -93,7 +93,7 @@ namespace VoiceAssistant.ViewModels
 		#region DAL commands
 
 		[RelayCommand]
-		private async Task EnableAction(AssistantActionEntity action)
+		private async Task EnableAction(AssistantCommandEntity action)
 		{
 			var res = await _assistantActionService.UpdateAsync(action);
 			if (!res)
@@ -111,7 +111,7 @@ namespace VoiceAssistant.ViewModels
 		{
 			var vm = new ChangeAssistantActionVM(_assistantActionService, _urgentNotifier);
 
-			this.Navigation.PushDialog<AssistantActionEntity?>(vm, (response) =>
+			this.Navigation.PushDialog<AssistantCommandEntity?>(vm, (response) =>
 			{
 				if (response.Result != true || response.ReturnValue == null)
 					return;
@@ -124,11 +124,11 @@ namespace VoiceAssistant.ViewModels
 		}
 
 		[RelayCommand]
-		private void EditAction(AssistantActionEntity action)
+		private void EditAction(AssistantCommandEntity action)
 		{
 			var vm = new ChangeAssistantActionVM(_assistantActionService, _urgentNotifier, action);
 
-			this.Navigation.PushDialog<AssistantActionEntity?>(vm, (response) =>
+			this.Navigation.PushDialog<AssistantCommandEntity?>(vm, (response) =>
 			{
 				if (response.Result != true || response.ReturnValue == null)
 					return;
@@ -142,7 +142,7 @@ namespace VoiceAssistant.ViewModels
 		}
 
 		[RelayCommand]
-		private async Task DeleteAction(AssistantActionEntity action)
+		private async Task DeleteAction(AssistantCommandEntity action)
 		{
 			var res = await _assistantActionService.DeleteAsync(action);
 
@@ -170,7 +170,7 @@ namespace VoiceAssistant.ViewModels
 			{
 				var script = new AssistantScript() { Id = i, Name = $"Script {i}" };
 
-				var action = new AssistantActionEntity()
+				var action = new AssistantCommandEntity()
 				{
 					AssistantScript = script,
 					Name = $"Action {i}",

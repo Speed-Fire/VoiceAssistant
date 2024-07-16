@@ -9,8 +9,8 @@ namespace VoiceAssistant.Services.UnderlyingCommands
 {
 	internal interface IUnderlyingCommandService
 	{
-		Task<Exception?> AddAsync(AssistantActionEntity entity);
-		Task<Exception?> UpdateAsync(AssistantActionEntity entity);
-		Task<Exception?> DeleteAsync(AssistantActionEntity entity);
+		Task<Exception?> AddAsync(AssistantCommandEntity entity);
+		Task<Exception?> UpdateAsync(AssistantCommandEntity entity);
+		Task<Exception?> DeleteAsync(AssistantCommandEntity entity);
 	}
 }

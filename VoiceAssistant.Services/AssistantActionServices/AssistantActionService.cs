@@ -28,12 +28,12 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		#region GetAll
 
-		public Task<IEnumerable<AssistantActionEntity>> GetAllAsync()
+		public Task<IEnumerable<AssistantCommandEntity>> GetAllAsync()
 		{
 			return Task.Run(GetAllAsyncInternal);
 		}
 
-		private async Task<IEnumerable<AssistantActionEntity>> GetAllAsyncInternal()
+		private async Task<IEnumerable<AssistantCommandEntity>> GetAllAsyncInternal()
 		{
 			var result = await _dbContext.Commands.AsNoTracking().ToListAsync();
 
@@ -44,12 +44,12 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		#region Create
 
-		public Task<bool> CreateAsync(AssistantActionEntity action)
+		public Task<bool> CreateAsync(AssistantCommandEntity action)
 		{
 			return Task.Run(() => CreateAsyncInternal(action));
 		}
 
-		private async Task<bool> CreateAsyncInternal(AssistantActionEntity action)
+		private async Task<bool> CreateAsyncInternal(AssistantCommandEntity action)
 		{
 			var trans = await _dbContext.Database.BeginTransactionAsync();
 
@@ -88,12 +88,12 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		#region Update
 
-		public Task<bool> UpdateAsync(AssistantActionEntity action)
+		public Task<bool> UpdateAsync(AssistantCommandEntity action)
 		{
 			return Task.Run(() => UpdateAsyncInternal(action));
 		}
 
-		private async Task<bool> UpdateAsyncInternal(AssistantActionEntity action)
+		private async Task<bool> UpdateAsyncInternal(AssistantCommandEntity action)
 		{
 			var trans = await _dbContext.Database.BeginTransactionAsync();
 
@@ -137,12 +137,12 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		#region Delete
 
-		public Task<bool> DeleteAsync(AssistantActionEntity action)
+		public Task<bool> DeleteAsync(AssistantCommandEntity action)
 		{
 			return Task.Run(() => DeleteAsyncInternal(action));
 		}
 
-		private async Task<bool> DeleteAsyncInternal(AssistantActionEntity action)
+		private async Task<bool> DeleteAsyncInternal(AssistantCommandEntity action)
 		{
 			var trans = await _dbContext.Database.BeginTransactionAsync();
 

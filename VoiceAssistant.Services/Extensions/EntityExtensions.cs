@@ -10,7 +10,7 @@ namespace VoiceAssistant.Services.Extensions
 {
 	internal static class EntityExtensions
 	{
-		internal static AssistantCommand Map(this AssistantActionEntity entity, AssistantCommand? existing = null)
+		internal static AssistantCommand Map(this AssistantCommandEntity entity, AssistantCommand? existing = null)
 		{
 			var action = existing is null ? new() { Name = string.Empty, Command = string.Empty} : existing;
 
@@ -26,7 +26,7 @@ namespace VoiceAssistant.Services.Extensions
 			return action;
 		}
 
-		internal static AssistantActionEntity Map(this AssistantCommand entity, AssistantActionEntity? existing = null)
+		internal static AssistantCommandEntity Map(this AssistantCommand entity, AssistantCommandEntity? existing = null)
 		{
 			var action = existing is null ? new() : existing;
 

@@ -10,9 +10,9 @@ namespace VoiceAssistant.Services.AssistantActionServices
 {
 	public interface IAssistantActionService
 	{
-		Task<IEnumerable<AssistantActionEntity>> GetAllAsync();
-		Task<bool> CreateAsync(AssistantActionEntity action);
-		Task<bool> UpdateAsync(AssistantActionEntity action);
-		Task<bool> DeleteAsync(AssistantActionEntity action);
+		Task<IEnumerable<AssistantCommandEntity>> GetAllAsync();
+		Task<bool> CreateAsync(AssistantCommandEntity action);
+		Task<bool> UpdateAsync(AssistantCommandEntity action);
+		Task<bool> DeleteAsync(AssistantCommandEntity action);
 	}
 }

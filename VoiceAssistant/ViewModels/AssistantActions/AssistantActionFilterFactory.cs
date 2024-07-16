@@ -23,14 +23,14 @@ namespace VoiceAssistant.ViewModels.AssistantActions
 		[ObservableProperty]
 		private int _statusOptionId = 0;
 
-		public ICollectionFilter<AssistantActionEntity> Create()
+		public ICollectionFilter<AssistantCommandEntity> Create()
 		{
 			var name = Name[..];
 			var strictName = StrictName;
 			var userConfirmationOptionId = UserConfirmationOptionId;
 			var statusOptionId = StatusOptionId;
 
-			return new FuncCollectionFilter<AssistantActionEntity>((action) =>
+			return new FuncCollectionFilter<AssistantCommandEntity>((action) =>
 			{
 				var firstFlag = strictName ? name == action.Name : action.Name.StartsWith(name);
 

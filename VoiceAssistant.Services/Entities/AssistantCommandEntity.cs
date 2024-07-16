@@ -9,14 +9,14 @@ using VoiceAssistant.Domain.Models;
 
 namespace VoiceAssistant.Services.Entities
 {
-	public partial class AssistantActionEntity : PublicValidator
+	public partial class AssistantCommandEntity : PublicValidator
 	{
 		public long Id { get; set; } = 0;
 		public long AssistantScriptId { get; set; } = 0;
 
 		private string _name = string.Empty;
 
-		[CustomValidation(typeof(AssistantActionEntity), nameof(ValidateNameCommand))]
+		[CustomValidation(typeof(AssistantCommandEntity), nameof(ValidateNameCommand))]
 		public string Name
 		{
 			get => _name;
@@ -25,7 +25,7 @@ namespace VoiceAssistant.Services.Entities
 
 		private string _command = string.Empty;
 
-		[CustomValidation(typeof(AssistantActionEntity), nameof(ValidateNameCommand))]
+		[CustomValidation(typeof(AssistantCommandEntity), nameof(ValidateNameCommand))]
 		public string Command
 		{
 			get => _command;
@@ -48,9 +48,9 @@ namespace VoiceAssistant.Services.Entities
 		[ObservableProperty]
 		private AssistantScript _assistantScript;
 
-        public AssistantActionEntity() { }
+        public AssistantCommandEntity() { }
 
-        public AssistantActionEntity(AssistantActionEntity entity)
+        public AssistantCommandEntity(AssistantCommandEntity entity)
         {
             this.Id = entity.Id;
 			this._name = entity.Name;

@@ -22,7 +22,7 @@ namespace VoiceAssistant.ViewModels.AssistantActions
         private readonly IUrgentNotifier _urgentNotifier;
 
         public bool IsUpdatingMode { get; }
-        public AssistantActionEntity AssistantAction { get; }
+        public AssistantCommandEntity AssistantAction { get; }
 
 		public ChangeAssistantActionVM(IAssistantActionService service,
             IUrgentNotifier urgentNotifier)
@@ -38,7 +38,7 @@ namespace VoiceAssistant.ViewModels.AssistantActions
 
 		public ChangeAssistantActionVM(IAssistantActionService service,
 			IUrgentNotifier urgentNotifier,
-			AssistantActionEntity action)
+			AssistantCommandEntity action)
 		{
 			_assistantActionService = service;
 
@@ -52,7 +52,7 @@ namespace VoiceAssistant.ViewModels.AssistantActions
 		[RelayCommand]
         private void Cancel()
         {
-            Navigation.ReleaseDialog<AssistantActionEntity?>(false, null);
+            Navigation.ReleaseDialog<AssistantCommandEntity?>(false, null);
         }
 
         [RelayCommand(CanExecute = nameof(CanChangeCommandExecute))]
@@ -80,7 +80,7 @@ namespace VoiceAssistant.ViewModels.AssistantActions
             }
 
 			AssistantAction.ErrorsChanged -= AssistantAction_ErrorsChanged;
-			Navigation.ReleaseDialog<AssistantActionEntity?>(true, AssistantAction);
+			Navigation.ReleaseDialog<AssistantCommandEntity?>(true, AssistantAction);
         }
 
         private bool CanChangeCommandExecute()
