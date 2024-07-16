@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Domain.Models
 {
-	public class AssistantAction
+    public class AssistantAction
 	{
 		public long Id { get; set; }
 		public required string Name { get; set; } = "";
 		public required string Command { get; set; } = "";
+		public required string Input { get; set; } = "";
 		public string? Description { get; set; }
 		public bool NeedsConfirmation { get; set; }
 		public bool IsEnabled { get; set; } = true;
 
-#nullable disable
-
-		public long AssistantScriptId { get; set; }
-		public AssistantScript AssistantScript { get; set; }
+		public long? AssistantScriptId { get; set; }
+		public AssistantScript? AssistantScript { get; set; }
 	}
 }

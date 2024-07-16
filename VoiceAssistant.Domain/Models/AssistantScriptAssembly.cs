@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Domain.Models.Scripts
+namespace VoiceAssistant.Domain.Models
 {
-	internal class AssistantScriptCompiled : AssistantScript
+	public class AssistantScriptAssembly
 	{
+		public long Id { get; set; }
 		public required byte[] RawAssembly { get; set; }
 	}
 }

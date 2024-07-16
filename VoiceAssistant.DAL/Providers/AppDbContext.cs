@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoiceAssistant.DAL.Misc;
 using VoiceAssistant.Domain.Models;
 
 namespace VoiceAssistant.DAL.Providers
@@ -13,6 +14,8 @@ namespace VoiceAssistant.DAL.Providers
 	{
 		public DbSet<AssistantAction> Actions => Set<AssistantAction>();
 		public DbSet<AssistantScript> Scripts => Set<AssistantScript>();
+		public DbSet<AssistantScriptAssembly> ScriptAssemblies => Set<AssistantScriptAssembly>();
+		public DbSet<AssistantScriptConstruction> ScriptConstructions => Set<AssistantScriptConstruction>();
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) 
@@ -29,6 +32,8 @@ namespace VoiceAssistant.DAL.Providers
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.BuildSettingsModels();
+
+			modelBuilder.ApplyConfiguration(new AssistantScriptConfiguration());
 
 			base.OnModelCreating(modelBuilder);
 		}
