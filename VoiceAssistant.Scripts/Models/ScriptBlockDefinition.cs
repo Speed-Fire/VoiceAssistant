@@ -19,7 +19,6 @@ namespace VoiceAssistant.Scripts.Models
 		string name,
 		IReadOnlyList<Tuple<string, Type>> parameters,
 		bool isAsync,
-		bool canBeOptimizedToFunction,
 		IEnumerable<Assembly> assemblies,
 		IEnumerable<string> namespaces,
 		string[] globalVars, 
@@ -27,7 +26,6 @@ namespace VoiceAssistant.Scripts.Models
 		: ScriptBlockDefinition(name, parameters)
 	{
 		public bool IsAsync { get; } = isAsync;
-		public bool CanBeOptimizedToFunction { get; } = canBeOptimizedToFunction;
 		public IEnumerable<Assembly> Assemblies { get; } = assemblies;
 		public IEnumerable<string> Namespaces { get; } = namespaces;
 		public string[] GlobalVars { get; } = globalVars;
