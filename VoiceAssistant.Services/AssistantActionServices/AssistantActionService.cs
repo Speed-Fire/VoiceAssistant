@@ -35,7 +35,7 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 		private async Task<IEnumerable<AssistantActionEntity>> GetAllAsyncInternal()
 		{
-			var result = await _dbContext.Actions.AsNoTracking().ToListAsync();
+			var result = await _dbContext.Commands.AsNoTracking().ToListAsync();
 
 			return result.Select(a => a.Map()).ToList();
 		}
@@ -55,9 +55,9 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 			try
 			{
-				AssistantAction entity = action.Map();
+				AssistantCommand entity = action.Map();
 
-				await _dbContext.Actions.AddAsync(entity);
+				await _dbContext.Commands.AddAsync(entity);
 				await _dbContext.SaveChangesAsync();
 				await trans.CommitAsync();
 
@@ -106,7 +106,7 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 				var entity = action.Map();
 
-				_dbContext.Actions.Update(entity);
+				_dbContext.Commands.Update(entity);
 				await _dbContext.SaveChangesAsync();
 				await trans.CommitAsync();
 
@@ -148,7 +148,7 @@ namespace VoiceAssistant.Services.AssistantActionServices
 
 			try
 			{
-				await _dbContext.Actions.Where(a => a.Id == action.Id)
+				await _dbContext.Commands.Where(a => a.Id == action.Id)
 					.ExecuteDeleteAsync();
 
 				await trans.CommitAsync();

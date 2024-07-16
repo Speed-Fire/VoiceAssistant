@@ -19,6 +19,6 @@ namespace VoiceAssistant.Domain.Models
 		public long? AssistantScriptAssemblyId { get; set; }
         public AssistantScriptAssembly? AssistantScriptAssembly { get; set; }
 
-		public virtual ICollection<AssistantAction> Actions { get; set; } = [];
+		public virtual ICollection<AssistantCommand> Actions { get; set; } = [];
     }
 }

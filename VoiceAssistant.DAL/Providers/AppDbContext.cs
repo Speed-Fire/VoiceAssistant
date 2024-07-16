@@ -12,7 +12,7 @@ namespace VoiceAssistant.DAL.Providers
 {
 	public class AppDbContext : DbContext
 	{
-		public DbSet<AssistantAction> Actions => Set<AssistantAction>();
+		public DbSet<AssistantCommand> Commands => Set<AssistantCommand>();
 		public DbSet<AssistantScript> Scripts => Set<AssistantScript>();
 		public DbSet<AssistantScriptAssembly> ScriptAssemblies => Set<AssistantScriptAssembly>();
 		public DbSet<AssistantScriptConstruction> ScriptConstructions => Set<AssistantScriptConstruction>();

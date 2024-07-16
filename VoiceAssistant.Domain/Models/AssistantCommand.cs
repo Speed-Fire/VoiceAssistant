@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VoiceAssistant.Domain.Models
 {
-    public class AssistantAction
+    public class AssistantCommand
 	{
 		public long Id { get; set; }
 		public required string Name { get; set; } = "";

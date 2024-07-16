@@ -31,9 +31,9 @@ namespace VoiceAssistant.Services.UnderlyingCommands
         {
             try
             {
-                _logger.LogInformation("Starting AssistantActions provider initialization...");
+                _logger.LogInformation("Starting AssistantCommands provider initialization...");
 
-                var commands = await _dbContext.Actions
+                var commands = await _dbContext.Commands
                     .Include(c => c.AssistantScript).ThenInclude(s => s!.AssistantScriptAssembly)
                     .ToListAsync();
 
@@ -42,7 +42,7 @@ namespace VoiceAssistant.Services.UnderlyingCommands
                 var scriptDictionary = CreateUnderlyingScriptDictionary(commands);
                 var underlyingCommands = new List<UnderlyingCommand>();
 
-                foreach (AssistantAction command in commands)
+                foreach (AssistantCommand command in commands)
                 {
                     UnderlyingCommand underlyingCommand = command;
                     if (command.AssistantScriptId is not null &&
@@ -55,16 +55,16 @@ namespace VoiceAssistant.Services.UnderlyingCommands
 
                 _commands.Value = underlyingCommands;
 
-                _logger.LogInformation("AssistantActions provider initialization finished.");
+                _logger.LogInformation("AssistantCommands provider initialization finished.");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Cannot initialize AssistantAction provider!");
+                _logger.LogError(ex, "Cannot initialize AssistantCommand provider!");
             }
         }
 
         private Dictionary<long, UnderlyingScript> CreateUnderlyingScriptDictionary(
-            IEnumerable<AssistantAction> commands)
+            IEnumerable<AssistantCommand> commands)
         {
             var scripts = commands
                     .Select(c => c.AssistantScript)

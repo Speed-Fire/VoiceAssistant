@@ -21,7 +21,7 @@ namespace VoiceAssistant.Domain.Underlying
 
 		public bool IsEnabled => IsEnabledUser && Script is not null;
 
-		public static implicit operator UnderlyingCommand(AssistantAction command)
+		public static implicit operator UnderlyingCommand(AssistantCommand command)
 			=> new(command.Id)
 			{
 				Command = command.Command,

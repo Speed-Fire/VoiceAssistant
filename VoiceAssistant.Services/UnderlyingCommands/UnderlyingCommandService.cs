@@ -182,7 +182,7 @@ namespace VoiceAssistant.Services.UnderlyingCommands
 
 			try
 			{
-				await _dbContext.Actions
+				await _dbContext.Commands
 					.Where(a => a.AssistantScriptId == script.Id)
 					.ExecuteUpdateAsync(props =>
 						props.SetProperty(a => a.AssistantScriptId, (long?)null)
