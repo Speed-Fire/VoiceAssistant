@@ -18,11 +18,11 @@
     <sys:String x:Key="Strings.Buttons.Save">Save</sys:String>
     <sys:String x:Key="Strings.Buttons.Default">Set defaults</sys:String>
 
-    <sys:String x:Key="Strings.AsssistantCommand.Change.Name.Colon">Name: *</sys:String>
-    <sys:String x:Key="Strings.AsssistantCommand.Change.Command.Colon">Command: *</sys:String>
-    <sys:String x:Key="Strings.AsssistantCommand.Change.Description.Colon">Description:</sys:String>
-    <sys:String x:Key="Strings.AsssistantCommand.Change.Script.Colon">Script: *</sys:String>
-    <sys:String x:Key="Strings.AsssistantCommand.Change.UserConfirmation">Requires user confirmation</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.Name.Colon">Name: *</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.Command.Colon">Command: *</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.Description.Colon">Description:</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.Script.Colon">Script: *</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.UserConfirmation">Requires user confirmation</sys:String>
 
     <sys:String x:Key="Strings.Filter">Filter</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Filter.Name.Colon">Name:</sys:String>

@@ -35,7 +35,7 @@ namespace VoiceAssistant.CommandResolving.Extensions
 				.AddTransient<SmartConfirmationResolver>()
 				.AddTransient<DummyConfirmationResolver>();
 
-			var actProvider = new Provider<List<AssistantCommand>>
+			var actProvider = new Provider<List<UnderlyingCommand>>
 			{
 				Value = []
 			};
