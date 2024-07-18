@@ -15,10 +15,10 @@ using System.Threading.Tasks;
 using VoiceAssistant.Common;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Entities;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.Services.AssistantCommands;
-using VoiceAssistant.Services.Entities;
 using VoiceAssistant.UI.Common.Collections.Filter;
 using VoiceAssistant.UI.Common.Extensions;
 using VoiceAssistant.ViewModels.AssistantCommands;
@@ -52,13 +52,13 @@ namespace VoiceAssistant.ViewModels
 
 			return Task.Run(async () =>
 			{
-				var actions = await _assistantCommandService.GetAllAsync();
+				var command = await _assistantCommandService.GetAllAsync();
 
 				Dispatcher.Invoke(() =>
 				{
-					foreach (var action in actions)
+					foreach (var command in command.Select(c => c.Map()))
 					{
-						AssistantCommands.Add(action);
+						AssistantCommands.Add(command);
 					}
 
 					//TestElements();
@@ -93,12 +93,12 @@ namespace VoiceAssistant.ViewModels
 		#region DAL commands
 
 		[RelayCommand]
-		private async Task EnableCommand(AssistantCommandEntity action)
+		private async Task EnableCommand(AssistantCommandEntity command)
 		{
-			var res = await _assistantCommandService.UpdateAsync(action);
+			var res = await _assistantCommandService.UpdateAsync(command.Map());
 			if (!res)
 			{
-				action.IsEnabled = !action.IsEnabled;
+				command.IsEnabled = !command.IsEnabled;
 
 				// error handling
 				_urgentNotifier
@@ -124,7 +124,7 @@ namespace VoiceAssistant.ViewModels
 		}
 
 		[RelayCommand]
-		private void EditCommand(AssistantCommandEntity action)
+		private void EditCommand(AssistantCommandEntity command)
 		{
 			var vm = new ChangeAssistantCommandVM(_assistantCommandService, _urgentNotifier, action);
 
@@ -142,15 +142,15 @@ namespace VoiceAssistant.ViewModels
 		}
 
 		[RelayCommand]
-		private async Task DeleteCommand(AssistantCommandEntity action)
+		private async Task DeleteCommand(AssistantCommandEntity command)
 		{
-			var res = await _assistantCommandService.DeleteAsync(action);
+			var res = await _assistantCommandService.DeleteAsync(command.Map());
 
 			if (res)
 			{
 				Dispatcher.Invoke(() =>
 				{
-					AssistantCommands.Remove(action);
+					AssistantCommands.Remove(command);
 				});
 			}
 			else

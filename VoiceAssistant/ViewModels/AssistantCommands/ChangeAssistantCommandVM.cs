@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.Entities;
+using VoiceAssistant.Extensions;
 using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.Services.AssistantCommands;
-using VoiceAssistant.Services.Entities;
+using VoiceAssistant.Services.AssistantScripts;
 using VoiceAssistant.Views;
 using VoiceAssistant.Views.AssistantCommands;
 
@@ -60,13 +62,15 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
         {
             bool res = false;
 
+            var command = AssistantCommand.Map();
+
             if(IsUpdatingMode)
             {
-                res = await _assistantCommandService.UpdateAsync(AssistantCommand);
+                res = await _assistantCommandService.UpdateAsync(command);
             }
             else
             {
-                res = await _assistantCommandService.CreateAsync(AssistantCommand);
+                res = await _assistantCommandService.CreateAsync(command);
             }
 
             if (!res)

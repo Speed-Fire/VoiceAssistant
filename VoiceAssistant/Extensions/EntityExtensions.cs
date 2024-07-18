@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Domain.Models;
-using VoiceAssistant.Services.Entities;
+using VoiceAssistant.Entities;
 
-namespace VoiceAssistant.Services.Extensions
+namespace VoiceAssistant.Extensions
 {
 	internal static class EntityExtensions
 	{
 		internal static AssistantCommand Map(this AssistantCommandEntity entity, AssistantCommand? existing = null)
 		{
-			var action = existing is null ? new() { Name = string.Empty, Command = string.Empty} : existing;
+			var action = existing is null ? new() { Name = string.Empty, Command = string.Empty, Input = string.Empty } : existing;
 
 			action.Id = entity.Id;
 			action.Name = entity.Name;

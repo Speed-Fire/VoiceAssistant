@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceAssistant.Services.Entities
+namespace VoiceAssistant.Entities
 {
 	public abstract class PublicValidator : ObservableValidator
 	{

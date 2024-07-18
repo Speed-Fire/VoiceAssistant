@@ -9,7 +9,6 @@ using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Common;
 using VoiceAssistant.Domain.Models;
 using VoiceAssistant.Services.AssistantCommands;
-using VoiceAssistant.Services.Entities;
 using VoiceAssistant.Services.Misc.Implementations;
 using VoiceAssistant.Services.Misc.Interfaces;
 using VoiceAssistant.Services.Hosted;
