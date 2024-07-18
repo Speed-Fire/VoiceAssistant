@@ -62,8 +62,6 @@ namespace VoiceAssistant.ViewModels
 					{
 						AssistantCommands.Add(command);
 					}
-
-					//TestElements();
 				});
 
 				_initialized = true;
@@ -167,24 +165,5 @@ namespace VoiceAssistant.ViewModels
 		#endregion
 
 		#endregion
-
-		private void TestElements()
-		{
-			for (int i = 0; i < 30; i++)
-			{
-				var script = new AssistantScript() { Id = i, Name = $"Script {i}" };
-
-				var action = new AssistantCommandEntity()
-				{
-					AssistantScript = script,
-					Name = $"Action {i}",
-					Command = "abra kadabra",
-					Description = i % 2 == 0 ? $"descr {i}" : null,
-					NeedsConfirmation = i % 2 == 1
-				};
-
-				AssistantCommands.Add(action);
-			}
-		}
 	}
 }
