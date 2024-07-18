@@ -21,14 +21,14 @@
 
             <Ellipse Stroke="{StaticResource Brushes.Triple}"
                      StrokeThickness="2"
-                     VerticalAlignment="Top"
+                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                      HorizontalAlignment="Left"
                      Width="25" Height="25"/>
 
             <Path x:Name="elem_checkMark"
                   Stroke="{StaticResource Brushes.Triple}"
                   StrokeThickness="2"
-                  VerticalAlignment="Top"
+                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                   HorizontalAlignment="Stretch"
                   Data="M 6 11.5 10 16.5 18 8.5"
                   Width="25" Height="25"/>
