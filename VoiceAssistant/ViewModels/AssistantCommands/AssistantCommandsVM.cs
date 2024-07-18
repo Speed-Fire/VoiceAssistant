@@ -28,10 +28,12 @@ using VoiceAssistant.Views.AssistantCommands;
 namespace VoiceAssistant.ViewModels
 {
 	public partial class AssistantCommandsVM(
+		IServiceProvider serviceProvider,
 		IAssistantCommandService assistantCommandService,
 		IUrgentNotifier urgentNotificator) 
 		: ViewModel<AssistantCommandsView>
 	{
+		private readonly IServiceProvider _serviceProvider = serviceProvider;
 		private readonly IAssistantCommandService _assistantCommandService = assistantCommandService;
 		private readonly IUrgentNotifier _urgentNotifier = urgentNotificator;
 
@@ -109,7 +111,8 @@ namespace VoiceAssistant.ViewModels
 		[RelayCommand]
 		private void CreateCommand()
 		{
-			var vm = new ChangeAssistantCommandVM(_assistantCommandService, _urgentNotifier);
+			var vm = ActivatorUtilities
+				.CreateInstance<ChangeAssistantCommandVM>(_serviceProvider);
 
 			this.Navigation.PushDialog<AssistantCommandEntity?>(vm, (response) =>
 			{
@@ -126,7 +129,8 @@ namespace VoiceAssistant.ViewModels
 		[RelayCommand]
 		private void EditCommand(AssistantCommandEntity command)
 		{
-			var vm = new ChangeAssistantCommandVM(_assistantCommandService, _urgentNotifier, action);
+			var vm = ActivatorUtilities
+				.CreateInstance<ChangeAssistantCommandVM>(_serviceProvider, command);
 
 			this.Navigation.PushDialog<AssistantCommandEntity?>(vm, (response) =>
 			{
