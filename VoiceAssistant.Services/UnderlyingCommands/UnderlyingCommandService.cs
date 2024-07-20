@@ -186,7 +186,8 @@ namespace VoiceAssistant.Services.UnderlyingCommands
 					.Where(a => a.AssistantScriptId == script.Id)
 					.ExecuteUpdateAsync(props =>
 						props.SetProperty(a => a.AssistantScriptId, (long?)null)
-							 .SetProperty(a => a.IsEnabled, false));
+							 .SetProperty(a => a.IsEnabled, false)
+							 .SetProperty(a => a.Input, string.Empty));
 
 				await trans.CommitAsync();
 
