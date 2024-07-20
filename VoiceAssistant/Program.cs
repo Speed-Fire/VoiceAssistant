@@ -46,7 +46,7 @@ namespace VoiceAssistant
 	{
 		public static async Task Main(string[] args)
 		{
-			CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
 			InitSubFolders();
 
