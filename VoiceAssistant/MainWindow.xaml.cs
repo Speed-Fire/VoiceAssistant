@@ -55,16 +55,12 @@ namespace VoiceAssistant
 
 		private void AttachFrame(UserControlFrame frame)
 		{
-			frame.SetValue(Grid.ColumnProperty, 1);
-			frame.SetValue(Grid.ColumnSpanProperty, 2);
-			frame.SetValue(Grid.RowSpanProperty, 4);
-
-			MainGrid.Children.Add(frame);
+			AdornerDecorator.Child = frame;
 		}
 
 		private void DetachFrame(UserControlFrame frame)
 		{
-			MainGrid.Children.Remove(frame);
+			AdornerDecorator.Child = null;
 		}
 
 		#endregion

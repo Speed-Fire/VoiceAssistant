@@ -49,6 +49,11 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Stretch"/>
 
+        <AdornerDecorator x:Name="AdornerDecorator"
+                          Grid.Column="1"
+                          Grid.ColumnSpan="2"
+                          Grid.RowSpan="4"/>
+
         <controls:Sidebar
             x:Name="NavBar"
             Grid.RowSpan="4"
