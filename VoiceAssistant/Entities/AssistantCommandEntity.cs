@@ -1,11 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using VoiceAssistant.Domain.Models;
 
 namespace VoiceAssistant.Entities
@@ -18,7 +21,7 @@ namespace VoiceAssistant.Entities
 		#region Name
 		private string _name = string.Empty;
 
-		[CustomValidation(typeof(AssistantCommandEntity), nameof(ValidateNameCommand))]
+		[CustomValidation(typeof(AssistantCommandEntity), nameof(ValidateNotEmpty))]
 		public string Name
 		{
 			get => _name;
@@ -29,7 +32,8 @@ namespace VoiceAssistant.Entities
 		#region Command
 		private string _command = string.Empty;
 
-		[CustomValidation(typeof(AssistantCommandEntity), nameof(ValidateNameCommand))]
+		[CustomValidation(typeof(AssistantCommandEntity), nameof(ValidateNotEmpty))]
+		[CustomValidation(typeof(AssistantCommandEntity), nameof(ValidateCommand))]
 		public string Command
 		{
 			get => _command;
@@ -44,17 +48,18 @@ namespace VoiceAssistant.Entities
 		#endregion
 
 		#region Script
-		private AssistantScript? _assistantScript;
+		private AssistantScript? _script;
 
-		[Required]
-		public AssistantScript? AssistantScript
+		[CustomValidation(typeof(AssistantCommandEntity), nameof(ValidateNotEmpty))]
+		public AssistantScript? Script
 		{
-			get => _assistantScript;
+			get => _script;
 			set
 			{
-				if (!SetProperty(ref _assistantScript, value, true))
+				if (!SetProperty(ref _script, value, true))
 					return;
 
+				Input = [];
 				AssistantScriptId = value?.Id;
 			}
 		}
@@ -75,7 +80,10 @@ namespace VoiceAssistant.Entities
 
 		#region Ctors
 
-		public AssistantCommandEntity() { }
+		public AssistantCommandEntity()
+		{
+			CommandInputParameters.CollectionChanged += OnInputCollectionChanged;
+		}
 
         public AssistantCommandEntity(AssistantCommandEntity entity)
         {
@@ -85,43 +93,120 @@ namespace VoiceAssistant.Entities
 			this._description = entity.Description;
 			this._needsConfirmation = entity.NeedsConfirmation;
 			this._isEnabled = entity.IsEnabled;
-			this._assistantScript = entity.AssistantScript;
+			this._script = entity.Script;
 			this.AssistantScriptId = entity.AssistantScriptId;
+			
+			CommandInputParameters.CollectionChanged += OnInputCollectionChanged;
         }
 
 		#endregion
 
+		#region Property changed
+
 		private void OnCommandChanged(string value)
 		{
-			// find all parameters
+			if (GetErrors(nameof(Command)).Any())
+				return;
 
-			CommandInputParameters.Clear();
+			// find all parameters		
+			List<string> newCurrent = FindAllParameters(value);
 
-			var openBracketPos = -1;
-			for(int i = 0; i < value.Length; i++)
+			// remove not found items
+			var toRemove = CommandInputParameters.Except(newCurrent).ToList();
+			foreach (var item in toRemove)
+				CommandInputParameters.Remove(item);
+
+			// add/insert new items
+			for (int i = 0; i < newCurrent.Count; i++)
 			{
-				if(value[i] == '{')
+				if (i < CommandInputParameters.Count)
+				{
+					if (newCurrent[i] == CommandInputParameters[i])
+						continue;
+					else
+						CommandInputParameters.Insert(i, newCurrent[i]);
+				}
+				else
+				{
+					CommandInputParameters.Add(newCurrent[i]);
+				}
+			}
+		}
+
+		private void OnInputCollectionChanged(object? sender,
+			System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			ValidateProperty(null, nameof(CommandInputParameters));
+		}
+
+		#endregion
+
+		#region Internal
+
+		private static List<string> FindAllParameters(string value)
+		{
+			var newCurrent = new List<string>();
+			var openBracketPos = -1;
+			for (int i = 0; i < value.Length; i++)
+			{
+				if (value[i] == '{')
 				{
 					openBracketPos = i;
 				}
 				else if (value[i] == '}' && openBracketPos > 0)
 				{
 					var offset = openBracketPos + 1;
-					CommandInputParameters.Add(value[offset..i]);
+					newCurrent.Add(value[offset..i]);
 
 					openBracketPos = -1;
 				}
 			}
+
+			return newCurrent;
 		}
+
+		#endregion
 
 		#region Validation methods
 
-		public static ValidationResult ValidateNameCommand(string str, ValidationContext context)
+		public static ValidationResult ValidateNotEmpty(object obj, ValidationContext context)
 		{
-			if (string.IsNullOrWhiteSpace(str))
-				return new ValidationResult($"{context.MemberName} can't be empty!");
-			else
-				return ValidationResult.Success!;
+			if ((obj is string str && string.IsNullOrWhiteSpace(str)) ||
+				obj is null)
+			{
+				var errorTemplate = 
+					GetResource<string>("Strings.AssistantCommand.Change.Validation.Empty");
+
+				return new(string.Format(errorTemplate, context.DisplayName));
+			}
+
+			return ValidationResult.Success!;
+		}
+
+		public static ValidationResult ValidateCommand(string str, ValidationContext context)
+		{
+			if (!string.IsNullOrWhiteSpace(str))
+			{
+				var parameters = FindAllParameters(str);
+
+				if (parameters.Count != parameters.Distinct().Count())
+				{
+					var error =
+						GetResource<string>("Strings.AssistantCommand.Change.Validation.Command.Duplicates");
+
+					return new(error);
+				}
+
+				if (parameters.Any(s => s.Length == 0))
+				{
+					var error =
+						GetResource<string>("Strings.AssistantCommand.Change.Validation.Command.EmptyInputParameter");
+
+					return new(error);
+				}
+			}
+
+			return ValidationResult.Success!;
 		}
 
 		#endregion

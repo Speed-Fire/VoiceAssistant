@@ -12,5 +12,7 @@
     <BitmapImage x:Key="Bitmaps.Error64" UriSource="../Resources/Icons/error64.png"/>
     <BitmapImage x:Key="Bitmaps.Warning64" UriSource="../Resources/Icons/warning64.png"/>
     <BitmapImage x:Key="Bitmaps.Info64" UriSource="../Resources/Icons/info64.png"/>
+    <BitmapImage x:Key="Bitmaps.Title64" UriSource="../Resources/Icons/title64.png"/>
+    <BitmapImage x:Key="Bitmaps.List64" UriSource="../Resources/Icons/list64.png"/>
 
 </ResourceDictionary>

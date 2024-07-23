@@ -18,11 +18,20 @@
     <sys:String x:Key="Strings.Buttons.Save">Save</sys:String>
     <sys:String x:Key="Strings.Buttons.Default">Set defaults</sys:String>
 
+    <sys:String x:Key="Strings.Validation.Field.Empty">Some fields are empty.</sys:String>
+    
     <sys:String x:Key="Strings.AssistantCommand.Change.Name.Colon">Name: *</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.Command.Colon">Command: *</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.Description.Colon">Description:</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.Script.Colon">Script: *</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.UserConfirmation">Requires user confirmation</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.InputParameters.Tooltip.Info">Input parameters are parameters retrieved from the command. You can bind them to the parameters of the selected script. To create input parameter put some keyword to parenthesises in your command. Example: Turn on the light for {minCount} minutes.</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.InputParameters.Tooltip.Unused">Some parameters are unused.</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.InputParameters.Colon">Available input parameters:</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.Validation.Empty">The &quot;{0}&quot; field is required.</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.Validation.Command.Duplicates">Command has duplicated input parameters.</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.Validation.Command.EmptyInputParameter">Input parameter must have keyword.</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.Validation.Script.IncorrectParameter">Some script parameter is incorrect.</sys:String>
 
     <sys:String x:Key="Strings.Filter">Filter</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Filter.Name.Colon">Name:</sys:String>

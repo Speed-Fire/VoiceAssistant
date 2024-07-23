@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:VoiceAssistant.Views"
+             xmlns:local="clr-namespace:VoiceAssistant.Views.AssistantCommands"
              
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"
              xmlns:convs="clr-namespace:Synergy.WPF.Common.Converters;assembly=Synergy.WPF.Common"
              
@@ -14,7 +15,30 @@
     <UserControl.Resources>
 
         <convs:Bool2VisibilityConverter x:Key="b2vconv"/>
+        <convs:LongStroryShortConverter x:Key="lssconv"/>
 
+        <sys:Int32 x:Key="maxVisibleLength">20</sys:Int32>
+        
+        <DataTemplate x:Key="Templates.Local.InputParameter">
+
+            <Border
+                CornerRadius="10"
+                BorderThickness="2"
+                Background="#303030"
+                BorderBrush="{StaticResource Brushes.Sindenary}"
+                Padding="15 2 15 2"
+                MouseMove="InputParameterMouseMove">
+
+                <TextBlock
+                    Style="{StaticResource Styles.TextBlock}"
+                    HorizontalAlignment="Center"
+                    Text="{Binding Converter={StaticResource lssconv},
+                        ConverterParameter={StaticResource maxVisibleLength}}"/>
+
+            </Border>
+
+        </DataTemplate>
+        
         <Style TargetType="TextBlock"
                BasedOn="{StaticResource Styles.TextBlock}">
             <Setter Property="FontSize" Value="18"/>
@@ -27,9 +51,9 @@
 
         <Style TargetType="controls:AdvancedTextBox"
                BasedOn="{StaticResource Styles.AdvancedTextBox}">
-            <Setter Property="Width" Value="400"/>
+            <!--<Setter Property="Width" Value="400"/>-->
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>
 
         <Style x:Key="Styles.Local.Button.Change" TargetType="controls:NormalButton"
@@ -42,9 +66,96 @@
                     <Setter Property="Content" Value="{DynamicResource Strings.Buttons.Change}"/>
                 </DataTrigger>
             </Style.Triggers>
-            
+
         </Style>
-        
+
+        <Style x:Key="Styles.Local.ListBox.Errors" TargetType="ListBox"
+               BasedOn="{StaticResource Styles.ListBox.Transparent}">
+
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel VerticalAlignment="Bottom"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+
+                                    <Border Padding="2">
+                                        <ContentPresenter/>
+                                    </Border>
+
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+
+                        <TextBlock Style="{StaticResource Styles.TextBlock}"
+                                   FontSize="15"
+                                   Foreground="DarkRed"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding}"/>
+
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="OpacityMask">
+                <Setter.Value>
+
+                    <LinearGradientBrush StartPoint="0.5 1" EndPoint="0.5 0">
+
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="Black" Offset="0.1"/>
+                        <GradientStop Color="Transparent" Offset="1"/>
+
+                    </LinearGradientBrush>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <Style x:Key="Styles.Local.ListBox.InputParameters" TargetType="ListBox"
+               BasedOn="{StaticResource Styles.ListBox.Transparent}">
+
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+
+                                    <Border Padding="2 5 2 5">
+                                        <ContentPresenter/>
+                                    </Border>
+
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="ItemTemplate"
+                    Value="{StaticResource Templates.Local.InputParameter}"/>
+
+        </Style>
+
     </UserControl.Resources>
     
     <Grid>
@@ -66,121 +177,214 @@
                 Command="{Binding CancelCommand}"/>
 
         <Border
+            x:Name="MainBorder"
             Grid.Row="1"
             Grid.Column="1"
             Style="{StaticResource Styles.Border.Background}">
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="15"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="15"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="15"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="32"/>
-                    <ColumnDefinition Width="5"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="32"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Name -->
-                
-                <TextBlock Grid.Row="0" Grid.Column="2"
-                           Height="32"
-                           VerticalAlignment="Bottom"
-                           Margin="0 0 0 3"
-                           Text="{DynamicResource Strings.AssistantCommand.Change.Name.Colon}"/>
+                <Grid>
 
-                <controls:AdvancedTextBox Grid.Row="1" Grid.Column="2"
-                                          Placeholder="Name"
-                                          Text="{Binding AssistantCommand.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <!-- Command -->
-
-                <Image Grid.Row="3" Grid.Column="0"
-                       Source="{StaticResource Bitmaps.Voice64}"/>
-
-                <TextBlock Grid.Row="3" Grid.Column="2"
-                           Text="{DynamicResource Strings.AssistantCommand.Change.Command.Colon}"/>
-
-                <controls:AdvancedTextBox Grid.Row="4" Grid.Column="2"
-                                          Text="{Binding AssistantCommand.Command, UpdateSourceTrigger=PropertyChanged}"/>
-
-                <!-- Description -->
-
-                <Image Grid.Row="6" Grid.Column="0"
-                       Source="{StaticResource Bitmaps.Description64}"/>
-
-                <TextBlock Grid.Row="6" Grid.Column="2"
-                           Text="{DynamicResource Strings.AssistantCommand.Change.Description.Colon}"/>
-
-                <controls:AdvancedTextBox Grid.Row="7" Grid.Column="2"
-                                          Text="{Binding AssistantCommand.Description}"/>
-
-                <!-- Script -->
-
-                <Image Grid.Row="9" Grid.Column="0"
-                       Source="{StaticResource Bitmaps.Script64}"/>
-
-                <TextBlock Grid.Row="9" Grid.Column="2"
-                           Text="{DynamicResource Strings.AssistantCommand.Change.Script.Colon}"/>
-
-                <Grid Grid.Row="10" Grid.Column="2">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32"/>
+                        <ColumnDefinition Width="5"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
+                    
+                    <!-- Name -->
 
-                    <controls:AdvancedTextBox Grid.Column="0"/>
+                    <Image Grid.Row="0" Grid.Column="0"
+                           Source="{StaticResource Bitmaps.Title64}"/>
 
-                    <controls:NormalButton
-                        Grid.Column="1"
-                        Content="Select"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2"
+                               Text="{DynamicResource Strings.AssistantCommand.Change.Name.Colon}"/>
+
+                    <controls:AdvancedTextBox Grid.Row="1" Grid.Column="2"
+                                              Placeholder="Name"
+                                              Text="{Binding AssistantCommand.Name, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
+                                              Validation.Error="OnValidationError"/>
+
+                    <!-- Command -->
+
+                    <Image Grid.Row="3" Grid.Column="0"
+                           Source="{StaticResource Bitmaps.Voice64}"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="2"
+                               Text="{DynamicResource Strings.AssistantCommand.Change.Command.Colon}"/>
+
+                    <controls:AdvancedTextBox Grid.Row="4" Grid.Column="2"
+                                              TextWrapping="Wrap"
+                                              Height="110"
+                                              Text="{Binding AssistantCommand.Command, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
+                                              Validation.Error="OnValidationError"/>
+
+                    <!-- Description -->
+
+                    <Image Grid.Row="6" Grid.Column="0"
+                           Source="{StaticResource Bitmaps.Description64}"/>
+
+                    <TextBlock Grid.Row="6" Grid.Column="2"
+                               Text="{DynamicResource Strings.AssistantCommand.Change.Description.Colon}"/>
+
+                    <controls:AdvancedTextBox Grid.Row="7" Grid.Column="2"
+                                              Text="{Binding AssistantCommand.Description}"/>
+
+                    <!-- Needs confirmation -->
+
+                    <CheckBox Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"
+                              Margin="0 0 30 0"
+                              Style="{StaticResource Styles.CheckBox}"
+                              Content="{DynamicResource Strings.AssistantCommand.Change.UserConfirmation}"
+                              VerticalAlignment="Center"
+                              VerticalContentAlignment="Center"
+                              IsChecked="{Binding AssistantCommand.NeedsConfirmation}"/>
+
+                    <ListBox x:Name="ErrorsListBox" 
+                            Grid.Row="11" Grid.ColumnSpan="3"
+                            Style="{StaticResource Styles.Local.ListBox.Errors}"/>
+
+                </Grid>
+
+                <Grid Grid.Column="2">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                 
+                    <!-- Script -->
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0"
+                               Source="{StaticResource Bitmaps.Script64}"/>
+
+                        <TextBlock Grid.Column="2"
+                                   Text="{DynamicResource Strings.AssistantCommand.Change.Script.Colon}"/>
+
+                        <controls:NormalButton Grid.Column="4"
+                                               Content="Select"
+                                               Command="{Binding OpenScriptSelectorCommand}"/>
+
+                    </Grid>
+
+                    <local:AssistantScriptBinderComponent
+                        Grid.Row="1"
+                        Margin="0 10 0 0"
+                        ItemsSource="{Binding ParametersBinder.Parameters, NotifyOnValidationError=True}"
+                        Validation.Error="OnValidationError"/>
+
+                    <Grid Grid.Row="4">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Margin="0 0 0 10">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="25"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="32"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0"
+                                   Source="{StaticResource Bitmaps.List64}"/>
+
+                            <TextBlock Grid.Column="2"
+                                       Text="{DynamicResource Strings.AssistantCommand.Change.InputParameters.Colon}"/>
+
+                            <Image Grid.Column="4"
+                                   MaxHeight="25"
+                                   VerticalAlignment="Center"
+                                   Source="{StaticResource Bitmaps.Info64}">
+                                <Image.ToolTip>
+                                    <ToolTip Placement="MousePoint">
+                                        <TextBlock
+                                            Style="{StaticResource Styles.TextBlock.Tooltip}"
+                                            Text="{DynamicResource Strings.AssistantCommand.Change.InputParameters.Tooltip.Info}"/>
+                                    </ToolTip>
+                                </Image.ToolTip>
+                            </Image>
+
+                            <Image Grid.Column="6" 
+                                   Source="{StaticResource Bitmaps.Attention64}"
+                                   Visibility="{Binding ParametersBinder.HasUnusedCommandInputs,
+                                        Converter={StaticResource b2vconv}}">
+                                <Image.ToolTip>
+                                    <ToolTip Placement="MousePoint">
+                                        <TextBlock
+                                            Style="{StaticResource Styles.TextBlock.Tooltip}"
+                                            Text="{DynamicResource Strings.AssistantCommand.Change.InputParameters.Tooltip.Unused}"/>
+                                    </ToolTip>
+                                </Image.ToolTip>
+                            </Image>
+                            
+                        </Grid>
+
+                        <ListBox Grid.Row="1"
+                                 Style="{StaticResource Styles.Local.ListBox.InputParameters}"
+                                 ItemsSource="{Binding AssistantCommand.CommandInputParameters}"/>
+                        
+                    </Grid>
 
                 </Grid>
                 
                 <!-- Buttons -->
 
-                <Rectangle Grid.Row="11" Grid.ColumnSpan="7"
+                <Rectangle Grid.Row="1" Grid.ColumnSpan="5"
                            Margin="0 15 0 15"
                            Style="{StaticResource Styles.Delimeter.Horizontal}"/>
 
                 <controls:NormalButton
-                    Grid.Row="12" Grid.Column="4" Grid.ColumnSpan="3"
+                    Grid.Row="2" Grid.ColumnSpan="5"
                     Style="{StaticResource Styles.Local.Button.Change}"
                     HorizontalAlignment="Right"
                     Margin="0 0 10 0"
                     Command="{Binding ChangeCommand}"/>
 
-                <!-- Second column -->
-
-                <CheckBox x:Name="confirm_checkBox"
-                          Grid.Column="4" Margin="0 0 10 0"
-                          Style="{StaticResource Styles.CheckBox}"
-                          Content="{DynamicResource Strings.AssistantCommand.Change.UserConfirmation}"
-                          HorizontalAlignment="Right"
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding AssistantCommand.NeedsConfirmation}"/>
-
-                <Image Grid.Column="6" Source="{StaticResource Bitmaps.Attention64}"
-                       Visibility="{Binding ElementName=confirm_checkBox, Path=IsChecked,
-                            Converter={StaticResource b2vconv}}"/>
-
-                
             </Grid>
             
         </Border>

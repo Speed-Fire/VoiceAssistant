@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace VoiceAssistant.Entities
 {
@@ -12,6 +13,16 @@ namespace VoiceAssistant.Entities
 		public void ValidateAll()
 		{
 			ValidateAllProperties();
+		}
+
+		protected static T GetResource<T>(object key)
+		{
+			return (T)Application.Current.FindResource(key);
+		}
+
+		protected static T? TryGetResource<T>(object key)
+		{
+			return (T?)Application.Current.TryFindResource(key);
 		}
 	}
 }

@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +26,9 @@
     <None Remove="Resources\Icons\edit64.png" />
     <None Remove="Resources\Icons\error64.png" />
     <None Remove="Resources\Icons\info64.png" />
+    <None Remove="Resources\Icons\list64.png" />
     <None Remove="Resources\Icons\script64.png" />
+    <None Remove="Resources\Icons\title64.png" />
     <None Remove="Resources\Icons\voice64.png" />
     <None Remove="Resources\Icons\warning64.png" />
   </ItemGroup>
@@ -72,7 +75,9 @@
     <Resource Include="Resources\Icons\edit64.png" />
     <Resource Include="Resources\Icons\error64.png" />
     <Resource Include="Resources\Icons\info64.png" />
+    <Resource Include="Resources\Icons\list64.png" />
     <Resource Include="Resources\Icons\script64.png" />
+    <Resource Include="Resources\Icons\title64.png" />
     <Resource Include="Resources\Icons\voice64.png" />
     <Resource Include="Resources\Icons\warning64.png" />
   </ItemGroup>

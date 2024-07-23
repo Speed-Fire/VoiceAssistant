@@ -23,32 +23,62 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
         private readonly IAssistantCommandService _assistantCommandService;
         private readonly IUrgentNotifier _urgentNotifier;
 
+        public AssistantScriptParametersBinderVM ParametersBinder { get; }
+
         public bool IsUpdatingMode { get; }
         public AssistantCommandEntity AssistantCommand { get; }
 
-		public ChangeAssistantCommandVM(IAssistantCommandService service,
-            IUrgentNotifier urgentNotifier)
+		public ChangeAssistantCommandVM(
+			IAssistantCommandService service,
+			IUrgentNotifier urgentNotifier)
 		{
 			_assistantCommandService = service;
 
 			IsUpdatingMode = false;
 			AssistantCommand = new();
 
-			AssistantCommand.ErrorsChanged += AssistantCommand_ErrorsChanged;
+            ParametersBinder = new(AssistantCommand);
+
+			ParametersBinder.ErrorsChanged += OnNestedVMsErrorsChanged;
+			AssistantCommand.ErrorsChanged += OnNestedVMsErrorsChanged;
+
 			_urgentNotifier = urgentNotifier;
 		}
 
-		public ChangeAssistantCommandVM(IAssistantCommandService service,
+		public ChangeAssistantCommandVM(
+            IAssistantCommandService service,
 			IUrgentNotifier urgentNotifier,
 			AssistantCommandEntity command)
 		{
 			_assistantCommandService = service;
 
 			IsUpdatingMode = true;
+
 			AssistantCommand = new(command);
 
-			AssistantCommand.ErrorsChanged += AssistantCommand_ErrorsChanged;
+			ParametersBinder = new(AssistantCommand);
+
+			ParametersBinder.ErrorsChanged += OnNestedVMsErrorsChanged;
+			AssistantCommand.ErrorsChanged += OnNestedVMsErrorsChanged;
+			
 			_urgentNotifier = urgentNotifier;
+		}
+
+		#region Commands
+
+		[RelayCommand]
+		private void OpenScriptSelector()
+		{
+			Navigation.PushDialog<AssistantScriptSelectorVM, AssistantScript>(result =>
+			{
+				var dialogResult = result.Result;
+				var script = result.ReturnValue;
+
+				if (dialogResult != true || script is null)
+					return;
+
+				AssistantCommand.Script = script;
+			});
 		}
 
 		[RelayCommand]
@@ -60,8 +90,18 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
         [RelayCommand(CanExecute = nameof(CanChangeCommandExecute))]
         private async Task Change()
         {
-            bool res = false;
+			AssistantCommand.ValidateAll();
+			ParametersBinder.Validate();
 
+			if (AssistantCommand.HasErrors || ParametersBinder.HasErrors)
+			{
+				var message = GetAppResource<string>("Strings.Validation.Field.Empty");
+
+				_urgentNotifier.NotifyWarning(message);
+				return;
+			}
+
+            bool res = false;
             var command = AssistantCommand.Map();
 
             if(IsUpdatingMode)
@@ -83,19 +123,34 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
                 return;
             }
 
-			AssistantCommand.ErrorsChanged -= AssistantCommand_ErrorsChanged;
+			AssistantCommand.ErrorsChanged -= OnNestedVMsErrorsChanged;
 			Navigation.ReleaseDialog<AssistantCommandEntity?>(true, AssistantCommand);
         }
 
         private bool CanChangeCommandExecute()
         {
-            return !AssistantCommand.HasErrors;
+            return !AssistantCommand.HasErrors && !ParametersBinder.HasErrors;
         }
 
-		private void AssistantCommand_ErrorsChanged(object? sender,
+		#endregion
+
+		#region Validation
+
+		private void OnNestedVMsErrorsChanged(object? sender,
 			System.ComponentModel.DataErrorsChangedEventArgs e)
 		{
             ChangeCommand.NotifyCanExecuteChanged();
 		}
+
+		#endregion
+
+		#region Dispose
+
+		public override void Dispose()
+		{
+			ParametersBinder.Dispose();
+		}
+
+		#endregion
 	}
 }

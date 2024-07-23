@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="VoiceAssistant.Views.AssistantCommands.AssistantScriptBinderComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VoiceAssistant.Views.AssistantCommands"
+             
+             x:Name="element"
+             
+             xmlns:elements="clr-namespace:VoiceAssistant.UI.Common.Elements;assembly=VoiceAssistant.UI.Common"
+             xmlns:convs="clr-namespace:Synergy.WPF.Common.Converters;assembly=Synergy.WPF.Common"
+             
+             Validation.ErrorTemplate="{x:Null}"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <convs:ValueConverterGroup x:Key="sctiptnnull2vconv">
+            <convs:NotNullConverter/>
+            <convs:Bool2VisibilityConverter/>
+        </convs:ValueConverterGroup>
+        
+        <Style x:Key="Styles.Local.Border" TargetType="elements:ClippingBorder"
+               BasedOn="{StaticResource Styles.Border.Background}">
+
+            <Setter Property="Background" Value="{StaticResource Brushes.Quinary}"/>
+            <Setter Property="Padding" Value="0"/>
+
+        </Style>
+
+        <Style x:Key="Styles.Local.Grid" TargetType="Grid">
+
+            <Setter Property="Background">
+                <Setter.Value>
+
+                    <VisualBrush TileMode="Tile"
+                                 Viewport="0,0,50,50" ViewportUnits="Absolute" 
+                                 Viewbox="0,0,50,50" ViewboxUnits="Absolute">
+                        <VisualBrush.Visual>
+                            <Rectangle Stroke="{StaticResource Brushes.Senary}" 
+                                       StrokeThickness="1" Height="50" Width="50"/>
+                        </VisualBrush.Visual>
+
+                        <VisualBrush.Transform>
+                            <TranslateTransform X="-2" Y="-2"/>
+                        </VisualBrush.Transform>
+                        
+                    </VisualBrush>
+
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+
+        <Style x:Key="Styles.Local.TextBlock.Header" TargetType="TextBlock">
+
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Padding" Value="10 2 10 2"/>
+
+            <Setter Property="Foreground" Value="{StaticResource Brushes.Senary}"/>
+
+            <Setter Property="Background">
+                <Setter.Value>
+
+                    <RadialGradientBrush GradientOrigin="0.8 0.5">
+
+                        <GradientStop Color="{DynamicResource Colors.Secondary}" Offset="0"/>
+
+                        <GradientStop Color="DarkRed" Offset="1"/>
+
+                    </RadialGradientBrush>
+                    
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+
+        <Style x:Key="Styles.Local.Border.Script" TargetType="elements:ClippingBorder">
+
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Background" Value="{StaticResource Brushes.Secondary}"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+
+            <Setter Property="Visibility"
+                    Value="{Binding AssistantCommand.Script,
+                        Converter={StaticResource sctiptnnull2vconv}}"/>
+
+        </Style>
+
+        <Style x:Key="Styles.Local.ListBox.ItemContainer" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+
+                        <Border Padding="5">
+                            <ContentPresenter/>
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+ 
+        <ControlTemplate x:Key="Templates.Local.ValidationError">
+
+            <Border BorderBrush="DarkRed"
+                    BorderThickness="2"
+                    Background="{x:Null}"
+                    Style="{StaticResource Styles.Border.Background}"
+                    Padding="0">
+                <AdornedElementPlaceholder/>
+            </Border>
+            
+        </ControlTemplate>
+        
+    </UserControl.Resources>
+
+    <Grid DataContext="{Binding AssistantCommand.Script, NotifyOnValidationError=True}"
+          Validation.ErrorTemplate="{StaticResource Templates.Local.ValidationError}">
+        
+        <elements:ClippingBorder
+            DataContext="{Binding ElementName=element, Path=DataContext}"
+            Style="{StaticResource Styles.Local.Border}">
+
+            <Grid Style="{StaticResource Styles.Local.Grid}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+            
+                <elements:ClippingBorder Grid.Row="1" Grid.Column="1"
+                                         Style="{StaticResource Styles.Local.Border.Script}">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Style="{StaticResource Styles.Local.TextBlock.Header}"
+                                   FontSize="15"
+                                   Text="{Binding AssistantCommand.Script.Name}"/>
+
+                        <ListBox x:Name="ItemListBox"
+                                 Grid.Row="1"
+                                 HorizontalContentAlignment="Stretch"
+                                 Style="{StaticResource Styles.ListBox.Transparent}"
+                                 ItemContainerStyle="{StaticResource Styles.Local.ListBox.ItemContainer}"
+                                 Margin="0 10 0 10">
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <local:AssistantScriptParameterComponent
+                                        HorizontalAlignment="Stretch"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        
+                        </ListBox>
+                    
+                    </Grid>
+                
+                </elements:ClippingBorder>
+            
+            </Grid>
+        
+        </elements:ClippingBorder>
+
+    </Grid>
+
+</UserControl>

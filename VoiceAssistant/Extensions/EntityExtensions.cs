@@ -12,7 +12,7 @@ namespace VoiceAssistant.Extensions
 	{
 		internal static AssistantCommand Map(this AssistantCommandEntity entity, AssistantCommand? existing = null)
 		{
-			var action = existing is null ? new() { Name = string.Empty, Command = string.Empty, Input = string.Empty } : existing;
+			var action = existing is null ? new() { Name = string.Empty, Command = string.Empty, Input = [] } : existing;
 
 			action.Id = entity.Id;
 			action.Name = entity.Name;
@@ -20,7 +20,7 @@ namespace VoiceAssistant.Extensions
 			action.Description = string.IsNullOrWhiteSpace(entity.Description) ? null : entity.Description;
 			action.NeedsConfirmation = entity.NeedsConfirmation;
 			action.IsEnabled = entity.IsEnabled;
-			action.AssistantScript = entity.AssistantScript;
+			action.AssistantScript = entity.Script;
 			action.AssistantScriptId = entity.AssistantScriptId;
 
 			return action;
@@ -36,7 +36,7 @@ namespace VoiceAssistant.Extensions
 			action.Description = string.IsNullOrWhiteSpace(entity.Description) ? null : entity.Description;
 			action.NeedsConfirmation = entity.NeedsConfirmation;
 			action.IsEnabled = entity.IsEnabled;
-			action.AssistantScript = entity.AssistantScript;
+			action.Script = entity.AssistantScript;
 			action.AssistantScriptId = entity.AssistantScriptId;
 
 			return action;

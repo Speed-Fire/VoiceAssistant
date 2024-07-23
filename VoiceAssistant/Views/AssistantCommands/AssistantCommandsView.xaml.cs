@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VoiceAssistant.Domain.Models;
-using VoiceAssistant.Services.Entities;
 
 namespace VoiceAssistant.Views.AssistantCommands
 {

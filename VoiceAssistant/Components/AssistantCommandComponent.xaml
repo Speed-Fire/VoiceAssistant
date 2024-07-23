@@ -303,7 +303,7 @@
 
                         <TextBlock Grid.Column="1"
                                    Style="{StaticResource Styles.Local.TextBlock.Righted}"
-                                   Text="{Binding AssistantScript.Name}"/>
+                                   Text="{Binding Script.Name}"/>
 
                     </Grid>
 
