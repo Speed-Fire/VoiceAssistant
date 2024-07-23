@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.Domain.Models;
-using VoiceAssistant.Entities;
 using VoiceAssistant.Extensions;
 using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.Services.AssistantCommands;

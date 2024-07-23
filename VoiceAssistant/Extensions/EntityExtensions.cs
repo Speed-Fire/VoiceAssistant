@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Domain.Models;
-using VoiceAssistant.Entities;
+using VoiceAssistant.ViewModels.AssistantCommands;
 
 namespace VoiceAssistant.Extensions
 {

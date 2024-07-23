@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceAssistant.Entities;
 using VoiceAssistant.UI.Common.Collections.Filter;
 
 namespace VoiceAssistant.ViewModels.AssistantCommands

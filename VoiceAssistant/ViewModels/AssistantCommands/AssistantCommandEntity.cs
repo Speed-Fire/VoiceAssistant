@@ -10,10 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using VoiceAssistant.Domain.Models;
+using VoiceAssistant.ViewModels;
 
-namespace VoiceAssistant.Entities
+namespace VoiceAssistant.ViewModels.AssistantCommands
 {
-	public partial class AssistantCommandEntity : PublicValidator
+    public partial class AssistantCommandEntity : PublicValidator
 	{
 		public long Id { get; set; } = 0;
 		public long? AssistantScriptId { get; set; } = 0;

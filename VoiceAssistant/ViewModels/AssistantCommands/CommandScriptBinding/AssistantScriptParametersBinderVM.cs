@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VoiceAssistant.Domain.Models;
-using VoiceAssistant.Entities;
 
 namespace VoiceAssistant.ViewModels.AssistantCommands
 {
