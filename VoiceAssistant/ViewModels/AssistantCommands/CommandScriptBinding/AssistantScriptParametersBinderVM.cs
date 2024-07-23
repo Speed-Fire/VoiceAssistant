@@ -160,7 +160,7 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 				return;
 
 			if (_entity.Input.Count != script.Parameters.Count)
-				throw new Exception("Incorrect count of input parameters!");
+				return;
 
 			var i = 0;
 			foreach(var parameter in Parameters)
