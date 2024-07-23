@@ -52,7 +52,6 @@
 
     <sys:String x:Key="Strings.Plugins.Settings">Settings</sys:String>
 
-    <sys:String x:Key="Strings.Errors.Changes.Unsaved">Changes aren't saved. If you still want to return, press button again.</sys:String>
     <sys:String x:Key="Strings.Errors.Internal">Something went wrong!</sys:String>
 
     <sys:String x:Key="Strings.Plugins.Settings.Overflow">Value for parameter "{0}" is too large or too small!</sys:String>

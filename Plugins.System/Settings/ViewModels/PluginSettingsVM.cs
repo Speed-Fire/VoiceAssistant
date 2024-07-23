@@ -17,12 +17,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using VoiceAssistant.Common;
 using VoiceAssistant.Core.Interfaces;
+using VoiceAssistant.UI.Common.Extensions;
+using VoiceAssistant.UI.Common.Messages;
 
 namespace PluginsSystem.Settings.ViewModels {
 
 	public partial class PluginSettingsVM 
 		: ViewModel<PluginSettingsView>
 	{
+		private readonly IMessageService _messageService;
 		private readonly IUrgentNotifier _urgentNotifier;
 		private readonly PluginInfoEntity _pluginInfo;
 		private readonly SettingsRepository _repository;
@@ -30,12 +33,14 @@ namespace PluginsSystem.Settings.ViewModels {
 		public PluginInfoEntity PluginInfo => _pluginInfo;
 		public IReadOnlyList<BindableProperty> BindableProperties { get; }
 
-		private volatile bool _askForNotSaved = false;
+		private bool Changed { get; set; } = false;
 
         public PluginSettingsVM(
+			IMessageService messageService,
 			IUrgentNotifier urgentNotifier,
 			PluginInfoEntity pluginInfo)
         {
+			_messageService = messageService;
 			_urgentNotifier = urgentNotifier;
 
             _pluginInfo = pluginInfo;
@@ -54,7 +59,14 @@ namespace PluginsSystem.Settings.ViewModels {
 
 				var property = new BindableProperty(parameterInfo, value);
 				property.ErrorsChanged += (sender, e) => { SaveCommand.NotifyCanExecuteChanged(); };
-				property.PropertyChanged += (sender, e) => { _askForNotSaved = true; };
+
+				PropertyChangedEventHandler handler = null!;
+				handler = (sender, e) =>
+				{
+					Changed = true;
+					property.PropertyChanged -= handler;
+				};
+				property.PropertyChanged += handler;
 
 				result.Add(property);
 			}
@@ -126,16 +138,17 @@ namespace PluginsSystem.Settings.ViewModels {
 		}
 
 		[RelayCommand]
-		private void Cancel()
+		private async Task Cancel()
 		{
-			if (_askForNotSaved)
+			if (Changed)
 			{
-				_urgentNotifier.NotifyWarning(GetAppResource<string>("Strings.Errors.Changes.Unsaved"),
-					5000);
+				var message = GetAppResource<string>("Strings.Warnings.Unsaved");
 
-				_askForNotSaved = false;
+				var result = await _messageService
+					.ShowQuestionAsync(message, MessageBoxButton.YesNo);
 
-				return;
+				if (result != MessageBoxResult.Yes)
+					return;
 			}
 			
 			this.Navigation.ReleaseDialog();

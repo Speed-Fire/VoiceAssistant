@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Plugin.Base\Plugin.Base.csproj" />
     <ProjectReference Include="..\VoiceAssistant.Core\VoiceAssistant.Core.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.UI.Common\VoiceAssistant.UI.Common.csproj" />
   </ItemGroup>
 
 </Project>

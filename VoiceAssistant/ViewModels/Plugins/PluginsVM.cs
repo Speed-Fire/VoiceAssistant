@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using Plugin.Base;
 using PluginsSystem.Entities;
 using PluginsSystem.Settings.ViewModels;
@@ -21,16 +22,19 @@ namespace VoiceAssistant.ViewModels.Plugins
 {
 	internal partial class PluginsVM : ViewModel<PluginsView>
 	{
+        private readonly IServiceProvider _serviceProvider;
         private readonly IUrgentNotifier _urgentNotifier;
 		private readonly IVoiceAssistantMonitor _voiceAssistantMonitor;
 
 		public List<PluginInfoEntity> Plugins { get; } = [];
 
 		public PluginsVM(
+            IServiceProvider serviceProvider,
 			IUrgentNotifier urgentNotifier,
 			IVoiceAssistantMonitor voiceAssistantMonitor,
 			Provider<IEnumerable<PluginInfoEntity>> plugins)
 		{
+            _serviceProvider = serviceProvider;
 			_urgentNotifier = urgentNotifier;
 			_voiceAssistantMonitor = voiceAssistantMonitor;
 
@@ -50,7 +54,8 @@ namespace VoiceAssistant.ViewModels.Plugins
             {
                 _voiceAssistantMonitor.Lock();
 
-                var vm = new PluginSettingsVM(_urgentNotifier, pluginInfo);
+                var vm = ActivatorUtilities
+                    .CreateInstance<PluginSettingsVM>(_serviceProvider, [pluginInfo]);
 
                 this.Navigation.PushDialog(vm, _ => { _voiceAssistantMonitor.Unlock(); });
 			}
