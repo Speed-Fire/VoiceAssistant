@@ -96,7 +96,11 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 			this._isEnabled = entity.IsEnabled;
 			this._script = entity.Script;
 			this.AssistantScriptId = entity.AssistantScriptId;
-			
+			this.Input = entity.Input;
+
+			foreach (var parameter in FindAllParameters(_command))
+				CommandInputParameters.Add(parameter);
+
 			CommandInputParameters.CollectionChanged += OnInputCollectionChanged;
         }
 

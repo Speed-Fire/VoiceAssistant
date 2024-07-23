@@ -22,6 +22,7 @@ namespace VoiceAssistant.Extensions
 			action.IsEnabled = entity.IsEnabled;
 			action.AssistantScript = entity.Script;
 			action.AssistantScriptId = entity.AssistantScriptId;
+			action.Input = entity.Input;
 
 			if (action.AssistantScript is not null)
 			{
@@ -37,20 +38,21 @@ namespace VoiceAssistant.Extensions
 			return action;
 		}
 
-		internal static AssistantCommandEntity Map(this AssistantCommand entity, AssistantCommandEntity? existing = null)
+		internal static AssistantCommandEntity Map(this AssistantCommand command, AssistantCommandEntity? existing = null)
 		{
-			var action = existing is null ? new() : existing;
+			var entity = existing is null ? new() : existing;
 
-			action.Id = entity.Id;
-			action.Name = entity.Name;
-			action.Command = entity.Command;
-			action.Description = string.IsNullOrWhiteSpace(entity.Description) ? null : entity.Description;
-			action.NeedsConfirmation = entity.NeedsConfirmation;
-			action.IsEnabled = entity.IsEnabled;
-			action.Script = entity.AssistantScript;
-			action.AssistantScriptId = entity.AssistantScriptId;
+			entity.Id = command.Id;
+			entity.Name = command.Name;
+			entity.Command = command.Command;
+			entity.Description = string.IsNullOrWhiteSpace(command.Description) ? null : command.Description;
+			entity.NeedsConfirmation = command.NeedsConfirmation;
+			entity.IsEnabled = command.IsEnabled;
+			entity.Script = command.AssistantScript;
+			entity.AssistantScriptId = command.AssistantScriptId;
+			entity.Input = command.Input;
 
-			return action;
+			return entity;
 		}
 	}
 }
