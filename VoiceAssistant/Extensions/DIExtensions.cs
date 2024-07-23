@@ -13,6 +13,7 @@ using VoiceAssistant.Core.Interfaces;
 using VoiceAssistant.HostedServices;
 using VoiceAssistant.Notifications;
 using VoiceAssistant.Notifications.Urgent;
+using VoiceAssistant.UI.Common.Messages;
 using VoiceAssistant.ViewModels;
 using VoiceAssistant.ViewModels.Components;
 using VoiceAssistant.ViewModels.Plugins;
@@ -91,7 +92,8 @@ namespace VoiceAssistant.Extensions
 				.AddTransient<SettingsView>()
 				.AddTransient<AppearanceSettingsView>()
 				.AddTransient<VoiceRecognitionSettingsView>()
-				.AddTransient<SpeechSynthesisSettingsView>();
+				.AddTransient<SpeechSynthesisSettingsView>()
+				.AddTransient<MessageComponent>();
 
 			return services;
 		}
@@ -119,12 +121,13 @@ namespace VoiceAssistant.Extensions
 
 			services
 				.AddSingleton<UrgentNotificationService>()
-				.AddHostedService((provider) => 
+				.AddHostedService((provider) =>
 					{
 						return provider.GetRequiredService<UrgentNotificationService>();
 					})
 				.AddSingleton<IUrgentNotifier, UrgentNotifier>()
-				.AddTransient<UrgentNotificatorComponent>();
+				.AddTransient<UrgentNotificatorComponent>()
+				.AddSingleton<IMessageService, MessageService>();
 
 			return services;
 		}

@@ -17,6 +17,10 @@
     <sys:String x:Key="Strings.Buttons.Clear">Clear</sys:String>
     <sys:String x:Key="Strings.Buttons.Save">Save</sys:String>
     <sys:String x:Key="Strings.Buttons.Default">Set defaults</sys:String>
+    <sys:String x:Key="Strings.Buttons.OK">OK</sys:String>
+    <sys:String x:Key="Strings.Buttons.Yes">Yes</sys:String>
+    <sys:String x:Key="Strings.Buttons.No">No</sys:String>
+    <sys:String x:Key="Strings.Buttons.Cancel">Cancel</sys:String>
 
     <sys:String x:Key="Strings.Validation.Field.Empty">Some fields are empty.</sys:String>
     

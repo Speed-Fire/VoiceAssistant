@@ -27,6 +27,7 @@
     <None Remove="Resources\Icons\error64.png" />
     <None Remove="Resources\Icons\info64.png" />
     <None Remove="Resources\Icons\list64.png" />
+    <None Remove="Resources\Icons\question64.png" />
     <None Remove="Resources\Icons\script64.png" />
     <None Remove="Resources\Icons\title64.png" />
     <None Remove="Resources\Icons\voice64.png" />
@@ -76,6 +77,7 @@
     <Resource Include="Resources\Icons\error64.png" />
     <Resource Include="Resources\Icons\info64.png" />
     <Resource Include="Resources\Icons\list64.png" />
+    <Resource Include="Resources\Icons\question64.png" />
     <Resource Include="Resources\Icons\script64.png" />
     <Resource Include="Resources\Icons\title64.png" />
     <Resource Include="Resources\Icons\voice64.png" />

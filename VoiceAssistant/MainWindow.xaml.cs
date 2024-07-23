@@ -27,6 +27,7 @@ namespace VoiceAssistant
 			NavigationManager navigationManager,
 			UrgentNotificatorComponent urgentNotificator,
 			VoiceAssistantListeningStatusComponent listeningComponent,
+			MessageComponent messageComponent,
 			MainVM vm)
 		{
 			InitializeComponent();
@@ -41,6 +42,7 @@ namespace VoiceAssistant
 
 			SetupUrgentNotificator(urgentNotificator);
 			SetupListeningComponent(listeningComponent);
+			SetupMessageComponent(messageComponent);
 
 			Loaded += MainWindow_Loaded;
 		}
@@ -66,6 +68,17 @@ namespace VoiceAssistant
 		#endregion
 
 		#region Setup components
+
+		private void SetupMessageComponent(MessageComponent messageComponent)
+		{
+			Grid.SetColumn(messageComponent, 1);
+			Grid.SetColumnSpan(messageComponent, 2);
+			Grid.SetRowSpan(messageComponent, 4);
+
+			Panel.SetZIndex(messageComponent, 10);
+
+			MainGrid.Children.Add(messageComponent);
+		}
 
 		private void SetupUrgentNotificator(UrgentNotificatorComponent urgentNotificator)
 		{
