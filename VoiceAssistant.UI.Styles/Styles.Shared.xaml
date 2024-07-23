@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="VoiceAssistant.UI.Styles.StylesSharedDictionary">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="ControlStyles/ReturnButton.xaml"/>
+        <ResourceDictionary Source="ControlStyles/CheckBox.xaml"/>
+        <ResourceDictionary Source="ControlStyles/NavPanel.xaml"/>
+
+        <ResourceDictionary Source="Geometries/NavPanelIcons.xaml"/>
+
+    </ResourceDictionary.MergedDictionaries>
+	
+</ResourceDictionary>

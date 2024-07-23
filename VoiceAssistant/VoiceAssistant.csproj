@@ -49,6 +49,7 @@
     <ProjectReference Include="..\VoiceAssistant.UI.Appearance\VoiceAssistant.UI.Appearance.csproj" />
     <ProjectReference Include="..\VoiceAssistant.UI.Common\VoiceAssistant.UI.Common.csproj" />
     <ProjectReference Include="..\VoiceAssistant.UI.Resources\VoiceAssistant.UI.Resources.csproj" />
+    <ProjectReference Include="..\VoiceAssistant.UI.Styles\VoiceAssistant.UI.Styles.csproj" />
   </ItemGroup>
 
   <ItemGroup>

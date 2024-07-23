@@ -1,6 +1,7 @@
 ﻿<Application x:Class="VoiceAssistant.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:va="http://voiceassistant.schemas.com/web/styles"
              xmlns:local="clr-namespace:VoiceAssistant">
     
     <Application.Resources>
@@ -12,12 +13,8 @@
 
                 <ResourceDictionary Source="pack://application:,,,/VoiceAssistant.UI.Resources;component/Resources.Shared.xaml"/>
 
-                <ResourceDictionary Source="Styles/Brushes.xaml"/>
-                <ResourceDictionary Source="Styles/Styles.xaml"/>
-                <ResourceDictionary Source="Styles/ReturnButton.xaml"/>
-                <ResourceDictionary Source="Styles/CheckBox.xaml"/>
-
-                <ResourceDictionary Source="Styles/NavPanelIcons.xaml"/>
+                <x:Static Member="va:StylesDictionary.Instance"/>
+                <x:Static Member="va:StylesSharedDictionary.Instance"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
