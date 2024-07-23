@@ -22,6 +22,8 @@
     <sys:String x:Key="Strings.Buttons.No">No</sys:String>
     <sys:String x:Key="Strings.Buttons.Cancel">Cancel</sys:String>
 
+    <sys:String x:Key="Strings.Warnings.Unsaved">You have unsaved changes, which will be discarded. Do you want to continue?</sys:String>
+    
     <sys:String x:Key="Strings.Validation.Field.Empty">Some fields are empty.</sys:String>
     
     <sys:String x:Key="Strings.AssistantCommand.Change.Name.Colon">Name: *</sys:String>
@@ -31,6 +33,7 @@
     <sys:String x:Key="Strings.AssistantCommand.Change.UserConfirmation">Requires user confirmation</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.InputParameters.Tooltip.Info">Input parameters are parameters retrieved from the command. You can bind them to the parameters of the selected script. To create input parameter put some keyword to parenthesises in your command. Example: Turn on the light for {minCount} minutes.</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.InputParameters.Tooltip.Unused">Some parameters are unused.</sys:String>
+    <sys:String x:Key="Strings.AssistantCommand.Change.InputParameters.Warning.Unused">You have unused input parameters. It's highly recommended to use all of them. Are you sure you want to continue?</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.InputParameters.Colon">Available input parameters:</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.Validation.Empty">The &quot;{0}&quot; field is required.</sys:String>
     <sys:String x:Key="Strings.AssistantCommand.Change.Validation.Command.Duplicates">Command has duplicated input parameters.</sys:String>

@@ -12,7 +12,9 @@ using VoiceAssistant.Extensions;
 using VoiceAssistant.Notifications.Urgent;
 using VoiceAssistant.Services.AssistantCommands;
 using VoiceAssistant.Services.AssistantScripts;
+using VoiceAssistant.UI.Common.Messages;
 using VoiceAssistant.Views;
+using VoiceAssistant.UI.Common.Extensions;
 using VoiceAssistant.Views.AssistantCommands;
 using System.ComponentModel;
 
@@ -22,6 +24,7 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 	{
         private readonly IAssistantCommandService _assistantCommandService;
         private readonly IUrgentNotifier _urgentNotifier;
+		private readonly IMessageService _messageService;
 
         public AssistantScriptParametersBinderVM ParametersBinder { get; }
 
@@ -32,9 +35,12 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 
 		public ChangeAssistantCommandVM(
 			IAssistantCommandService service,
-			IUrgentNotifier urgentNotifier)
+			IUrgentNotifier urgentNotifier,
+			IMessageService messageService)
 		{
 			_assistantCommandService = service;
+			_urgentNotifier = urgentNotifier;
+			_messageService = messageService;
 
 			IsUpdatingMode = false;
 			AssistantCommand = new();
@@ -51,19 +57,21 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 		public ChangeAssistantCommandVM(
             IAssistantCommandService service,
 			IUrgentNotifier urgentNotifier,
+			IMessageService messageService,
 			AssistantCommandEntity command)
 		{
 			_assistantCommandService = service;
+			_urgentNotifier = urgentNotifier;
+			_messageService = messageService;
 
 			IsUpdatingMode = true;
-
 			AssistantCommand = new(command);
 
 			ParametersBinder = new(AssistantCommand);
 
 			ParametersBinder.ErrorsChanged += OnNestedVMsErrorsChanged;
 			AssistantCommand.ErrorsChanged += OnNestedVMsErrorsChanged;
-			
+
 			ParametersBinder.PropertyChanged += NestedVMPropertyChanged;
 			AssistantCommand.PropertyChanged += NestedVMPropertyChanged;
 		}
@@ -86,8 +94,19 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 		}
 
 		[RelayCommand]
-        private void Cancel()
+        private async Task Cancel()
         {
+			if (Changed)
+			{
+				var message = GetAppResource<string>("Strings.Warnings.Unsaved");
+
+				var result = await _messageService
+					.ShowQuestionAsync(message, System.Windows.MessageBoxButton.YesNo);
+
+				if (result != System.Windows.MessageBoxResult.Yes)
+					return;
+			}
+
             Navigation.ReleaseDialog<AssistantCommandEntity?>(false, null);
         }
 
@@ -103,6 +122,16 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 
 				_urgentNotifier.NotifyWarning(message);
 				return;
+			}
+
+			if (ParametersBinder.HasUnusedCommandInputs)
+			{
+				var message = GetAppResource<string>("Strings.AssistantCommand.Change.InputParameters.Warning.Unused");
+				var result = await _messageService.ShowWarningAsync(message,
+					System.Windows.MessageBoxButton.YesNo);
+
+				if (result != System.Windows.MessageBoxResult.Yes)
+					return;
 			}
 
             bool res = false;
