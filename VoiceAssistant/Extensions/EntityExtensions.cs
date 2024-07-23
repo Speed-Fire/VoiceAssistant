@@ -23,6 +23,17 @@ namespace VoiceAssistant.Extensions
 			action.AssistantScript = entity.Script;
 			action.AssistantScriptId = entity.AssistantScriptId;
 
+			if (action.AssistantScript is not null)
+			{
+				var oldAction = action.AssistantScript.Actions.FirstOrDefault(a => a.Id == action.Id);
+
+				if (oldAction is not null)
+				{
+					action.AssistantScript.Actions.Remove(oldAction);
+					action.AssistantScript.Actions.Add(action);
+				}
+			}
+
 			return action;
 		}
 
