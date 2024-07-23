@@ -74,6 +74,11 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 					TypeCode.String => str => true,
 					_ => throw new Exception("Unsupported type!"),
 				};
+
+				if(typeCode == TypeCode.Boolean)
+				{
+					_value = bool.FalseString;
+				}
 			}
 		}
 
