@@ -32,6 +32,7 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 
 			GenerateParameters(entity.Script);
 			FillParameters(entity.Script);
+			RecalculateUnusedCommandInputs();
 
 			_entity.PropertyChanged += Entity_PropertyChanged;
 			_entity.CommandInputParameters.CollectionChanged +=
