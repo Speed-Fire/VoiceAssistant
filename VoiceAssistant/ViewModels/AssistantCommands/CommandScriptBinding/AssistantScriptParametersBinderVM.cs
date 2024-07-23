@@ -87,6 +87,8 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 
 			UpdateEntityInput();
 			RecalculateUnusedCommandInputs();
+
+			OnPropertyChanged(e);
 		}
 
 		#endregion

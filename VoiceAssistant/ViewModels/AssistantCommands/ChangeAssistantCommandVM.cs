@@ -14,6 +14,7 @@ using VoiceAssistant.Services.AssistantCommands;
 using VoiceAssistant.Services.AssistantScripts;
 using VoiceAssistant.Views;
 using VoiceAssistant.Views.AssistantCommands;
+using System.ComponentModel;
 
 namespace VoiceAssistant.ViewModels.AssistantCommands
 {
@@ -26,6 +27,8 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 
         public bool IsUpdatingMode { get; }
         public AssistantCommandEntity AssistantCommand { get; }
+
+		private bool Changed { get; set; } = false;
 
 		public ChangeAssistantCommandVM(
 			IAssistantCommandService service,
@@ -41,7 +44,8 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 			ParametersBinder.ErrorsChanged += OnNestedVMsErrorsChanged;
 			AssistantCommand.ErrorsChanged += OnNestedVMsErrorsChanged;
 
-			_urgentNotifier = urgentNotifier;
+			ParametersBinder.PropertyChanged += NestedVMPropertyChanged;
+			AssistantCommand.PropertyChanged += NestedVMPropertyChanged;
 		}
 
 		public ChangeAssistantCommandVM(
@@ -60,7 +64,8 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 			ParametersBinder.ErrorsChanged += OnNestedVMsErrorsChanged;
 			AssistantCommand.ErrorsChanged += OnNestedVMsErrorsChanged;
 			
-			_urgentNotifier = urgentNotifier;
+			ParametersBinder.PropertyChanged += NestedVMPropertyChanged;
+			AssistantCommand.PropertyChanged += NestedVMPropertyChanged;
 		}
 
 		#region Commands
@@ -128,7 +133,7 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 
         private bool CanChangeCommandExecute()
         {
-            return !AssistantCommand.HasErrors && !ParametersBinder.HasErrors;
+            return Changed && !AssistantCommand.HasErrors && !ParametersBinder.HasErrors;
         }
 
 		#endregion
@@ -139,6 +144,19 @@ namespace VoiceAssistant.ViewModels.AssistantCommands
 			System.ComponentModel.DataErrorsChangedEventArgs e)
 		{
             ChangeCommand.NotifyCanExecuteChanged();
+		}
+
+		#endregion
+
+		#region Property changed
+
+		private void NestedVMPropertyChanged(object? sender, PropertyChangedEventArgs e)
+		{
+			Changed = true;
+			ChangeCommand.NotifyCanExecuteChanged();
+
+			ParametersBinder.PropertyChanged -= NestedVMPropertyChanged;
+			AssistantCommand.PropertyChanged -= NestedVMPropertyChanged;
 		}
 
 		#endregion
