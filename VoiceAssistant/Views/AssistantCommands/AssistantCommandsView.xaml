@@ -8,7 +8,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              
              xmlns:controls="clr-namespace:Synergy.WPF.Common.Controls;assembly=Synergy.WPF.Common"
-             xmlns:components="clr-namespace:VoiceAssistant.Components"
+             xmlns:components="clr-namespace:VoiceAssistant.Views.AssistantCommands"
              xmlns:elements="clr-namespace:VoiceAssistant.UI.Common.Elements;assembly=VoiceAssistant.UI.Common"
              
              mc:Ignorable="d" 

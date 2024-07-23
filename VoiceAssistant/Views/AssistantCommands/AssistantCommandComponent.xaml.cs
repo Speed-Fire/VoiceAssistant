@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VoiceAssistant.Entities;
 
-namespace VoiceAssistant.Components
+namespace VoiceAssistant.Views.AssistantCommands
 {
 	/// <summary>
 	/// Логика взаимодействия для AssistantActionComponent.xaml

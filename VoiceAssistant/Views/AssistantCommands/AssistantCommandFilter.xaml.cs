@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace VoiceAssistant.Components
+namespace VoiceAssistant.Views.AssistantCommands
 {
 	/// <summary>
 	/// Логика взаимодействия для AssistantActionFilter.xaml
