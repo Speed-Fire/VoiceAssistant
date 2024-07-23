@@ -34,7 +34,12 @@ namespace VoiceAssistant.Services.AssistantCommands
 
 		private async Task<IEnumerable<AssistantCommand>> GetAllAsyncInternal()
 		{
-			var result = await _dbContext.Commands.AsNoTracking().ToListAsync();
+			var result = await _dbContext.Commands
+				.AsNoTracking()
+				.Include(c => c.AssistantScript)
+				.ToListAsync();
+
+			_dbContext.ChangeTracker.Clear();
 
 			return result;
 		}
@@ -58,8 +63,6 @@ namespace VoiceAssistant.Services.AssistantCommands
 				await _dbContext.SaveChangesAsync();
 				await trans.CommitAsync();
 
-				_dbContext.ChangeTracker.Clear();
-
 				var res = await _underlyingCommandService.AddAsync(command);
 				if (res is not null)
 					_logger.LogWarning(res, 
@@ -77,6 +80,8 @@ namespace VoiceAssistant.Services.AssistantCommands
 			}
 			finally
 			{
+				_dbContext.ChangeTracker.Clear();
+
 				await trans.DisposeAsync();
 			}
 		}
@@ -105,8 +110,6 @@ namespace VoiceAssistant.Services.AssistantCommands
 				await _dbContext.SaveChangesAsync();
 				await trans.CommitAsync();
 
-				_dbContext.ChangeTracker.Clear();
-
 				var res = await _underlyingCommandService.UpdateAsync(command);
 				if(res is not null)
 					_logger.LogWarning(res,
@@ -124,6 +127,8 @@ namespace VoiceAssistant.Services.AssistantCommands
 			}
 			finally
 			{
+				_dbContext.ChangeTracker.Clear();
+
 				await trans.DisposeAsync();
 			}
 		}
