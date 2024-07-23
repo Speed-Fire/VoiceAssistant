@@ -10,9 +10,9 @@ namespace VoiceAssistant.Domain.Models
     public class AssistantCommand
 	{
 		public long Id { get; set; }
-		public required string Name { get; set; } = "";
-		public required string Command { get; set; } = "";
-		public required string Input { get; set; } = "";
+		public required string Name { get; set; }
+		public required string Command { get; set; }
+		public required List<string> Input { get; set; }
 		public string? Description { get; set; }
 		public bool NeedsConfirmation { get; set; }
 		public bool IsEnabled { get; set; } = true;

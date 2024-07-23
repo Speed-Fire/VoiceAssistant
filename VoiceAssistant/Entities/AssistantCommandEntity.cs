@@ -71,7 +71,7 @@ namespace VoiceAssistant.Entities
 
 		public ObservableCollection<string> CommandInputParameters { get; } = [];
 
-		public string Input => throw new NotImplementedException();
+		public List<string> Input { get; set; } = [];
 
 		#region Ctors
 

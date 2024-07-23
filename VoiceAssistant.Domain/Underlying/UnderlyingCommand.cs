@@ -13,7 +13,7 @@ namespace VoiceAssistant.Domain.Underlying
 	{
 		public long Id { get; } = id;
 		public string Command { get; set; }
-		public string Input { get; set; }
+		public IEnumerable<string> Input { get; set; }
 		public bool IsEnabledUser { get; set; }
 		public bool NeedsConfirmation { get; set; }
 
