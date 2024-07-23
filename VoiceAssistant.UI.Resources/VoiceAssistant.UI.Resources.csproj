@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\arrow_left64.png" />
+    <None Remove="Icons\attention64.png" />
+    <None Remove="Icons\create64.png" />
+    <None Remove="Icons\delete64.png" />
+    <None Remove="Icons\description64.png" />
+    <None Remove="Icons\edit64.png" />
+    <None Remove="Icons\error64.png" />
+    <None Remove="Icons\info64.png" />
+    <None Remove="Icons\list64.png" />
+    <None Remove="Icons\question64.png" />
+    <None Remove="Icons\script64.png" />
+    <None Remove="Icons\title64.png" />
+    <None Remove="Icons\voice64.png" />
+    <None Remove="Icons\warning64.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\arrow_left64.png" />
+    <Resource Include="Icons\attention64.png" />
+    <Resource Include="Icons\create64.png" />
+    <Resource Include="Icons\delete64.png" />
+    <Resource Include="Icons\description64.png" />
+    <Resource Include="Icons\edit64.png" />
+    <Resource Include="Icons\error64.png" />
+    <Resource Include="Icons\info64.png" />
+    <Resource Include="Icons\list64.png" />
+    <Resource Include="Icons\question64.png" />
+    <Resource Include="Icons\script64.png" />
+    <Resource Include="Icons\title64.png" />
+    <Resource Include="Icons\voice64.png" />
+    <Resource Include="Icons\warning64.png" />
+  </ItemGroup>
+
+</Project>

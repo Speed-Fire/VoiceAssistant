@@ -18,23 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Icons\arrow_left64.png" />
-    <None Remove="Resources\Icons\attention64.png" />
-    <None Remove="Resources\Icons\create64.png" />
-    <None Remove="Resources\Icons\delete64.png" />
-    <None Remove="Resources\Icons\description64.png" />
-    <None Remove="Resources\Icons\edit64.png" />
-    <None Remove="Resources\Icons\error64.png" />
-    <None Remove="Resources\Icons\info64.png" />
-    <None Remove="Resources\Icons\list64.png" />
-    <None Remove="Resources\Icons\question64.png" />
-    <None Remove="Resources\Icons\script64.png" />
-    <None Remove="Resources\Icons\title64.png" />
-    <None Remove="Resources\Icons\voice64.png" />
-    <None Remove="Resources\Icons\warning64.png" />
-  </ItemGroup>
-
-  <ItemGroup>
 	  <Compile Include="AssemblyInfo.cs">
 		  <Link>Properties\AssemblyInfo.cs</Link>
 	  </Compile>
@@ -65,23 +48,7 @@
     <ProjectReference Include="..\VoiceAssistant.SpeechSynthesis\VoiceAssistant.SpeechSynthesis.csproj" />
     <ProjectReference Include="..\VoiceAssistant.UI.Appearance\VoiceAssistant.UI.Appearance.csproj" />
     <ProjectReference Include="..\VoiceAssistant.UI.Common\VoiceAssistant.UI.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Icons\arrow_left64.png" />
-    <Resource Include="Resources\Icons\attention64.png" />
-    <Resource Include="Resources\Icons\create64.png" />
-    <Resource Include="Resources\Icons\delete64.png" />
-    <Resource Include="Resources\Icons\description64.png" />
-    <Resource Include="Resources\Icons\edit64.png" />
-    <Resource Include="Resources\Icons\error64.png" />
-    <Resource Include="Resources\Icons\info64.png" />
-    <Resource Include="Resources\Icons\list64.png" />
-    <Resource Include="Resources\Icons\question64.png" />
-    <Resource Include="Resources\Icons\script64.png" />
-    <Resource Include="Resources\Icons\title64.png" />
-    <Resource Include="Resources\Icons\voice64.png" />
-    <Resource Include="Resources\Icons\warning64.png" />
+    <ProjectReference Include="..\VoiceAssistant.UI.Resources\VoiceAssistant.UI.Resources.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -66,7 +66,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.Scripts.Comp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.Scripts.Services", "VoiceAssistant.Scripts.Services\VoiceAssistant.Scripts.Services.csproj", "{4639F0E3-2A55-4AC8-ABAA-9CA08BCCA89C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.Scripts.Definitions", "VoiceAssistant.Scripts.Definitions\VoiceAssistant.Scripts.Definitions.csproj", "{C39D189D-6BD8-44D5-8622-77A839FF58DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceAssistant.Scripts.Definitions", "VoiceAssistant.Scripts.Definitions\VoiceAssistant.Scripts.Definitions.csproj", "{C39D189D-6BD8-44D5-8622-77A839FF58DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceAssistant.UI.Resources", "VoiceAssistant.UI.Resources\VoiceAssistant.UI.Resources.csproj", "{406517BF-20A0-423F-9E2C-D6EC6D1E257A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -170,6 +172,10 @@ Global
 		{C39D189D-6BD8-44D5-8622-77A839FF58DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C39D189D-6BD8-44D5-8622-77A839FF58DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C39D189D-6BD8-44D5-8622-77A839FF58DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{406517BF-20A0-423F-9E2C-D6EC6D1E257A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{406517BF-20A0-423F-9E2C-D6EC6D1E257A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{406517BF-20A0-423F-9E2C-D6EC6D1E257A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{406517BF-20A0-423F-9E2C-D6EC6D1E257A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,6 +196,7 @@ Global
 		{19E13DE9-318A-442E-A65B-CA0249FE5128} = {03EC55A9-D5CD-47A0-8455-C45D084E25F4}
 		{4639F0E3-2A55-4AC8-ABAA-9CA08BCCA89C} = {03EC55A9-D5CD-47A0-8455-C45D084E25F4}
 		{C39D189D-6BD8-44D5-8622-77A839FF58DE} = {03EC55A9-D5CD-47A0-8455-C45D084E25F4}
+		{406517BF-20A0-423F-9E2C-D6EC6D1E257A} = {B33C7E51-B692-4364-9A05-AC9B227FAA87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2870DBD0-1D63-4AF1-8706-07CD16EC4A04}

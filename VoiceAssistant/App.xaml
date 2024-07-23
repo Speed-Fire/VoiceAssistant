@@ -10,9 +10,10 @@
                 <ResourceDictionary Source="pack://application:,,,/Synergy.WPF.Common;component/Themes/Generic.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Synergy.WPF.Common;component/Styles/Synergy.WPF.Common.Shared.xaml"/>
 
+                <ResourceDictionary Source="pack://application:,,,/VoiceAssistant.UI.Resources;component/Resources.Shared.xaml"/>
+
                 <ResourceDictionary Source="Styles/Brushes.xaml"/>
                 <ResourceDictionary Source="Styles/Styles.xaml"/>
-                <ResourceDictionary Source="Styles/Resources.xaml"/>
                 <ResourceDictionary Source="Styles/ReturnButton.xaml"/>
                 <ResourceDictionary Source="Styles/CheckBox.xaml"/>
 
